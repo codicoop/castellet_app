@@ -43,7 +43,6 @@ class NewsletterForm(forms.ModelForm):
 
     def send_mail(self, context, to_email):
         context = {
-            "project_name": config.PROJECT_NAME,
             "user_name": context["user"].full_name,
             "date": str(
                 formats.date_format(
@@ -54,7 +53,6 @@ class NewsletterForm(forms.ModelForm):
             ),
             "time": str(formats.time_format(timezone.localtime(timezone.now()).time())),
             "user_email": context["email"],
-            "absolute_url": settings.ABSOLUTE_URL,
         }
         send(
             recipients=[
