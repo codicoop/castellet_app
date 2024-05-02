@@ -82,6 +82,11 @@
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">{% translate "Profile" %}</a>
                 </li>
+                <li>
+                  <a href="{% url 'main:documents' %}"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                    role="menuitem">{% translate "Documents" %}</a>
+                </li>
                 {% if request.user.has_admin_role %}
                 <li>
                   <a href="{% url 'registration:profile_details' %}"
@@ -160,6 +165,16 @@
                 <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
               </svg>
               <span class="ms-3">{% translate "Profile" %}</span>
+            </a>
+          </li>
+          <!-- Documents -->
+          <li>
+            <a href="{% url 'main:documents' %}"
+              class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <svg class="w-8 h-8 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+              </svg>
+              <span class="ms-3">{% translate "Documents" %}</span>
             </a>
           </li>
             {% if request.user.has_admin_role %}

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 
 from apps.main.forms import NewsletterForm
+from apps.main.models import Document
 from apps.main.services import send_confirmation_newsletter
 
 
@@ -14,3 +15,8 @@ def newsletter_view(request):
             send_confirmation_newsletter(form.data)
             return redirect("home")
     return render(request, "newsletter.html", {"form": form})
+
+
+def document_list_view(request):
+    context = {"data": Document.objects.all()}
+    return render(request, "main/documents.html", context)
