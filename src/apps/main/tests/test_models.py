@@ -4,7 +4,7 @@ from apps.main.models import Newsletter
 from apps.main.tests.factories import NewsletterFactory
 
 
-class DataTest(TestCase):
+class NewsletterTest(TestCase):
     def setUp(self):
         self.full_data = NewsletterFactory(
             name="Andrew",
