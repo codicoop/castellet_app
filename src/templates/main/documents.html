@@ -24,7 +24,6 @@
   <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
     {% translate "Documents" %}
   </h1>
-
   <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
     <div class="flex items-center justify-end mb-4 mx-auto md:max-w-screen-sm">
       <button id="dropdownDefault" data-dropdown-toggle="dropdown"
@@ -36,62 +35,47 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
-    
       <!-- Dropdown menu -->
-      <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
-        <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-          {% translate "Project" %}
-        </h6>
-        <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-          {% for project in projects %}
-          <li class="flex items-center">
-            <!-- Quan això es selecciona, es fa la petició al back dels -->
-            <!-- documents que incloguin els projectes seleccionats -->
-            <input id="apple" type="checkbox" value=""
-              class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-            <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-              Apple
-            </label>
-          </li>
-          {% endfor %}
-          <li class="flex items-center">
-            <input id="fitbit" type="checkbox" value=""
-              class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-            <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-              Fitbit
-            </label>
-          </li>
-          <li class="flex items-center">
-            <input id="dell" type="checkbox" value=""
-              class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-            <label for="dell" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-              Dell
-            </label>
-          </li>
-        </ul>
-      </div>
+        <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700" name="project_list">
+          <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+            {% translate "Projects" %}
+          </h6>
+            <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+              {% for project in projects %}
+                <li class="flex items-center">
+                  <input id="{{ project.id }}" type="checkbox"  name="id" hx-get="{% url 'main:documents' %}" hx-target="#htmx-content"
+                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                  <label for="{{ project }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                    {{ project }}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+
     </div>
-    {% if data %}
+    {% if documents %}
       <div class="grid space-y-6 mx-auto
         md:max-w-screen-sm
-        lg:grid-cols-2 lg:gap-4 lg:space-y-0">
+        lg:grid-cols-2 lg:gap-4 lg:space-y-0"
+        id="htmx-content">
         <!-- I es recarrega aquest llistat -->
-        {% for datum in data %}
-          <a href="{{ datum.file.url }}" id="id_details_{{ datum.id }}" target="_blank"
+        {% for document in documents %}
+          <a href="{{ document.file.url }}" id="id_details_{{ document.id }}" target="_blank"
             class="flex justify-between items-center p-4 bg-white rounded-lg border-l-8 border-primary-600 shadow
             dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-primary-500 hover:bg-gray-50">
             <div>
               <span class="block mb-1 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
-                <span class="font-bold text-gray-700 dark:text-white">{{ datum.project }} </span>
-                - {{ datum.created_at|date:"d/m/y" }}
+                <span class="font-bold text-gray-700 dark:text-white">{{ document.project }} </span>
+                - {{ document.created_at|date:"d/m/y" }}
               </span>
               <span class="text-xl font-semibold text-primary-600 dark:text-primary-500">
-                {{ datum.title }}
+                {{ document.title }}
               </span>
             </div>
             <svg class="w-6 h-6 text-primary-600 dark:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
-            </svg>            
+            </svg>
           </a>
         {% endfor %}
       </div>
@@ -101,7 +85,6 @@
       </div>
     {% endif %}
   </div>
-
 
 
 
