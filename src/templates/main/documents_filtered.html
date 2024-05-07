@@ -1,7 +1,5 @@
 <div class="grid space-y-6
-  md:max-w-screen-sm
-  lg:grid-cols-2 lg:gap-4 lg:space-y-0">
-  <!-- I es recarrega aquest llistat -->
+  md:max-w-screen-sm">
   {% for document in documents %}
     <a href="{{ document.file.url }}" id="id_document_{{ document.id }}" target="_blank"
       class="flex justify-between items-center p-4 bg-white rounded-lg border-l-8 border-primary-600 shadow
