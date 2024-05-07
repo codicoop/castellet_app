@@ -1,0 +1,29 @@
+from django import forms
+from django.test import TestCase
+
+from apps.main.forms import NewsletterForm
+
+
+class NewsletterFormTest(TestCase):
+    def setUp(self):
+        self.form = NewsletterForm(
+            data={
+                "name": "",
+                "surnames": "",
+                "email": "test",
+            }
+        )
+
+    def test_form_errors(self):
+        self.assertFalse(self.form.is_valid())
+
+        with self.subTest("Required fields"):
+            self.assertEqual(self.form.errors["name"], ["Aquest camp és obligatori."])
+            self.assertEqual(
+                self.form.errors["surnames"], ["Aquest camp és obligatori."]
+            )
+        with self.subTest("Other validations"):
+            self.assertEqual(
+                self.form.errors["email"],
+                ["Introdueix una adreça de correu electrònic vàlida"],
+            )

@@ -88,6 +88,38 @@ ben llarga i t'agrairem que ens informis de la situació.
                 },
             },
         ),
+        dict(
+            id="newsletter",
+            translated_templates={
+                "en": {
+                    "subject": "Successful subscription to our Newsletter",
+                    "body": """
+    <p>Hello {{user_name}}!</p>
+    <p>We're sending you this e-mail because today {{date}} at {{time}}
+    your subscription to our newsletter has been completed with your email address
+    {{user_email}}.
+
+    From now on we will keep you informed with all our news.
+
+    Thank you for being part of our community.</p>
+                        """,
+                },
+                "ca": {
+                    "subject": "S'ha subscrit amb èxit a la nostra Newsletter",
+                    "body": """
+    <p>Hola {{user_name}}!</p>
+    <p>T'enviem aquest correu perquè avui {{date}} a les {{time}}
+    s'ha completat la teva subscripció a nostra newsletter amb el teu correu electrònic
+    {{user_email}}
+
+    D'ara endavant et mantindrem informat amb totes les nostres novetats.
+
+    Gràcies per formar part de la nostra comunitat.
+    </p>
+                        """,
+                },
+            },
+        ),
     ]
 
     print("")
