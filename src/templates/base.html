@@ -167,9 +167,10 @@
             <li>
               <a href="{% url 'admin:index' %}"
                 class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-8 h-8 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                <svg class="w-7 h-7 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"/>
                 </svg>
+                
                 <span class="ms-3">{% translate "Administration panel" %}</span>
               </a>
             </li>
@@ -219,6 +220,18 @@
           md:p-6
           xl:p-8
           dark:bg-gray-800">
+          <!-- Newsletter -->
+          <a href="{% url 'newsletter' %}" id="id_newsletter">
+            <h2 class="flex items-center justify-between gap-3 w-full p-4 bg-primary-50 border-2 border-primary-100 rounded-xl font-medium rtl:text-right
+                focus:ring-4 focus:ring-primary-200
+                hover:bg-primary-100
+                dark:focus:ring-primary-800 dark:border-primary-700 dark:text-primary-400">
+                <span class="hover:underline">{% translate "Want to subscribe to our newsletter?" %}</span>
+                <svg class="w-6 h-6 text-primary-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
+                </svg>
+            </h2>
+          </a>
           <div class="md:flex md:items-center md:justify-between">
             <!-- Footer nav -->
             <ul class="flex flex-wrap items-center space-y-1 mb-2 md:mb-0">
