@@ -233,30 +233,8 @@
             </h2>
           </a>
           <div class="md:flex md:items-center md:justify-between">
-            <!-- Footer nav -->
-            <ul class="flex flex-wrap items-center space-y-1 mb-2 md:mb-0">
-              <!-- Tot els ítems -->
-              <li>
-                <a href="{% url 'registration:privacy_policy' %}" class="mr-4 text-sm font-normal text-gray-500 hover:underline md:mr-6 dark:text-gray-400">
-                  Terms and conditions
-                </a>
-              </li>
-              <!-- Últim item -->
-              <li>
-                <a href="#" class="text-sm font-normal text-gray-500 hover:underline dark:text-gray-400">
-                  Contact
-                </a>
-              </li>
-              <!-- Newsletter -->
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <li>
-                <a href="{% url 'newsletter' %}" class="text-sm font-normal text-gray-500 hover:underline dark:text-gray-400" id="id_newsletter">
-                  Subscribe to our Newsletter
-                </a>
-              </li>
-            </ul>
             <!-- Social links -->
-            <div class="flex space-x-6 sm:justify-center">
+            <div class="flex space-x-6 sm:justify-center mt-4">
               <!-- Facebook -->
               <a href="#" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
                 <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" aria-hidden="true">
@@ -289,20 +267,22 @@
                 </svg>
               </a>
             </div>
+            <div>
+              <!-- Extra info -->
+              <p class="mt-4 text-sm text-right text-gray-500">
+                Desenvolupat per
+                <a href="https://codi.coop" class="hover:underline" target="_blank">
+                  Codi Cooperatiu
+                </a>
+              </p>
+              <p class="text-sm text-right text-gray-500">
+                <a href="{% url 'registration:privacy_policy' %}" class="hover:underline" target="_blank">
+                  Avís legal
+                </a>
+                © 2024
+              </p>
+            </div>
           </div>
-          <!-- Extra info -->
-          <p class="mt-4 text-sm text-right text-gray-500">
-            Desenvolupat per
-            <a href="https://codi.coop" class="hover:underline" target="_blank">
-              Codi Cooperatiu
-            </a>
-          </p>
-          <p class="text-sm text-right text-gray-500">
-            <a href="{% url 'registration:privacy_policy' %}" class="hover:underline" target="_blank">
-              Avís legal
-            </a>
-            © 2024
-          </p>
       </footer>
     </div>
   </div>
