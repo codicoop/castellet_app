@@ -62,6 +62,7 @@ class Strings(Enum):
     PASSWORD_CHANGE_TITLE = _("Projecte App | Canvi de contrasenya")
     EMAIL_VALIDATION_TITLE = _("Projecte App | Mail validation")
     NEWSLETTER_TITLE = _("Projecte App | Newsletter")
+    NEWSLETTER_SUCCESS_TITLE = _("Projecte App | Newsletter Successful")
 
 
 @override_settings(
@@ -465,5 +466,11 @@ class MySeleniumTests(StaticLiveServerTestCase):
 
         # Test mailing to the user confirming the success of their subscription
         self._check_mail_sent("andrews.mcdolls@gmail.com")
+
+        self.logging_url_title_and_assert_title(Strings.NEWSLETTER_SUCCESS_TITLE.value)
+
+        # Click on the button Go Back.
+        button_back = self.selenium.find_element(By.ID, "id_back")
+        button_back.click()
 
         self.logging_url_title_and_assert_title(Strings.HOME_TITLE.value)
