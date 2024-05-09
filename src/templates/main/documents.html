@@ -63,27 +63,8 @@
           </form>
         </div>
       </div>
-      <div class="grid space-y-6 mx-auto
-        md:max-w-screen-sm"
-        id="htmx-content">
-        {% for document in documents %}
-          <a href="{{ document.file.url }}" id="id_document_{{ document.id }}" target="_blank"
-            class="flex justify-between items-center p-4 bg-white rounded-lg border-l-8 border-primary-600 shadow
-            dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-primary-500 hover:bg-gray-50">
-            <div>
-              <span class="block mb-1 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
-                <span class="font-bold text-gray-700 dark:text-white">{{ document.project }} </span>
-                - {{ document.created_at|date:"d/m/y" }}
-              </span>
-              <span class="text-xl font-semibold text-primary-600 dark:text-primary-500">
-                {{ document.title }}
-              </span>
-            </div>
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
-            </svg>
-          </a>
-        {% endfor %}
+      <div class="grid space-y-6 mx-auto md:max-w-screen-sm" id="htmx-content">
+        {% include 'main/documents_filtered.html' %}
       </div>
     {% else %}
       <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
