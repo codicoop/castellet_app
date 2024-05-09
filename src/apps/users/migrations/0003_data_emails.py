@@ -74,7 +74,7 @@ ben llarga i t'agrairem que ens informis de la situació.
                         """,
                 },
                 "ca": {
-                    "subject": "Email verification for your account at " "{{project_name}}",
+                    "subject": "Verificació per correu electrònic del vostre compte a " "{{project_name}}",
                     "body": """
     <p>Hola {{user_name}}!</p>
     <p>Us enviarem aquest correu electrònic perquè avui {{date}} a les {{time}}

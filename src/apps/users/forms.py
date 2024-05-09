@@ -34,7 +34,7 @@ class AuthenticationForm(BaseAuthenticationForm):
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
-                "placeholder": _("Email adress"),
+                "placeholder": _("email address"),
             }
         ),
     )
@@ -43,7 +43,7 @@ class AuthenticationForm(BaseAuthenticationForm):
         label=_("Password"),
     )
     remember_me = flowbite.FormBooleanField(
-        required=False, widget=forms.CheckboxInput(), label=_("Remember me")
+        required=False, widget=forms.CheckboxInput(), label="Recorda'm"
     )
 
 
@@ -77,12 +77,12 @@ class UserChangeForm(forms.ModelForm):
 
 class UserSignUpForm(UserCreationForm):
     name = flowbite.FormCharField(
-        label=_("Name"),
-        widget=forms.TextInput(attrs={"autofocus": True, "placeholder": _("Name")}),
+        label="Nom",
+        widget=forms.TextInput(attrs={"autofocus": True, "placeholder": "Nom"}),
     )
     surnames = flowbite.FormCharField(
-        label=_("Surnames"),
-        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
+        label="Cognoms",
+        widget=forms.TextInput(attrs={"placeholder": "Cognoms"}),
     )
     password1 = flowbite.FormPasswordField(
         widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
@@ -113,10 +113,10 @@ class UserSignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         privacy_policy_url = self.get_privacy_policy_url()
-        privacy_policy_link = '<a href="{}" class="text-primary-500 font-bold hover:underline" target="_blank">privacy policy</a>'.format(  # noqa: E501
+        privacy_policy_link = '<a href="{}" class="text-primary-500 font-bold hover:underline" target="_blank">política de privacitat.</a>'.format(  # noqa: E501
             privacy_policy_url
         )
-        label_html = _("I have read and agree with the {}").format(privacy_policy_link)
+        label_html = _("He llegit i estic d'acord amb {}").format(privacy_policy_link)
         self.fields["accept_conditions"] = flowbite.FormBooleanField(
             label=format_html(label_html), required=True
         )
@@ -134,12 +134,12 @@ class UserSignUpForm(UserCreationForm):
 
 class ProfileDetailsForm(forms.ModelForm):
     name = flowbite.FormCharField(
-        label=_("Name"),
-        widget=forms.TextInput(attrs={"placeholder": _("Name")}),
+        label="Nom",
+        widget=forms.TextInput(attrs={"placeholder": "Nom"}),
     )
     surnames = flowbite.FormCharField(
-        label=_("Surnames"),
-        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
+        label="Cognoms",
+        widget=forms.TextInput(attrs={"placeholder": "Cognoms"}),
     )
     email = flowbite.FormEmailField(
         label=_("Email"),
@@ -256,9 +256,9 @@ class PasswordChangeForm(BasePasswordChangeForm):
 class EmailVerificationCodeForm(forms.Form):
     email_verification_code = flowbite.FormIntegerField(
         widget=forms.TextInput(
-            attrs=({"autofocus": True, "placeholder": _("Verification code")})
+            attrs=({"autofocus": True, "placeholder": "Codi de verificació"})
         ),
-        label=_("Verification code"),
+        label="Codi de verificació",
     )
 
 

@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {# Blocks de base.html #}
-{% block page_title %}{% translate "Log in" %}{% endblock %}
+{% block page_title %}Inici de sessió{% endblock %}
 {% block bodyclasses %}{% endblock %}
 {% block mainclasses %} login grid-1 {% endblock %}
 {% block extra_js %}{% endblock %}
@@ -12,13 +12,13 @@
 
 {% block before_form_content %}
 <div class="form__title grid-item-4-9">
-  <h2>{% translate "Log-in" %}</h2>
+  <h2>Inici de sessió</h2>
 </div>
 {% endblock %}
 
 {% block form_introduction %}
 <div class="form__intro text-md">
-  <p>{% translate "Enter your account details to authenticate." %}</p>
+  <p>Introduïu les dades del vostre compte per a autenticar-vos.</p>
 </div>
 {% endblock %}
 
@@ -63,21 +63,21 @@
     {% endif %}
   </div>
 
-<!-- {% block submit_text %}{% translate 'Go in' %}{% endblock %} -->
+<!-- {% block submit_text %}Entra{% endblock %} -->
 {% endblock %}
 
 {% block after_form_content %}
 <div class="login__afterform grid-item-4-9">
   <div class="form__outro text-md">
     <a href="{% url 'registration:password_reset' %}">
-      {% translate "Forgotten your password?" %}
+      Heu oblidat la contrasenya?
     </a>
   </div>
   <div class="form__outro">
-    <p>{% translate "If you are not registered yet:" %}</p>
+    <p>Si encara no esteu registrat:</p>
     <a href="{% url 'registration:signup' %}">
       <div class="btn btn--sec-empty">
-        <p>{% translate "Sign-up" %}</p>
+        <p>Registrar-se</p>
       </div>
     </a>
   </div>

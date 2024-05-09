@@ -34,11 +34,11 @@ def home_view(request):
 
 class StandardSuccess(TemplateView):
     template_name = "standard_success.html"
-    link_text = _("Back")
+    link_text = "Enrere"
     page_title = _("Registry updated")
-    title = _("Registry successfully updated")
-    success_title = _("Done!")
-    description = _("The registry was updated correctly.")
+    title = "Registre actualitzat correctament"
+    success_title = "Fet!"
+    description = "El registre s'ha actualitzat correctament."
     url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):

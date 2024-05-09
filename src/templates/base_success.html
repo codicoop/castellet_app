@@ -3,7 +3,7 @@
 
 {# Blocks de base.html #}
 
-{% block page_title %}{% translate "Sign up" %}{% endblock %}
+{% block page_title %}Registrar-se{% endblock %}
 {% block bodyclasses %}{% endblock %}
 {% block mainclasses %} signup grid-1 {% endblock %}
 {% block extra_js %}{% endblock %}
@@ -26,10 +26,10 @@ success_btn_text - Pel text del link de la card -->
           xl:p-0">
       <div class=" flex flex-col p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-          {% block success_title %}{% translate "Done!" %}{% endblock %}
+          {% block success_title %}Fet!{% endblock %}
         </h1>
 
-        <p class="pb-8">{% block success_text %}{% translate "Registry successfully updated." %}{% endblock %}</p>
+        <p class="pb-8">{% block success_text %}El registre s'ha actualitzat correctament.{% endblock %}</p>
 
         {% block success_extra %}{% endblock %}
 
@@ -37,7 +37,7 @@ success_btn_text - Pel text del link de la card -->
           class="self-end px-5 py-2.5 rounded-lg bg-primary-600 text-white font-bold text-sm text-center
         hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300
         dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" id="id_back">
-          {% block success_btn_text %}{% translate "Back to home" %}{% endblock %}
+          {% block success_btn_text %}Torna a inici{% endblock %}
         </a>
       </div>
     </div>
