@@ -12,7 +12,7 @@ In order to install this project, you have to:
 `npx tailwindcss -i ./src/assets/styles/input.css -o ./src/assets/styles/output.css --watch`
 4. Inside */docker/* folder rename **.env.example** to **.env** and then run  `docker compose up`.
 5. From Docker shell ejecute: `python manage.py migrate`.
-6. Go to: [localhost:1234](http://localhost:1234)
+6. Go to: [localhost:1501](http://localhost:1501)
 7. **.env** creates a superuser account with username hola@codi.coop
 
 # Included packages
