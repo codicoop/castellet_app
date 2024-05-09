@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'styles/output.css' %}">
+  <script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
   <title>Projecte App | {% block page_title %}{% endblock %}</title>
 </head>
 
@@ -82,6 +83,11 @@
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">{% translate "Profile" %}</a>
                 </li>
+                <li>
+                  <a href="{% url 'main:documents' %}"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                    role="menuitem">{% translate "Documents" %}</a>
+                </li>
                 {% if request.user.has_admin_role %}
                 <li>
                   <a href="{% url 'registration:profile_details' %}"
@@ -108,10 +114,10 @@
   <div class="relative flex pt-14 overflow-hidden mx-auto max-w-screen-2xl bg-gray-50 dark:bg-gray-900">
     <!-- sidebar -->
     <aside id="logo-sidebar"
-    class="absolute top-0 left-0 z-40 w-64 h-full pt-20 transition-transform -translate-x-full bg-primary-100 border-r border-primary-50
-    lg:translate-x-0
-    dark:bg-gray-800 dark:border-gray-700"
-    aria-label="Sidebar">
+      class="absolute top-0 left-0 z-40 w-64 h-full pt-20 transition-transform -translate-x-full bg-primary-100 border-r border-primary-50
+      lg:translate-x-0
+      dark:bg-gray-800 dark:border-gray-700"
+      aria-label="Sidebar">
     <div class="h-screen px-3 pb-4 overflow-y-auto bg-primary-100 dark:bg-primary-800">
       <nav>
         <ul class="space-y-2 font-medium">
@@ -160,6 +166,17 @@
                 <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
               </svg>
               <span class="ms-3">{% translate "Profile" %}</span>
+            </a>
+          </li>
+          <!-- Documents -->
+          <li>
+            <a href="{% url 'main:documents' %}"
+              id="menu_documents"
+              class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <svg class="w-6 h-6 ml-1 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
+                <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
+              </svg>
+              <span class="ms-3">{% translate "Documents" %}</span>
             </a>
           </li>
             {% if request.user.has_admin_role %}

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.forms import NewsletterForm
+from apps.main.models import Document, Project
 from apps.main.services import send_confirmation_newsletter
 from project.views import StandardSuccess
 
@@ -21,3 +22,21 @@ def newsletter_view(request):
 class NewsletterSuccessView(StandardSuccess):
     page_title = _("Newsletter Successful")
     description = _("Newsletter created successful.")
+
+
+def document_list_view(request):
+    if request.method == "GET":
+        context = {
+            "documents": Document.objects.all(),
+            "projects": Project.objects.all(),
+        }
+        return render(request, "main/documents.html", context)
+    if request.htmx:
+        selected_projects = request.POST.getlist("selected_projects")
+        context = {
+            "documents": Document.objects.filter(project__in=selected_projects)
+            if selected_projects
+            else Document.objects.all(),
+            "projects": Project.objects.all(),
+        }
+        return render(request, "main/documents_filtered.html", context)

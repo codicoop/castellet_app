@@ -28,6 +28,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path("", home_view, name="home"),
     path(_("registration/"), include("apps.users.urls", namespace="registration")),
+    path(_(""), include("apps.main.urls", namespace="main")),
     path(_("newsletter/"), newsletter_view, name="newsletter"),
     path(
         _("newsletter/success/"),
