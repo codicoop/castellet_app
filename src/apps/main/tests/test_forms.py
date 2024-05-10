@@ -1,4 +1,3 @@
-from django import forms
 from django.test import TestCase
 
 from apps.main.forms import NewsletterForm

@@ -22,7 +22,7 @@ class NewsletterViewTest(TestCase):
         }
         response = self.client.post(reverse("newsletter"), data=data, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.request["PATH_INFO"], "/ca/newsletter/success/")
+        self.assertEqual(response.request["PATH_INFO"], "/ca/newsletter/exit/")
         self.assertTemplateUsed(response, "standard_success.html")
 
 

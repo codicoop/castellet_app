@@ -1,5 +1,6 @@
 import logging
 import os, tempfile
+import time
 
 from dataclasses import dataclass
 from enum import Enum
@@ -9,7 +10,6 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
-from django.utils.translation import gettext as _
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
@@ -55,18 +55,17 @@ class Strings(Enum):
 
     """
 
-    MENU_ADMIN = _("Administration panel")
-    ADMIN_TITLE = _("Administració del lloc | Lloc administratiu de Django")
-    LOGOUT = _("Log out")
-    SIGNUP_TITLE = _("Projecte App | Registrar-se")
-    HOME_TITLE = _("Projecte App | Inici")
-    PROFILE_TITLE = _("Projecte App | Detalls del perfil")
-    REGISTRY_UPDATE_TITLE = _("Projecte App | Registry updated")
-    PASSWORD_CHANGE_TITLE = _("Projecte App | Canvi de contrasenya")
-    EMAIL_VALIDATION_TITLE = _("Projecte App | Mail validation")
-    NEWSLETTER_TITLE = _("Projecte App | Newsletter")
-    NEWSLETTER_SUCCESS_TITLE = _("Projecte App | Newsletter Successful")
-    DOCUMENTS_TITLE = _("Projecte App | Documents")
+    ADMIN_TITLE = "Administració del lloc | Lloc administratiu de Django"
+    LOGOUT = "Finalitzar sessió"
+    SIGNUP_TITLE = "Projecte App | Registrar-se"
+    HOME_TITLE = "Projecte App | Inici"
+    PROFILE_TITLE = "Projecte App | Detalls del perfil"
+    REGISTRY_UPDATE_TITLE = "Projecte App | Registre actualitzat"
+    PASSWORD_CHANGE_TITLE = "Projecte App | Canvi de contrasenya"
+    EMAIL_VALIDATION_TITLE = "Projecte App | Validació de correu"
+    NEWSLETTER_TITLE = "Projecte App | Newsletter"
+    NEWSLETTER_SUCCESS_TITLE = "Projecte App | Newsletter reeixida"
+    DOCUMENTS_TITLE = "Projecte App | Documents"
 
 
 @override_settings(
@@ -298,7 +297,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             settings.DJANGO_SUPERUSER_PASSWORD,
         )
         self.burger_menu_action()
-        admin_menu = self.select_element_by_text(Strings.MENU_ADMIN.value)
+        admin_menu = self.selenium.find_element(By.ID, "menu_admin")
         admin_menu.click()
 
         self.logging_url_title_and_assert_title(Strings.ADMIN_TITLE.value)
@@ -365,7 +364,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Go back")
+        go_back = self.select_element_by_text("Enrere")
         go_back.click()
 
     def _update_profile(self):
@@ -426,7 +425,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Go back")
+        go_back = self.select_element_by_text("Enrere")
         go_back.click()
 
     def _password_change(self):
@@ -498,14 +497,12 @@ class MySeleniumTests(StaticLiveServerTestCase):
         Document.objects.create(
             project=project_1,
             title="Mock document 1",
-            file="mock_file1.pdf",
-            # file=self.create_file("Mock_file_1.pdf", "Test file content"),
+            file=self.create_file("Mock_file_1.pdf", "Test file content"),
         )
         Document.objects.create(
             project=project_2,
             title="Mock document 2",
-            file="mock_file2.pdf",
-            # file=self.create_file("Mock_file_2.pdf", "Test file content"),
+            file=self.create_file("Mock_file_2.pdf", "Test file content"),
         )
 
         # Open the main menu to select the Documents option.
@@ -530,6 +527,9 @@ class MySeleniumTests(StaticLiveServerTestCase):
         document = self.selenium.find_element(By.ID, "1")
         document.click()
 
+        # Pause to facilitate the process
+        time.sleep(1)
+
         # Click on the button to select document 1
         document = self.selenium.find_element(By.ID, "id_document_1")
         document.click()
@@ -545,6 +545,9 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the checkbox to select project 2
         document = self.selenium.find_element(By.ID, "2")
         document.click()
+
+        # Pause to facilitate the process
+        time.sleep(1)
 
         # Click on the button to select document 2
         document = self.selenium.find_element(By.ID, "id_document_2")
