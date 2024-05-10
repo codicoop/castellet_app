@@ -18,7 +18,6 @@ from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
 from apps.users.forms import (
@@ -89,8 +88,8 @@ class EmailVerificationView(FormView, StandardSuccess):
             form.add_error(
                 "email_verification_code",
                 ValidationError(
-                    "Code entered is not correct and the user cannot "
-                    "be verified. Please try again."
+                    "El codi introduït no és correcte i l'usuari no es pot verificar."
+                    " Torneu-ho a provar."
                 ),
             )
             return super().form_invalid(form)
@@ -109,7 +108,7 @@ class SendVerificationCodeView(FormView):
 class EmailVerificationCompleteView(StandardSuccess):
     template_name = "standard_success.html"
     title = "Fet!"
-    page_title = _("Account verified")
+    page_title = "Compte verificat"
     description = "El compte s'ha verificat correctament."
     url = reverse_lazy("registration:profile_details")
     link_text = "Enrere"
@@ -127,11 +126,9 @@ class PasswordResetView(AnonymousRequiredMixin, BasePasswordResetView):
         user_list = list(islice(user, 1))
         if len(user_list) == 0 or not user_list[0].is_active:
             error = ValidationError(
-                _(
-                    "El correu indicat no correspon a cap compte "
-                    "registrat, si us plau verifica que l'hagis "
-                    "escrit correctament."
-                ),
+                "El correu indicat no correspon a cap compte "
+                "registrat, si us plau verifica que l'hagis "
+                "escrit correctament.",
                 code="inexistent_email",
             )
             form.add_error(None, error)
@@ -172,9 +169,9 @@ class PasswordResetConfirmView(AnonymousRequiredMixin, BasePasswordResetConfirmV
 
 class PasswordResetInvalidLinkView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = _("Invalid link")
+    title = "Enllaç no vàlid"
     success_title = "Enllaç no vàlid"
-    page_title = _("Invalid link")
+    page_title = "Enllaç no vàlid"
     description = "L'enllaç no és vàlid. Torneu-ho a provar."
     url = reverse_lazy("registration:password_reset")
     link_text = "Enrere"
@@ -182,8 +179,8 @@ class PasswordResetInvalidLinkView(AnonymousRequiredMixin, StandardSuccess):
 
 class PasswordResetDoneView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = _("Password reset sent")
-    page_title = _("Password reset sent")
+    title = "Enviat reinici de contrasenya"
+    page_title = "Enviat reinici de contrasenya"
     description = (
         "S'ha enviat un correu electrònic a la vostra safata d'entrada. "
         "Si us plau, comproveu-ho i seguiu les instruccions "
@@ -195,8 +192,8 @@ class PasswordResetDoneView(AnonymousRequiredMixin, StandardSuccess):
 
 class PasswordResetCompleteView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = _("Password reset complete")
-    page_title = _("Password reset complete")
+    title = "Restabliment de contrasenya completat"
+    page_title = "Restabliment de contrasenya completat"
     description = "S'ha completat el restabliment de contrasenya"
     url = reverse_lazy("registration:login")
     link_text = "Inici de sessió"

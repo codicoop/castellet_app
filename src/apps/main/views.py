@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.utils.translation import gettext_lazy as _
 
 from apps.main.forms import NewsletterForm
 from apps.main.models import Document, Project
@@ -20,8 +19,8 @@ def newsletter_view(request):
 
 
 class NewsletterSuccessView(StandardSuccess):
-    page_title = _("Newsletter Successful")
-    description = _("Newsletter created successful.")
+    page_title = "Newsletter reeixida"
+    description = "Newsletter creada reeixidament."
 
 
 def document_list_view(request):

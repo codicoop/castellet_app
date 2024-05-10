@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.urls import NoReverseMatch, reverse, reverse_lazy
 from django.utils.translation import activate, get_language
-from django.utils.translation import gettext_lazy as _
 from django.views.generic import RedirectView, TemplateView
 
 
@@ -35,7 +34,7 @@ def home_view(request):
 class StandardSuccess(TemplateView):
     template_name = "standard_success.html"
     link_text = "Enrere"
-    page_title = _("Registry updated")
+    page_title = "Registre actualitzat"
     title = "Registre actualitzat correctament"
     success_title = "Fet!"
     description = "El registre s'ha actualitzat correctament."

@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 from project.fields import flowbite
 from project.storage_backends import PrivateMediaStorage
@@ -7,29 +6,32 @@ from project.storage_backends import PrivateMediaStorage
 
 class Newsletter(models.Model):
     email = flowbite.ModelEmailField(
+        "correu electronic",
         max_length=100,
         blank=False,
         null=False,
         unique=True,
-        help_text=_("Email to subscribe where you will receive our newsletter"),
+        help_text="Correu electrònic per subscriure't on rebràs el nostre butlletí",
     )
     name = flowbite.ModelCharField(
+        "nom",
         max_length=50,
         blank=False,
         null=False,
-        help_text=_("Your name"),
+        help_text="El teu nom",
     )
     surnames = flowbite.ModelCharField(
+        "cognoms",
         max_length=100,
         blank=False,
         null=False,
-        help_text=_("Your surnames)"),
+        help_text="Els teus cognoms",
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
-        verbose_name = _("newsletter")
-        verbose_name_plural = _("newsletters")
+        verbose_name = "newsletter"
+        verbose_name_plural = "newsletters"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -41,17 +43,18 @@ class Newsletter(models.Model):
 
 class Project(models.Model):
     name = flowbite.ModelCharField(
+        "nom",
         max_length=50,
         blank=False,
         null=False,
         unique=True,
-        help_text=_("Project name"),
+        help_text="Nom del projecte",
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
-        verbose_name = _("project")
-        verbose_name_plural = _("projects")
+        verbose_name = "projecte"
+        verbose_name_plural = "projectes"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -67,10 +70,11 @@ class Document(models.Model):
         on_delete=models.CASCADE,
     )
     title = flowbite.ModelCharField(
+        "Títol",
         max_length=50,
         blank=False,
         null=False,
-        help_text=_("Project"),
+        help_text="Títol del document",
     )
     file = models.FileField(
         max_length=100,
@@ -78,13 +82,13 @@ class Document(models.Model):
         null=False,
         verbose_name="file name",
         storage=PrivateMediaStorage(),
-        help_text=_("File"),
+        help_text="Fitxer",
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
-        verbose_name = _("document")
-        verbose_name_plural = _("documents")
+        verbose_name = "document"
+        verbose_name_plural = "documents"
         ordering = ["-created_at"]
 
     def __str__(self):

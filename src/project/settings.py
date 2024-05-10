@@ -12,7 +12,6 @@ import sentry_sdk
 import structlog
 from django.core.management.utils import get_random_secret_key
 from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from sentry_sdk.integrations.django import DjangoIntegration
 
 env = environ.Env()
@@ -64,8 +63,7 @@ LANGUAGE_CODE = "ca"
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#languages
 LANGUAGES = [
-    ("en", _("English")),
-    ("ca", _("Catalan")),
+    ("ca", "Catalan"),
 ]
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#use-i18n
@@ -372,7 +370,7 @@ DJANGO_SUPERUSER_PASSWORD = env("DJANGO_SUPERUSER_PASSWORD", default=None)
 # https://django-constance.readthedocs.io/en/latest/#configuration
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 DEFAULT_PROJECT_NAME = env.str("DEFAULT_PROJECT_NAME", default="")
-CONSTANCE_CONFIG = {"PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Name of the website."))}
+CONSTANCE_CONFIG = {"PROJECT_NAME": (DEFAULT_PROJECT_NAME, "Nom del website.")}
 
 
 ################################################################################

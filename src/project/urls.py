@@ -15,7 +15,6 @@ Including another URLconf
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
-from django.utils.translation import gettext_lazy as _
 
 from apps.main.views import newsletter_view, NewsletterSuccessView
 from project.views import RootRedirectView, home_view
@@ -27,11 +26,11 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path("", home_view, name="home"),
-    path(_("registration/"), include("apps.users.urls", namespace="registration")),
-    path(_(""), include("apps.main.urls", namespace="main")),
-    path(_("newsletter/"), newsletter_view, name="newsletter"),
+    path("registre/", include("apps.users.urls", namespace="registration")),
+    path("", include("apps.main.urls", namespace="main")),
+    path("newsletter/", newsletter_view, name="newsletter"),
     path(
-        _("newsletter/success/"),
+        "newsletter/exit/",
         NewsletterSuccessView.as_view(),
         name="newsletter_success",
     ),

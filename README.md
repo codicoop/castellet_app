@@ -196,8 +196,7 @@ set the `LANGUAGES` setting variable in `settings.py`, for example:
 
 ```python
 LANGUAGES = [
-    ("en", _("English")),
-    ("ca", _("Catalan")),
+    ("ca", "Catalan"),
 ]
 ```
 
@@ -212,10 +211,9 @@ In case you want to remove translated URLs, simply remove the `gettext()`
 wrapper they have in the URLConf files. For example:
 
 ```python
-from django.utils.translation import gettext_lazy as _
 
-path(_("registration/"), ...), # Translated URL
-path("registration/", ...) # Non-translated URL
+path("registre/", ...), # Translated URL
+path("registre/", ...) # Non-translated URL
 ```
 
 ### Translated email templates

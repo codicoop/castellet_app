@@ -5,7 +5,6 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 from project.fields import flowbite
 from project.models import BaseModel
@@ -18,7 +17,7 @@ class UserManager(BaseUserManager):
         and extra fields.
         """
         if not email:
-            raise ValueError(_("Users must have an email address"))
+            raise ValueError("Els usuaris han de tenir una adreça electrònica")
 
         user = self.model(email=self.normalize_email(email), **extra_fields)
 
@@ -32,7 +31,7 @@ class UserManager(BaseUserManager):
         and extra fields.
         """
         if not password:
-            raise ValueError(_("Superusers must have a password"))
+            raise ValueError("Els superusuaris han de tenir una contrasenya")
 
         user = self.create_user(email, password=password, **extra_fields)
         user.is_staff = True
@@ -42,15 +41,15 @@ class UserManager(BaseUserManager):
 
 
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
-    name = flowbite.ModelCharField(_("name"), max_length=50)
+    name = flowbite.ModelCharField("nom", max_length=50)
     surnames = flowbite.ModelCharField(
-        _("surname"),
+        "cognoms",
         max_length=50,
         default="",
         blank=True,
     )
     email = flowbite.ModelEmailField(
-        verbose_name=_("email address"),
+        verbose_name="correu electrònic",
         max_length=255,
         unique=True,
     )
@@ -70,7 +69,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     @property
     @admin.display(
         ordering="name",
-        description=_("name"),
+        description="nom",
     )
     def full_name(self):
         return f"{self.name} {self.surnames}".strip()
@@ -79,5 +78,5 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         return self.is_staff or self.is_superuser
 
     class Meta:
-        verbose_name = _("user")
-        verbose_name_plural = _("users")
+        verbose_name = "usuari"
+        verbose_name_plural = "usuaris"
