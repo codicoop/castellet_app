@@ -15,7 +15,7 @@ services:
     env_file: ./.env
     command: gunicorn project.wsgi:application --bind 0.0.0.0:8000 --reload --threads=10
     ports:
-      - "1234:8000"
+      - "1501:8000"
     volumes:
       - ../src:/srv
     depends_on:
