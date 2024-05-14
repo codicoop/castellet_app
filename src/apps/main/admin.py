@@ -3,7 +3,7 @@ import csv
 from django.contrib import admin
 from django.http import HttpResponse
 
-from apps.main.models import Newsletter, Project, Document
+from apps.main.models import Document, Newsletter, Project
 
 
 class ExportCsvMixin:

@@ -16,7 +16,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 
-from apps.main.views import newsletter_view, NewsletterSuccessView
+from apps.main.views import NewsletterSuccessView, newsletter_view
 from project.views import RootRedirectView, home_view
 
 urlpatterns = [
