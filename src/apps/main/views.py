@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from apps.main.forms import NewsletterForm
@@ -23,6 +24,7 @@ class NewsletterSuccessView(StandardSuccess):
     description = "Newsletter creada reeixidament."
 
 
+@login_required
 def document_list_view(request):
     if request.method == "GET":
         context = {
