@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: project/urls.py:31
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-27 15:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: project/models.py:30
+msgid "created by"
+msgstr ""
+
+#: project/settings.py:67
+msgid "English"
+msgstr "Anglès"
+
+#: project/settings.py:68
+msgid "Catalan"
+msgstr "Català"
+
+#: project/settings.py:375
+msgid "Name of the website."
+msgstr ""
+
+#: project/test/test_selenium.py:59
+msgid "Administration panel"
+msgstr ""
+
+#: project/test/test_selenium.py:60
+msgid "Site administration | Django Administrative Site"
+msgstr "Administració del lloc | Lloc administratiu de Django"
+
+#: project/test/test_selenium.py:61
+msgid "Log out"
+msgstr ""
+
+#: project/test/test_selenium.py:62
+msgid "Project App | Sign up"
+msgstr "Projecte App | Registrar-se"
+
+#: project/test/test_selenium.py:63
+msgid "Project App | Home"
+msgstr "Projecte App | Inici"
+
+#: project/test/test_selenium.py:64
+msgid "Project App | Profile Details"
+msgstr "Projecte App | Detalls del perfil"
+
+#: project/test/test_selenium.py:65
+msgid "Project App | Registry updated"
+msgstr "Projecte App | Registre actualitzat"
+
+#: project/test/test_selenium.py:66
+msgid "Project App | Password change"
+msgstr "Projecte App | Canvi de contrasenya"
+
+#: project/test/test_selenium.py:67
+msgid "Project App | Mail validation"
+msgstr "Projecte App | Validació de correu"
+
+#: project/test/test_selenium.py:68
+msgid "Project App | Newsletter"
+msgstr "Projecte App | Newsletter"
+
+#: project/test/test_selenium.py:69
+msgid "Project App | Newsletter Successful"
+msgstr "Projecte App | Newsletter amb èxit"
+
+#: project/test/test_selenium.py:70
+msgid "Project App | Documents"
+msgstr "Projecte App | Documents"
+
+#: project/test/test_selenium.py:369 project/test/test_selenium.py:430
+msgid "Go back"
+msgstr ""
+
+#: project/urls.py:30
+msgid "registration/"
+msgstr ""
+
+#: project/urls.py:32
+msgid "newsletter/"
+msgstr ""
+
+#: project/urls.py:34
+msgid "newsletter/success/"
+msgstr ""
+
+#: project/views.py:37
+msgid "Back"
+msgstr ""
+
+#: project/views.py:38
+msgid "Registry updated"
+msgstr "Registre actualitzat"
+
+#: project/views.py:39
+msgid "Registry successfully updated"
+msgstr ""
+
+#: project/views.py:40
+msgid "Done!"
+msgstr ""
+
+#: project/views.py:41
+msgid "The registry was updated correctly."
+msgstr ""

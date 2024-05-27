@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {# Blocks de base.html #}
-{% block page_title %}Nova contrasenya{% endblock %}
+{% block page_title %}{% translate "New password" %}{% endblock %}
 {% block bodyclasses %}{% endblock %}
 {% block mainclasses %} password {% endblock %}
 {% block extra_js %}{% endblock %}
@@ -24,5 +24,5 @@
     {% endif %}
   </div>
 
-<!-- {% block submit_text %}Estableix{% endblock %} -->
+<!-- {% block submit_text %}{% translate 'Set' %}{% endblock %} -->
 {% endblock %}

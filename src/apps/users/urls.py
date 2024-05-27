@@ -1,5 +1,6 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from apps.users.views import (
     EmailVerificationCompleteView,
@@ -22,80 +23,80 @@ from project.views import StandardSuccess
 app_name = "registration"
 urlpatterns = [
     # Registration
-    path("registre/", signup_view, name="signup"),
-    path("inicio_sessió/", LoginView.as_view(), name="login"),
+    path(_("sign-up/"), signup_view, name="signup"),
+    path(_("sign-in/"), LoginView.as_view(), name="login"),
     path(
-        "tancar_sessió/",
+        _("log-out/"),
         auth_views.LogoutView.as_view(
             next_page=reverse_lazy("home"),
         ),
         name="logout",
     ),
     path(
-        "restabliment_contrasenya/",
+        _("password-reset/"),
         PasswordResetView.as_view(),
         name="password_reset",
     ),
     path(
-        "restabliment_contrasenya/<uidb64>/<token>/",
+        _("password-reset/<uidb64>/<token>/"),
         PasswordResetConfirmView.as_view(),
         name="password_reset_confirm",
     ),
     path(
-        "restabliment_contrasenya/invalid-link/",
+        _("password-reset/invalid-link/"),
         PasswordResetInvalidLinkView.as_view(),
         name="invalid_link",
     ),
     path(
-        "restabliment_contrasenya/fet/",
+        _("password-reset/done/"),
         PasswordResetDoneView.as_view(),
         name="password_reset_done",
     ),
     path(
-        "restabliment_contrasenya/complet/",
+        _("password-reset/complete/"),
         PasswordResetCompleteView.as_view(),
         name="password_reset_complete",
     ),
     path(
-        "canvi_contrasenya/",
+        _("password-change/"),
         PasswordChangeView.as_view(),
         name="password_change",
     ),
     path(
-        "canvi_contrasenya/fet/",
+        _("password-change/done/"),
         PasswordChangeDoneView.as_view(),
         name="password_change_done",
     ),
     # Profile
     path(
-        "perfil/modificat/",
+        _("profile/modified/"),
         StandardSuccess.as_view(
             url=reverse_lazy("registration:profile_details"),
         ),
         name="profile_details_success",
     ),
     path(
-        "perfil/detalls/",
+        _("profile/details/"),
         details_view,
         name="profile_details",
     ),
     path(
-        "validació_usuari/",
+        _("user-validation/"),
         EmailVerificationView.as_view(),
         name="user_validation",
     ),
     path(
-        "envio_codi_verificació/",
+        _("send-verification-code/"),
         SendVerificationCodeView.as_view(),
         name="send_verification_code",
     ),
     path(
-        "verificació-email-complet/",
+        _("email-verification-complete/"),
         EmailVerificationCompleteView.as_view(),
         name="email_verification_complete",
     ),
     path(
-        "politica_privacitat/",
+        _("privacy-policy/"),
         privacy_policy_view,
         name="privacy_policy",
     ),

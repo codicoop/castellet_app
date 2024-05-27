@@ -1,5 +1,6 @@
 from django import forms
 from django.utils import formats, timezone
+from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import Newsletter
 from project.fields.flowbite import FormCharField, FormEmailField
@@ -8,29 +9,31 @@ from project.post_office import send
 
 class NewsletterForm(forms.ModelForm):
     name = FormCharField(
-        label="Nom",
+        label=_("Name"),
+        max_length=100,
+        required=True,
         widget=forms.TextInput(
             attrs={
                 "autofocus": True,
-                "placeholder": "nom",
+                "placeholder": _("Name"),
                 "autocomplete": "text",
             }
         ),
-        help_text="El teu nom",
+        help_text=_("Your name"),
     )
     surnames = FormCharField(
-        label="Cognoms",
+        label=_("Surnames"),
         widget=forms.TextInput(
-            attrs={"placeholder": "cognoms", "autocomplete": "text"}
+            attrs={"placeholder": _("Surnames"), "autocomplete": "text"}
         ),
-        help_text="Els teus cognoms",
+        help_text=_("Your surnames"),
     )
     email = FormEmailField(
-        label="Correu electrònic",
+        label=_("Email"),
         widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": "correu electrònic"}
+            attrs={"autocomplete": "email", "placeholder": _("email address")}
         ),
-        help_text="Correu electrònic per subscriure't on rebràs el nostre butlletí",
+        help_text=_("Email to subscribe where you will receive our newsletter"),
     )
 
     class Meta:
