@@ -11,7 +11,7 @@ class Newsletter(models.Model):
         blank=False,
         null=False,
         unique=True,
-        help_text=_("Email to subscribe where you will receive our newsletter"),
+        help_text=_("Email where you will receive our newsletter"),
     )
     name = flowbite.ModelCharField(
         max_length=50,

@@ -31,9 +31,9 @@ class NewsletterForm(forms.ModelForm):
     email = FormEmailField(
         label=_("Email"),
         widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": _("email address")}
+            attrs={"autocomplete": "email", "placeholder": _("Email address")}
         ),
-        help_text=_("Email to subscribe where you will receive our newsletter"),
+        help_text=_("Email where you will receive our newsletter"),
     )
 
     class Meta:

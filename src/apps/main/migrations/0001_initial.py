@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Newsletter',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', project.fields.flowbite.ModelEmailField(help_text='Email to subscribe where you will receive our newsletter', max_length=100, unique=True)),
+                ('email', project.fields.flowbite.ModelEmailField(help_text='Email where you will receive our newsletter', max_length=100, unique=True)),
                 ('name', project.fields.flowbite.ModelCharField(help_text='Your name', max_length=50)),
                 ('surnames', project.fields.flowbite.ModelCharField(help_text='Your surnames', max_length=100)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
