@@ -33,12 +33,11 @@ class AuthenticationForm(BaseAuthenticationForm):
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
-                "placeholder": "Adreça de correu electronic",
             }
         ),
     )
     password = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Contrasenya"}),
+        widget=forms.PasswordInput(),
         label="Contrasenya",
     )
     remember_me = flowbite.FormBooleanField(
@@ -75,18 +74,18 @@ class UserChangeForm(forms.ModelForm):
 class UserSignUpForm(UserCreationForm):
     name = flowbite.FormCharField(
         label="Nom",
-        widget=forms.TextInput(attrs={"autofocus": True, "placeholder": "Nom"}),
+        widget=forms.TextInput(attrs={"autofocus": True}),
     )
     surnames = flowbite.FormCharField(
         label="Cognoms",
-        widget=forms.TextInput(attrs={"placeholder": "Cognoms"}),
+        widget=forms.TextInput(),
     )
     password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Contrasenya"}),
+        widget=forms.PasswordInput(),
         label="Contrasenya",
     )
     password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Confirmació de contrasenya"}),
+        widget=forms.PasswordInput(),
         label="Confirmació de contrasenya",
     )
     email = flowbite.FormEmailField(
@@ -95,7 +94,6 @@ class UserSignUpForm(UserCreationForm):
         widget=forms.EmailInput(
             attrs={
                 "autocomplete": "email",
-                "placeholder": "Adreça de correu electrònic",
             }
         ),
     )
@@ -135,11 +133,11 @@ class UserSignUpForm(UserCreationForm):
 class ProfileDetailsForm(forms.ModelForm):
     name = flowbite.FormCharField(
         label="Nom",
-        widget=forms.TextInput(attrs={"placeholder": "Nom"}),
+        widget=forms.TextInput(),
     )
     surnames = flowbite.FormCharField(
         label="Cognoms",
-        widget=forms.TextInput(attrs={"placeholder": "Cognoms"}),
+        widget=forms.TextInput(),
     )
     email = flowbite.FormEmailField(
         label="Correu electrònic",
@@ -147,7 +145,6 @@ class ProfileDetailsForm(forms.ModelForm):
         widget=forms.EmailInput(
             attrs={
                 "autocomplete": "email",
-                "placeholder": "Adreça de correu electronic",
             }
         ),
     )
@@ -169,7 +166,6 @@ class PasswordResetForm(BasePasswordResetForm):
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
-                "placeholder": "Adreça de correu electronic",
             }
         ),
     )
@@ -219,14 +215,12 @@ class PasswordResetForm(BasePasswordResetForm):
 class PasswordResetConfirmForm(BaseSetPasswordForm):
     new_password1 = flowbite.FormPasswordField(
         widget=forms.PasswordInput(
-            attrs={"autofocus": True, "placeholder": "Contrasenya nova"}
+            attrs={"autofocus": True}
         ),
         label="Contrasenya nova",
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Confirmació de contrasenya nova"}
-        ),
+        widget=forms.PasswordInput(),
         label="Confirmació de contrasenya nova",
     )
 
@@ -236,19 +230,16 @@ class PasswordChangeForm(BasePasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 "autofocus": True,
-                "placeholder": "Contrasenya antiga",
             }
         ),
         label="Contrasenya antiga",
     )
     new_password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Contrasenya nova"}),
+        widget=forms.PasswordInput(),
         label="Contrasenya nova",
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Confirmació de contrasenya nova"}
-        ),
+        widget=forms.PasswordInput(),
         label="Confirmació de contrasenya nova",
     )
 
@@ -256,7 +247,7 @@ class PasswordChangeForm(BasePasswordChangeForm):
 class EmailVerificationCodeForm(forms.Form):
     email_verification_code = flowbite.FormIntegerField(
         widget=forms.TextInput(
-            attrs=({"autofocus": True, "placeholder": "Codi de verificació"})
+            attrs=({"autofocus": True})
         ),
         label="Codi de verificació",
     )

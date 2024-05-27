@@ -12,25 +12,22 @@ class NewsletterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 "autofocus": True,
-                "placeholder": "nom",
                 "autocomplete": "text",
             }
         ),
-        help_text="El teu nom",
     )
     surnames = FormCharField(
         label="Cognoms",
         widget=forms.TextInput(
-            attrs={"placeholder": "cognoms", "autocomplete": "text"}
+            attrs={"autocomplete": "text"}
         ),
-        help_text="Els teus cognoms",
     )
     email = FormEmailField(
         label="Correu electrònic",
         widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": "correu electrònic"}
+            attrs={"autocomplete": "email"}
         ),
-        help_text="Correu electrònic per subscriure't on rebràs el nostre butlletí",
+        help_text="Correu electrònic on vols rebre el nostre butlletí",
     )
 
     class Meta:
