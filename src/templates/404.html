@@ -10,12 +10,12 @@
 {# Blocks de base_success.html #}
 {% block success_extra %}{% endblock %}
 {% block success_btn_url %}javascript:history.back(){% endblock %}
-{% block success_btn_text %}Enrere{% endblock %}
+{% block success_btn_text %}{% translate "Go back" %}{% endblock %}
 
 {% block success_title %}
-  Error 404: No s'ha trobat la pàgina
+  {% translate "Error 404: Page not found" %}
 {% endblock %}
 
 {% block success_text %}
-  La pàgina a la qual esteu intentant accedir no existeix. Comproveu l'ortografia o torneu al principi.
+  {% translate "The page you were trying to access does not exist. Please check the spelling or go back to the beginning." %}
 {% endblock %}

@@ -18,6 +18,7 @@ from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
 from apps.users.forms import (
@@ -88,8 +89,8 @@ class EmailVerificationView(FormView, StandardSuccess):
             form.add_error(
                 "email_verification_code",
                 ValidationError(
-                    "El codi introduït no és correcte i l'usuari no es pot verificar."
-                    " Torneu-ho a provar."
+                    "Code entered is not correct and the user cannot "
+                    "be verified. Please try again."
                 ),
             )
             return super().form_invalid(form)
@@ -107,11 +108,11 @@ class SendVerificationCodeView(FormView):
 
 class EmailVerificationCompleteView(StandardSuccess):
     template_name = "standard_success.html"
-    title = "Fet!"
-    page_title = "Compte verificat"
-    description = "El compte s'ha verificat correctament."
+    title = _("Done!")
+    page_title = _("Account verified")
+    description = _("Account has been successfully verified.")
     url = reverse_lazy("registration:profile_details")
-    link_text = "Enrere"
+    link_text = _("Go back")
 
 
 class PasswordResetView(AnonymousRequiredMixin, BasePasswordResetView):
@@ -126,9 +127,11 @@ class PasswordResetView(AnonymousRequiredMixin, BasePasswordResetView):
         user_list = list(islice(user, 1))
         if len(user_list) == 0 or not user_list[0].is_active:
             error = ValidationError(
-                "El correu indicat no correspon a cap compte "
-                "registrat, si us plau verifica que l'hagis "
-                "escrit correctament.",
+                _(
+                    "El correu indicat no correspon a cap compte "
+                    "registrat, si us plau verifica que l'hagis "
+                    "escrit correctament."
+                ),
                 code="inexistent_email",
             )
             form.add_error(None, error)
@@ -169,34 +172,34 @@ class PasswordResetConfirmView(AnonymousRequiredMixin, BasePasswordResetConfirmV
 
 class PasswordResetInvalidLinkView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = "Enllaç no vàlid"
-    success_title = "Enllaç no vàlid"
-    page_title = "Enllaç no vàlid"
-    description = "L'enllaç no és vàlid. Torneu-ho a provar."
+    title = _("Invalid link")
+    success_title = _("Invalid link")
+    page_title = _("Invalid link")
+    description = _("The link is invalid. Please try again.")
     url = reverse_lazy("registration:password_reset")
-    link_text = "Enrere"
+    link_text = _("Go back")
 
 
 class PasswordResetDoneView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = "Enviat reinici de contrasenya"
-    page_title = "Enviat reinici de contrasenya"
-    description = (
-        "S'ha enviat un correu electrònic a la vostra safata d'entrada. "
-        "Si us plau, comproveu-ho i seguiu les instruccions "
-        "per canviar la contrasenya."
+    title = _("Password reset sent")
+    page_title = _("Password reset sent")
+    description = _(
+        "An email has been sent to your inbox. "
+        "Please check it and follow the instructions to "
+        "change your password."
     )
     url = reverse_lazy("registration:login")
-    link_text = "Enrere"
+    link_text = _("Go back")
 
 
 class PasswordResetCompleteView(AnonymousRequiredMixin, StandardSuccess):
     template_name = "standard_success.html"
-    title = "Restabliment de contrasenya completat"
-    page_title = "Restabliment de contrasenya completat"
-    description = "S'ha completat el restabliment de contrasenya"
+    title = _("Password reset complete")
+    page_title = _("Password reset complete")
+    description = _("Password reset complete")
     url = reverse_lazy("registration:login")
-    link_text = "Inici de sessió"
+    link_text = _("Login")
 
 
 class PasswordChangeView(BasePasswordChangeView):
@@ -207,11 +210,11 @@ class PasswordChangeView(BasePasswordChangeView):
 
 class PasswordChangeDoneView(StandardSuccess):
     template_name = "standard_success.html"
-    title = "Fet!"
-    page_title = "Canvi de contrasenya"
-    description = "Canvi de contrasenya correcte."
+    title = _("Done!")
+    page_title = _("Password change")
+    description = _("Password change successful.")
     url = reverse_lazy("registration:profile_details")
-    link_text = "Enrere"
+    link_text = _("Go back")
 
 
 def privacy_policy_view(request):

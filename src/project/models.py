@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 class SetBooleanDatetimeMixin:
@@ -26,7 +27,7 @@ class BaseModel(SetBooleanDatetimeMixin, models.Model):
         blank=True,
         related_name="%(app_label)s_%(class)s_related",
         on_delete=models.CASCADE,
-        verbose_name="creat per",
+        verbose_name=_("created by"),
     )
     updated_at = models.DateTimeField(auto_now=True, null=False, editable=False)
 

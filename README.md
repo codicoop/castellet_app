@@ -196,7 +196,8 @@ set the `LANGUAGES` setting variable in `settings.py`, for example:
 
 ```python
 LANGUAGES = [
-    ("ca", "Catalan"),
+    ("en", _("English")),
+    ("ca", _("Catalan")),
 ]
 ```
 
@@ -211,7 +212,6 @@ In case you want to remove translated URLs, simply remove the `gettext()`
 wrapper they have in the URLConf files. For example:
 
 ```python
-
 path("registre/", ...), # Translated URL
 path("registre/", ...) # Non-translated URL
 ```

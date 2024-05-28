@@ -19,6 +19,7 @@ from django.contrib.auth.forms import (
 from django.urls import reverse
 from django.utils import formats, timezone
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
 from apps.users.models import User
 from project.fields import flowbite
@@ -28,20 +29,21 @@ from project.post_office import send
 
 class AuthenticationForm(BaseAuthenticationForm):
     username = flowbite.FormEmailField(
-        label="Correu electrònic",
+        label=_("Email"),
         widget=forms.EmailInput(
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
+                "placeholder": _("Email address"),
             }
         ),
     )
     password = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Contrasenya",
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
+        label=_("Password"),
     )
     remember_me = flowbite.FormBooleanField(
-        required=False, widget=forms.CheckboxInput(), label="Recorda'm"
+        required=False, widget=forms.CheckboxInput(), label=_("Remember me")
     )
 
 
@@ -51,11 +53,13 @@ class UserChangeForm(forms.ModelForm):
     """
 
     new_password = forms.CharField(
-        label="Canvi de contrasenya",
-        help_text="La contrasenya actual no es mostra per raons de seguretat. "
-        "Utilitzeu aquest camp i deseu els canvis per establir una"
-        " contrasenya nova. Mentre escrius la nova contrasenya serà"
-        " visible per facilitar-te la còpia i l'enviament a l'usuari.",
+        label=_("Change password"),
+        help_text=_(
+            "The current password is not displayed for security reasons. "
+            "Use this field and save the changes to set a new password. "
+            "While writing the new password will be visible to make it easier "
+            "for you to copy and send it to the user."
+        ),
         max_length=150,
         required=False,
     )
@@ -73,28 +77,26 @@ class UserChangeForm(forms.ModelForm):
 
 class UserSignUpForm(UserCreationForm):
     name = flowbite.FormCharField(
-        label="Nom",
-        widget=forms.TextInput(attrs={"autofocus": True}),
+        label=_("Name"),
+        widget=forms.TextInput(attrs={"autofocus": True, "placeholder": _("Name")}),
     )
     surnames = flowbite.FormCharField(
-        label="Cognoms",
-        widget=forms.TextInput(),
+        label=_("Surnames"),
+        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
     )
     password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Contrasenya",
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
+        label=_("Password"),
     )
     password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Confirmació de contrasenya",
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password confirmation")}),
+        label=_("Password confirmation"),
     )
     email = flowbite.FormEmailField(
-        label="Correu electrònic",
+        label=_("Email"),
         max_length=254,
         widget=forms.EmailInput(
-            attrs={
-                "autocomplete": "email",
-            }
+            attrs={"autocomplete": "email", "placeholder": _("Email address")}
         ),
     )
 
@@ -111,10 +113,14 @@ class UserSignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         privacy_policy_url = self.get_privacy_policy_url()
-        privacy_policy_link = '<a href="{}" class="text-primary-500 font-bold hover:underline" target="_blank">política de privacitat.</a>'.format(  # noqa: E501
-            privacy_policy_url
+        privacy_policy_link = (
+            '<a href="{}" class="text-primary-500 font-bold hover:underline" '
+            'target="_blank">{}</a>'
+        ).format(
+            privacy_policy_url,
+            _("privacy policy"),
         )
-        label_html = "He llegit i estic d'acord amb {}".format(privacy_policy_link)
+        label_html = _("I have read and agree with the {}").format(privacy_policy_link)
         self.fields["accept_conditions"] = flowbite.FormBooleanField(
             label=format_html(label_html), required=True
         )
@@ -132,19 +138,20 @@ class UserSignUpForm(UserCreationForm):
 
 class ProfileDetailsForm(forms.ModelForm):
     name = flowbite.FormCharField(
-        label="Nom",
-        widget=forms.TextInput(),
+        label=_("Name"),
+        widget=forms.TextInput(attrs={"placeholder": _("Name")}),
     )
     surnames = flowbite.FormCharField(
-        label="Cognoms",
-        widget=forms.TextInput(),
+        label=_("Surnames"),
+        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
     )
     email = flowbite.FormEmailField(
-        label="Correu electrònic",
+        label=_("Email"),
         max_length=254,
         widget=forms.EmailInput(
             attrs={
                 "autocomplete": "email",
+                "placeholder": _("Email address"),
             }
         ),
     )
@@ -160,12 +167,13 @@ class ProfileDetailsForm(forms.ModelForm):
 
 class PasswordResetForm(BasePasswordResetForm):
     email = flowbite.FormEmailField(
-        label="Correu electrònic",
+        label=_("Email"),
         max_length=254,
         widget=forms.EmailInput(
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
+                "placeholder": _("Email address"),
             }
         ),
     )
@@ -215,13 +223,15 @@ class PasswordResetForm(BasePasswordResetForm):
 class PasswordResetConfirmForm(BaseSetPasswordForm):
     new_password1 = flowbite.FormPasswordField(
         widget=forms.PasswordInput(
-            attrs={"autofocus": True}
+            attrs={"autofocus": True, "placeholder": _("New password")}
         ),
-        label="Contrasenya nova",
+        label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Confirmació de contrasenya nova",
+        widget=forms.PasswordInput(
+            attrs={"placeholder": _("New password confirmation")}
+        ),
+        label=_("New password confirmation"),
     )
 
 
@@ -230,26 +240,29 @@ class PasswordChangeForm(BasePasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 "autofocus": True,
+                "placeholder": _("Old password"),
             }
         ),
-        label="Contrasenya antiga",
+        label=_("Old password"),
     )
     new_password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Contrasenya nova",
+        widget=forms.PasswordInput(attrs={"placeholder": _("New password")}),
+        label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(),
-        label="Confirmació de contrasenya nova",
+        widget=forms.PasswordInput(
+            attrs={"placeholder": _("New password confirmation")}
+        ),
+        label=_("New password confirmation"),
     )
 
 
 class EmailVerificationCodeForm(forms.Form):
     email_verification_code = flowbite.FormIntegerField(
         widget=forms.TextInput(
-            attrs=({"autofocus": True})
+            attrs=({"autofocus": True, "placeholder": _("Verification code")})
         ),
-        label="Codi de verificació",
+        label=_("Verification code"),
     )
 
 

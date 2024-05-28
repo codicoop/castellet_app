@@ -2,6 +2,7 @@ import csv
 
 from django.contrib import admin
 from django.http import HttpResponse
+from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import Document, Newsletter, Project
 
@@ -21,7 +22,7 @@ class ExportCsvMixin:
 
         return response
 
-    export_as_csv.short_description = "Exportar seleccionats a fitxer CSV"
+    export_as_csv.short_description = _("Export selected to CSV file")
 
 
 @admin.register(Newsletter)

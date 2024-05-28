@@ -10,6 +10,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
+from django.utils.translation import gettext as _
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
@@ -55,17 +56,18 @@ class Strings(Enum):
 
     """
 
-    ADMIN_TITLE = "Administració del lloc | Lloc administratiu de Django"
-    LOGOUT = "Finalitzar sessió"
-    SIGNUP_TITLE = "Projecte App | Registrar-se"
-    HOME_TITLE = "Projecte App | Inici"
-    PROFILE_TITLE = "Projecte App | Detalls del perfil"
-    REGISTRY_UPDATE_TITLE = "Projecte App | Registre actualitzat"
-    PASSWORD_CHANGE_TITLE = "Projecte App | Canvi de contrasenya"
-    EMAIL_VALIDATION_TITLE = "Projecte App | Validació de correu"
-    NEWSLETTER_TITLE = "Projecte App | Newsletter"
-    NEWSLETTER_SUCCESS_TITLE = "Projecte App | Newsletter reeixida"
-    DOCUMENTS_TITLE = "Projecte App | Documents"
+    MENU_ADMIN = _("Administration panel")
+    ADMIN_TITLE = _("Site administration | Django Administrative Site")
+    LOGOUT = _("Log out")
+    SIGNUP_TITLE = _("Project App | Sign up")
+    HOME_TITLE = _("Project App | Home")
+    PROFILE_TITLE = _("Project App | Profile Details")
+    REGISTRY_UPDATE_TITLE = _("Project App | Registry updated")
+    PASSWORD_CHANGE_TITLE = _("Project App | Password change")
+    EMAIL_VALIDATION_TITLE = _("Project App | Mail validation")
+    NEWSLETTER_TITLE = _("Project App | Newsletter")
+    NEWSLETTER_SUCCESS_TITLE = _("Project App | Newsletter Successful")
+    DOCUMENTS_TITLE = _("Project App | Documents")
 
 
 @override_settings(
@@ -364,7 +366,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Enrere")
+        go_back = self.select_element_by_text(_("Go back"))
         go_back.click()
 
     def _update_profile(self):
@@ -425,7 +427,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Enrere")
+        go_back = self.select_element_by_text(_("Go back"))
         go_back.click()
 
     def _password_change(self):
