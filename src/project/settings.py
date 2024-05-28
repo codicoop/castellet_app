@@ -122,7 +122,6 @@ INSTALLED_APPS = [
     "django_extensions",
     "phonenumber_field",
     "apps.users",
-    "apps.celery",
     "project",
     "apps.main",
 ]
@@ -426,17 +425,6 @@ structlog.configure(
     logger_factory=structlog.stdlib.LoggerFactory(),
     cache_logger_on_first_use=True,
 )
-
-
-################################################################################
-#                                  Celery                                      #
-################################################################################
-
-# We're using the only instance of Redis, but if we use caching in the future,
-# we might want to set up two Redis servers and this will need to change.
-# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-broker_url
-CELERY_BROKER_URL = env("REDIS_URL", default=None)
-
 
 ################################################################################
 #                                Sentry                                        #
