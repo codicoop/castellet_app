@@ -15,23 +15,20 @@ class NewsletterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 "autofocus": True,
-                "placeholder": _("Name"),
                 "autocomplete": "text",
             }
         ),
-        help_text=_("Your name"),
     )
     surnames = FormCharField(
         label=_("Surnames"),
         widget=forms.TextInput(
-            attrs={"placeholder": _("Surnames"), "autocomplete": "text"}
+            attrs={"autocomplete": "text"}
         ),
-        help_text=_("Your surnames"),
     )
     email = FormEmailField(
         label=_("Email"),
         widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": _("Email address")}
+            attrs={"autocomplete": "email"}
         ),
         help_text=_("Email where you will receive our newsletter"),
     )
