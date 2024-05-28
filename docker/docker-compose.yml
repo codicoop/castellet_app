@@ -23,22 +23,6 @@ services:
     networks:
       - castellet-network
 
-  castellet-celery:
-    build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-      target: development
-    command: "celery -A apps.celery worker --loglevel=INFO"
-    container_name: castellet-celery
-    env_file: ./.env
-    volumes:
-      - ../src:/srv
-    depends_on:
-      - castellet-redis
-#    entrypoint: ["sh", "-c", "sleep 2073600"]
-    networks:
-      - castellet-network
-
   castellet-db:
     container_name: castellet-db
     image: postgres:14
@@ -49,11 +33,6 @@ services:
     networks:
       - castellet-network
 
-  castellet-redis:
-    container_name: castellet-redis
-    image: redis
-    networks:
-      - castellet-network
 
   castellet-selenium:
     container_name: castellet-selenium
