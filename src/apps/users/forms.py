@@ -113,8 +113,11 @@ class UserSignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         privacy_policy_url = self.get_privacy_policy_url()
-        privacy_policy_link = '<a href="{}" class="text-primary-500 font-bold hover:underline" target="_blank">privacy policy</a>'.format(  # noqa: E501
-            privacy_policy_url
+        privacy_policy_link = (
+            '<a href="{}" class="text-primary-500 font-bold hover:underline" '
+            'target="_blank">{}</a>').format(
+            privacy_policy_url,
+            _("privacy policy"),
         )
         label_html = _("I have read and agree with the {}").format(privacy_policy_link)
         self.fields["accept_conditions"] = flowbite.FormBooleanField(
