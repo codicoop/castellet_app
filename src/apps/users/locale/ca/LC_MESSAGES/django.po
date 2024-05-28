@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 15:05+0200\n"
-"PO-Revision-Date: 2024-05-27 15:01+0200\n"
+"POT-Creation-Date: 2024-05-28 16:01+0200\n"
+"PO-Revision-Date: 2024-05-28 16:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.4.3\n"
 
-#: apps/users/forms.py:32 apps/users/forms.py:96 apps/users/forms.py:145
-#: apps/users/forms.py:166
+#: apps/users/forms.py:32 apps/users/forms.py:96 apps/users/forms.py:149
+#: apps/users/forms.py:170
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: apps/users/forms.py:37 apps/users/forms.py:99 apps/users/forms.py:150
-#: apps/users/forms.py:172
+#: apps/users/forms.py:37 apps/users/forms.py:99 apps/users/forms.py:154
+#: apps/users/forms.py:176
 msgid "Email address"
 msgstr "Adreça electrònica"
 
@@ -48,18 +48,18 @@ msgid ""
 "and save the changes to set a new password. While writing the new password "
 "will be visible to make it easier for you to copy and send it to the user."
 msgstr ""
-"La contrasenya actual no es mostra per raons de seguretat. Utilitzeu aquest "
-"camp i deseu els canvis per establir una contrasenya nova. Mentre escrius la "
-"nova contrasenya serà visible per facilitar-te la còpia i l’enviament a "
-"l’usuari."
+"La contrasenya actual no es mostra per raons de seguretat. Si vols modificar "
+"la contrasenya de l'usuari, indica-la a aquest camp i desa els canvis. "
+"Mentre escriguis la nova contrasenya serà visible, per facilitar-te la còpia "
+"i l’enviament a l’usuari."
 
-#: apps/users/forms.py:80 apps/users/forms.py:81 apps/users/forms.py:137
-#: apps/users/forms.py:138
+#: apps/users/forms.py:80 apps/users/forms.py:81 apps/users/forms.py:141
+#: apps/users/forms.py:142
 msgid "Name"
 msgstr "Nom"
 
-#: apps/users/forms.py:84 apps/users/forms.py:85 apps/users/forms.py:141
-#: apps/users/forms.py:142
+#: apps/users/forms.py:84 apps/users/forms.py:85 apps/users/forms.py:145
+#: apps/users/forms.py:146
 msgid "Surnames"
 msgstr "Cognoms"
 
@@ -67,25 +67,29 @@ msgstr "Cognoms"
 msgid "Password confirmation"
 msgstr "Confirmació de la contrasenya"
 
-#: apps/users/forms.py:119
+#: apps/users/forms.py:121
+msgid "privacy policy"
+msgstr "política de privacitat"
+
+#: apps/users/forms.py:123
 msgid "I have read and agree with the {}"
 msgstr "He llegit i estic d'acord amb {}"
 
-#: apps/users/forms.py:222 apps/users/forms.py:224 apps/users/forms.py:245
-#: apps/users/forms.py:246
+#: apps/users/forms.py:226 apps/users/forms.py:228 apps/users/forms.py:249
+#: apps/users/forms.py:250
 msgid "New password"
 msgstr "Nova contrasenya"
 
-#: apps/users/forms.py:228 apps/users/forms.py:230 apps/users/forms.py:250
-#: apps/users/forms.py:252
+#: apps/users/forms.py:232 apps/users/forms.py:234 apps/users/forms.py:254
+#: apps/users/forms.py:256
 msgid "New password confirmation"
-msgstr "Confirmació de contrasenya nova"
+msgstr "Confirmació de la nova contrasenya"
 
-#: apps/users/forms.py:239 apps/users/forms.py:242
+#: apps/users/forms.py:243 apps/users/forms.py:246
 msgid "Old password"
 msgstr "Contrasenya antiga"
 
-#: apps/users/forms.py:259 apps/users/forms.py:261
+#: apps/users/forms.py:263 apps/users/forms.py:265
 msgid "Verification code"
 msgstr "Codi de verificació"
 
@@ -139,7 +143,7 @@ msgstr "restabliment_contrasenya/<uidb64>/<token>/"
 
 #: apps/users/urls.py:46
 msgid "password-reset/invalid-link/"
-msgstr "establiment_contrasenya/enllaç_no_valid"
+msgstr "restabliment_contrasenya/enllac_no_valid/"
 
 #: apps/users/urls.py:51
 msgid "password-reset/done/"
@@ -155,7 +159,7 @@ msgstr "canvi_contrasenya/"
 
 #: apps/users/urls.py:66
 msgid "password-change/done/"
-msgstr "canvi _contrasenya/fet/"
+msgstr "canvi_contrasenya/fet/"
 
 #: apps/users/urls.py:72
 msgid "profile/modified/"
@@ -171,17 +175,17 @@ msgstr "validació_usuari/"
 
 #: apps/users/urls.py:89
 msgid "send-verification-code/"
-msgstr "envia_codi_verificació/"
+msgstr "envia_codi_verificacio/"
 
 #: apps/users/urls.py:94
 msgid "email-verification-complete/"
-msgstr "verificació_correu_electrònic_completada/"
+msgstr "verificacio_correu_electronic_completada/"
 
 #: apps/users/urls.py:99
 msgid "privacy-policy/"
 msgstr "política_privacitat/"
 
-#: apps/users/views.py:111 apps/users/views.py:213
+#: apps/users/views.py:111 apps/users/views.py:212
 msgid "Done!"
 msgstr "Fet!"
 
@@ -193,51 +197,58 @@ msgstr "Compte verificat"
 msgid "Account has been successfully verified."
 msgstr "El compte s’ha verificat correctament."
 
-#: apps/users/views.py:115 apps/users/views.py:180 apps/users/views.py:193
-#: apps/users/views.py:217
+#: apps/users/views.py:115 apps/users/views.py:179 apps/users/views.py:192
+#: apps/users/views.py:216
 msgid "Go back"
 msgstr "Enrere"
 
 #: apps/users/views.py:131
 msgid ""
-"El correu indicat no correspon a cap compte registrat, si us plau verifica "
-"que l'hagis escrit correctament."
+"This email address does not match any registered account, please check the "
+"spelling."
 msgstr ""
 "El correu indicat no correspon a cap compte registrat, si us plau verifica "
-"que l’hagis escrit correctament."
+"que l'hagis escrit correctament."
 
-#: apps/users/views.py:175 apps/users/views.py:176 apps/users/views.py:177
+#: apps/users/views.py:174 apps/users/views.py:175 apps/users/views.py:176
 msgid "Invalid link"
 msgstr "Enllaç no vàlid"
 
-#: apps/users/views.py:178
+#: apps/users/views.py:177
 msgid "The link is invalid. Please try again."
 msgstr "L’enllaç no és vàlid. Torneu-ho a provar."
 
-#: apps/users/views.py:185 apps/users/views.py:186
+#: apps/users/views.py:184 apps/users/views.py:185
 msgid "Password reset sent"
 msgstr "S’ha reiniciat la contrasenya"
 
-#: apps/users/views.py:188
+#: apps/users/views.py:187
 msgid ""
 "An email has been sent to your inbox. Please check it and follow the "
 "instructions to change your password."
 msgstr ""
-"S’ha enviat un correu electrònic a la vostra safata d’entrada. Si us plau, "
-"comproveu-ho i seguiu les instruccions per canviar la contrasenya."
+"S’ha enviat un correu electrònic a la teva safata d’entrada. Si us plau, "
+"comprova-ho i segueix les instruccions per canviar la contrasenya."
 
-#: apps/users/views.py:198 apps/users/views.py:199 apps/users/views.py:200
+#: apps/users/views.py:197 apps/users/views.py:198 apps/users/views.py:199
 msgid "Password reset complete"
 msgstr "S’ha completat el restabliment de contrasenya"
 
-#: apps/users/views.py:202
+#: apps/users/views.py:201
 msgid "Login"
 msgstr "Inici de sessió"
 
-#: apps/users/views.py:214
+#: apps/users/views.py:213
 msgid "Password change"
 msgstr "Canvi de contrasenya"
 
-#: apps/users/views.py:215
+#: apps/users/views.py:214
 msgid "Password change successful."
-msgstr "Canvi de contrasenya correcte."
+msgstr "Contrasenya modificada correctament."
+
+#~ msgid ""
+#~ "El correu indicat no correspon a cap compte registrat, si us plau "
+#~ "verifica que l'hagis escrit correctament."
+#~ msgstr ""
+#~ "El correu indicat no correspon a cap compte registrat, si us plau "
+#~ "verifica que l’hagis escrit correctament."

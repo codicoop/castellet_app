@@ -56,18 +56,18 @@ class Strings(Enum):
 
     """
 
-    MENU_ADMIN = _("Administration panel")
-    ADMIN_TITLE = _("Site administration | Django Administrative Site")
-    LOGOUT = _("Log out")
-    SIGNUP_TITLE = _("Project App | Sign up")
-    HOME_TITLE = _("Project App | Home")
-    PROFILE_TITLE = _("Project App | Profile Details")
-    REGISTRY_UPDATE_TITLE = _("Project App | Registry updated")
-    PASSWORD_CHANGE_TITLE = _("Project App | Password change")
-    EMAIL_VALIDATION_TITLE = _("Project App | Mail validation")
-    NEWSLETTER_TITLE = _("Project App | Newsletter")
-    NEWSLETTER_SUCCESS_TITLE = _("Project App | Newsletter Successful")
-    DOCUMENTS_TITLE = _("Project App | Documents")
+    MENU_ADMIN = "Administration panel"
+    ADMIN_TITLE = "Site administration | Django Administrative Site"
+    LOGOUT = "Log out"
+    SIGNUP_TITLE = "Project App | Sign up"
+    HOME_TITLE = "Project App | Home"
+    PROFILE_TITLE = "Project App | Profile Details"
+    REGISTRY_UPDATE_TITLE = "Project App | Registry updated"
+    PASSWORD_CHANGE_TITLE = "Project App | Password change"
+    EMAIL_VALIDATION_TITLE = "Project App | Mail validation"
+    NEWSLETTER_TITLE = "Project App | Newsletter"
+    NEWSLETTER_SUCCESS_TITLE = "Project App | Newsletter Successful"
+    DOCUMENTS_TITLE = "Project App | Documents"
 
 
 @override_settings(
