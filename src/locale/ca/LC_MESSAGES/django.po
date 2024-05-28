@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 15:05+0200\n"
-"PO-Revision-Date: 2024-05-27 12:47+0200\n"
+"POT-Creation-Date: 2024-05-28 15:51+0200\n"
+"PO-Revision-Date: 2024-05-28 15:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,43 +17,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: apps/main/admin.py:25
 msgid "Export selected to CSV file"
 msgstr "Exporta la selecció a un fitxer CSV"
 
-#: apps/main/forms.py:15
+#: apps/main/forms.py:12 apps/main/forms.py:18
 msgid "Name"
 msgstr "Nom"
 
-#: apps/main/forms.py:19 apps/main/models.py:20
+#: apps/main/forms.py:22 apps/main/models.py:20
 msgid "Your name"
 msgstr "El teu nom"
 
-#: apps/main/forms.py:23
+#: apps/main/forms.py:25 apps/main/forms.py:27
 msgid "Surnames"
 msgstr "Cognoms"
 
-#: apps/main/forms.py:25 apps/main/models.py:26
+#: apps/main/forms.py:29 apps/main/models.py:26
 msgid "Your surnames"
 msgstr "Els teus cognoms"
 
-#: apps/main/forms.py:29
-msgid "email address"
-msgstr "correu electrònic"
+#: apps/main/forms.py:32
+msgid "Email"
+msgstr "Correu electrònic"
 
-#: apps/main/forms.py:31 apps/main/models.py:14
-msgid "Email to subscribe where you will receive our newsletter"
-msgstr "Correu electrònic per subscriure's on rebràs el nostre butlletí"
+#: apps/main/forms.py:34
+msgid "Email address"
+msgstr "Correu electrònic"
+
+#: apps/main/forms.py:36 apps/main/models.py:14
+msgid "Email where you will receive our newsletter"
+msgstr "Correu electrònic on vols rebre el nostre butlletí"
 
 #: apps/main/models.py:31
 msgid "newsletter"
-msgstr ""
+msgstr "butlletí"
 
 #: apps/main/models.py:32
 msgid "newsletters"
-msgstr ""
+msgstr "butlletins"
 
 #: apps/main/models.py:48
 msgid "Project name"
@@ -88,12 +92,12 @@ msgid "documents/"
 msgstr "documents/"
 
 #: apps/main/views.py:23
-msgid "Newsletter Successful"
-msgstr "Newsletter amb èxit"
+msgid "Signed up to the newsletter"
+msgstr "Alta al butlletí completada"
 
 #: apps/main/views.py:24
-msgid "Newsletter created successful."
-msgstr "Newsletter creat amb èxit."
+msgid "Successfully signed up to the newsletter."
+msgstr "La teva alta al butlletí s'ha realitzat correctament."
 
 #: templates/404.html:13 templates/500.html:13 templates/503.html:13
 msgid "Go back"
@@ -108,8 +112,8 @@ msgid ""
 "The page you were trying to access does not exist. Please check the spelling "
 "or go back to the beginning."
 msgstr ""
-"La pàgina a la qual esteu intentant accedir no existeix. Comproveu "
-"l’ortografia o torneu al principi."
+"La pàgina a que estàs intentant accedir no existeix. Comprova l’ortografia o "
+"torneu l'inici."
 
 #: templates/500.html:16
 msgid "Error 500: Internal server error"
@@ -132,8 +136,7 @@ msgid ""
 "The application is currently under maintenance, please try again in few "
 "minutes."
 msgstr ""
-"L’aplicació està actualment en manteniment, torneu-ho a provar en pocs "
-"minuts."
+"L’aplicació està actualment en manteniment, torna-ho a provar en pocs minuts."
 
 #: templates/base.html:40
 msgid "Logo of the business"
@@ -160,9 +163,9 @@ msgstr "Perfil"
 msgid "Documents"
 msgstr "Documents"
 
-#: templates/base.html:95
-msgid "Panell d'administració"
-msgstr ""
+#: templates/base.html:95 templates/base.html:191
+msgid "Administration panel"
+msgstr "Panell d’administració"
 
 #: templates/base.html:102
 msgid "Log out"
@@ -178,12 +181,8 @@ msgstr "Iniciar sessió"
 msgid "Sign up"
 msgstr "Registrar-se"
 
-#: templates/base.html:191
-msgid "Administration panel"
-msgstr "Panell d’administració"
-
 #: templates/base.html:225
-msgid "Want to subscribe to our newsletter?"
+msgid "Do you want to subscribe to our newsletter?"
 msgstr "Vols subscriure’t a la nostra newsletter?"
 
 #: templates/base.html:290
@@ -192,9 +191,9 @@ msgid ""
 "We don't sell data to third parties. If you continue navigating, we'll "
 "understand that you are ok with that."
 msgstr ""
-"Utilitzem cookies per optimitzar la vostra experiència i analitzar el "
-"trànsit web. No venem dades a tercers. Si continues navegant, entendrem que "
-"estàs d’acord amb això."
+"Utilitzem cookies per optimitzar la teva experiència i analitzar el trànsit "
+"web. No venem dades a tercers. Si continues navegant, entendrem que estàs "
+"d’acord amb això."
 
 #: templates/base.html:302
 msgid "Accept"
@@ -209,8 +208,6 @@ msgid "Save"
 msgstr "Desar"
 
 #: templates/base_success.html:29
-#, fuzzy
-#| msgid "Done!!"
 msgid "Done!"
 msgstr "Fet!"
 
@@ -232,7 +229,7 @@ msgstr "Hi ha un error en el formulari."
 
 #: templates/components/form_errors.html:41
 msgid "Please, check the fields marked in red."
-msgstr "Si us plau, comproveu els camps marcats en vermell."
+msgstr "Si us plau, comprova els camps marcats en vermell."
 
 #: templates/demo_flowbite.html:51 templates/fields/field_default.html:36
 #: templates/fields/field_default.html:87
@@ -250,7 +247,7 @@ msgstr "Hi ha un error en el formulari!"
 
 #: templates/demo_flowbite.html:350
 msgid "Please check the fields marked in red"
-msgstr "Comproveu els camps marcats en vermell"
+msgstr "Comprova els camps marcats en vermell"
 
 #: templates/demo_flowbite.html:362
 msgid "Close error alert"
@@ -289,16 +286,16 @@ msgid ""
 "Select a new file. Beware that if there was a file already uploaded, it will "
 "be erased."
 msgstr ""
-"Seleccioneu un fitxer nou. Tingueu en compte que si ja hi ha un fitxer "
-"pujat, s’esborrarà."
+"Selecciona un fitxer nou. Tingues en compte que si ja hi ha un fitxer pujat, "
+"s’esborrarà."
 
 #: templates/demo_flowbite.html:633
 msgid "Delete the current file."
 msgstr "Suprimeix el fitxer actual."
 
 #: templates/home.html:25
-msgid "Pàgina home"
-msgstr "Pàgina d’inici"
+msgid "Home page"
+msgstr "Pàgina d'inici"
 
 #: templates/home_internal.html:5
 msgid "Internal home page"
@@ -318,7 +315,7 @@ msgid ""
 "will be able to download them here."
 msgstr ""
 "No hi ha documents per mostrar. Un cop els administradors n’hagin afegit "
-"alguns, els podreu descarregar aquí."
+"alguns, els podràs descarregar aquí."
 
 #: templates/main/documents.html:72
 msgid "Come back soon to check!"
@@ -342,7 +339,7 @@ msgstr "El teu perfil"
 
 #: templates/profile/details.html:33
 msgid "Here you can see and edit all your data."
-msgstr "Aquí podeu veure i editar totes les vostres dades."
+msgstr "Aquí pots veure i editar totes les teves dades."
 
 #: templates/profile/details.html:47 templates/profile/details.html:90
 msgid "Warning!"
@@ -351,12 +348,12 @@ msgstr "Atenció!"
 #: templates/profile/details.html:48 templates/profile/details.html:91
 msgid "Your email is not verified. Before anything else, you must verify it."
 msgstr ""
-"El vostre correu electrònic no està verificat. Abans de res, cal verificar-"
-"ho."
+"El teu correu electrònic no està verificat. Per poder accedir a la resta "
+"d'apartats de l'aplicatiu, cal verificar-lo."
 
 #: templates/profile/details.html:50 templates/profile/details.html:93
 msgid "Verify email here."
-msgstr "Verifiqueu el correu electrònic aquí."
+msgstr "Verifica el correu electrònic aquí."
 
 #: templates/profile/details.html:79
 #: templates/registration/password_change_form.html:5
@@ -366,7 +363,7 @@ msgstr "Canvi de contrasenya"
 
 #: templates/profile/details.html:81
 msgid "Here you can change your password."
-msgstr "Aquí podeu canviar la contrasenya."
+msgstr "Aquí pots canviar la contrasenya."
 
 #: templates/profile/details.html:104
 msgid "Change password"
@@ -374,7 +371,7 @@ msgstr "Canvia la contrasenya"
 
 #: templates/registration/login.html:31
 msgid "Sign in to your account"
-msgstr "Inicieu la sessió al vostre compte"
+msgstr "Inicia la sessió al vostre compte"
 
 #: templates/registration/login.html:47
 msgid "Sign in"
@@ -382,7 +379,7 @@ msgstr "Iniciar sessió"
 
 #: templates/registration/login.html:52
 msgid "Forgot your password?"
-msgstr "Heu oblidat la contrasenya?"
+msgstr "Has oblidat la contrasenya?"
 
 #: templates/registration/login.html:55
 msgid "Don’t have an account yet?"
@@ -399,7 +396,7 @@ msgstr "Iniciar sessió"
 
 #: templates/registration/login_old.html:21
 msgid "Enter your account details to authenticate."
-msgstr "Introduïu les dades del vostre compte per a autenticar-vos."
+msgstr "Introdueix les dades del teu compte per a autenticar-te."
 
 #: templates/registration/login_old.html:66
 msgid "Go in"
@@ -407,11 +404,11 @@ msgstr "Anar"
 
 #: templates/registration/login_old.html:73
 msgid "Forgotten your password?"
-msgstr "Heu oblidat la contrasenya?"
+msgstr "Has oblidat la contrasenya?"
 
 #: templates/registration/login_old.html:77
 msgid "If you are not registered yet:"
-msgstr "Si encara no esteu registrat:"
+msgstr "Si encara no estàs registrat:"
 
 #: templates/registration/password_change_form.html:50
 #: templates/registration/password_reset_confirm.html:29
@@ -436,8 +433,8 @@ msgid ""
 "Introduce your email. A link will be sent to this address so you can reset "
 "your password."
 msgstr ""
-"Presenta el teu correu electrònic. S’enviarà un enllaç a aquesta adreça "
-"perquè pugueu restablir la contrasenya."
+"Indica el teu correu electrònic. S’enviarà un enllaç a aquesta adreça perquè "
+"pugueu restablir la contrasenya."
 
 #: templates/registration/privacy_policy.html:6
 #: templates/registration/privacy_policy.html:18
@@ -445,20 +442,17 @@ msgid "Privacy policy"
 msgstr "Política de privacitat"
 
 #: templates/registration/send_verification_code.html:5
-#: templates/registration/user_validation.html:5
-msgid "Mail validation"
-msgstr "Validació de correu"
-
 #: templates/registration/send_verification_code.html:42
+#: templates/registration/user_validation.html:5
 msgid "Email verification"
-msgstr "Verificació per correu electrònic"
+msgstr "Verificació del correu electrònic"
 
 #: templates/registration/send_verification_code.html:47
 msgid ""
 "By clicking the button a verification code will be send to your email "
 "address. Check your email to find it."
 msgstr ""
-"En fer clic al botó s’enviarà un codi de verificació a la vostra adreça de "
+"En fer clic al botó s’enviarà un codi de verificació a la teva adreça de "
 "correu electrònic. Comprova el teu correu electrònic per trobar-lo."
 
 #: templates/registration/signup.html:40
@@ -472,6 +466,18 @@ msgstr "Anar"
 #: templates/registration/user_validation_confirm.html:27
 msgid "Set"
 msgstr "Estableix"
+
+#~ msgid "Mail validation"
+#~ msgstr "Verificació de correu"
+
+#~ msgid "Newsletter Successful"
+#~ msgstr "Newsletter amb èxit"
+
+#~ msgid "Newsletter created successful."
+#~ msgstr "Newsletter creat amb èxit."
+
+#~ msgid "Pàgina home"
+#~ msgstr "Pàgina d’inici"
 
 #~ msgid "Back"
 #~ msgstr "Enrere"

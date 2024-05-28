@@ -20,8 +20,8 @@ def newsletter_view(request):
 
 
 class NewsletterSuccessView(StandardSuccess):
-    page_title = _("Newsletter Successful")
-    description = _("Newsletter created successful.")
+    page_title = _("Signed up to the newsletter")
+    description = _("Successfully signed up to the newsletter.")
 
 
 def document_list_view(request):
