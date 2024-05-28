@@ -115,7 +115,8 @@ class UserSignUpForm(UserCreationForm):
         privacy_policy_url = self.get_privacy_policy_url()
         privacy_policy_link = (
             '<a href="{}" class="text-primary-500 font-bold hover:underline" '
-            'target="_blank">{}</a>').format(
+            'target="_blank">{}</a>'
+        ).format(
             privacy_policy_url,
             _("privacy policy"),
         )

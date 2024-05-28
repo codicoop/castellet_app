@@ -1,7 +1,7 @@
 import logging
-import os, tempfile
+import os
+import tempfile
 import time
-
 from dataclasses import dataclass
 from enum import Enum
 
@@ -15,7 +15,7 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
-from apps.main.models import Project, Document
+from apps.main.models import Document, Project
 from apps.users.models import User
 
 logging.basicConfig(level=logging.INFO)
