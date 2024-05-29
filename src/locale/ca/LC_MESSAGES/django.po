@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-28 15:51+0200\n"
-"PO-Revision-Date: 2024-05-28 15:51+0200\n"
+"POT-Creation-Date: 2024-05-29 10:04+0200\n"
+"PO-Revision-Date: 2024-05-29 10:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,39 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: apps/main/admin.py:25
 msgid "Export selected to CSV file"
 msgstr "Exporta la selecció a un fitxer CSV"
 
-#: apps/main/forms.py:12 apps/main/forms.py:18
+#: apps/main/forms.py:12
 msgid "Name"
 msgstr "Nom"
 
-#: apps/main/forms.py:22 apps/main/models.py:20
-msgid "Your name"
-msgstr "El teu nom"
-
-#: apps/main/forms.py:25 apps/main/forms.py:27
+#: apps/main/forms.py:23
 msgid "Surnames"
 msgstr "Cognoms"
 
-#: apps/main/forms.py:29 apps/main/models.py:26
-msgid "Your surnames"
-msgstr "Els teus cognoms"
-
-#: apps/main/forms.py:32
+#: apps/main/forms.py:29
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: apps/main/forms.py:34
-msgid "Email address"
-msgstr "Correu electrònic"
-
-#: apps/main/forms.py:36 apps/main/models.py:14
+#: apps/main/forms.py:33 apps/main/models.py:14
 msgid "Email where you will receive our newsletter"
 msgstr "Correu electrònic on vols rebre el nostre butlletí"
+
+#: apps/main/models.py:20
+msgid "Your name"
+msgstr "El teu nom"
+
+#: apps/main/models.py:26
+msgid "Your surnames"
+msgstr "Els teus cognoms"
 
 #: apps/main/models.py:31
 msgid "newsletter"
@@ -139,13 +135,13 @@ msgstr ""
 "L’aplicació està actualment en manteniment, torna-ho a provar en pocs minuts."
 
 #: templates/base.html:40
-msgid "Logo of the business"
-msgstr "Logotip de l’empresa"
+msgid "Logo of Comunitat energètica Castellet"
+msgstr "Logo de la Castellet Sostenible"
 
 #: templates/base.html:79 templates/base.html:132 templates/home.html:5
-#: templates/home.html:19 templates/main/documents.html:19
-#: templates/newsletter.html:23 templates/profile/details.html:22
-#: templates/registration/login.html:22
+#: templates/home.html:19 templates/home.html:25
+#: templates/main/documents.html:19 templates/newsletter.html:23
+#: templates/profile/details.html:22 templates/registration/login.html:22
 #: templates/registration/password_change_form.html:23
 #: templates/registration/send_verification_code.html:23
 #: templates/registration/signup.html:23
@@ -293,10 +289,6 @@ msgstr ""
 msgid "Delete the current file."
 msgstr "Suprimeix el fitxer actual."
 
-#: templates/home.html:25
-msgid "Home page"
-msgstr "Pàgina d'inici"
-
 #: templates/home_internal.html:5
 msgid "Internal home page"
 msgstr "Pàgina d’inici interna"
@@ -414,6 +406,7 @@ msgstr "Si encara no estàs registrat:"
 #: templates/registration/password_reset_confirm.html:29
 #: templates/registration/password_reset_form.html:26
 #: templates/registration/send_verification_code.html:51
+#: templates/registration/user_validation.html:26
 msgid "Send"
 msgstr "Envia"
 
@@ -459,13 +452,30 @@ msgstr ""
 msgid "Create Account"
 msgstr "Crea un compte"
 
-#: templates/registration/user_validation.html:14
-msgid "Go"
-msgstr "Anar"
+#: templates/registration/user_validation.html:17
+msgid "Verification code sent"
+msgstr "Codi de verificació enviat"
+
+#: templates/registration/user_validation.html:19
+msgid "Write here the verification code that you have received in your email."
+msgstr ""
+"Escriu aquí el codi de verificació que has rebut al teu correu electrònic."
 
 #: templates/registration/user_validation_confirm.html:27
 msgid "Set"
 msgstr "Estableix"
+
+#~ msgid "Email address"
+#~ msgstr "Correu electrònic"
+
+#~ msgid "Logo of the business"
+#~ msgstr "Logotip de l’empresa"
+
+#~ msgid "Home page"
+#~ msgstr "Pàgina d'inici"
+
+#~ msgid "Go"
+#~ msgstr "Anar"
 
 #~ msgid "Mail validation"
 #~ msgstr "Verificació de correu"

@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-28 16:01+0200\n"
+"POT-Creation-Date: 2024-05-29 10:04+0200\n"
 "PO-Revision-Date: 2024-05-28 16:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,30 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.3\n"
 
-#: apps/users/forms.py:32 apps/users/forms.py:96 apps/users/forms.py:149
-#: apps/users/forms.py:170
+#: apps/users/forms.py:32 apps/users/forms.py:95 apps/users/forms.py:148
+#: apps/users/forms.py:168
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: apps/users/forms.py:37 apps/users/forms.py:99 apps/users/forms.py:154
-#: apps/users/forms.py:176
-msgid "Email address"
-msgstr "Adreça electrònica"
-
-#: apps/users/forms.py:42 apps/users/forms.py:43 apps/users/forms.py:88
-#: apps/users/forms.py:89
+#: apps/users/forms.py:42 apps/users/forms.py:88
 msgid "Password"
 msgstr "Contrasenya"
 
-#: apps/users/forms.py:46
+#: apps/users/forms.py:45
 msgid "Remember me"
 msgstr "Recorda’m"
 
-#: apps/users/forms.py:56
+#: apps/users/forms.py:55
 msgid "Change password"
 msgstr "Canvia la contrasenya"
 
-#: apps/users/forms.py:58
+#: apps/users/forms.py:57
 msgid ""
 "The current password is not displayed for security reasons. Use this field "
 "and save the changes to set a new password. While writing the new password "
@@ -53,43 +47,39 @@ msgstr ""
 "Mentre escriguis la nova contrasenya serà visible, per facilitar-te la còpia "
 "i l’enviament a l’usuari."
 
-#: apps/users/forms.py:80 apps/users/forms.py:81 apps/users/forms.py:141
-#: apps/users/forms.py:142
+#: apps/users/forms.py:79 apps/users/forms.py:140
 msgid "Name"
 msgstr "Nom"
 
-#: apps/users/forms.py:84 apps/users/forms.py:85 apps/users/forms.py:145
-#: apps/users/forms.py:146
+#: apps/users/forms.py:83 apps/users/forms.py:144
 msgid "Surnames"
 msgstr "Cognoms"
 
-#: apps/users/forms.py:92 apps/users/forms.py:93
+#: apps/users/forms.py:92
 msgid "Password confirmation"
 msgstr "Confirmació de la contrasenya"
 
-#: apps/users/forms.py:121
+#: apps/users/forms.py:120
 msgid "privacy policy"
 msgstr "política de privacitat"
 
-#: apps/users/forms.py:123
+#: apps/users/forms.py:122
 msgid "I have read and agree with the {}"
 msgstr "He llegit i estic d'acord amb {}"
 
-#: apps/users/forms.py:226 apps/users/forms.py:228 apps/users/forms.py:249
-#: apps/users/forms.py:250
+#: apps/users/forms.py:225 apps/users/forms.py:244
 msgid "New password"
 msgstr "Nova contrasenya"
 
-#: apps/users/forms.py:232 apps/users/forms.py:234 apps/users/forms.py:254
-#: apps/users/forms.py:256
+#: apps/users/forms.py:229 apps/users/forms.py:250
 msgid "New password confirmation"
 msgstr "Confirmació de la nova contrasenya"
 
-#: apps/users/forms.py:243 apps/users/forms.py:246
+#: apps/users/forms.py:240
 msgid "Old password"
 msgstr "Contrasenya antiga"
 
-#: apps/users/forms.py:263 apps/users/forms.py:265
+#: apps/users/forms.py:259
 msgid "Verification code"
 msgstr "Codi de verificació"
 
@@ -245,6 +235,9 @@ msgstr "Canvi de contrasenya"
 #: apps/users/views.py:214
 msgid "Password change successful."
 msgstr "Contrasenya modificada correctament."
+
+#~ msgid "Email address"
+#~ msgstr "Adreça electrònica"
 
 #~ msgid ""
 #~ "El correu indicat no correspon a cap compte registrat, si us plau "
