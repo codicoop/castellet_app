@@ -65,8 +65,10 @@ ben llarga i t'agrairem que ens informis de la situació.
     you have asked to verify your email {{user_email}}
     for {{absolute_url}}.</p>
 
-    <p>To complete this action and validate your email, enter the code <b>{{ user_code }}</b> by clicking
-        on the following link <a href="{{email_verification_url}}">{{email_verification_url}}</a>
+    <p>To complete this action and verify your email, enter the code
+    <b>{{ user_code }}</b> at the verification page that you might have still open, or
+    if you closed it, here's the shortcut to it:
+     <a href="{{email_verification_url}}">{{email_verification_url}}</a>
     </p>
 
     <p> If it weren't you who requested it,
@@ -81,7 +83,8 @@ ben llarga i t'agrairem que ens informis de la situació.
         has sol·licitat verificar el teu correu electrònic {{user_email}}
         per a {{absolute.url}}.</p>
     <p>Per completar aquesta acció, introduïu el codi {{user_code}} a la pantalla
-    de verificació del correu, o bé cliqueu el següent enllaç:
+    de verificació del correu que encara deus tenir oberta o, si l'has tancat,
+    aquí tens l'enllaç directe:
     <a href="{{email_verification_url}}">{{email_verification_url}}</a>
     </p>
     <p>Si no has estat tu qui ho ha demanat, ignora aquest missatge.</p>
