@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-29 10:04+0200\n"
-"PO-Revision-Date: 2024-05-28 16:10+0200\n"
+"PO-Revision-Date: 2024-05-29 15:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -161,7 +161,7 @@ msgstr "perfil/detalls/"
 
 #: apps/users/urls.py:84
 msgid "user-validation/"
-msgstr "validació_usuari/"
+msgstr "validacio_usuari/"
 
 #: apps/users/urls.py:89
 msgid "send-verification-code/"

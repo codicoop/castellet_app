@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 10:04+0200\n"
-"PO-Revision-Date: 2024-05-29 10:12+0200\n"
+"POT-Creation-Date: 2024-05-29 15:39+0200\n"
+"PO-Revision-Date: 2024-05-29 15:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: apps/main/admin.py:25
 msgid "Export selected to CSV file"
@@ -333,17 +333,17 @@ msgstr "El teu perfil"
 msgid "Here you can see and edit all your data."
 msgstr "Aquí pots veure i editar totes les teves dades."
 
-#: templates/profile/details.html:47 templates/profile/details.html:90
+#: templates/profile/details.html:47
 msgid "Warning!"
 msgstr "Atenció!"
 
-#: templates/profile/details.html:48 templates/profile/details.html:91
+#: templates/profile/details.html:48
 msgid "Your email is not verified. Before anything else, you must verify it."
 msgstr ""
 "El teu correu electrònic no està verificat. Per poder accedir a la resta "
 "d'apartats de l'aplicatiu, cal verificar-lo."
 
-#: templates/profile/details.html:50 templates/profile/details.html:93
+#: templates/profile/details.html:50
 msgid "Verify email here."
 msgstr "Verifica el correu electrònic aquí."
 
@@ -357,7 +357,7 @@ msgstr "Canvi de contrasenya"
 msgid "Here you can change your password."
 msgstr "Aquí pots canviar la contrasenya."
 
-#: templates/profile/details.html:104
+#: templates/profile/details.html:88
 msgid "Change password"
 msgstr "Canvia la contrasenya"
 
