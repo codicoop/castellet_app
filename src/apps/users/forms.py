@@ -94,9 +94,7 @@ class UserSignUpForm(UserCreationForm):
     email = flowbite.FormEmailField(
         label=_("Email"),
         max_length=254,
-        widget=forms.EmailInput(
-            attrs={"autocomplete": "email"}
-        ),
+        widget=forms.EmailInput(attrs={"autocomplete": "email"}),
     )
 
     class Meta(UserCreationForm.Meta):
@@ -219,9 +217,7 @@ class PasswordResetForm(BasePasswordResetForm):
 
 class PasswordResetConfirmForm(BaseSetPasswordForm):
     new_password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"autofocus": True}
-        ),
+        widget=forms.PasswordInput(attrs={"autofocus": True}),
         label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
@@ -244,18 +240,14 @@ class PasswordChangeForm(BasePasswordChangeForm):
         label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={}
-        ),
+        widget=forms.PasswordInput(attrs={}),
         label=_("New password confirmation"),
     )
 
 
 class EmailVerificationCodeForm(forms.Form):
     email_verification_code = flowbite.FormIntegerField(
-        widget=forms.TextInput(
-            attrs=({"autofocus": True})
-        ),
+        widget=forms.TextInput(attrs=({"autofocus": True})),
         label=_("Verification code"),
     )
 

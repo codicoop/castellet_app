@@ -57,17 +57,17 @@ class Strings(Enum):
     """
 
     MENU_ADMIN = "Administration panel"
-    ADMIN_TITLE = "Site administration | Django Administrative Site"
-    LOGOUT = "Log out"
-    SIGNUP_TITLE = "Project App | Sign up"
-    HOME_TITLE = "Project App | Home"
-    PROFILE_TITLE = "Project App | Profile Details"
-    REGISTRY_UPDATE_TITLE = "Project App | Registry updated"
-    PASSWORD_CHANGE_TITLE = "Project App | Password change"
-    EMAIL_VALIDATION_TITLE = "Project App | Mail validation"
-    NEWSLETTER_TITLE = "Project App | Newsletter"
-    NEWSLETTER_SUCCESS_TITLE = "Project App | Newsletter Successful"
-    DOCUMENTS_TITLE = "Project App | Documents"
+    ADMIN_TITLE = "Administració del lloc | Lloc administratiu de Django"
+    LOGOUT = "Tancar sessió"
+    SIGNUP_TITLE = "Projecte App | Registrar-se"
+    HOME_TITLE = "Projecte App | Inici"
+    PROFILE_TITLE = "Projecte App | Detalls del perfil"
+    REGISTRY_UPDATE_TITLE = "Projecte App | Registre actualitzat"
+    PASSWORD_CHANGE_TITLE = "Projecte App | Canvi de contrasenya"
+    EMAIL_VALIDATION_TITLE = "Projecte App | Verificació del correu electrònic"
+    NEWSLETTER_TITLE = "Projecte App | Newsletter"
+    NEWSLETTER_SUCCESS_TITLE = "Projecte App | Alta al butlletí completada"
+    DOCUMENTS_TITLE = "Projecte App | Documents"
 
 
 @override_settings(
@@ -427,7 +427,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text(_("Go back"))
+        go_back = self.select_element_by_text(_("Enrere"))
         go_back.click()
 
     def _password_change(self):

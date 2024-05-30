@@ -5,7 +5,7 @@ from project.fields import flowbite
 from project.storage_backends import PrivateMediaStorage
 
 
-class Newsletter(models.Model):
+class NewsletterSubscriber(models.Model):
     email = flowbite.ModelEmailField(
         max_length=100,
         blank=False,
@@ -28,8 +28,8 @@ class Newsletter(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
-        verbose_name = _("newsletter")
-        verbose_name_plural = _("newsletters")
+        verbose_name = _("newsletter subscriber")
+        verbose_name_plural = _("newsletter subscribers")
         ordering = ["-created_at"]
 
     def __str__(self):

@@ -2,12 +2,12 @@ from django import forms
 from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Newsletter
+from apps.main.models import NewsletterSubscriber
 from project.fields.flowbite import FormCharField, FormEmailField
 from project.post_office import send
 
 
-class NewsletterForm(forms.ModelForm):
+class NewsletterSubscriberForm(forms.ModelForm):
     name = FormCharField(
         label=_("Name"),
         max_length=100,
@@ -21,20 +21,16 @@ class NewsletterForm(forms.ModelForm):
     )
     surnames = FormCharField(
         label=_("Surnames"),
-        widget=forms.TextInput(
-            attrs={"autocomplete": "text"}
-        ),
+        widget=forms.TextInput(attrs={"autocomplete": "text"}),
     )
     email = FormEmailField(
         label=_("Email"),
-        widget=forms.EmailInput(
-            attrs={"autocomplete": "email"}
-        ),
+        widget=forms.EmailInput(attrs={"autocomplete": "email"}),
         help_text=_("Email where you will receive our newsletter"),
     )
 
     class Meta:
-        model = Newsletter
+        model = NewsletterSubscriber
         fields = [
             "name",
             "surnames",

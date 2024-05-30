@@ -1,8 +1,8 @@
 from factory.django import DjangoModelFactory
 
-from apps.main.models import Newsletter
+from apps.main.models import NewsletterSubscriber
 
 
-class NewsletterFactory(DjangoModelFactory):
+class NewsletterSubscriberFactory(DjangoModelFactory):
     class Meta:
-        model = Newsletter
+        model = NewsletterSubscriber

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.views import NewsletterSuccessView, newsletter_view
+from apps.main.views import NewsletterSubscriberSuccessView, newsletter_view
 from project.views import RootRedirectView, home_view
 
 urlpatterns = [
@@ -32,7 +32,7 @@ urlpatterns += i18n_patterns(
     path(_("newsletter/"), newsletter_view, name="newsletter"),
     path(
         _("newsletter/success/"),
-        NewsletterSuccessView.as_view(),
+        NewsletterSubscriberSuccessView.as_view(),
         name="newsletter_success",
     ),
 )

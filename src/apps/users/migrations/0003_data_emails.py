@@ -81,7 +81,7 @@ ben llarga i t'agrairem que ens informis de la situació.
     <p>Hola {{user_name}}!</p>
     <p>T'enviem aquest correu electrònic perquè avui {{date}} a les {{time}}
         has sol·licitat verificar el teu correu electrònic {{user_email}}
-        per a {{absolute.url}}.</p>
+        per a {{absolute_url}}.</p>
     <p>Per completar aquesta acció, introduïu el codi {{user_code}} a la pantalla
     de verificació del correu que encara deus tenir oberta o, si l'has tancat,
     aquí tens l'enllaç directe:

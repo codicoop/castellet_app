@@ -2,14 +2,14 @@ from django.shortcuts import reverse
 from django.test import Client, TestCase
 
 
-class NewsletterViewTest(TestCase):
+class NewsletterSubscriberViewTest(TestCase):
     def setUp(self):
         self.client = Client()
 
     def test_get(self):
         response = self.client.get(reverse("newsletter"))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.request["PATH_INFO"], "/ca/newsletter/")
+        self.assertEqual(response.request["PATH_INFO"], "/ca/butlleti/")
         self.assertTemplateUsed(response, "newsletter.html")
 
     def test_post(self):
@@ -20,7 +20,7 @@ class NewsletterViewTest(TestCase):
         }
         response = self.client.post(reverse("newsletter"), data=data, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.request["PATH_INFO"], "/ca/newsletter/success/")
+        self.assertEqual(response.request["PATH_INFO"], "/ca/butlleti/alta/")
         self.assertTemplateUsed(response, "standard_success.html")
 
 

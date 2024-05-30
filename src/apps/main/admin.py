@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Document, Newsletter, Project
+from apps.main.models import Document, NewsletterSubscriber, Project
 
 
 class ExportCsvMixin:
@@ -25,8 +25,8 @@ class ExportCsvMixin:
     export_as_csv.short_description = _("Export selected to CSV file")
 
 
-@admin.register(Newsletter)
-class NewsletterAdmin(admin.ModelAdmin, ExportCsvMixin):
+@admin.register(NewsletterSubscriber)
+class NewsletterSubscriberAdmin(admin.ModelAdmin, ExportCsvMixin):
     list_display = ("email", "name", "surnames", "created_at")
     search_fields = ["email", "name", "surnames", "created_at"]
     actions = ["export_as_csv"]
