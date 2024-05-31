@@ -1,12 +1,11 @@
-from django import forms
 from django.test import TestCase
 
-from apps.main.forms import NewsletterForm
+from apps.main.forms import NewsletterSubscriberForm
 
 
-class NewsletterFormTest(TestCase):
+class NewsletterSubscriberFormTest(TestCase):
     def setUp(self):
-        self.form = NewsletterForm(
+        self.form = NewsletterSubscriberForm(
             data={
                 "name": "",
                 "surnames": "",

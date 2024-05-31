@@ -34,12 +34,11 @@ class AuthenticationForm(BaseAuthenticationForm):
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
-                "placeholder": _("Email adress"),
             }
         ),
     )
     password = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
+        widget=forms.PasswordInput(),
         label=_("Password"),
     )
     remember_me = flowbite.FormBooleanField(
@@ -78,26 +77,24 @@ class UserChangeForm(forms.ModelForm):
 class UserSignUpForm(UserCreationForm):
     name = flowbite.FormCharField(
         label=_("Name"),
-        widget=forms.TextInput(attrs={"autofocus": True, "placeholder": _("Name")}),
+        widget=forms.TextInput(attrs={"autofocus": True}),
     )
     surnames = flowbite.FormCharField(
         label=_("Surnames"),
-        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
+        widget=forms.TextInput(),
     )
     password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
+        widget=forms.PasswordInput(),
         label=_("Password"),
     )
     password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": _("Password confirmation")}),
+        widget=forms.PasswordInput(),
         label=_("Password confirmation"),
     )
     email = flowbite.FormEmailField(
         label=_("Email"),
         max_length=254,
-        widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": _("Email address")}
-        ),
+        widget=forms.EmailInput(attrs={"autocomplete": "email"}),
     )
 
     class Meta(UserCreationForm.Meta):
@@ -113,8 +110,12 @@ class UserSignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         privacy_policy_url = self.get_privacy_policy_url()
-        privacy_policy_link = '<a href="{}" class="text-primary-500 font-bold hover:underline" target="_blank">privacy policy</a>'.format(  # noqa: E501
-            privacy_policy_url
+        privacy_policy_link = (
+            '<a href="{}" class="text-primary-500 font-bold hover:underline" '
+            'target="_blank">{}</a>'
+        ).format(
+            privacy_policy_url,
+            _("privacy policy"),
         )
         label_html = _("I have read and agree with the {}").format(privacy_policy_link)
         self.fields["accept_conditions"] = flowbite.FormBooleanField(
@@ -135,11 +136,11 @@ class UserSignUpForm(UserCreationForm):
 class ProfileDetailsForm(forms.ModelForm):
     name = flowbite.FormCharField(
         label=_("Name"),
-        widget=forms.TextInput(attrs={"placeholder": _("Name")}),
+        widget=forms.TextInput(),
     )
     surnames = flowbite.FormCharField(
         label=_("Surnames"),
-        widget=forms.TextInput(attrs={"placeholder": _("Surnames")}),
+        widget=forms.TextInput(),
     )
     email = flowbite.FormEmailField(
         label=_("Email"),
@@ -147,7 +148,6 @@ class ProfileDetailsForm(forms.ModelForm):
         widget=forms.EmailInput(
             attrs={
                 "autocomplete": "email",
-                "placeholder": _("Email address"),
             }
         ),
     )
@@ -169,7 +169,6 @@ class PasswordResetForm(BasePasswordResetForm):
             attrs={
                 "autofocus": True,
                 "autocomplete": "email",
-                "placeholder": _("Email address"),
             }
         ),
     )
@@ -218,15 +217,11 @@ class PasswordResetForm(BasePasswordResetForm):
 
 class PasswordResetConfirmForm(BaseSetPasswordForm):
     new_password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"autofocus": True, "placeholder": _("New password")}
-        ),
+        widget=forms.PasswordInput(attrs={"autofocus": True}),
         label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": _("New password confirmation")}
-        ),
+        widget=forms.PasswordInput(),
         label=_("New password confirmation"),
     )
 
@@ -236,28 +231,23 @@ class PasswordChangeForm(BasePasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 "autofocus": True,
-                "placeholder": _("Old password"),
             }
         ),
         label=_("Old password"),
     )
     new_password1 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(attrs={"placeholder": _("New password")}),
+        widget=forms.PasswordInput(),
         label=_("New password"),
     )
     new_password2 = flowbite.FormPasswordField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": _("New password confirmation")}
-        ),
+        widget=forms.PasswordInput(attrs={}),
         label=_("New password confirmation"),
     )
 
 
 class EmailVerificationCodeForm(forms.Form):
     email_verification_code = flowbite.FormIntegerField(
-        widget=forms.TextInput(
-            attrs=({"autofocus": True, "placeholder": _("Verification code")})
-        ),
+        widget=forms.TextInput(attrs=({"autofocus": True})),
         label=_("Verification code"),
     )
 

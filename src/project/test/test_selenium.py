@@ -1,4 +1,7 @@
 import logging
+import os
+import tempfile
+import time
 from dataclasses import dataclass
 from enum import Enum
 
@@ -12,6 +15,7 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
+from apps.main.models import Document, Project
 from apps.users.models import User
 
 logging.basicConfig(level=logging.INFO)
@@ -52,16 +56,18 @@ class Strings(Enum):
 
     """
 
-    MENU_ADMIN = _("Administration panel")
-    ADMIN_TITLE = _("Administració del lloc | Lloc administratiu de Django")
-    LOGOUT = _("Log out")
-    SIGNUP_TITLE = _("Projecte App | Registrar-se")
-    HOME_TITLE = _("Projecte App | Inici")
-    PROFILE_TITLE = _("Projecte App | Detalls del perfil")
-    REGISTRY_UPDATE_TITLE = _("Projecte App | Registry updated")
-    PASSWORD_CHANGE_TITLE = _("Projecte App | Canvi de contrasenya")
-    EMAIL_VALIDATION_TITLE = _("Projecte App | Mail validation")
-    NEWSLETTER_TITLE = _("Projecte App | Newsletter")
+    MENU_ADMIN = "Administration panel"
+    ADMIN_TITLE = "Administració del lloc | Lloc administratiu de Django"
+    LOGOUT = "Tancar sessió"
+    SIGNUP_TITLE = "Projecte App | Registrar-se"
+    HOME_TITLE = "Projecte App | Inici"
+    PROFILE_TITLE = "Projecte App | Detalls del perfil"
+    REGISTRY_UPDATE_TITLE = "Projecte App | Registre actualitzat"
+    PASSWORD_CHANGE_TITLE = "Projecte App | Canvi de contrasenya"
+    EMAIL_VALIDATION_TITLE = "Projecte App | Verificació del correu electrònic"
+    NEWSLETTER_TITLE = "Projecte App | Newsletter"
+    NEWSLETTER_SUCCESS_TITLE = "Projecte App | Alta al butlletí completada"
+    DOCUMENTS_TITLE = "Projecte App | Documents"
 
 
 @override_settings(
@@ -153,6 +159,13 @@ class MySeleniumTests(StaticLiveServerTestCase):
         logging.info(f"Title: {self.selenium.title}")
         assert title == self.selenium.title
 
+    def create_file(self, filename, content):
+        with tempfile.TemporaryDirectory() as tempdir:
+            tmpfilepath = os.path.join(tempdir, f"{filename}.pdf")
+            with open(tmpfilepath, "w") as tmpfile:
+                tmpfile.write(content)
+        return filename
+
     def _check_mail_sent(self, recipient, string_in_body=""):
         """
         During the test, every time an email is sent it gets added to
@@ -243,6 +256,9 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self._newsletter()
         logging.info("Test Newsletter finished.")
 
+        self._documents()
+        logging.info("Test Documents finished.")
+
         logging.info("#####################################")
         logging.info("#### All tests Selenium finished ####")
         logging.info("#####################################")
@@ -283,7 +299,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             settings.DJANGO_SUPERUSER_PASSWORD,
         )
         self.burger_menu_action()
-        admin_menu = self.select_element_by_text(Strings.MENU_ADMIN.value)
+        admin_menu = self.selenium.find_element(By.ID, "menu_admin")
         admin_menu.click()
 
         self.logging_url_title_and_assert_title(Strings.ADMIN_TITLE.value)
@@ -350,7 +366,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Go back")
+        go_back = self.select_element_by_text(_("Go back"))
         go_back.click()
 
     def _update_profile(self):
@@ -411,7 +427,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button Go Back.
         logging.info("Verified email.")
 
-        go_back = self.select_element_by_text("Go back")
+        go_back = self.select_element_by_text(_("Enrere"))
         go_back.click()
 
     def _password_change(self):
@@ -466,4 +482,96 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Test mailing to the user confirming the success of their subscription
         self._check_mail_sent("andrews.mcdolls@gmail.com")
 
+        self.logging_url_title_and_assert_title(Strings.NEWSLETTER_SUCCESS_TITLE.value)
+
+        # Click on the button Go Back.
+        button_back = self.selenium.find_element(By.ID, "id_back")
+        button_back.click()
+
+        self.logging_url_title_and_assert_title(Strings.HOME_TITLE.value)
+
+    def _documents(self):
+        # Create new projects
+        project_1 = Project.objects.create(name="Mock project 1")
+        project_2 = Project.objects.create(name="Mock project 2")
+
+        # Create new documents
+        Document.objects.create(
+            project=project_1,
+            title="Mock document 1",
+            file=self.create_file("Mock_file_1.pdf", "Test file content"),
+        )
+        Document.objects.create(
+            project=project_2,
+            title="Mock document 2",
+            file=self.create_file("Mock_file_2.pdf", "Test file content"),
+        )
+
+        # Open the main menu to select the Documents option.
+        self.burger_menu_action()
+        documents_menu_option = self.selenium.find_element(By.ID, "menu_documents")
+        documents_menu_option.click()
+        self.logging_url_title_and_assert_title(Strings.DOCUMENTS_TITLE.value)
+
+        # Click on the button to select document 1
+        document = self.selenium.find_element(By.ID, "id_document_1")
+        document.click()
+
+        # Click on the button to select document 2
+        document = self.selenium.find_element(By.ID, "id_document_2")
+        document.click()
+
+        # Click on the button to filter document by project
+        document = self.selenium.find_element(By.ID, "dropdownDefault")
+        document.click()
+
+        # Click on the checkbox to select project 1
+        document = self.selenium.find_element(By.ID, "1")
+        document.click()
+
+        # Pause to facilitate the process
+        time.sleep(1)
+
+        # Click on the button to select document 1
+        document = self.selenium.find_element(By.ID, "id_document_1")
+        document.click()
+
+        # Click on the button to filter document by project
+        document = self.selenium.find_element(By.ID, "dropdownDefault")
+        document.click()
+
+        # Click on the checkbox to deselect project 1
+        document = self.selenium.find_element(By.ID, "1")
+        document.click()
+
+        # Click on the checkbox to select project 2
+        document = self.selenium.find_element(By.ID, "2")
+        document.click()
+
+        # Pause to facilitate the process
+        time.sleep(1)
+
+        # Click on the button to select document 2
+        document = self.selenium.find_element(By.ID, "id_document_2")
+        document.click()
+
+        # Click on the button to filter document by project
+        document = self.selenium.find_element(By.ID, "dropdownDefault")
+        document.click()
+
+        # Click on the button to deselect document 2
+        document = self.selenium.find_element(By.ID, "2")
+        document.click()
+
+        # Click on the button to select document 1
+        document = self.selenium.find_element(By.ID, "id_document_1")
+        document.click()
+
+        # Click on the button to select document 2
+        document = self.selenium.find_element(By.ID, "id_document_2")
+        document.click()
+
+        # Click on the breadcrumb to go Homepage
+        breadcrumb_home_option = self.selenium.find_element(By.ID, "id_home")
+        breadcrumb_home_option.click()
         self.logging_url_title_and_assert_title(Strings.HOME_TITLE.value)

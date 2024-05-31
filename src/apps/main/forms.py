@@ -1,40 +1,36 @@
-from constance import config
 from django import forms
-from django.conf import settings
 from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Newsletter
+from apps.main.models import NewsletterSubscriber
 from project.fields.flowbite import FormCharField, FormEmailField
 from project.post_office import send
 
 
-class NewsletterForm(forms.ModelForm):
+class NewsletterSubscriberForm(forms.ModelForm):
     name = FormCharField(
+        label=_("Name"),
+        max_length=100,
+        required=True,
         widget=forms.TextInput(
             attrs={
                 "autofocus": True,
-                "placeholder": _("Name"),
                 "autocomplete": "text",
             }
         ),
-        help_text="Your name",
     )
     surnames = FormCharField(
-        widget=forms.TextInput(
-            attrs={"placeholder": _("Surnames"), "autocomplete": "text"}
-        ),
-        help_text="Your surnames",
+        label=_("Surnames"),
+        widget=forms.TextInput(attrs={"autocomplete": "text"}),
     )
     email = FormEmailField(
-        widget=forms.EmailInput(
-            attrs={"autocomplete": "email", "placeholder": _("email address")}
-        ),
-        help_text="Email to subscribe where you will receive our newsletter",
+        label=_("Email"),
+        widget=forms.EmailInput(attrs={"autocomplete": "email"}),
+        help_text=_("Email where you will receive our newsletter"),
     )
 
     class Meta:
-        model = Newsletter
+        model = NewsletterSubscriber
         fields = [
             "name",
             "surnames",

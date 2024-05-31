@@ -6,90 +6,488 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 18:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2024-05-29 15:39+0200\n"
+"PO-Revision-Date: 2024-05-29 15:41+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: src/templates/base.html:17
+"X-Generator: Poedit 3.4.3\n"
+
+#: apps/main/admin.py:25
+msgid "Export selected to CSV file"
+msgstr "Exporta la selecció a un fitxer CSV"
+
+#: apps/main/forms.py:12
+msgid "Name"
+msgstr "Nom"
+
+#: apps/main/forms.py:23
+msgid "Surnames"
+msgstr "Cognoms"
+
+#: apps/main/forms.py:29
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: apps/main/forms.py:33 apps/main/models.py:14
+msgid "Email where you will receive our newsletter"
+msgstr "Correu electrònic on vols rebre el nostre butlletí"
+
+#: apps/main/models.py:20
+msgid "Your name"
+msgstr "El teu nom"
+
+#: apps/main/models.py:26
+msgid "Your surnames"
+msgstr "Els teus cognoms"
+
+#: apps/main/models.py:31
+msgid "newsletter"
+msgstr "butlletí"
+
+#: apps/main/models.py:32
+msgid "newsletters"
+msgstr "butlletins"
+
+#: apps/main/models.py:48
+msgid "Project name"
+msgstr "Nom del projecte"
+
+#: apps/main/models.py:53
+msgid "project"
+msgstr "projecte"
+
+#: apps/main/models.py:54
+msgid "projects"
+msgstr "projectes"
+
+#: apps/main/models.py:73
+msgid "Project"
+msgstr "Projecte"
+
+#: apps/main/models.py:81
+msgid "File"
+msgstr "Fitxer"
+
+#: apps/main/models.py:86
+msgid "document"
+msgstr "document"
+
+#: apps/main/models.py:87
+msgid "documents"
+msgstr "documents"
+
+#: apps/main/urls.py:9
+msgid "documents/"
+msgstr "documents/"
+
+#: apps/main/views.py:23
+msgid "Signed up to the newsletter"
+msgstr "Alta al butlletí completada"
+
+#: apps/main/views.py:24
+msgid "Successfully signed up to the newsletter."
+msgstr "La teva alta al butlletí s'ha realitzat correctament."
+
+#: templates/404.html:13 templates/500.html:13 templates/503.html:13
+msgid "Go back"
+msgstr "Enrere"
+
+#: templates/404.html:16
+msgid "Error 404: Page not found"
+msgstr "Error 404: No s’ha trobat la pàgina"
+
+#: templates/404.html:20
+msgid ""
+"The page you were trying to access does not exist. Please check the spelling "
+"or go back to the beginning."
+msgstr ""
+"La pàgina a que estàs intentant accedir no existeix. Comprova l’ortografia o "
+"torneu l'inici."
+
+#: templates/500.html:16
+msgid "Error 500: Internal server error"
+msgstr "Error 500: Error intern del servidor"
+
+#: templates/500.html:20
+msgid ""
+"The server encountered an unexpected condition that prevented it from "
+"fulfilling the request."
+msgstr ""
+"El servidor ha trobat una condició inesperada que li ha impedit complir la "
+"sol·licitud."
+
+#: templates/503.html:16
+msgid "Error 503: Maintenance mode enabled"
+msgstr "Error 503: Mode de manteniment habilitat"
+
+#: templates/503.html:20
+msgid ""
+"The application is currently under maintenance, please try again in few "
+"minutes."
+msgstr ""
+"L’aplicació està actualment en manteniment, torna-ho a provar en pocs minuts."
+
+#: templates/base.html:40
+msgid "Logo of Comunitat energètica Castellet"
+msgstr "Logo de la Castellet Sostenible"
+
+#: templates/base.html:79 templates/base.html:132 templates/home.html:5
+#: templates/home.html:19 templates/home.html:25
+#: templates/main/documents.html:19 templates/newsletter.html:23
+#: templates/profile/details.html:22 templates/registration/login.html:22
+#: templates/registration/password_change_form.html:23
+#: templates/registration/send_verification_code.html:23
+#: templates/registration/signup.html:23
 msgid "Home"
-msgstr ""
+msgstr "Inici"
 
-#: src/templates/base.html:18
+#: templates/base.html:84 templates/base.html:168
+#: templates/registration/password_change_form.html:32
+#: templates/registration/send_verification_code.html:32
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/base.html:89 templates/base.html:179
+#: templates/main/documents.html:5 templates/main/documents.html:25
+msgid "Documents"
+msgstr "Documents"
+
+#: templates/base.html:95 templates/base.html:191
+msgid "Administration panel"
+msgstr "Panell d’administració"
+
+#: templates/base.html:102
+msgid "Log out"
+msgstr "Tancar sessió"
+
+#: templates/base.html:145 templates/registration/login.html:5
+#: templates/registration/login_old.html:5
 msgid "Log in"
-msgstr ""
+msgstr "Iniciar sessió"
 
-#: src/templates/base.html:19 src/templates/registration/signup.html:4
+#: templates/base.html:156 templates/base_success.html:6
+#: templates/registration/signup.html:5 templates/registration/signup.html:32
 msgid "Sign up"
 msgstr "Registrar-se"
 
-#: src/templates/base.html:20
-#: src/templates/registration/password_reset_form.html:4
-msgid "Password recovery"
-msgstr ""
+#: templates/base.html:225
+msgid "Do you want to subscribe to our newsletter?"
+msgstr "Vols subscriure’t a la nostra newsletter?"
 
-#: src/templates/base.html:23 src/templates/profile/details.html:4
+#: templates/base.html:290
+msgid ""
+"We use cookies to optimize your experience and to analyze the web traffic. "
+"We don't sell data to third parties. If you continue navigating, we'll "
+"understand that you are ok with that."
+msgstr ""
+"Utilitzem cookies per optimitzar la teva experiència i analitzar el trànsit "
+"web. No venem dades a tercers. Si continues navegant, entendrem que estàs "
+"d’acord amb això."
+
+#: templates/base.html:302
+msgid "Accept"
+msgstr "Accepta"
+
+#: templates/base.html:312
+msgid "Deny"
+msgstr "Denega"
+
+#: templates/base_form.html:52 templates/profile/details.html:64
+msgid "Save"
+msgstr "Desar"
+
+#: templates/base_success.html:29
+msgid "Done!"
+msgstr "Fet!"
+
+#: templates/base_success.html:32
+msgid "Registry successfully updated."
+msgstr "El registre s’ha actualitzat correctament."
+
+#: templates/base_success.html:40
+msgid "Back to home"
+msgstr "Torna a inici"
+
+#: templates/components/form_errors.html:10
+msgid "There has been an error!"
+msgstr "S’ha produït un error!"
+
+#: templates/components/form_errors.html:38
+msgid "There's an error in the form."
+msgstr "Hi ha un error en el formulari."
+
+#: templates/components/form_errors.html:41
+msgid "Please, check the fields marked in red."
+msgstr "Si us plau, comprova els camps marcats en vermell."
+
+#: templates/demo_flowbite.html:51 templates/fields/field_default.html:36
+#: templates/fields/field_default.html:87
+#: templates/fields/field_default.html:140
+msgid "Show information"
+msgstr "Mostra la informació"
+
+#: templates/demo_flowbite.html:346
+msgid "Error alert"
+msgstr "Alerta d’error"
+
+#: templates/demo_flowbite.html:348
+msgid "There is an error in the form!"
+msgstr "Hi ha un error en el formulari!"
+
+#: templates/demo_flowbite.html:350
+msgid "Please check the fields marked in red"
+msgstr "Comprova els camps marcats en vermell"
+
+#: templates/demo_flowbite.html:362
+msgid "Close error alert"
+msgstr "Tanca l’alerta d’error"
+
+#: templates/demo_flowbite.html:374
+msgid "Form error"
+msgstr "Error de formulari"
+
+#: templates/demo_flowbite.html:376
+msgid "There was an error!"
+msgstr "S’ha produït un error!"
+
+#: templates/demo_flowbite.html:416
+msgid "Upload a file"
+msgstr "Puja un fitxer"
+
+#: templates/demo_flowbite.html:498
+msgid "New file"
+msgstr "Fitxer nou"
+
+#: templates/demo_flowbite.html:519
+msgid "Current file"
+msgstr "Fitxer actual"
+
+#: templates/demo_flowbite.html:539
+msgid "Delete file"
+msgstr "Suprimeix el fitxer"
+
+#: templates/demo_flowbite.html:559
+msgid "This is the current uploaded file:"
+msgstr "Aquest és el fitxer pujat:"
+
+#: templates/demo_flowbite.html:584
+msgid ""
+"Select a new file. Beware that if there was a file already uploaded, it will "
+"be erased."
+msgstr ""
+"Selecciona un fitxer nou. Tingues en compte que si ja hi ha un fitxer pujat, "
+"s’esborrarà."
+
+#: templates/demo_flowbite.html:633
+msgid "Delete the current file."
+msgstr "Suprimeix el fitxer actual."
+
+#: templates/home_internal.html:5
+msgid "Internal home page"
+msgstr "Pàgina d’inici interna"
+
+#: templates/main/documents.html:33
+msgid "Filter by project"
+msgstr "Filtra per projecte"
+
+#: templates/main/documents.html:42
+msgid "Projects"
+msgstr "Projectes"
+
+#: templates/main/documents.html:71
+msgid ""
+"There is no documents to show. Once the administrators have added some, you "
+"will be able to download them here."
+msgstr ""
+"No hi ha documents per mostrar. Un cop els administradors n’hagin afegit "
+"alguns, els podràs descarregar aquí."
+
+#: templates/main/documents.html:72
+msgid "Come back soon to check!"
+msgstr "Torna aviat per comprovar-ho!"
+
+#: templates/newsletter.html:5
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: templates/newsletter.html:32
+msgid "Subscribe to our Newsletter"
+msgstr "Subscriu-te a la nostra Newsletter"
+
+#: templates/profile/details.html:5
 msgid "Profile details"
 msgstr "Detalls del perfil"
 
-#: src/templates/base.html:24
-msgid "Log out"
+#: templates/profile/details.html:31
+msgid "Your profile"
+msgstr "El teu perfil"
+
+#: templates/profile/details.html:33
+msgid "Here you can see and edit all your data."
+msgstr "Aquí pots veure i editar totes les teves dades."
+
+#: templates/profile/details.html:47
+msgid "Warning!"
+msgstr "Atenció!"
+
+#: templates/profile/details.html:48
+msgid "Your email is not verified. Before anything else, you must verify it."
 msgstr ""
+"El teu correu electrònic no està verificat. Per poder accedir a la resta "
+"d'apartats de l'aplicatiu, cal verificar-lo."
 
-#: src/templates/base_success.html:6
-msgid "Done!!"
-msgstr "Fet!"
+#: templates/profile/details.html:50
+msgid "Verify email here."
+msgstr "Verifica el correu electrònic aquí."
 
-#: src/templates/base_success.html:10
-msgid "Registry successfully updated."
-msgstr ""
+#: templates/profile/details.html:79
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:42
+msgid "Password change"
+msgstr "Canvi de contrasenya"
 
-#: src/templates/base_success.html:12
-msgid "Back"
-msgstr "Enrere"
+#: templates/profile/details.html:81
+msgid "Here you can change your password."
+msgstr "Aquí pots canviar la contrasenya."
 
-#: src/templates/home.html:5
-msgid "Initial home page"
-msgstr ""
+#: templates/profile/details.html:88
+msgid "Change password"
+msgstr "Canvia la contrasenya"
 
-#: src/templates/profile/details.html:8
-msgid "Save"
-msgstr ""
+#: templates/registration/login.html:31
+msgid "Sign in to your account"
+msgstr "Inicia la sessió al vostre compte"
 
-#: src/templates/registration/login.html:5
-msgid "Log-in"
-msgstr ""
+#: templates/registration/login.html:47
+msgid "Sign in"
+msgstr "Iniciar sessió"
 
-#: src/templates/registration/login.html:9
-msgid "Enter your account details to authenticate."
-msgstr ""
+#: templates/registration/login.html:52
+msgid "Forgot your password?"
+msgstr "Has oblidat la contrasenya?"
 
-#: src/templates/registration/login.html:19
-msgid "Forgotten your password?"
-msgstr ""
+#: templates/registration/login.html:55
+msgid "Don’t have an account yet?"
+msgstr "Encara no tens un compte?"
 
-#: src/templates/registration/login.html:21
-msgid "If you are not registered yet:"
-msgstr ""
-
-#: src/templates/registration/login.html:24
+#: templates/registration/login.html:57
+#: templates/registration/login_old.html:80
 msgid "Sign-up"
-msgstr ""
+msgstr "Registrar-se"
 
-#: src/templates/registration/password_reset_confirm.html:4
-msgid "New password"
-msgstr ""
+#: templates/registration/login_old.html:15
+msgid "Log-in"
+msgstr "Iniciar sessió"
 
-#: src/templates/registration/password_reset_confirm.html:8
-msgid "Set"
-msgstr ""
+#: templates/registration/login_old.html:21
+msgid "Enter your account details to authenticate."
+msgstr "Introdueix les dades del teu compte per a autenticar-te."
 
-#: src/templates/registration/password_reset_form.html:8
+#: templates/registration/login_old.html:66
+msgid "Go in"
+msgstr "Anar"
+
+#: templates/registration/login_old.html:73
+msgid "Forgotten your password?"
+msgstr "Has oblidat la contrasenya?"
+
+#: templates/registration/login_old.html:77
+msgid "If you are not registered yet:"
+msgstr "Si encara no estàs registrat:"
+
+#: templates/registration/password_change_form.html:50
+#: templates/registration/password_reset_confirm.html:29
+#: templates/registration/password_reset_form.html:26
+#: templates/registration/send_verification_code.html:51
+#: templates/registration/user_validation.html:26
 msgid "Send"
+msgstr "Envia"
+
+#: templates/registration/password_reset_confirm.html:5
+#: templates/registration/user_validation_confirm.html:5
+msgid "New password"
+msgstr "Nova contrasenya"
+
+#: templates/registration/password_reset_confirm.html:18
+#: templates/registration/password_reset_form.html:5
+#: templates/registration/password_reset_form.html:18
+msgid "Password recovery"
+msgstr "Recuperació de contrasenya"
+
+#: templates/registration/password_reset_confirm.html:21
+msgid ""
+"Introduce your email. A link will be sent to this address so you can reset "
+"your password."
 msgstr ""
+"Indica el teu correu electrònic. S’enviarà un enllaç a aquesta adreça perquè "
+"pugueu restablir la contrasenya."
+
+#: templates/registration/privacy_policy.html:6
+#: templates/registration/privacy_policy.html:18
+msgid "Privacy policy"
+msgstr "Política de privacitat"
+
+#: templates/registration/send_verification_code.html:5
+#: templates/registration/send_verification_code.html:42
+#: templates/registration/user_validation.html:5
+msgid "Email verification"
+msgstr "Verificació del correu electrònic"
+
+#: templates/registration/send_verification_code.html:47
+msgid ""
+"By clicking the button a verification code will be send to your email "
+"address. Check your email to find it."
+msgstr ""
+"En fer clic al botó s’enviarà un codi de verificació a la teva adreça de "
+"correu electrònic. Comprova el teu correu electrònic per trobar-lo."
+
+#: templates/registration/signup.html:40
+msgid "Create Account"
+msgstr "Crea un compte"
+
+#: templates/registration/user_validation.html:17
+msgid "Verification code sent"
+msgstr "Codi de verificació enviat"
+
+#: templates/registration/user_validation.html:19
+msgid "Write here the verification code that you have received in your email."
+msgstr ""
+"Escriu aquí el codi de verificació que has rebut al teu correu electrònic."
+
+#: templates/registration/user_validation_confirm.html:27
+msgid "Set"
+msgstr "Estableix"
+
+#~ msgid "Email address"
+#~ msgstr "Correu electrònic"
+
+#~ msgid "Logo of the business"
+#~ msgstr "Logotip de l’empresa"
+
+#~ msgid "Home page"
+#~ msgstr "Pàgina d'inici"
+
+#~ msgid "Go"
+#~ msgstr "Anar"
+
+#~ msgid "Mail validation"
+#~ msgstr "Verificació de correu"
+
+#~ msgid "Newsletter Successful"
+#~ msgstr "Newsletter amb èxit"
+
+#~ msgid "Newsletter created successful."
+#~ msgstr "Newsletter creat amb èxit."
+
+#~ msgid "Pàgina home"
+#~ msgstr "Pàgina d’inici"
+
+#~ msgid "Back"
+#~ msgstr "Enrere"

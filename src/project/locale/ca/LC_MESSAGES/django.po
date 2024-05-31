@@ -2,29 +2,105 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 18:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2024-05-29 10:04+0200\n"
+"PO-Revision-Date: 2024-05-28 15:59+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: src/conf/settings.py:152
-msgid "English"
-msgstr "Anglès"
+"X-Generator: Poedit 3.4.3\n"
 
-#: src/conf/settings.py:153
+#: project/models.py:24
+msgid "created at"
+msgstr "creat el"
+
+#: project/models.py:35
+msgid "created by"
+msgstr "creat per"
+
+#: project/models.py:38
+msgid "updated at"
+msgstr "actualitzat el"
+
+#: project/settings.py:65
 msgid "Catalan"
 msgstr "Català"
 
-#: src/conf/urls.py:31
+#: project/settings.py:371
+msgid "Project name"
+msgstr "Nom del projecte"
+
+#: project/test/test_selenium.py:369 project/test/test_selenium.py:430
+msgid "Go back"
+msgstr "Tornar enrere"
+
+#: project/urls.py:30
 msgid "registration/"
-msgstr ""
+msgstr "registre/"
+
+#: project/urls.py:32
+msgid "newsletter/"
+msgstr "butlleti/"
+
+#: project/urls.py:34
+msgid "newsletter/success/"
+msgstr "butlleti/alta/"
+
+#: project/views.py:37
+msgid "Back"
+msgstr "Enrere"
+
+#: project/views.py:38
+msgid "Registry updated"
+msgstr "Registre actualitzat"
+
+#: project/views.py:39
+msgid "Registry successfully updated"
+msgstr "Registre actualitzat correctament"
+
+#: project/views.py:40
+msgid "Done!"
+msgstr "Fet!"
+
+#: project/views.py:41
+msgid "The registry was updated correctly."
+msgstr "El registre ha estat actualitzat correctament."
+
+#~ msgid "Site administration | Django Administrative Site"
+#~ msgstr "Administració del lloc | Lloc administratiu de Django"
+
+#~ msgid "Project App | Sign up"
+#~ msgstr "Projecte App | Registrar-se"
+
+#~ msgid "Project App | Profile Details"
+#~ msgstr "Projecte App | Detalls del perfil"
+
+#~ msgid "Project App | Registry updated"
+#~ msgstr "Projecte App | Registre actualitzat"
+
+#~ msgid "Project App | Password change"
+#~ msgstr "Projecte App | Canvi de contrasenya"
+
+#~ msgid "Project App | Mail validation"
+#~ msgstr "Projecte App | Validació de correu"
+
+#~ msgid "Project App | Newsletter"
+#~ msgstr "Projecte App | Newsletter"
+
+#~ msgid "Project App | Newsletter Successful"
+#~ msgstr "Projecte App | Newsletter amb èxit"
+
+#~ msgid "Project App | Documents"
+#~ msgstr "Projecte App | Documents"
+
+#~ msgid "English"
+#~ msgstr "Anglès"

@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.utils.translation import gettext_lazy as _
 
 from apps.users.models import User
 
@@ -33,7 +34,9 @@ class UserManagerTestCase(TestCase):
                     email=None,
                     password="test_password",
                 )
-            self.assertEqual(str(error.exception), "Users must have an email address")
+            self.assertEqual(
+                str(error.exception), _("Users must have an email address")
+            )
 
     def test_create_superuser(self):
         """
@@ -62,7 +65,7 @@ class UserManagerTestCase(TestCase):
                     is_staff=True,
                     is_superuser=True,
                 )
-            self.assertEqual(str(error.exception), "Superusers must have a password")
+            self.assertEqual(str(error.exception), _("Superusers must have a password"))
 
     def test_full_name(self):
         """

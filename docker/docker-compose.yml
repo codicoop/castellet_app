@@ -15,27 +15,11 @@ services:
     env_file: ./.env
     command: gunicorn project.wsgi:application --bind 0.0.0.0:8000 --reload --threads=10
     ports:
-      - "1234:8000"
+      - "1501:8000"
     volumes:
       - ../src:/srv
     depends_on:
       - castellet-db
-    networks:
-      - castellet-network
-
-  castellet-celery:
-    build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-      target: development
-    command: "celery -A apps.celery worker --loglevel=INFO"
-    container_name: castellet-celery
-    env_file: ./.env
-    volumes:
-      - ../src:/srv
-    depends_on:
-      - castellet-redis
-#    entrypoint: ["sh", "-c", "sleep 2073600"]
     networks:
       - castellet-network
 
@@ -49,11 +33,6 @@ services:
     networks:
       - castellet-network
 
-  castellet-redis:
-    container_name: castellet-redis
-    image: redis
-    networks:
-      - castellet-network
 
   castellet-selenium:
     container_name: castellet-selenium
