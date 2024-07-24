@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 15:39+0200\n"
+"POT-Creation-Date: 2024-07-24 13:45+0200\n"
 "PO-Revision-Date: 2024-05-29 15:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,11 +31,11 @@ msgstr "Nom"
 msgid "Surnames"
 msgstr "Cognoms"
 
-#: apps/main/forms.py:29
+#: apps/main/forms.py:27
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: apps/main/forms.py:33 apps/main/models.py:14
+#: apps/main/forms.py:29 apps/main/models.py:14
 msgid "Email where you will receive our newsletter"
 msgstr "Correu electrònic on vols rebre el nostre butlletí"
 
@@ -48,11 +48,15 @@ msgid "Your surnames"
 msgstr "Els teus cognoms"
 
 #: apps/main/models.py:31
-msgid "newsletter"
-msgstr "butlletí"
+#, fuzzy
+#| msgid "newsletters"
+msgid "newsletter subscriber"
+msgstr "butlletins"
 
 #: apps/main/models.py:32
-msgid "newsletters"
+#, fuzzy
+#| msgid "newsletters"
+msgid "newsletter subscribers"
 msgstr "butlletins"
 
 #: apps/main/models.py:48
@@ -138,50 +142,50 @@ msgstr ""
 msgid "Logo of Comunitat energètica Castellet"
 msgstr "Logo de la Castellet Sostenible"
 
-#: templates/base.html:79 templates/base.html:132 templates/home.html:5
-#: templates/home.html:19 templates/home.html:25
-#: templates/main/documents.html:19 templates/newsletter.html:23
-#: templates/profile/details.html:22 templates/registration/login.html:22
+#: templates/base.html:79 templates/base.html:158
+#: templates/registration/password_change_form.html:32
+#: templates/registration/send_verification_code.html:32
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/base.html:85 templates/base.html:181
+msgid "Administration panel"
+msgstr "Panell d’administració"
+
+#: templates/base.html:92
+msgid "Log out"
+msgstr "Tancar sessió"
+
+#: templates/base.html:122 templates/home.html:5 templates/home.html:19
+#: templates/home.html:25 templates/main/documents.html:19
+#: templates/newsletter.html:23 templates/profile/details.html:22
+#: templates/registration/login.html:22
 #: templates/registration/password_change_form.html:23
 #: templates/registration/send_verification_code.html:23
 #: templates/registration/signup.html:23
 msgid "Home"
 msgstr "Inici"
 
-#: templates/base.html:84 templates/base.html:168
-#: templates/registration/password_change_form.html:32
-#: templates/registration/send_verification_code.html:32
-msgid "Profile"
-msgstr "Perfil"
-
-#: templates/base.html:89 templates/base.html:179
-#: templates/main/documents.html:5 templates/main/documents.html:25
-msgid "Documents"
-msgstr "Documents"
-
-#: templates/base.html:95 templates/base.html:191
-msgid "Administration panel"
-msgstr "Panell d’administració"
-
-#: templates/base.html:102
-msgid "Log out"
-msgstr "Tancar sessió"
-
-#: templates/base.html:145 templates/registration/login.html:5
+#: templates/base.html:135 templates/registration/login.html:5
 #: templates/registration/login_old.html:5
 msgid "Log in"
 msgstr "Iniciar sessió"
 
-#: templates/base.html:156 templates/base_success.html:6
+#: templates/base.html:146 templates/base_success.html:6
 #: templates/registration/signup.html:5 templates/registration/signup.html:32
 msgid "Sign up"
 msgstr "Registrar-se"
 
-#: templates/base.html:225
+#: templates/base.html:169 templates/main/documents.html:5
+#: templates/main/documents.html:25
+msgid "Documents"
+msgstr "Documents"
+
+#: templates/base.html:216
 msgid "Do you want to subscribe to our newsletter?"
 msgstr "Vols subscriure’t a la nostra newsletter?"
 
-#: templates/base.html:290
+#: templates/base.html:281
 msgid ""
 "We use cookies to optimize your experience and to analyze the web traffic. "
 "We don't sell data to third parties. If you continue navigating, we'll "
@@ -191,11 +195,11 @@ msgstr ""
 "web. No venem dades a tercers. Si continues navegant, entendrem que estàs "
 "d’acord amb això."
 
-#: templates/base.html:302
+#: templates/base.html:293
 msgid "Accept"
 msgstr "Accepta"
 
-#: templates/base.html:312
+#: templates/base.html:303
 msgid "Deny"
 msgstr "Denega"
 
@@ -464,6 +468,9 @@ msgstr ""
 #: templates/registration/user_validation_confirm.html:27
 msgid "Set"
 msgstr "Estableix"
+
+#~ msgid "newsletter"
+#~ msgstr "butlletí"
 
 #~ msgid "Email address"
 #~ msgstr "Correu electrònic"

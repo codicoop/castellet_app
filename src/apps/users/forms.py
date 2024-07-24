@@ -96,6 +96,23 @@ class UserSignUpForm(UserCreationForm):
         max_length=254,
         widget=forms.EmailInput(attrs={"autocomplete": "email"}),
     )
+    phone = flowbite.FormCharField(
+        label=_("Phone"),
+        max_length=9,
+        widget=forms.TextInput(
+            attrs={"autofocus": True, "autocomplete": "tel"},
+        ),
+    )
+    address = flowbite.FormCharField(
+        label=_("Address"),
+        max_length=255,
+        widget=forms.TextInput(),
+    )
+    dni = flowbite.FormCharField(
+        label=_("National Identity Document"),
+        max_length=10,
+        widget=forms.TextInput(),
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -105,6 +122,9 @@ class UserSignUpForm(UserCreationForm):
             "password1",
             "password2",
             "email",
+            "phone",
+            "address",
+            "dni",
         )
 
     def __init__(self, *args, **kwargs):
@@ -151,6 +171,26 @@ class ProfileDetailsForm(forms.ModelForm):
             }
         ),
     )
+    phone = flowbite.FormCharField(
+        label=_("Phone"),
+        max_length=9,
+        widget=forms.TextInput(
+            attrs={
+            "autofocus": True,
+                "autocomplete": "tel",
+            }
+        ),
+    )
+    address = flowbite.FormCharField(
+        label=_("Address"),
+        max_length=255,
+        widget=forms.TextInput(),
+    )
+    dni = flowbite.FormCharField(
+        label=_("National Identity Document"),
+        max_length=10,
+        widget=forms.TextInput(),
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -158,6 +198,9 @@ class ProfileDetailsForm(forms.ModelForm):
             "name",
             "surnames",
             "email",
+            "phone",
+            "address",
+            "dni",
         )
 
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 10:04+0200\n"
-"PO-Revision-Date: 2024-05-29 15:43+0200\n"
+"POT-Creation-Date: 2024-07-24 13:45+0200\n"
+"PO-Revision-Date: 2024-07-24 13:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: apps/users/forms.py:32 apps/users/forms.py:95 apps/users/forms.py:148
-#: apps/users/forms.py:168
+#: apps/users/forms.py:32 apps/users/forms.py:95 apps/users/forms.py:166
+#: apps/users/forms.py:209
 msgid "Email"
 msgstr "Correu electrònic"
 
@@ -47,11 +47,11 @@ msgstr ""
 "Mentre escriguis la nova contrasenya serà visible, per facilitar-te la còpia "
 "i l’enviament a l’usuari."
 
-#: apps/users/forms.py:79 apps/users/forms.py:140
+#: apps/users/forms.py:79 apps/users/forms.py:158
 msgid "Name"
 msgstr "Nom"
 
-#: apps/users/forms.py:83 apps/users/forms.py:144
+#: apps/users/forms.py:83 apps/users/forms.py:162
 msgid "Surnames"
 msgstr "Cognoms"
 
@@ -59,27 +59,39 @@ msgstr "Cognoms"
 msgid "Password confirmation"
 msgstr "Confirmació de la contrasenya"
 
-#: apps/users/forms.py:120
+#: apps/users/forms.py:100 apps/users/forms.py:175
+msgid "Phone"
+msgstr "Telèfon"
+
+#: apps/users/forms.py:107 apps/users/forms.py:185 apps/users/models.py:66
+msgid "Address"
+msgstr "Adreça"
+
+#: apps/users/forms.py:112 apps/users/forms.py:190 apps/users/models.py:72
+msgid "National Identity Document"
+msgstr "Document Nacional d’Identitat"
+
+#: apps/users/forms.py:138
 msgid "privacy policy"
 msgstr "política de privacitat"
 
-#: apps/users/forms.py:122
+#: apps/users/forms.py:140
 msgid "I have read and agree with the {}"
 msgstr "He llegit i estic d'acord amb {}"
 
-#: apps/users/forms.py:225 apps/users/forms.py:244
+#: apps/users/forms.py:264 apps/users/forms.py:283
 msgid "New password"
 msgstr "Nova contrasenya"
 
-#: apps/users/forms.py:229 apps/users/forms.py:250
+#: apps/users/forms.py:268 apps/users/forms.py:287
 msgid "New password confirmation"
 msgstr "Confirmació de la nova contrasenya"
 
-#: apps/users/forms.py:240
+#: apps/users/forms.py:279
 msgid "Old password"
 msgstr "Contrasenya antiga"
 
-#: apps/users/forms.py:259
+#: apps/users/forms.py:294
 msgid "Verification code"
 msgstr "Codi de verificació"
 
@@ -91,7 +103,7 @@ msgstr "Els usuaris han de tenir una adreça electrònica"
 msgid "Superusers must have a password"
 msgstr "Els superusuaris han de tenir una contrasenya"
 
-#: apps/users/models.py:45 apps/users/models.py:73
+#: apps/users/models.py:45 apps/users/models.py:127
 msgid "name"
 msgstr "nom"
 
@@ -103,11 +115,39 @@ msgstr "cognom"
 msgid "email address"
 msgstr "adreça electrònica"
 
-#: apps/users/models.py:82
+#: apps/users/models.py:60
+msgid "Contact telephone"
+msgstr "Telèfon de contacte"
+
+#: apps/users/models.py:78
+msgid "Role"
+msgstr "Rol"
+
+#: apps/users/models.py:84
+msgid "Projects"
+msgstr "Projectes"
+
+#: apps/users/models.py:90
+msgid "Partner ID"
+msgstr "Número de soci"
+
+#: apps/users/models.py:96
+msgid "Entry year"
+msgstr "Any d’entrada"
+
+#: apps/users/models.py:102
+msgid "Corporate contribution"
+msgstr "Aportació societària"
+
+#: apps/users/models.py:108
+msgid "Voluntary contribution"
+msgstr "Aportació voluntària"
+
+#: apps/users/models.py:136
 msgid "user"
 msgstr "usuari"
 
-#: apps/users/models.py:83
+#: apps/users/models.py:137
 msgid "users"
 msgstr "usuaris"
 

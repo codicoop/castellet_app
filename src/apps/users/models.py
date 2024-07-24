@@ -47,7 +47,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         _("surname"),
         max_length=50,
         default="",
-        blank=True,
+        blank=False,
     )
     email = flowbite.ModelEmailField(
         verbose_name=_("email address"),
@@ -56,6 +56,60 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     )
     email_verification_code = models.CharField(default="0000")
     email_verified = models.BooleanField(default=False)
+    phone = flowbite.ModelCharField(
+        _("Contact telephone"),
+        max_length=20,
+        blank=False,
+        null=False,
+    )
+    address = flowbite.ModelCharField(
+        _("Address"),
+        max_length=255,
+        blank=False,
+        null=False,
+    )
+    dni = flowbite.ModelCharField(
+        _("National Identity Document"),
+        max_length=10,
+        blank=False,
+        null=False,
+    )
+    role = flowbite.ModelCharField(
+        _("Role"),
+        max_length=50,
+        blank=True,
+        null=True,
+    )
+    projects = flowbite.ModelCharField(
+        verbose_name=_("Projects"),
+        choices=[],
+        blank=True,
+        null=True,
+    )
+    partner_id = flowbite.ModelCharField(
+        _("Partner ID"),
+        max_length=50,
+        blank=True,
+        null=True,
+    )
+    entry_year = flowbite.ModelCharField(
+        _("Entry year"),
+        max_length=4,
+        blank=True,
+        null=True,
+    )
+    corporate_contribution = flowbite.ModelCharField(
+        _("Corporate contribution"),
+        max_length=10,
+        blank=True,
+        null=True,
+    )
+    voluntary_contribution = flowbite.ModelCharField(
+        _("Voluntary contribution"),
+        max_length=10,
+        blank=True,
+        null=True,
+    )
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
