@@ -44,7 +44,9 @@ class UserManager(BaseUserManager):
 
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     class SelectChoices(models.IntegerField):
-        PROJECTS_CHOICES = [(project.id, project.name) for project in Project.objects.all()]
+        PROJECTS_CHOICES = [
+            (project.id, project.name) for project in Project.objects.all()
+        ]
 
     name = flowbite.ModelCharField(_("name"), max_length=50)
     surnames = flowbite.ModelCharField(

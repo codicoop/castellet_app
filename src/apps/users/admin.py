@@ -107,7 +107,10 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
         ),
     )
     superuser_fields = ("is_superuser",)
-    readonly_fields = ("roles_explanation_field", "email_verified",)
+    readonly_fields = (
+        "roles_explanation_field",
+        "email_verified",
+    )
 
     def get_fieldsets(self, request, obj=None):
         return super().get_fieldsets(request, obj) + self.common_fieldsets

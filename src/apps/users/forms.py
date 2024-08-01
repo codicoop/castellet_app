@@ -176,7 +176,7 @@ class ProfileDetailsForm(forms.ModelForm):
         max_length=9,
         widget=forms.TextInput(
             attrs={
-            "autofocus": True,
+                "autofocus": True,
                 "autocomplete": "tel",
             }
         ),
