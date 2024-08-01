@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.models import Project
 from project.fields import flowbite
 from project.models import BaseModel
 
@@ -42,6 +43,9 @@ class UserManager(BaseUserManager):
 
 
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
+    class SelectChoices(models.IntegerField):
+        PROJECTS_CHOICES = [(project.id, project.name) for project in Project.objects.all()]
+
     name = flowbite.ModelCharField(_("name"), max_length=50)
     surnames = flowbite.ModelCharField(
         _("surname"),
@@ -59,20 +63,26 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     phone = flowbite.ModelCharField(
         _("Contact telephone"),
         max_length=20,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
     address = flowbite.ModelCharField(
         _("Address"),
         max_length=255,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
     dni = flowbite.ModelCharField(
         _("National Identity Document"),
         max_length=10,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
+    )
+    bank_account = flowbite.ModelCharField(
+        _("Bank account"),
+        max_length=24,
+        blank=True,
+        null=True,
     )
     role = flowbite.ModelCharField(
         _("Role"),
@@ -80,11 +90,12 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True,
     )
-    projects = flowbite.ModelCharField(
+    projects = flowbite.ModelSelectDropdownField(
         verbose_name=_("Projects"),
-        choices=[],
-        blank=True,
-        null=True,
+        max_length=20,
+        choices=SelectChoices.PROJECTS_CHOICES,
+        blank=False,
+        null=False,
     )
     partner_id = flowbite.ModelCharField(
         _("Partner ID"),

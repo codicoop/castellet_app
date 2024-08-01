@@ -72,6 +72,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
                     "phone",
                     "address",
                     "dni",
+                    "bank_account",
                     "role",
                     "projects",
                     "partner_id",

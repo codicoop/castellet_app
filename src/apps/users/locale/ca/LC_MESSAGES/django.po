@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 13:45+0200\n"
-"PO-Revision-Date: 2024-07-24 13:55+0200\n"
+"POT-Creation-Date: 2024-08-01 18:35+0200\n"
+"PO-Revision-Date: 2024-08-01 18:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -63,11 +63,11 @@ msgstr "Confirmació de la contrasenya"
 msgid "Phone"
 msgstr "Telèfon"
 
-#: apps/users/forms.py:107 apps/users/forms.py:185 apps/users/models.py:66
+#: apps/users/forms.py:107 apps/users/forms.py:185 apps/users/models.py:70
 msgid "Address"
 msgstr "Adreça"
 
-#: apps/users/forms.py:112 apps/users/forms.py:190 apps/users/models.py:72
+#: apps/users/forms.py:112 apps/users/forms.py:190 apps/users/models.py:76
 msgid "National Identity Document"
 msgstr "Document Nacional d’Identitat"
 
@@ -95,59 +95,63 @@ msgstr "Contrasenya antiga"
 msgid "Verification code"
 msgstr "Codi de verificació"
 
-#: apps/users/models.py:21 apps/users/tests/test_models.py:38
+#: apps/users/models.py:22 apps/users/tests/test_models.py:38
 msgid "Users must have an email address"
 msgstr "Els usuaris han de tenir una adreça electrònica"
 
-#: apps/users/models.py:35 apps/users/tests/test_models.py:68
+#: apps/users/models.py:36 apps/users/tests/test_models.py:68
 msgid "Superusers must have a password"
 msgstr "Els superusuaris han de tenir una contrasenya"
 
-#: apps/users/models.py:45 apps/users/models.py:127
+#: apps/users/models.py:49 apps/users/models.py:138
 msgid "name"
 msgstr "nom"
 
-#: apps/users/models.py:47
+#: apps/users/models.py:51
 msgid "surname"
 msgstr "cognom"
 
-#: apps/users/models.py:53
+#: apps/users/models.py:57
 msgid "email address"
 msgstr "adreça electrònica"
 
-#: apps/users/models.py:60
+#: apps/users/models.py:64
 msgid "Contact telephone"
 msgstr "Telèfon de contacte"
 
-#: apps/users/models.py:78
+#: apps/users/models.py:82
+msgid "Bank account"
+msgstr "Compte bancari"
+
+#: apps/users/models.py:88
 msgid "Role"
 msgstr "Rol"
 
-#: apps/users/models.py:84
+#: apps/users/models.py:94
 msgid "Projects"
 msgstr "Projectes"
 
-#: apps/users/models.py:90
+#: apps/users/models.py:101
 msgid "Partner ID"
 msgstr "Número de soci"
 
-#: apps/users/models.py:96
+#: apps/users/models.py:107
 msgid "Entry year"
 msgstr "Any d’entrada"
 
-#: apps/users/models.py:102
+#: apps/users/models.py:113
 msgid "Corporate contribution"
 msgstr "Aportació societària"
 
-#: apps/users/models.py:108
+#: apps/users/models.py:119
 msgid "Voluntary contribution"
 msgstr "Aportació voluntària"
 
-#: apps/users/models.py:136
+#: apps/users/models.py:147
 msgid "user"
 msgstr "usuari"
 
-#: apps/users/models.py:137
+#: apps/users/models.py:148
 msgid "users"
 msgstr "usuaris"
 
