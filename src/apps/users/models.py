@@ -43,11 +43,6 @@ class UserManager(BaseUserManager):
 
 
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
-    class SelectChoices(models.IntegerField):
-        PROJECTS_CHOICES = [
-            (project.id, project.name) for project in Project.objects.all()
-        ]
-
     name = flowbite.ModelCharField(_("name"), max_length=50)
     surnames = flowbite.ModelCharField(
         _("surname"),
@@ -92,12 +87,12 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True,
     )
-    projects = flowbite.ModelSelectDropdownField(
+    projects = models.ManyToManyField(
+        Project,
+        blank=True,
+        null=True,
+        related_name="user_projects",
         verbose_name=_("Projects"),
-        max_length=20,
-        choices=SelectChoices.PROJECTS_CHOICES,
-        blank=False,
-        null=False,
     )
     partner_id = flowbite.ModelCharField(
         _("Partner ID"),
