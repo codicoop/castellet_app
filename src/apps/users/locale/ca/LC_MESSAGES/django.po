@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-01 18:35+0200\n"
-"PO-Revision-Date: 2024-08-01 18:36+0200\n"
+"POT-Creation-Date: 2024-08-07 16:25+0200\n"
+"PO-Revision-Date: 2024-08-07 16:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -63,11 +63,11 @@ msgstr "Confirmació de la contrasenya"
 msgid "Phone"
 msgstr "Telèfon"
 
-#: apps/users/forms.py:107 apps/users/forms.py:185 apps/users/models.py:70
+#: apps/users/forms.py:107 apps/users/forms.py:185 apps/users/models.py:76
 msgid "Address"
 msgstr "Adreça"
 
-#: apps/users/forms.py:112 apps/users/forms.py:190 apps/users/models.py:76
+#: apps/users/forms.py:112 apps/users/forms.py:190 apps/users/models.py:82
 msgid "National Identity Document"
 msgstr "Document Nacional d’Identitat"
 
@@ -103,55 +103,71 @@ msgstr "Els usuaris han de tenir una adreça electrònica"
 msgid "Superusers must have a password"
 msgstr "Els superusuaris han de tenir una contrasenya"
 
-#: apps/users/models.py:49 apps/users/models.py:138
+#: apps/users/models.py:47 apps/users/models.py:151
 msgid "name"
 msgstr "nom"
 
 #: apps/users/models.py:51
+msgid "Your name"
+msgstr "El teu nom"
+
+#: apps/users/models.py:54
 msgid "surname"
 msgstr "cognom"
 
-#: apps/users/models.py:57
+#: apps/users/models.py:58
+msgid "Your surnames"
+msgstr "Els teus cognoms"
+
+#: apps/users/models.py:61
 msgid "email address"
 msgstr "adreça electrònica"
 
-#: apps/users/models.py:64
+#: apps/users/models.py:70
 msgid "Contact telephone"
 msgstr "Telèfon de contacte"
 
-#: apps/users/models.py:82
+#: apps/users/models.py:88
 msgid "Bank account"
 msgstr "Compte bancari"
 
-#: apps/users/models.py:88
-msgid "Role"
-msgstr "Rol"
-
 #: apps/users/models.py:94
+msgid "Charge"
+msgstr "Càrrec"
+
+#: apps/users/models.py:100
+msgid "Is governing council member"
+msgstr "És membre del Consell Rector"
+
+#: apps/users/models.py:104
+msgid "Is this user a governing council member?"
+msgstr "És aquest usuari membre del Consell Rector?"
+
+#: apps/users/models.py:111
 msgid "Projects"
 msgstr "Projectes"
 
-#: apps/users/models.py:101
+#: apps/users/models.py:114
 msgid "Partner ID"
 msgstr "Número de soci"
 
-#: apps/users/models.py:107
+#: apps/users/models.py:120
 msgid "Entry year"
 msgstr "Any d’entrada"
 
-#: apps/users/models.py:113
+#: apps/users/models.py:126
 msgid "Corporate contribution"
 msgstr "Aportació societària"
 
-#: apps/users/models.py:119
+#: apps/users/models.py:132
 msgid "Voluntary contribution"
 msgstr "Aportació voluntària"
 
-#: apps/users/models.py:147
+#: apps/users/models.py:160
 msgid "user"
 msgstr "usuari"
 
-#: apps/users/models.py:148
+#: apps/users/models.py:161
 msgid "users"
 msgstr "usuaris"
 
@@ -279,6 +295,9 @@ msgstr "Canvi de contrasenya"
 #: apps/users/views.py:214
 msgid "Password change successful."
 msgstr "Contrasenya modificada correctament."
+
+#~ msgid "Role"
+#~ msgstr "Rol"
 
 #~ msgid "Email address"
 #~ msgstr "Adreça electrònica"

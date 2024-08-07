@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Document, NewsletterSubscriber, Project
+from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
 
 
 class ExportCsvMixin:
@@ -32,13 +32,49 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin, ExportCsvMixin):
     actions = ["export_as_csv"]
 
 
+@admin.register(ProjectType)
+class ProjectTypeAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("name", "created_at")
-    search_fields = ["name", "created_at"]
+    list_display = (
+        "title",
+        "project_type",
+        "status",
+        "energy_power",
+        "annual_energy",
+        "investment",
+        "created_at",
+    )
+    list_filter = ("project_type", "status", "created_at")
+    search_fields = ["title", "created_at"]
+    readonly_fields = [
+        "participants",
+        "number_participants",
+    ]
 
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ("project", "title", "file", "created_at")
-    search_fields = ["project", "title", "file", "created_at"]
+    list_display = ("project", "title", "tags", "file", "created_at")
+    list_filter = [
+        "project",
+        "responsible_user",
+        "tags",
+    ]
+    search_fields = ["project", "title", "tags", "date_document", "file", "created_at"]
+
+    readonly_fields = [
+        "responsible_user",
+    ]
+
+    def save_model(self, request, instance, form, change):
+        user = request.user
+        instance = form.save(commit=False)
+        if not change or not instance.responsible_user:
+            instance.responsible_user = user
+        instance.save()
+        form.save_m2m()
+        return instance

@@ -43,16 +43,25 @@ class UserManager(BaseUserManager):
 
 
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
-    name = flowbite.ModelCharField(_("name"), max_length=50)
+    name = flowbite.ModelCharField(
+        _("name"),
+        max_length=50,
+        blank=False,
+        null=False,
+        help_text=_("Your name"),
+    )
     surnames = flowbite.ModelCharField(
         _("surname"),
         max_length=50,
-        default="",
         blank=False,
+        null=False,
+        help_text=_("Your surnames"),
     )
     email = flowbite.ModelEmailField(
         verbose_name=_("email address"),
         max_length=255,
+        blank=False,
+        null=False,
         unique=True,
     )
     email_verification_code = models.CharField(default="0000")
@@ -81,11 +90,18 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True,
     )
-    role = flowbite.ModelCharField(
-        _("Role"),
+    charge = flowbite.ModelCharField(
+        _("Charge"),
         max_length=50,
         blank=True,
         null=True,
+    )
+    governing_council_member = flowbite.ModelBooleanField(
+        _("Is governing council member"),
+        default=False,
+        blank=True,
+        null=True,
+        help_text=_("Is this user a governing council member?"),
     )
     projects = models.ManyToManyField(
         Project,
