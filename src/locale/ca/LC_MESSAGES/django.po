@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-07 16:45+0200\n"
-"PO-Revision-Date: 2024-08-07 16:39+0200\n"
+"POT-Creation-Date: 2024-08-08 11:19+0200\n"
+"PO-Revision-Date: 2024-08-08 11:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -19,9 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: apps/main/admin.py:25
+#: apps/main/admin.py:26
 msgid "Export selected to CSV file"
 msgstr "Exporta la selecció a un fitxer CSV"
+
+#: apps/main/admin.py:60 templates/base.html:169
+#: templates/main/documents.html:5 templates/main/documents.html:25
+msgid "Documents"
+msgstr "Documents"
+
+#: apps/main/admin.py:66
+msgid "Participants"
+msgstr "Participants"
+
+#: apps/main/admin.py:75
+msgid "Number of participants"
+msgstr "Nombre de participants"
 
 #: apps/main/forms.py:12
 msgid "Name"
@@ -35,191 +48,191 @@ msgstr "Cognoms"
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: apps/main/forms.py:29 apps/main/models.py:17
+#: apps/main/forms.py:29 apps/main/models.py:16
 msgid "Email where you will receive our newsletter"
 msgstr "Correu electrònic on vols rebre el nostre butlletí"
 
-#: apps/main/models.py:23
+#: apps/main/models.py:22
 msgid "Your name"
 msgstr "El teu nom"
 
-#: apps/main/models.py:29
+#: apps/main/models.py:28
 msgid "Your surnames"
 msgstr "Els teus cognoms"
 
-#: apps/main/models.py:34
+#: apps/main/models.py:33
 #, fuzzy
 #| msgid "newsletters"
 msgid "newsletter subscriber"
 msgstr "butlletins"
 
-#: apps/main/models.py:35
+#: apps/main/models.py:34
 #, fuzzy
 #| msgid "newsletters"
 msgid "newsletter subscribers"
 msgstr "butlletins"
 
-#: apps/main/models.py:54
+#: apps/main/models.py:53
 msgid "project type"
 msgstr "tipus de projecte"
 
-#: apps/main/models.py:55
+#: apps/main/models.py:54
 msgid "project types"
 msgstr "tipus de projecte"
 
-#: apps/main/models.py:64
+#: apps/main/models.py:63
 msgid "Project in study phase"
 msgstr "Projecte en fase d’estudi"
 
-#: apps/main/models.py:65
+#: apps/main/models.py:64
 msgid "Active Project"
 msgstr "Projecte actiu"
 
-#: apps/main/models.py:66
+#: apps/main/models.py:65
 msgid "Future projects or other projects"
 msgstr "Projectes futurs o altres projectes"
 
-#: apps/main/models.py:69 apps/main/models.py:173
+#: apps/main/models.py:68 apps/main/models.py:156
 msgid "Title"
 msgstr "Títol"
 
-#: apps/main/models.py:74
+#: apps/main/models.py:73
 msgid "Project title"
 msgstr "Títol del projecte"
 
-#: apps/main/models.py:82 apps/main/models.py:83
+#: apps/main/models.py:81 apps/main/models.py:82
 msgid "Project type"
 msgstr "Tipus de projecte"
 
-#: apps/main/models.py:86
+#: apps/main/models.py:85
 msgid "Status"
 msgstr "Estat"
 
-#: apps/main/models.py:91
+#: apps/main/models.py:90
 msgid "Project status"
 msgstr "Estat del projecte"
 
-#: apps/main/models.py:94 apps/main/models.py:180
+#: apps/main/models.py:93 apps/main/models.py:163
 msgid "Description"
 msgstr "Descripció"
 
-#: apps/main/models.py:98
+#: apps/main/models.py:97
 msgid "Project description"
 msgstr "Descripció del projecte"
 
-#: apps/main/models.py:101
+#: apps/main/models.py:100
 msgid "Image"
 msgstr "Imatge"
 
-#: apps/main/models.py:106
+#: apps/main/models.py:105
 msgid "Project image"
 msgstr "Imatge del projecte"
 
-#: apps/main/models.py:109
+#: apps/main/models.py:108
 msgid "Energy power"
 msgstr "Potència energètica"
 
-#: apps/main/models.py:112
+#: apps/main/models.py:111
 msgid "Project energy power (kW)"
 msgstr "Potència energètica del projecte (kW)"
 
-#: apps/main/models.py:115
+#: apps/main/models.py:114
 msgid "Annual energy"
 msgstr "Energia anual"
 
-#: apps/main/models.py:118
+#: apps/main/models.py:117
 msgid "Project annual energy (kWh/year)"
 msgstr "Energia anual del projecte (kWh/any)"
 
-#: apps/main/models.py:121
+#: apps/main/models.py:120
 msgid "Investment"
 msgstr "Inversió"
 
-#: apps/main/models.py:125
+#: apps/main/models.py:124
 msgid "Project investment (€)"
 msgstr "Inversió del projecte (€)"
 
-#: apps/main/models.py:128
+#: apps/main/models.py:127
 msgid "Is public"
 msgstr "És públic"
 
-#: apps/main/models.py:132
+#: apps/main/models.py:131
 msgid "Is this project public?"
 msgstr "Aquest projecte és públic?"
 
-#: apps/main/models.py:137
+#: apps/main/models.py:136
 msgid "project"
 msgstr "projecte"
 
-#: apps/main/models.py:138
+#: apps/main/models.py:137
 msgid "projects"
 msgstr "projectes"
 
-#: apps/main/models.py:163
+#: apps/main/models.py:146
 msgid "Governing Council and Driving Group"
 msgstr "Consell rector i grup motor"
 
-#: apps/main/models.py:164
+#: apps/main/models.py:147
 msgid "All users"
 msgstr "Tothom"
 
-#: apps/main/models.py:167
+#: apps/main/models.py:150
 msgid "General Assembly"
 msgstr "Assemblea General"
 
-#: apps/main/models.py:168
+#: apps/main/models.py:151
 msgid "Acts"
 msgstr "Actes"
 
-#: apps/main/models.py:169
+#: apps/main/models.py:152
 msgid "Budgets and invoices"
 msgstr "Pressupostos i factures"
 
-#: apps/main/models.py:170
+#: apps/main/models.py:153
 msgid "Corporate"
 msgstr "Societari"
 
-#: apps/main/models.py:177
+#: apps/main/models.py:160
 msgid "Project"
 msgstr "Projecte"
 
-#: apps/main/models.py:184
+#: apps/main/models.py:167
 msgid "Document description"
 msgstr "Descripció del document"
 
-#: apps/main/models.py:187
+#: apps/main/models.py:170
 msgid "Access Permission Role"
 msgstr "Permisos d’accés per rol"
 
-#: apps/main/models.py:193
+#: apps/main/models.py:176
 msgid "Access permission role"
 msgstr "Permisos d’accés per rol"
 
-#: apps/main/models.py:196 apps/main/models.py:201
+#: apps/main/models.py:179 apps/main/models.py:184
 msgid "Tags"
 msgstr "Etiquetes"
 
-#: apps/main/models.py:211 apps/main/models.py:216
+#: apps/main/models.py:194 apps/main/models.py:199
 msgid "File"
 msgstr "Fitxer"
 
-#: apps/main/models.py:223
+#: apps/main/models.py:206
 msgid "Responsible user"
 msgstr "Usuari responsable"
 
-#: apps/main/models.py:226
+#: apps/main/models.py:209
 msgid "Date of Document"
 msgstr "Data del document"
 
-#: apps/main/models.py:230
+#: apps/main/models.py:213
 msgid "Date of document"
 msgstr "Data del document"
 
-#: apps/main/models.py:235
+#: apps/main/models.py:218
 msgid "document"
 msgstr "document"
 
-#: apps/main/models.py:236
+#: apps/main/models.py:219
 msgid "documents"
 msgstr "documents"
 
@@ -311,11 +324,6 @@ msgstr "Iniciar sessió"
 #: templates/registration/signup.html:5 templates/registration/signup.html:32
 msgid "Sign up"
 msgstr "Registrar-se"
-
-#: templates/base.html:169 templates/main/documents.html:5
-#: templates/main/documents.html:25
-msgid "Documents"
-msgstr "Documents"
 
 #: templates/base.html:216
 msgid "Do you want to subscribe to our newsletter?"

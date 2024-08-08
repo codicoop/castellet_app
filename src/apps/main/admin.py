@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
+from apps.users.models import User
 
 
 class ExportCsvMixin:
@@ -51,9 +52,29 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ("project_type", "status", "created_at")
     search_fields = ["title", "created_at"]
     readonly_fields = [
-        "participants",
+        "documents_list",
+        "participants_list",
         "number_participants",
     ]
+
+    @admin.display(description=_("Documents"))
+    def documents_list(self, *args):
+        return ", ".join(
+            [document.title for document in Document.objects.filter(project=args[0].id)]
+        )
+
+    @admin.display(description=_("Participants"))
+    def participants_list(self, *args):
+        return ", ".join(
+            [
+                participant.full_name
+                for participant in User.objects.filter(projects=args[0].id)
+            ]
+        )
+
+    @admin.display(description=_("Number of participants"))
+    def number_participants(self, *args):
+        return User.objects.filter(projects=args[0].id).count()
 
 
 @admin.register(Document)

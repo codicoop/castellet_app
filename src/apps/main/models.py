@@ -140,21 +140,6 @@ class Project(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-    @property
-    def participants(self):
-        from apps.users.models import User
-
-        return ", ".join(
-            [
-                participant.full_name
-                for participant in User.objects.filter(projects=self.id)
-            ]
-        )
-
-    @property
-    def number_participants(self):
-        return len(self.participants.split(",")) if self.participants else 0
-
 
 class Document(models.Model):
     class AccessPermissionRoleChoices(models.TextChoices):
