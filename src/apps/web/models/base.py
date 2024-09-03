@@ -34,7 +34,7 @@ class BasePage(Page):
     ]
     max_count = 1
     show_in_menus_default = False
-    parent_page_types = ["cms_site.HomePage"]
+    parent_page_types = ["web.HomePage"]
     is_submitable = False
     is_unpublishable = False
     # Removing this dropdown is also removing the "Delete" page option that it

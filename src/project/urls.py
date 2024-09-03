@@ -28,6 +28,7 @@ urlpatterns = [
     path("cms/", include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path("", RootRedirectView.as_view()),
+    path("web/", include(wagtail_urls)),
 ]
 
 urlpatterns += i18n_patterns(
@@ -40,5 +41,4 @@ urlpatterns += i18n_patterns(
         NewsletterSubscriberSuccessView.as_view(),
         name="newsletter_success",
     ),
-    re_path(r'', include(wagtail_urls)),
 )

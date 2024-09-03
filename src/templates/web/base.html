@@ -1,4 +1,4 @@
-{% load i18n wagtailcore_tags static menu_tags %}
+{% load i18n wagtailcore_tags static %}
 {% get_current_language as language_code %}
 <!DOCTYPE html>
 <html>
@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <title>{% translate 'Mobles Ciurans' %} | {% block page_title %}{% endblock %}</title>
-  {% if settings.cms_site.AnalyticsSettings.embed %}
+  {% if settings.web.AnalyticsSettings.embed %}
     <!-- WEB ANALYTICS SCRIPT -->
     <script>
-      {{ settings.cms_site.AnalyticsSettings.embed|safe }}
+      {{ settings.web.AnalyticsSettings.embed|safe }}
     </script>
     <!-- End -->
   {% endif %}
@@ -22,32 +22,7 @@
   <div class="empty-box"></div>
   <header class="header">
     <div class="topbar">
-      <a class="topbar__logo" href="/{{ language_code }}/">
-        <svg
-          class="logo"
-          title="Logo Ciurans"
-          width="163"
-          height="48"
-          viewbox="0 0 163 48"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_726_51)">
-            <path d="M68.9547 15.9268H66.4595V32.0532H68.9547V15.9268Z"/>
-            <path d="M89.8274 32.0132H87.3322V29.3987C86.0252 31.3347 83.9656 32.4523 81.2922 32.4523C77.4306 32.4523 74.876 29.6781 74.876 25.5866V15.9268H77.3712V25.1276C77.3712 28.1413 79.1337 30.1372 81.7873 30.1372C85.134 30.1372 87.3322 27.8818 87.3322 23.6906V15.9268H89.8274V32.0132Z" />
-            <path d="M105.907 15.887L105.709 18.282C105.412 18.2421 105.056 18.2421 104.759 18.2421C100.501 18.2421 98.3424 21.4754 98.3424 25.8263V32.0334H95.8472V15.9269H98.3424V19.8787C99.6494 17.4837 101.808 15.7473 104.759 15.7473C105.155 15.7673 105.452 15.7673 105.907 15.887Z" />
-            <path d="M121.829 24.0101C121.829 20.1581 118.879 17.7232 115.849 17.7232C112.542 17.7232 109.868 20.1382 109.868 24.0101C109.868 27.8421 112.522 30.2571 115.849 30.2571C118.879 30.2571 121.829 27.8222 121.829 24.0101ZM124.305 32.0533H121.829V29.4987C120.403 31.3947 118.126 32.4725 115.472 32.4725C111.215 32.4725 107.492 29.0995 107.492 23.9901C107.492 18.8808 111.215 15.5078 115.472 15.5078C118.126 15.5078 120.403 16.5856 121.829 18.4816V15.9269H124.305V32.0533Z" />
-            <path d="M145.276 22.3933V32.0332H142.801V22.8324C142.801 19.8186 141.018 17.8028 138.345 17.8028C134.998 17.8028 132.8 20.0981 132.8 24.2694V32.0132H130.325V15.9268H132.8V18.6012C134.107 16.6453 136.147 15.5276 138.84 15.5276C142.702 15.5276 145.276 18.3018 145.276 22.3933Z" />
-            <path d="M59.0925 27.1635C58.1618 29.1394 56.2211 30.1373 54.0625 30.1373C50.795 30.1373 48.1216 27.7423 48.1216 23.9901C48.1216 20.2978 50.7752 17.803 54.0625 17.803C56.1814 17.803 58.1222 18.8608 59.0133 20.8766H61.6471C60.6768 17.5635 57.5479 15.5078 54.0427 15.5078C49.5276 15.5078 45.7056 18.9007 45.7056 23.9901C45.7056 29.1195 49.5276 32.4725 54.0427 32.4725C57.5677 32.4725 60.7164 30.4567 61.6075 27.1635H59.0925Z" />
-            <path d="M158.861 23.2916L154.999 22.4334C153.435 22.0741 152.564 21.4754 152.564 20.198C152.564 18.6612 153.831 17.5436 156.108 17.5436C158.227 17.5436 159.673 18.5215 160.188 19.9985H162.703C162.128 17.3839 159.772 15.5078 156.187 15.5078C152.524 15.5078 150.108 17.4637 150.108 20.3777C150.108 22.613 151.593 23.9502 154.267 24.5091L157.93 25.3274C159.554 25.6866 160.564 26.3053 160.564 27.6425C160.564 29.319 159.039 30.3968 156.742 30.3968C154.445 30.3968 152.643 29.4587 152.148 27.7024H149.573C149.969 30.8359 152.88 32.4525 156.544 32.4525C160.366 32.4525 163 30.6563 163 27.4829C163 25.0479 161.198 23.8105 158.861 23.2916Z" />
-            <path d="M38.1409 38.4399C34.4773 42.1322 29.4077 44.4274 23.8232 44.4274C12.6344 44.4075 3.56457 35.2665 3.56457 24.01C3.56457 12.7335 12.6344 3.59252 23.8232 3.59252C29.4077 3.59252 34.4773 5.86778 38.1409 9.58004L40.6559 7.04532C36.3388 2.69439 30.3979 0 23.8232 0C10.6541 0 0 10.7376 0 24.01C0 37.2624 10.6541 48.02 23.8232 48.02C30.3979 48.02 36.3586 45.3256 40.6559 40.9946L38.1409 38.4399Z" />
-            <path d="M7.14893 24.0098C7.14893 33.2905 14.6147 40.8148 23.8232 40.8148C28.4175 40.8148 32.596 38.9387 35.6061 35.8851L33.0713 33.3304C30.6949 35.7254 27.4274 37.2023 23.8034 37.2023C16.5752 37.2023 10.7135 31.2946 10.7135 24.0098C10.7135 16.725 16.5752 10.8173 23.8034 10.8173C27.4274 10.8173 30.6949 12.2942 33.0713 14.6892L35.6061 12.1346C32.596 9.10088 28.4175 7.20483 23.8232 7.20483C14.6147 7.20483 7.14893 14.7292 7.14893 24.0098Z" />
-          </g>
-          <defs>
-            <clippath id="clip0_726_51">
-              <rect width="163" height="48" />
-            </clippath>
-          </defs>
-        </svg>
+      <a class="topbar__logo" href="/{{ language_code }}/">LOGO
       </a>
       <div class="topbar__action">
         <svg
@@ -83,7 +58,7 @@
       </div>
       <div class="menu__bottom">
         <nav class="menu__nav title-3">
-          {% main_menu template="components/main_menu.html" %}
+          <p>MENÚ PENDENT</p>
         </nav>
         <div class="menu__btn">
           <a href="/cms">
@@ -112,39 +87,39 @@
   {% endblock %}
 
   <div class="prefooter">
-    {% include './elements/social.html' %}
+    <P>PENDENT: LINKS SOCIAL MEDIA</P>
   </div>
   <footer class="footer">
     <div class="footer__top grid-1">
       <div class="footer__nav grid-item-1-4">
-        {% main_menu template="components/main_menu.html" %}
+        <P>MENÚ PENDENT</P>
       </div>
-      {% if settings.cms_site.ContactDetailsSettings.address %}
+      {% if settings.web.ContactDetailsSettings.address %}
       <div class="footer-info grid-item-5-8">
         <div class="footer-info__heading">
           {% translate 'Where are we' %}
         </div>
         <div class="footer-info__text">
-          <a href='https://maps.apple.com/maps?q={{ settings.cms_site.ContactDetailsSettings.address|safe }}'>
-            <p>{{ settings.cms_site.ContactDetailsSettings.address|safe }}</p>
+          <a href='https://maps.apple.com/maps?q={{ settings.web.ContactDetailsSettings.address|safe }}'>
+            <p>{{ settings.web.ContactDetailsSettings.address|safe }}</p>
           </a>
         </div>
       </div>
       {% endif %}
-      {% if settings.cms_site.ContactDetailsSettings.phone or settings.cms_site.ContactDetailsSettings.email %}
+      {% if settings.web.ContactDetailsSettings.phone or settings.web.ContactDetailsSettings.email %}
       <div class="footer-info grid-item-9-12">
         <div class="footer-info__heading">
           {% translate 'Contact' %}
         </div>
         <div class="footer-info__text">
-          {% if settings.cms_site.ContactDetailsSettings.phone %}
-          <a href="tel:{{ settings.cms_site.ContactDetailsSettings.phone }}">
-            <p>{{ settings.cms_site.ContactDetailsSettings.phone }}</p>
+          {% if settings.web.ContactDetailsSettings.phone %}
+          <a href="tel:{{ settings.web.ContactDetailsSettings.phone }}">
+            <p>{{ settings.web.ContactDetailsSettings.phone }}</p>
           </a>
           {% endif %}
-          {% if settings.cms_site.ContactDetailsSettings.email %}
-            <a href="mailto:{{ settings.cms_site.ContactDetailsSettings.email }}">
-              <p>{{ settings.cms_site.ContactDetailsSettings.email }}</p>
+          {% if settings.web.ContactDetailsSettings.email %}
+            <a href="mailto:{{ settings.web.ContactDetailsSettings.email }}">
+              <p>{{ settings.web.ContactDetailsSettings.email }}</p>
             </a>
           {% endif %}
         </div>
