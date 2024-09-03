@@ -18,12 +18,14 @@ from django.urls import include, path, re_path
 from django.utils.translation import gettext_lazy as _
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.admin import urls as wagtailadmin_urls
 
 from apps.main.views import NewsletterSubscriberSuccessView, newsletter_view
 from project.views import RootRedirectView, home_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("cms/", include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path("", RootRedirectView.as_view()),
 ]
