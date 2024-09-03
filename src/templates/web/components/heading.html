@@ -1,0 +1,15 @@
+{% load static wagtailimages_tags %}
+
+{% if page.header_image %}
+  {% image self.header_image width-2000 as bg_heading %}
+{% endif %}
+
+<section class="heading"
+  {% if bg_heading %}
+    style="--bg-heading: url('{{ bg_heading.url }}')"
+  {% endif %}
+>
+  <div class="grid-1">
+    <h1 class="title-1 heading__title">{{ page.title }}</h1>
+  </div>
+</section>

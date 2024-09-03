@@ -115,6 +115,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "phonenumber_field",
     "apps.users",
+    "apps.web",
     "project",
     "apps.main",
     "wagtail.contrib.forms",
