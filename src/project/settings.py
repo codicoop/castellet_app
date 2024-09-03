@@ -110,11 +110,6 @@ INSTALLED_APPS = [
     "constance",
     "logentry_admin",
     "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
     "django.forms",
     "post_office",
     "django_extensions",
@@ -122,6 +117,24 @@ INSTALLED_APPS = [
     "apps.users",
     "project",
     "apps.main",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 
@@ -144,6 +157,7 @@ MIDDLEWARE = [
     "maintenance_mode.middleware.MaintenanceModeMiddleware",
     "apps.users.middleware.VerificationRequiredMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 
@@ -423,3 +437,12 @@ structlog.configure(
     logger_factory=structlog.stdlib.LoggerFactory(),
     cache_logger_on_first_use=True,
 )
+
+################################################################################
+#                                  Wagtail                                     #
+################################################################################
+
+WAGTAIL_SITE_NAME = env.str(
+    "WAGTAIL_SITE_NAME",
+    default="Comunitat energètica de Sant Vicenç de Castellet",)
+WAGTAILADMIN_BASE_URL = env.str("WAGTAILADMIN_BASE_URL", default="")
