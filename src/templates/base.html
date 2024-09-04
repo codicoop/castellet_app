@@ -36,7 +36,7 @@
             </svg>
           </button>
           <!-- Títol i logo topbar -->
-          <a href="{% url 'home' %}" class="flex ms-2 md:me-24">
+          <a href="{% url 'main:home' %}" class="flex ms-2 md:me-24">
             <img src="{% static 'images/logo.png' %}" class="h-8 me-10" alt="{% translate 'Logo of Comunitat energètica Castellet' %}" />
             <span class="self-center text-xl font-semibold text-white sm:text-2xl whitespace-nowrap dark:text-primary-900">Castellet Sostenible</span>
           </a>
@@ -113,7 +113,7 @@
         <ul class="space-y-2 font-medium">
           <!-- Home -->
           <li>
-            <a href="{% url 'home' %}"
+            <a href="{% url 'main:home' %}"
               id="menu_home"
               class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
               <svg class="w-7 h-7 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">

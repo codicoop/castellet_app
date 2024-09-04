@@ -61,9 +61,10 @@ TIME_ZONE = "Europe/Andorra"
 LANGUAGE_CODE = "ca"
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#languages
-LANGUAGES = [
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ("ca", _("Catalan")),
 ]
+WAGTAIL_I18N_ENABLED = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#use-i18n
 USE_I18N = True

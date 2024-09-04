@@ -14,31 +14,28 @@ Including another URLconf
 """
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.admin import urls as wagtailadmin_urls
 
 from apps.main.views import NewsletterSubscriberSuccessView, newsletter_view
-from project.views import RootRedirectView, home_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("cms/", include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path("", RootRedirectView.as_view()),
-    path("web/", include(wagtail_urls)),
 ]
 
 urlpatterns += i18n_patterns(
-    path("", home_view, name="home"),
     path(_("registration/"), include("apps.users.urls", namespace="registration")),
-    path("", include("apps.main.urls", namespace="main")),
+    path(_("partners/"), include("apps.main.urls", namespace="partners")),
     path(_("newsletter/"), newsletter_view, name="newsletter"),
     path(
         _("newsletter/success/"),
         NewsletterSubscriberSuccessView.as_view(),
         name="newsletter_success",
     ),
+    path("", include(wagtail_urls)),
 )
