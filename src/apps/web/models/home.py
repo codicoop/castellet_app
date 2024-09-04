@@ -2,10 +2,10 @@ from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 
-from apps.web.models.base import BasePage
+from apps.web.models.base import BasePage, BaseHeaderOverlayPage
 
 
-class HomePage(BasePage):
+class HomePage(BaseHeaderOverlayPage):
     description = RichTextField(
         _("Description"),
         default="",
@@ -20,7 +20,7 @@ class HomePage(BasePage):
         ],
     )
 
-    content_panels = BasePage.content_panels + [
+    content_panels = BaseHeaderOverlayPage.content_panels + [
         FieldPanel("description"),
     ]
 

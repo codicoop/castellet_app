@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <title>{% translate 'Mobles Ciurans' %} | {% block page_title %}{% endblock %}</title>
+  <title>{{ settings.web.Strings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
   {% if settings.web.AnalyticsSettings.embed %}
     <!-- WEB ANALYTICS SCRIPT -->
     <script>
@@ -41,7 +41,7 @@
     <div class="menu">
       <div class="menu__top">
         <a class="menu__logo" href="/{{ language_code }}/">
-          <img class="logo" src="{% static 'images/logo.svg' %}" alt="{% translate 'Logo of Ciurans' %}">
+          <img class="logo" src="{% static 'images/logo.svg' %}" alt="{% translate 'Logo' %}">
         </a>
         <div class="menu__action">
           <svg
@@ -87,39 +87,39 @@
   {% endblock %}
 
   <div class="prefooter">
-    <P>PENDENT: LINKS SOCIAL MEDIA</P>
+    <p>{% translate "Segueix-nos a..." %} PENDENT: LINKS SOCIAL MEDIA</p>
   </div>
   <footer class="footer">
     <div class="footer__top grid-1">
       <div class="footer__nav grid-item-1-4">
-        <P>MENÚ PENDENT</P>
+        <p>MENÚ PENDENT</p>
       </div>
-      {% if settings.web.ContactDetailsSettings.address %}
+      {% if settings.web.Strings.address %}
       <div class="footer-info grid-item-5-8">
         <div class="footer-info__heading">
           {% translate 'Where are we' %}
         </div>
         <div class="footer-info__text">
-          <a href='https://maps.apple.com/maps?q={{ settings.web.ContactDetailsSettings.address|safe }}'>
-            <p>{{ settings.web.ContactDetailsSettings.address|safe }}</p>
+          <a href='https://maps.apple.com/maps?q={{ settings.web.Strings.address|safe }}'>
+            <p>{{ settings.web.Strings.address|safe }}</p>
           </a>
         </div>
       </div>
       {% endif %}
-      {% if settings.web.ContactDetailsSettings.phone or settings.web.ContactDetailsSettings.email %}
+      {% if settings.web.Strings.phone or settings.web.Strings.email %}
       <div class="footer-info grid-item-9-12">
         <div class="footer-info__heading">
           {% translate 'Contact' %}
         </div>
         <div class="footer-info__text">
-          {% if settings.web.ContactDetailsSettings.phone %}
-          <a href="tel:{{ settings.web.ContactDetailsSettings.phone }}">
-            <p>{{ settings.web.ContactDetailsSettings.phone }}</p>
+          {% if settings.web.Strings.phone %}
+          <a href="tel:{{ settings.web.Strings.phone }}">
+            <p>{{ settings.web.Strings.phone }}</p>
           </a>
           {% endif %}
-          {% if settings.web.ContactDetailsSettings.email %}
-            <a href="mailto:{{ settings.web.ContactDetailsSettings.email }}">
-              <p>{{ settings.web.ContactDetailsSettings.email }}</p>
+          {% if settings.web.Strings.email %}
+            <a href="mailto:{{ settings.web.Strings.email }}">
+              <p>{{ settings.web.Strings.email }}</p>
             </a>
           {% endif %}
         </div>
@@ -129,29 +129,20 @@
     <div class="footer__bottom grid-1">
       <div class="footer__bottom-container grid-item-4-9">
         <div class="footer__legal">
-          <p>©2023 {% translate 'Mobles Ciurans' %}.</p>
+          <p>{{ settings.web.Strings.footer_name }}</p>
         </div>
         <div class="footer__legal">
           <p>{% translate 'All rights reserved' %}.</p>
         </div>
-        {% if legal_page %}
         <div class="footer__legal">
-          <a href="{% pageurl legal_page %}">
-            <p>{% translate 'Legal warning' %}.</p>
-          </a>
+          <p>{{ settings.web.Strings.authorship }}</p>
         </div>
       </div>
-      {% endif %}
     </div>
   </footer>
 
-  <script src="{% static 'js/scripts.js' %}"></script>
-
   {% block extra_js %}
   {% endblock %}
-
-  <!-- Referencing webpack bundle file -->
-  <script src="{% static 'js/index-bundle.js' %}"></script>
 
 </body>
 </html>
