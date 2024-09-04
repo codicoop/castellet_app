@@ -11,18 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <title>{{ settings.web.Strings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
   {% if settings.web.AnalyticsSettings.embed %}
-    <!-- WEB ANALYTICS SCRIPT -->
     <script>
       {{ settings.web.AnalyticsSettings.embed|safe }}
     </script>
-    <!-- End -->
   {% endif %}
 </head>
 <body id="body" class="{% block body_classes %}{% endblock %}" data-lang="{{ language_code }}">
   <div class="empty-box"></div>
   <header class="header">
     <div class="topbar">
-      <a class="topbar__logo" href="/{{ language_code }}/">LOGO
+      <a class="topbar__logo" href="/{{ language_code }}/">
+        Pendent: LOGO
       </a>
       <div class="topbar__action">
         <svg
@@ -41,7 +40,7 @@
     <div class="menu">
       <div class="menu__top">
         <a class="menu__logo" href="/{{ language_code }}/">
-          <img class="logo" src="{% static 'images/logo.svg' %}" alt="{% translate 'Logo' %}">
+          Pendent: LOGO
         </a>
         <div class="menu__action">
           <svg
@@ -61,23 +60,11 @@
           <p>MENÚ PENDENT</p>
         </nav>
         <div class="menu__btn">
-          <a href="/cms">
+          <a href="{% url 'registration:login' %}">
             <div class="btn btn--dark">
               <p>{% translate 'Client Area' %}</p>
             </div>
           </a>
-        </div>
-        <div class="menu__lang">
-          <ul>
-            {% for translation in page.get_translations.live %}
-              {% get_language_info for translation.locale.language_code as lang %}
-              <li class="menu__lang-item">
-                <a href="{% pageurl translation %}" rel="alternate" hreflang="{{ lang.code }}">
-                  <p>{{ lang.code }}</p>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
         </div>
       </div>
     </div>
