@@ -1,2 +1,2 @@
 from .home import HomePage
-from .settings import Strings, AnalyticsSettings
+from .settings import StringsSettings, AnalyticsSettings, SocialMediaIconsSettings

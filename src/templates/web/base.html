@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <title>{{ settings.web.Strings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
+  <title>{{ settings.web.StringsSettings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
   {% if settings.web.AnalyticsSettings.embed %}
     <script>
       {{ settings.web.AnalyticsSettings.embed|safe }}
@@ -74,39 +74,41 @@
   {% endblock %}
 
   <div class="prefooter">
-    <p>{% translate "Segueix-nos a..." %} PENDENT: LINKS SOCIAL MEDIA</p>
+  </div>
+  <div class="prefooter">
+    {% include './components/social.html' %}
   </div>
   <footer class="footer">
     <div class="footer__top grid-1">
       <div class="footer__nav grid-item-1-4">
         <p>MENÚ PENDENT</p>
       </div>
-      {% if settings.web.Strings.address %}
+      {% if settings.web.StringsSettings.address %}
       <div class="footer-info grid-item-5-8">
         <div class="footer-info__heading">
           {% translate 'Where are we' %}
         </div>
         <div class="footer-info__text">
-          <a href='https://maps.apple.com/maps?q={{ settings.web.Strings.address|safe }}'>
-            <p>{{ settings.web.Strings.address|safe }}</p>
+          <a href='https://maps.apple.com/maps?q={{ settings.web.StringsSettings.address|safe }}'>
+            <p>{{ settings.web.StringsSettings.address|safe }}</p>
           </a>
         </div>
       </div>
       {% endif %}
-      {% if settings.web.Strings.phone or settings.web.Strings.email %}
+      {% if settings.web.StringsSettings.phone or settings.web.StringsSettings.email %}
       <div class="footer-info grid-item-9-12">
         <div class="footer-info__heading">
           {% translate 'Contact' %}
         </div>
         <div class="footer-info__text">
-          {% if settings.web.Strings.phone %}
-          <a href="tel:{{ settings.web.Strings.phone }}">
-            <p>{{ settings.web.Strings.phone }}</p>
+          {% if settings.web.StringsSettings.phone %}
+          <a href="tel:{{ settings.web.StringsSettings.phone }}">
+            <p>{{ settings.web.StringsSettings.phone }}</p>
           </a>
           {% endif %}
-          {% if settings.web.Strings.email %}
-            <a href="mailto:{{ settings.web.Strings.email }}">
-              <p>{{ settings.web.Strings.email }}</p>
+          {% if settings.web.StringsSettings.email %}
+            <a href="mailto:{{ settings.web.StringsSettings.email }}">
+              <p>{{ settings.web.StringsSettings.email }}</p>
             </a>
           {% endif %}
         </div>
@@ -116,13 +118,13 @@
     <div class="footer__bottom grid-1">
       <div class="footer__bottom-container grid-item-4-9">
         <div class="footer__legal">
-          <p>{{ settings.web.Strings.footer_name }}</p>
+          <p>{{ settings.web.StringsSettings.footer_name }}</p>
         </div>
         <div class="footer__legal">
           <p>{% translate 'All rights reserved' %}.</p>
         </div>
         <div class="footer__legal">
-          <p>{{ settings.web.Strings.authorship }}</p>
+          <p>{{ settings.web.StringsSettings.authorship }}</p>
         </div>
       </div>
     </div>

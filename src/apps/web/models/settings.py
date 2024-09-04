@@ -6,7 +6,7 @@ from wagtail.contrib.settings.registry import register_setting
 
 
 @register_setting
-class Strings(BaseSiteSetting):
+class StringsSettings(BaseSiteSetting):
     email = models.EmailField(
         blank=True,
         verbose_name=_("Contact e-mail"),
@@ -77,4 +77,44 @@ class AnalyticsSettings(BaseSiteSetting):
 
     panels = [
         FieldPanel("embed"),
+    ]
+
+
+@register_setting
+class SocialMediaIconsSettings(BaseSiteSetting):
+    facebook = models.URLField(
+        blank=True,
+        null=True,
+        help_text=_("Facebook URL"),
+        default="",
+    )
+    youtube = models.URLField(
+        blank=True,
+        null=True,
+        help_text=_("Youtube URL"),
+        default="",
+    )
+    instagram = models.URLField(
+        blank=True,
+        null=True,
+        help_text=_("Instagram URL"),
+        default="https://www.instagram.com/castelletsostenible/",
+    )
+    x = models.URLField(
+        blank=True,
+        null=True,
+        help_text=_("X URL"),
+        default="",
+    )
+
+    panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("facebook"),
+                FieldPanel("youtube"),
+                FieldPanel("instagram"),
+                FieldPanel("x"),
+            ],
+            heading=_("Social Media URLs"),
+        )
     ]
