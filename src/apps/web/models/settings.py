@@ -44,6 +44,14 @@ class StringsSettings(BaseSiteSetting):
         default="Desenvolupat per Codi Cooperatiu · Dissenyat per Utopig Studio",
         max_length=150,
     )
+    logo = models.ForeignKey(
+        "wagtailimages.Image",
+        verbose_name=_("Logo"),
+        on_delete=models.PROTECT,
+        related_name="+",
+        null=True,
+        blank=False,
+    )
 
     panels = [
         MultiFieldPanel(
@@ -56,6 +64,7 @@ class StringsSettings(BaseSiteSetting):
         ),
         MultiFieldPanel(
             [
+                FieldPanel("logo"),
                 FieldPanel("title_prefix"),
                 FieldPanel("footer_name"),
             ],
