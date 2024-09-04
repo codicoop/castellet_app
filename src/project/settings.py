@@ -328,7 +328,7 @@ AWS_LOCATION = "static"
 
 # Wagtail will use this media storage, so we need to set it to the public one
 # by default, and let the app manually specify the private one when needed.
-DEFAULT_FILE_STORAGE = "project.storage_backends.PublicMediaStorage"
+DEFAULT_FILE_STORAGE = "project.storage_backends.WebMediaStorage"
 
 
 ################################################################################

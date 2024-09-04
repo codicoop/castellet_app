@@ -9,6 +9,11 @@ class PublicMediaStorage(S3Boto3Storage):
     file_overwrite = False
 
 
+class WebMediaStorage(S3Boto3Storage):
+    location = "media/web"
+    file_overwrite = False
+
+
 class PrivateMediaStorage(S3Boto3Storage):
     location = settings.AWS_PRIVATE_MEDIA_LOCATION
     default_acl = "private"

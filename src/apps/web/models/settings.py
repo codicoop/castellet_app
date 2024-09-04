@@ -6,7 +6,7 @@ from wagtail.contrib.settings.registry import register_setting
 
 
 @register_setting
-class StringsSettings(BaseSiteSetting):
+class CustomizationSettings(BaseSiteSetting):
     email = models.EmailField(
         blank=True,
         verbose_name=_("Contact e-mail"),
@@ -73,7 +73,7 @@ class StringsSettings(BaseSiteSetting):
     ]
 
     class Meta:
-        verbose_name = _("Website strings")
+        verbose_name = _("Website customization")
 
 
 @register_setting
