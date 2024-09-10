@@ -18,6 +18,19 @@
       {% embed page.video_youtube_url max_width=750 %}
     </section>
   {% endif %}
+
+  <section class="projects">
+    {# to do, quan l'apartat projectes estigui fet #}
+  </section>
+
+  <section class="documents">
+      <h2>{{ page.documents_title }}</h2>
+      <p>{{ page.documents_description|richtext }}</p>
+      {% for block in page.documents %}
+          <a href="{{ block.value.url }}">{{ block.value.title }}</a>
+      {% endfor %}
+  </section>
+
 </main>
 
 {% endblock %}

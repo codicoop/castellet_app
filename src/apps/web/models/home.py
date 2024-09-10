@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.fields import RichTextField
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.fields import RichTextField, StreamField
 
+from apps.wagtailiconchooser.blocks import IconChooserBlock
 from apps.web.models.base import BaseHeaderOverlayPage
 
 
@@ -32,6 +34,34 @@ class HomePage(BaseHeaderOverlayPage):
         default="",
         blank=True,
     )
+    documents_title = models.CharField(
+        _("Title"),
+        max_length=80,
+        default="",
+        blank=True,
+    )
+    documents_description = RichTextField(
+        _("Description"),
+        default="",
+        blank=True,
+        features=[
+            "h2",
+            "h3",
+            "bold",
+            "italic",
+            "link",
+            "ul",
+        ],
+    )
+    documents = StreamField(
+        [
+            ("document", DocumentChooserBlock()),
+            ("icon", IconChooserBlock())
+        ],
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
 
     content_panels = BaseHeaderOverlayPage.content_panels + [
         MultiFieldPanel(
@@ -41,6 +71,14 @@ class HomePage(BaseHeaderOverlayPage):
                 FieldPanel("video_youtube_url",),
             ],
             heading=_("Video"),
+        ),
+        MultiFieldPanel(
+            children=[
+                FieldPanel("documents_title"),
+                FieldPanel("documents_description"),
+                FieldPanel("documents"),
+            ],
+            heading=_("Documents"),
         ),
     ]
 
