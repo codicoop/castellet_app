@@ -69,6 +69,26 @@ class BaseHeaderOverlayPage(BasePage):
             "mida mínima de 2.000x1.000px."
         ),
     )
+    header_description = models.CharField(
+        _("Header description"),
+        max_length=250,
+        default="",
+        blank=True,
+    )
+    header_button_text = models.CharField(
+        _("Header button title"),
+        max_length=20,
+        default="",
+        blank=True,
+    )
+    header_button_page = models.ForeignKey(
+        "wagtailcore.Page",
+        verbose_name=_("Header button linked page"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
     overlay_title = models.CharField(
         _("Title"),
         max_length=80,

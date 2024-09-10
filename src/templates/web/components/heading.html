@@ -11,6 +11,14 @@
 >
   <div class="grid-1">
     <h1 class="title-1 heading__title">{{ page.title }}</h1>
+    {% if page.header_description %}
+      <p>{{ page.header_description }}</p>
+    {% endif %}
+
+    {% if page.header_button_text and page.header_button_link %}
+      <a href="{{ page.header_button_link }}">{{ page.header_button_text }}</a>
+    {% endif %}
+
   </div>
 </section>
 
