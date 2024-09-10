@@ -4,7 +4,6 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
-from apps.wagtailiconchooser.blocks import IconChooserBlock
 from apps.web.models.base import BaseHeaderOverlayPage
 
 
@@ -56,7 +55,7 @@ class HomePage(BaseHeaderOverlayPage):
     documents = StreamField(
         [
             ("document", DocumentChooserBlock()),
-            ("icon", IconChooserBlock())
+            # ("icon", IconChooserBlock())
         ],
         null=True,
         blank=True,
