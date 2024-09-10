@@ -1,7 +1,9 @@
+from cProfile import label
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.blocks import ChoiceBlock, StructBlock
+from wagtail.blocks import ChoiceBlock, StructBlock, CharBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
@@ -20,6 +22,13 @@ class DocumentBlock(StructBlock):
     icon = ChoiceBlock(
         choices=DocumentIconChoices.choices,
         default=DocumentIconChoices.GENERAL,
+    )
+    title = CharBlock(
+        max_length=80,
+        required=True,
+    )
+    description = CharBlock(
+        required=False,
     )
 
 

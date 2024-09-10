@@ -1,5 +1,5 @@
 {% extends "web/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags static i18n %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
 
 {% block content %}
 
@@ -26,8 +26,14 @@
   <section class="documents">
       <h2>{{ page.documents_title }}</h2>
       <p>{{ page.documents_description|richtext }}</p>
-      {% for block in page.documents %}
-          <a href="{{ block.value.url }}">{{ block.value.title }}</a>
+      {% for document in page.documents %}
+          {% with "images/icons/"|add:document.value.icon|add:".svg" as icon_static %}
+            <a href="{{ document.value.file.url }}">
+              <img src="{% static icon_static %}" title="{{ document.value.icon }}"  alt="{{ document.value.icon }}"/>
+            </a>
+          {% endwith %}
+          <p>{{ document.value.title }}</p>
+          <p>{{ document.value.description }}</p>
       {% endfor %}
   </section>
 
