@@ -127,11 +127,23 @@ class BaseHeaderOverlayPage(BasePage):
     )
 
     content_panels = BasePage.content_panels + [
-        FieldPanel("header_image"),
         MultiFieldPanel(
             children=[
-                FieldPanel("overlay_title", classname="title"),
-                FieldPanel("overlay_body", classname="full"),
+                FieldPanel("header_image"),
+                FieldPanel("header_description"),
+                FieldPanel(
+                    "header_button_text",
+                ),
+                FieldPanel(
+                    "header_button_page",
+                ),
+            ],
+            heading=_("Header"),
+        ),
+        MultiFieldPanel(
+            children=[
+                FieldPanel("overlay_title"),
+                FieldPanel("overlay_body"),
                 FieldPanel(
                     "overlay_button_text",
                 ),
@@ -156,4 +168,5 @@ class BaseHeaderOverlayPage(BasePage):
             and self.overlay_image
             and self.overlay_body
             and self.overlay_title
+            and self.overlay_image
         )

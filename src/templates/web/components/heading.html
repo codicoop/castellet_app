@@ -40,6 +40,9 @@
     </div>
   </div>
   <div class="overlay__image">
+    {% if page.overlay_image %}
+      {% image self.overlay_image width-2000 as bg_overlay %}
+    {% endif %}
     <div class="container-square-image"
         style="--bg-image: url('{{ bg_overlay.url }}')"
     ></div>
