@@ -1,10 +1,26 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.blocks import ChoiceBlock, StructBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
 from apps.web.models.base import BaseHeaderOverlayPage
+
+
+class DocumentBlock(StructBlock):
+    file = DocumentChooserBlock()
+
+    class DocumentIconChoices(models.TextChoices):
+        GENERAL = "doc-full-inverse", _("General document")
+        IMAGE = "image", _("Image file")
+        VIDEO = "desktop", _("Video file")
+        AUDIO = "comment", _("Audio file")
+
+    icon = ChoiceBlock(
+        choices=DocumentIconChoices.choices,
+        default=DocumentIconChoices.GENERAL,
+    )
 
 
 class HomePage(BaseHeaderOverlayPage):
@@ -52,14 +68,13 @@ class HomePage(BaseHeaderOverlayPage):
             "ul",
         ],
     )
+
     documents = StreamField(
         [
-            ("document", DocumentChooserBlock()),
-            # ("icon", IconChooserBlock())
+            ("document", DocumentBlock()),
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = BaseHeaderOverlayPage.content_panels + [
