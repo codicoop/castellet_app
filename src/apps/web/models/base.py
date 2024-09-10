@@ -131,12 +131,8 @@ class BaseHeaderOverlayPage(BasePage):
             children=[
                 FieldPanel("header_image"),
                 FieldPanel("header_description"),
-                FieldPanel(
-                    "header_button_text",
-                ),
-                FieldPanel(
-                    "header_button_page",
-                ),
+                FieldPanel("header_button_text",),
+                FieldPanel("header_button_page",),
             ],
             heading=_("Header"),
         ),
