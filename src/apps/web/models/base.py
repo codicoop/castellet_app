@@ -16,7 +16,7 @@ class BasePage(Page):
         help_text=_("Show the join us block at the botton of this page. To "
                     "modify its content, go to Settings - Website "
                     "customization."),
-        default=False,
+        default=True,
     )
     max_count = 1
     show_in_menus_default = False
@@ -29,9 +29,14 @@ class BasePage(Page):
     show_more_dropdown_in_list_actions = False
     objects = RequestedLocalePageManager()
 
-    content_panels = Page.content_panels + [
-        FieldPanel("display_join_us_block"),
-    ]
+    settings_panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("display_join_us_block"),
+            ],
+            heading=_("Sections visibility configuration"),
+        ),
+    ] + Page.settings_panels
 
     class Meta:
         abstract = True
