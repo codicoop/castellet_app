@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block content %}
+
+<main class="main home">
+
+  {% include '../components/heading.html' %}
+
+  <section class="description">
+    {% include '../components/block_text_center.html' with text=page.description %}
+  </section>
+
+  <section class="content">
+    {# maquetar de forma estàtica. Ho programaré quan la propera iteració de la app estigui acabada #}
+  </section>
+
+</main>
+
+{% endblock %}
+
