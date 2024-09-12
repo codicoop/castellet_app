@@ -73,8 +73,15 @@
   {% block content %}
   {% endblock %}
 
-  <div class="prefooter">
-  </div>
+  {% if page.display_join_us_block %}
+    <div>
+      <h2>{{ settings.web.CustomizationSettings.join_us_title }}</h2>
+      {% if settings.web.CustomizationSettings.join_us_text %}
+        <p>{{ settings.web.CustomizationSettings.join_us_text }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
   <div class="prefooter">
     {% include './components/social.html' %}
   </div>

@@ -52,6 +52,18 @@ class CustomizationSettings(BaseSiteSetting):
         null=True,
         blank=False,
     )
+    join_us_title = models.CharField(
+        verbose_name=_("Títol"),
+        blank=False,
+        default=_("Uneix-te a Castellet Sostenible"),
+        max_length=240,
+    )
+    join_us_text = models.CharField(
+        verbose_name=_("Text"),
+        blank=True,
+        default="",
+        max_length=240,
+    )
 
     panels = [
         MultiFieldPanel(
@@ -69,7 +81,14 @@ class CustomizationSettings(BaseSiteSetting):
                 FieldPanel("footer_name"),
             ],
             heading=_("Header and footer"),
-        )
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("join_us_title"),
+                FieldPanel("join_us_text"),
+            ],
+            heading=_("Join us block"),
+        ),
     ]
 
     class Meta:

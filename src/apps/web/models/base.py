@@ -11,6 +11,13 @@ class RequestedLocalePageManager(PageManager):
 
 
 class BasePage(Page):
+    display_join_us_block = models.BooleanField(
+        verbose_name=_("Display join us block"),
+        help_text=_("Show the join us block at the botton of this page. To "
+                    "modify its content, go to Settings - Website "
+                    "customization."),
+        default=False,
+    )
     max_count = 1
     show_in_menus_default = False
     parent_page_types = ["web.HomePage"]
@@ -21,6 +28,10 @@ class BasePage(Page):
     # the editor access to every action it provides!
     show_more_dropdown_in_list_actions = False
     objects = RequestedLocalePageManager()
+
+    content_panels = Page.content_panels + [
+        FieldPanel("display_join_us_block"),
+    ]
 
     class Meta:
         abstract = True
