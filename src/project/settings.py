@@ -117,6 +117,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "apps.users",
     "apps.web",
+    "apps.wagtail_htmx_contact_form",
     "project",
     "apps.main",
     "wagtail.contrib.forms",

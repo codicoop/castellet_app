@@ -1,0 +1,125 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block content %}
+
+<main class="main home">
+
+  {% include '../components/heading.html' %}
+
+  <section class="description">
+    {% include '../components/block_text_center.html' with text=page.description %}
+  </section>
+
+  <section class="contact_details">
+    <div class="">
+      {% if settings.web.CustomizationSettings.address %}
+      <div>
+        <div>
+          {% translate "Address" %}
+        </div>
+        <div>
+          <a href='https://maps.apple.com/maps?q={{ settings.web.CustomizationSettings.address|safe }}'>
+            <p>{{ settings.web.CustomizationSettings.address|safe }}</p>
+          </a>
+        </div>
+      </div>
+      {% endif %}
+      {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
+      <div>
+        <div>
+          {% translate 'Contact' %}
+        </div>
+        <div>
+          {% if settings.web.CustomizationSettings.phone %}
+          <a href="tel:{{ settings.web.CustomizationSettings.phone }}">
+            <p>{{ settings.web.CustomizationSettings.phone }}</p>
+          </a>
+          {% endif %}
+          {% if settings.web.CustomizationSettings.email %}
+            <a href="mailto:{{ settings.web.CustomizationSettings.email }}">
+              <p>{{ settings.web.CustomizationSettings.email }}</p>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+  </section>
+
+  <section class="contact_form">
+    <form class="contact__form form grid-1" id="contact__form" data-url="{% pageurl page %}" method="post">
+    {% csrf_token %}
+    <div class="field grid-item-1-6">
+      {# deixo aquest primer camp amb el "label" posat. La resta en comptes de #}
+      {# label tenen placeholder pq és com venia a Ciurans, però s'ha de treure #}
+      {# el placeholder i posar-los com a labels. #}
+      <label for="id_name">{{ page.name_label }}</label>
+      <input
+          type="text"
+          id="id_name"
+          name="name"
+          autofocus
+      />
+    </div>
+    <div class="field grid-item-1-6">
+      <input
+          type="text"
+          id="id_email"
+          name="email"
+          placeholder="{{ page.email_label }}"
+      />
+    </div>
+    <div class="field grid-item-1-6">
+      <input
+          type="text"
+          id="id_phone"
+          name="phone"
+          placeholder="{{ page.phone_label }}"
+      />
+    </div>
+    <div class="field grid-item-7-12">
+      <input
+          type="text"
+          id="id_subject"
+          name="subject"
+          placeholder="{{ page.subject_label }}"
+      />
+    </div>
+    <div class="field textarea grid-item-7-12">
+      <textarea
+          id="id_message"
+          name="message"
+          placeholder="{{ page.message_label }}"
+        ></textarea>
+    </div>
+    {# aquest camp no és al figma, però s'ha de posar. #}
+    <div class="field-checkbox grid-item-1-6">
+      <input
+          type="checkbox"
+          id="id_personal_data_auth"
+          name="personal_data_auth"
+      />
+      <div class="field-checkbox__custom"></div>
+      <label class="field-checkbox__label text-sm" for="id_personal_data_auth">
+        {{ page.personal_data_auth_label }}
+      </label>
+    </div>
+
+    <input
+      type="submit"
+      value="{% translate 'Send' %}"
+      id="btn_send"
+    />
+
+    <div class="contact__success grid-item-7-12 title-2">
+      {{ page.success_msg|richtext }}
+    </div>
+  </form>
+
+  </section>
+</main>
+
+{% endblock %}
+

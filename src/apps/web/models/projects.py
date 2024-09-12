@@ -12,3 +12,4 @@ class ProjectDetailPage(BaseHeaderOverlayPage):
     parent_page_types = ["web.ProjectListPage"]
     max_count = 1
     max_count_per_parent = 1
+    show_in_menus_default = False
