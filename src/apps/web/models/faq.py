@@ -4,7 +4,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import StructBlock, TextBlock
 from wagtail.fields import StreamField
 
-from apps.web.models.base import BasePage
+from apps.web.models.base import BasePage, MenuLabelMixin
 
 
 class QuestionAnswerBlock(StructBlock):
@@ -22,7 +22,7 @@ class QuestionAnswerBlock(StructBlock):
         icon = "circle-question"
 
 
-class FaqPage(BasePage):
+class FaqPage(MenuLabelMixin, BasePage):
     questions = StreamField(
         [
             ("question", QuestionAnswerBlock()),

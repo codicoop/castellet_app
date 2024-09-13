@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from icecream import ic
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.models import Page, PageManager
 
@@ -40,6 +41,10 @@ class BasePage(Page):
 
     class Meta:
         abstract = True
+
+    def serve(self, request, *args, **kwargs):
+        ic(request.__dict__)
+        return super().serve(request, *args, **kwargs)
 
 
 class MenuLabelMixin(BasePage):

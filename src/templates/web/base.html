@@ -1,4 +1,5 @@
 {% load i18n wagtailimages_tags wagtailcore_tags static %}
+{% wagtail_site as current_site %}
 {% get_current_language as language_code %}
 <!DOCTYPE html>
 <html>
@@ -57,14 +58,20 @@
           </svg>
         </div>
       </div>
-      <div class="menu__bottom">
-        <nav class="menu__nav title-3">
-          <p>MENÚ PENDENT</p>
+      <div>
+        <nav>
+          <ul>
+            {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
+              <li>
+                <a href="{{ menu_page.url }}">{{ menu_page.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </nav>
-        <div class="menu__btn">
+        <div>
           <a href="{% url 'registration:login' %}">
-            <div class="btn btn--dark">
-              <p>{% translate 'Client Area' %}</p>
+            <div>
+              <p>{% translate 'Partners area' %}</p>
             </div>
           </a>
         </div>
@@ -88,9 +95,15 @@
     {% include './components/social.html' %}
   </div>
   <footer class="footer">
-    <div class="footer__top grid-1">
-      <div class="footer__nav grid-item-1-4">
-        <p>MENÚ PENDENT</p>
+    <div>
+      <div>
+          <ul>
+            {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
+              <li>
+                <a href="{{ menu_page.url }}">{{ menu_page.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
       </div>
       {% if settings.web.CustomizationSettings.address %}
       <div class="footer-info grid-item-5-8">

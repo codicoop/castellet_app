@@ -3,7 +3,7 @@ from wagtail.blocks import StructBlock, CharBlock, RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
 
-from apps.web.models.base import BaseHeaderOverlayPage
+from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin
 
 
 class TitleTextBlock(StructBlock):
@@ -19,7 +19,7 @@ class TitleTextBlock(StructBlock):
         template = "web/components/about_us_title_text_block.html"
 
 
-class AboutUsPage(BaseHeaderOverlayPage):
+class AboutUsPage(MenuLabelMixin, BaseHeaderOverlayPage):
     content = StreamField(
         [
             ("title_text", TitleTextBlock()),

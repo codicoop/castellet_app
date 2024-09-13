@@ -1,8 +1,7 @@
-from apps.web.models.base import BaseHeaderOverlayPage
+from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin
 
 
-
-class ProjectListPage(BaseHeaderOverlayPage):
+class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
     template = "web/pages/projects_list.html"
     parent_page_types = ["web.HomePage"]
 

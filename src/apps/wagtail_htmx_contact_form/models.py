@@ -4,10 +4,10 @@ from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
-from apps.web.models.base import BasePage
+from apps.web.models.base import BasePage, MenuLabelMixin
 
 
-class HtmxContactPage(BasePage):
+class HtmxContactPage(MenuLabelMixin, BasePage):
     name_label = models.CharField(
         _("name"),
         max_length=250,
