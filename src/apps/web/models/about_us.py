@@ -1,4 +1,4 @@
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import StructBlock, CharBlock, RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
@@ -34,4 +34,3 @@ class AboutUsPage(BaseHeaderOverlayPage):
     ]
 
     template = "web/pages/about_us.html"
-    parent_page_types = ["web.HomePage"]
