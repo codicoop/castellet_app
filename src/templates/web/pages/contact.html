@@ -50,74 +50,23 @@
 
   <section class="contact_form">
     <form class="contact__form form grid-1" id="contact__form" data-url="{% pageurl page %}" method="post">
-    {% csrf_token %}
-    <div class="field grid-item-1-6">
-      {# deixo aquest primer camp amb el "label" posat. La resta en comptes de #}
-      {# label tenen placeholder pq és com venia a Ciurans, però s'ha de treure #}
-      {# el placeholder i posar-los com a labels. #}
-      <label for="id_name">{{ page.name_label }}</label>
-      <input
-          type="text"
-          id="id_name"
-          name="name"
-          autofocus
-      />
-    </div>
-    <div class="field grid-item-1-6">
-      <input
-          type="text"
-          id="id_email"
-          name="email"
-          placeholder="{{ page.email_label }}"
-      />
-    </div>
-    <div class="field grid-item-1-6">
-      <input
-          type="text"
-          id="id_phone"
-          name="phone"
-          placeholder="{{ page.phone_label }}"
-      />
-    </div>
-    <div class="field grid-item-7-12">
-      <input
-          type="text"
-          id="id_subject"
-          name="subject"
-          placeholder="{{ page.subject_label }}"
-      />
-    </div>
-    <div class="field textarea grid-item-7-12">
-      <textarea
-          id="id_message"
-          name="message"
-          placeholder="{{ page.message_label }}"
-        ></textarea>
-    </div>
-    {# aquest camp no és al figma, però s'ha de posar. #}
-    <div class="field-checkbox grid-item-1-6">
-      <input
-          type="checkbox"
-          id="id_personal_data_auth"
-          name="personal_data_auth"
-      />
-      <div class="field-checkbox__custom"></div>
-      <label class="field-checkbox__label text-sm" for="id_personal_data_auth">
-        {{ page.personal_data_auth_label }}
-      </label>
-    </div>
+     {% csrf_token %}
+     {{ form.as_div }}
 
-    <input
-      type="submit"
-      value="{% translate 'Send' %}"
-      id="btn_send"
-    />
+      <input
+        type="submit"
+        value="{% translate 'Send' %}"
+        id="btn_send"
+      />
 
-    <div class="contact__success grid-item-7-12 title-2">
-      {{ page.success_msg|richtext }}
-    </div>
-  </form>
+      {% if form.is_valid %}
+        <div>{{ page.success_msg|richtext }}</div>
+      {% endif %}
 
+      {% if form.errors %}
+        <div>Si us plau, corregeix els camps marcats en vermell.</div>
+      {% endif %}
+    </form>
   </section>
 </main>
 

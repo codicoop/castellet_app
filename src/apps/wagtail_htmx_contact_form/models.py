@@ -1,7 +1,6 @@
 import json
 
 from django.db import models
-from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField
@@ -94,17 +93,17 @@ class HtmxContactPage(BasePage):
 
     def serve(self, request, *args, **kwargs):
         # as request.is_ajax() is deprecated, checking HTTP_X_REQUESTED_WITH
-        if (
-            request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest"
-            and request.method == "POST"
-        ):
+        # if (
+        #     request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest"
+        #     and request.method == "POST"
+        # ):
+        if request.method == "POST":
             form_class = self.get_contact_form()
-            post_from_fetch = json.loads(request.body)
-            form = form_class(post_from_fetch)
+            form = form_class(request.POST)
             if form.is_valid():
                 if self.to_address and self.notification_subject:
                     form.send_submission_notification(
-                        self.to_address, self.notification_subject, post_from_fetch
+                        self.to_address, self.notification_subject, request.POST
                     )
 
                 # Receipt: disabled for now.
@@ -113,11 +112,6 @@ class HtmxContactPage(BasePage):
                 submissions_model = self.get_submissions_model()
                 if submissions_model:
                     form.save()
-
-                success_return_data = {"success": True}
-                return JsonResponse(success_return_data)
-            else:
-                return JsonResponse({"errors": form.errors})
 
         return super().serve(request, *args, **kwargs)
 
@@ -130,6 +124,12 @@ class HtmxContactPage(BasePage):
     @staticmethod
     def get_submissions_model():
         return ContactSubmission
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        form = self.get_contact_form()
+        context["form"] = form(request.POST or None)
+        return context
 
 
 class ContactSubmission(models.Model):
