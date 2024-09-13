@@ -1,8 +1,8 @@
 from django import forms
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
 from django.utils.html import strip_tags
+from post_office.mail import send
 
 from .models import ContactSubmission
 
@@ -14,16 +14,13 @@ class ContactUsForm(forms.ModelForm):
 
     def send_submission_notification(self, to, subject, post_data):
         body = self.get_body(post_data)
-        msg = EmailMultiAlternatives(
-            self.get_formatted_subject(subject, post_data),
-            strip_tags(body),
-            settings.DEFAULT_FROM_EMAIL,  # From
-            [
-                to,
-            ],  # To (iterable)
+        send(
+            recipients=[to],
+            sender=settings.DEFAULT_FROM_EMAIL,
+            subject=self.get_formatted_subject(subject, post_data),
+            html_message=body,
+            message=strip_tags(body),
         )
-        msg.attach_alternative(body, "text/html")
-        msg.send()
 
     @staticmethod
     def get_formatted_subject(subject, post_data):

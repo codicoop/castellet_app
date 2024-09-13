@@ -92,11 +92,6 @@ class HtmxContactPage(BasePage):
 
 
     def serve(self, request, *args, **kwargs):
-        # as request.is_ajax() is deprecated, checking HTTP_X_REQUESTED_WITH
-        # if (
-        #     request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest"
-        #     and request.method == "POST"
-        # ):
         if request.method == "POST":
             form_class = self.get_contact_form()
             form = form_class(request.POST)
