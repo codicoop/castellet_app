@@ -39,6 +39,19 @@ class HtmxContactPage(BasePage):
         help_text=_("Label for the Message field."),
         default=_("Message"),
     )
+    personal_data_auth_label = models.CharField(
+        _("personal data authorization"),
+        max_length=250,
+        help_text=_("Label for the Personal data authorization field."),
+        default=_("I authorize my personal data treatment"),
+    )
+    personal_data_auth_text = models.TextField(
+        _("personal data authorization legal text"),
+        help_text=_("Legal text displayed alongside the personal data "
+                    "authorization checkbox."),
+        default="",
+        blank=True,
+    )
 
     # Form settings
     success_msg = RichTextField(
@@ -70,6 +83,8 @@ class HtmxContactPage(BasePage):
         FieldPanel("phone_label", classname="full"),
         FieldPanel("subject_label", classname="full"),
         FieldPanel("message_label", classname="full"),
+        FieldPanel("personal_data_auth_label", classname="full"),
+        FieldPanel("personal_data_auth_text", classname="full"),
     ]
     form_settings = [
         FieldPanel("success_msg", classname="full"),
@@ -98,7 +113,9 @@ class HtmxContactPage(BasePage):
             if form.is_valid():
                 if self.to_address and self.notification_subject:
                     form.send_submission_notification(
-                        self.to_address, self.notification_subject, request.POST
+                        self.to_address,
+                        self.notification_subject,
+                        request.POST,
                     )
 
                 # Receipt: disabled for now.
@@ -148,6 +165,10 @@ class ContactSubmission(models.Model):
     message = models.TextField(
         _("message"),
     )
+    personal_data_auth = models.BooleanField(
+        _("Treatment of personal data authorization"),
+    )
+
 
     def __str__(self):
         return f"{self.subject} ({self.email}) on {self.created}"

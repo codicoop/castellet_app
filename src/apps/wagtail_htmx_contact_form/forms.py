@@ -10,7 +10,7 @@ from .models import ContactSubmission
 class ContactUsForm(forms.ModelForm):
     class Meta:
         model = ContactSubmission
-        fields = ["name", "email", "subject", "message"]
+        fields = ["name", "email", "subject", "message", "personal_data_auth"]
 
     def send_submission_notification(self, to, subject, post_data):
         body = self.get_body(post_data)
@@ -39,3 +39,7 @@ class ContactUsForm(forms.ModelForm):
         {post_data['message']}<br><br>
         """
         return body
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["personal_data_auth"].required = True

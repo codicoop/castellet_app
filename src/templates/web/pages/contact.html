@@ -51,7 +51,35 @@
   <section class="contact_form">
     <form class="contact__form form grid-1" id="contact__form" data-url="{% pageurl page %}" method="post">
      {% csrf_token %}
-     {{ form.as_div }}
+
+      <div>
+        {{ form.name.errors }}
+        <label for="{{ form.name.id_for_label }}">{{ page.name_label }}:</label>
+        {{ form.name }}
+      </div>
+      <div>
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">{{ page.email_label }}:</label>
+        {{ form.email }}
+      </div>
+      <div>
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.id_for_label }}">{{ page.subject_label }}:</label>
+        {{ form.subject }}
+      </div>
+      <div>
+        {{ form.message.errors }}
+        <label for="{{ form.message.id_for_label }}">{{ page.message_label }}:</label>
+        {{ form.message }}
+      </div>
+      <div>
+        {{ form.personal_data_auth.errors }}
+        <label for="{{ form.personal_data_auth.id_for_label }}">{{ page.personal_data_auth_label }}:</label>
+        {{ form.personal_data_auth }}
+        {% if page.personal_data_auth_text %}
+          {{ page.personal_data_auth_text }}
+        {% endif %}
+      </div>
 
       <input
         type="submit"
