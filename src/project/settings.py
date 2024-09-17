@@ -116,6 +116,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.forms",
+    "flowbite_classes",
     "post_office",
     "django_extensions",
     "phonenumber_field",
@@ -274,7 +275,7 @@ TEMPLATES = [
         },
     },
 ]
-FORM_RENDERER = "project.form_renderer.CustomFormRenderer"
+FORM_RENDERER = "flowbite_classes.renderers.CustomFormRenderer"
 
 
 ################################################################################
@@ -423,3 +424,5 @@ structlog.configure(
     logger_factory=structlog.stdlib.LoggerFactory(),
     cache_logger_on_first_use=True,
 )
+
+CODI_COOP_ENABLE_MONKEY_PATCH = True
