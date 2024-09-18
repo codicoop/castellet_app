@@ -3,3 +3,4 @@ from .settings import CustomizationSettings, AnalyticsSettings, SocialMediaIcons
 from .about_us import AboutUsPage
 from .projects import ProjectListPage
 from .faq import FaqPage
+from .legal import LegalPage
