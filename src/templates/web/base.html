@@ -150,6 +150,15 @@
         </div>
       </div>
     </div>
+
+    {% if legal_page %}
+      <div class="footer__legal">
+        <a href="{% pageurl legal_page %}">
+          <p>{% translate 'Legal warning' %}.</p>
+        </a>
+      </div>
+   {% endif %}
+
   </footer>
 
   {% block extra_js %}
