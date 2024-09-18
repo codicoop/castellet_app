@@ -45,18 +45,22 @@ class BasePage(Page):
     def get_context(self, request, *args, **kwargs):
         ctxt = super().get_context(request, *args, **kwargs)
         legal_page = (
-            apps.get_model("cms_site", "LegalPage")
-            .objects.requested_locale(request)
+            apps.get_model("web", "LegalPage")
+            .objects
             .first()
         )
-        if legal_page:
-            ctxt.update(
-                {
-                    "legal_page": legal_page,
-                },
-            )
+        contact_page = (
+            apps.get_model("wagtail_htmx_contact_form", "HtmxContactPage")
+            .objects
+            .first()
+        )
+        ctxt.update(
+            {
+                "legal_page": legal_page,
+                "contact_page": contact_page,
+            },
+        )
         return ctxt
-
 
 
 class MenuLabelMixin(BasePage):

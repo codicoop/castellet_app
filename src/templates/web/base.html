@@ -82,12 +82,13 @@
   {% block content %}
   {% endblock %}
 
-  {% if page.display_join_us_block %}
+  {% if page.display_join_us_block and contact_page %}
     <div>
       <h2>{{ settings.web.CustomizationSettings.join_us_title }}</h2>
       {% if settings.web.CustomizationSettings.join_us_text %}
         <p>{{ settings.web.CustomizationSettings.join_us_text }}</p>
       {% endif %}
+      <a href="{% pageurl contact_page %}">{% translate "Join us" %}</a>
     </div>
   {% endif %}
 
