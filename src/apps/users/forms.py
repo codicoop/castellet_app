@@ -3,15 +3,24 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth.forms import (
     AuthenticationForm as BaseAuthenticationForm,
+)
+from django.contrib.auth.forms import (
     PasswordChangeForm as BasePasswordChangeForm,
+)
+from django.contrib.auth.forms import (
     PasswordResetForm as BasePasswordResetForm,
+)
+from django.contrib.auth.forms import (
     SetPasswordForm as BaseSetPasswordForm,
+)
+from django.contrib.auth.forms import (
     UserCreationForm,
 )
 from django.urls import reverse
 from django.utils import formats, timezone
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+
 from apps.users.models import User
 from project.helpers import absolute_url
 from project.post_office import send
