@@ -184,7 +184,7 @@
   <footer class="bg-blau-500 text-white mt-auto dark:bg-gray-800">
     <div class="mx-auto max-w-screen-2xl">
       <div class="grid grid-cols-1 gap-6 px-4 pb-5 pt-8
-        md:grid-cols-2 lg:grid-cols-4 lg:px-20 py-8">
+        md:grid-cols-3 lg:grid-cols-4 lg:px-20 py-8">
         <!-- Nav -->
         <div>
           <h2 class="mb-3 text-lg font-semibold">{% translate 'Menu' %}</h2>
@@ -222,7 +222,7 @@
         {% endif %}
         <!-- Xxss i subvencions -->
         {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
-        <div>
+        <div class="lg:col-start-3">
           <h2 class="mb-3 text-lg font-semibold">{% translate 'Follow us in...' %}</h2>
           <ul class="flex gap-4 items-center mt-3 lg:order-4 lg:mt-0 lg:ml-3">
             {% if settings.web.SocialMediaIconsSettings.facebook %}
@@ -273,18 +273,18 @@
         </div>
         {% endif %}
         <!-- newsletter -->
-        <div>
+        <div class="lg:col-start-4">
           <h2 class="mb-3 text-lg font-semibold">{% translate 'Newsletter' %}</h2>
           <p>No tinc clar si volem que el formulari de la newsletter aparegui aquí o si volem que porti a la seva pròpia pàgina</p>
         </div>
       </div>
       <div class="flex flex-col bg-blau-700 w-full p-4
         md:flex-row md:justify-between">
-          <div class="text-xs text-white sm:text-center dark:text-gray-400">
+          <div class="text-xs text-white">
             <a href="https://castelletsostenible.cat/" class="hover:underline">Castellet Sostenible</a>
             <span> © 2024</span>
           </div>
-          <div class="text-xs mt-2 text-white sm:text-center dark:text-gray-400">
+          <div class="text-xs mt-2 text-white md:mt-0">
             <span>{% translate 'Developed by' %}</span>
             <a href="https://codi.coop/" class="hover:underline">Codi Cooperatiu</a>
             <span>{% translate ' - Designed by' %}</span>
