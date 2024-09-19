@@ -48,17 +48,15 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         max_length=50,
         blank=False,
         null=False,
-        help_text=_("Your name"),
     )
     surnames = flowbite.ModelCharField(
         _("surname"),
         max_length=50,
         blank=False,
         null=False,
-        help_text=_("Your surnames"),
     )
     email = flowbite.ModelEmailField(
-        verbose_name=_("email address"),
+        _("email address"),
         max_length=255,
         blank=False,
         null=False,
@@ -134,8 +132,8 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True,
     )
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(_("Is staff"), default=True)
+    is_staff = models.BooleanField(_("Is active"), default=False)
 
     objects = UserManager()
 
