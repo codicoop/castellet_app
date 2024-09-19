@@ -197,7 +197,7 @@ class Document(models.Model):
         _("Date of Document"),
         null=False,
         blank=False,
-        default=timezone.now(),
+        default=timezone.now,
     )
     created_at = models.DateField(auto_now_add=True, null=False)
 

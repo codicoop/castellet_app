@@ -104,7 +104,6 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     projects = models.ManyToManyField(
         Project,
         blank=True,
-        null=True,
         related_name="user_projects",
         verbose_name=_("Projects"),
     )
