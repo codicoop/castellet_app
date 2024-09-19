@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 
@@ -24,6 +25,7 @@ class NewsletterSubscriberSuccessView(StandardSuccess):
     description = _("Successfully signed up to the newsletter.")
 
 
+@login_required
 def document_list_view(request):
     if request.method == "GET":
         context = {
