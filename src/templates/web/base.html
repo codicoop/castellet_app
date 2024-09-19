@@ -24,70 +24,13 @@
 <body id="body" data-lang="{{ language_code }}">
   <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a href="/{{ language_code }}/" class="flex items-center">
-          <div class="mr-3 h-6 sm:h-9">
-            {% image settings.web.CustomizationSettings.logo width-300 %}
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+        <a href="/{{ language_code }}/" class="flex items-center lg:order-1">
+          <div class="mr-3">
+            {% image settings.web.CustomizationSettings.logo width-150 %}
           </div>
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
         </a>
-        <div class="flex items-center lg:order-2">
-          <!-- Barra search oberta -->
-          <form id="search-form" class="hidden mr-3 w-full">   
-            <div class="relative">
-              <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
-              class="block py-2 px-4 w-full text-sm text-gray-900 border rounded-full
-              border-gray-900 pr-10
-              hover:bg-gray-50 focus:ring-groc-700 focus:border-groc-700 
-              dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
-              _="on focusout toggle .hidden on #search_btn 
-              then toggle .hidden on #join_btn 
-              then toggle .hidden on #login_btn 
-              then toggle .hidden on #search-form"
-              >
-              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              </div>
-            </div>
-          </form>
-          <!-- Barra search colapsada -->
-          <button data-collapse-toggle="mobile-menu-search" aria-controls="mobile-menu-search"
-            aria-expanded="false" type="button" id="search_btn"
-            class="hidden lg:inline-flex items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
-              text-sm border border-gray-900
-              lg:mr-0 lg:px-5
-              hover:bg-gray-50 focus:outline-none
-              focus:ring-4 focus:ring-gray-300
-              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-            _="on click toggle .hidden on #search-form 
-              then toggle .hidden on #join_btn 
-              then toggle .hidden on #login_btn
-              then toggle .hidden on me"
-          >
-            <svg class="w-5 h-5 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-          </button>
-          <!-- Botó socis -->
-          <a href="0#" id="join_btn"
-            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
-              text-sm bg-groc-500
-              lg:inline-flex 
-              hover:bg-groc-700 focus:outline-none
-              focus:ring-4 focus:ring-groc-700
-              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          >
-            <p>{% translate 'Join us' %}</p>
-          </a>
-          <!-- Botó login -->
-          <a href="{% url 'registration:login' %}" id="login_btn"
-            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
-              text-sm border border-gray-900
-              lg:inline-flex
-              hover:bg-groc-700 focus:outline-none
-              focus:ring-4 focus:ring-groc-700
-              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          >
-            <p>{% translate 'Partners area' %}</p>
-          </a>
+        <div class="flex items-center lg:hidden">
           <!-- Botó burguer -->
           <button type="button" id="burguer_icon"
             class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg border-2 border-transparent
@@ -101,9 +44,9 @@
         </div>
         <!-- Menú nav -->
         <div id="mobile_menu"
-          class="hidden absolute top-0 bottom-0 left-0 right-0 lg:static
+          class="sm:hidden absolute top-0 bottom-0 left-0 right-0 
           justify-between items-center w-full bg-groc-500 px-4 py-3
-          lg:flex lg:w-auto lg:order-1 lg:bg-white">
+          lg:static lg:flex lg:gap-3 lg:w-auto lg:order-2 lg:bg-white">
           <!-- Close btn -->
           <button type="button"
             class="float-right inline-flex items-center p-2 text-sm text-gray-900 rounded-lg
@@ -116,8 +59,8 @@
             <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
           </button>
           <!-- Nav -->
-          <ul class="flex flex-col mt-16 font-medium
-            lg:flex-row lg:space-x-8 lg:mt-0">
+          <ul id="nav_items" class="flex flex-col mt-16 font-medium
+            lg:flex-row lg:space-x-8 lg:mt-0 lg:order-1">
             <li>
               <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
                 Home
@@ -150,22 +93,21 @@
               {% translate 'Search' %}
             </button>
           </form>
-          <!-- Botons mobile -->
-          <div class="flex gap-2 mt-6">
-            <a href="0#" id="join_btn2"
+          <!-- Botons -->
+          <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
+            <a href="0#"
               class="items-center mr-2 px-3 py-2 text-white font-medium rounded-full
                 text-sm bg-gray-950
-                lg:hidden
+                lg:mr-0 lg:gap-3 lg:bg-groc-500 lg:text-gray-900
                 hover:bg-gray-900 focus:outline-none
                 focus:ring-4 focus:ring-groc-700
                 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
               <p>{% translate 'Join us' %}</p>
             </a>
-            <a href="{% url 'registration:login' %}" id="login_btn2"
+            <a href="{% url 'registration:login' %}"
               class="sitems-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
-                text-sm border border-gray-900
-                lg:hidden
+                text-sm border border-gray-900 lg:mr-0
                 hover:bg-groc-700 focus:outline-none
                 focus:ring-4 focus:ring-groc-700
                 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
@@ -173,20 +115,54 @@
               <p>{% translate 'Partners area' %}</p>
             </a>
           </div>
+          <!-- Barra search oberta -->
+          <form id="search-form" class="hidden mr-3 w-full"> 
+            <div class="relative">
+              <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
+              class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
+                border-gray-900 pr-10
+                hover:bg-gray-50 focus:ring-groc-700 focus:border-groc-700 
+                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
+              _="on focusout toggle .lg:inline-flex on #search_btn 
+                then toggle .hidden on #nav_btns 
+                then toggle .hidden on #nav_items 
+                then toggle .hidden on #search-form"
+              >
+              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+            </div>
+          </form>
+          <!-- Barra search colapsada -->
+          <button data-collapse-toggle="mobile-menu-search" aria-controls="mobile-menu-search"
+            aria-expanded="false" type="button" id="search_btn"
+            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+              text-sm border border-gray-900
+              lg:mr-0 lg:px-5 lg:inline-flex lg:order-3
+              hover:bg-gray-50 focus:outline-none
+              focus:ring-4 focus:ring-gray-300
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            _="on click toggle .hidden on #search-form 
+              then toggle .hidden on #nav_btns 
+              then toggle .hidden on #nav_items 
+              then toggle .lg:inline-flex on me"
+          >
+            <svg class="w-5 h-5 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+          </button>
           <!-- xxss -->
-          <div class="flex gap-4 mt-6">
-          <!-- Per cada icona -->
-          <div class="w-5 h-5">
-            <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-            </svg>            
-          </div>
-          <!-- end -->
-          <div class="w-5 h-5 text-gray-900">
-            <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-            </svg>            
-          </div>
+          <div class="flex gap-4 mt-6 lg:order-4 lg:mt-0 lg:ml-3">
+            <!-- Per cada icona -->
+            <div class="w-5 h-5">
+              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
+              </svg>            
+            </div>
+            <!-- end -->
+            <div class="w-5 h-5 text-gray-900">
+              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
+              </svg>            
+            </div>
           </div>
         </div>
       </div>
