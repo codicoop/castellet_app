@@ -3,17 +3,9 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth.forms import (
     AuthenticationForm as BaseAuthenticationForm,
-)
-from django.contrib.auth.forms import (
     PasswordChangeForm as BasePasswordChangeForm,
-)
-from django.contrib.auth.forms import (
     PasswordResetForm as BasePasswordResetForm,
-)
-from django.contrib.auth.forms import (
     SetPasswordForm as BaseSetPasswordForm,
-)
-from django.contrib.auth.forms import (
     UserCreationForm,
 )
 from django.urls import reverse
@@ -100,7 +92,7 @@ class UserSignUpForm(UserCreationForm):
         label=_("Phone"),
         max_length=9,
         widget=forms.TextInput(
-            attrs={"autofocus": True, "autocomplete": "tel"},
+            attrs={"autocomplete": "tel"},
         ),
     )
     address = flowbite.FormCharField(
@@ -156,7 +148,11 @@ class UserSignUpForm(UserCreationForm):
 class ProfileDetailsForm(forms.ModelForm):
     name = flowbite.FormCharField(
         label=_("Name"),
-        widget=forms.TextInput(),
+        widget=forms.TextInput(
+            attrs={
+                "autofocus": True,
+            }
+        ),
     )
     surnames = flowbite.FormCharField(
         label=_("Surnames"),
@@ -176,7 +172,6 @@ class ProfileDetailsForm(forms.ModelForm):
         max_length=9,
         widget=forms.TextInput(
             attrs={
-                "autofocus": True,
                 "autocomplete": "tel",
             }
         ),
