@@ -3,25 +3,25 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from project.fields import flowbite
+from apps.main.choices import AccessPermissionRoleChoices, TagsChoices
 from project.storage_backends import PrivateMediaStorage
 
 
 class NewsletterSubscriber(models.Model):
-    email = flowbite.ModelEmailField(
+    email = models.EmailField(
         max_length=100,
         blank=False,
         null=False,
         unique=True,
         help_text=_("Email where you will receive our newsletter"),
     )
-    name = flowbite.ModelCharField(
+    name = models.CharField(
         max_length=50,
         blank=False,
         null=False,
         help_text=_("Your name"),
     )
-    surnames = flowbite.ModelCharField(
+    surnames = models.CharField(
         max_length=100,
         blank=False,
         null=False,
@@ -42,7 +42,7 @@ class NewsletterSubscriber(models.Model):
 
 
 class ProjectType(models.Model):
-    name = flowbite.ModelCharField(
+    name = models.CharField(
         max_length=50,
         blank=False,
         null=False,
@@ -64,7 +64,7 @@ class Project(models.Model):
         PROJECT_DEVELOPMENT = "AP", _("Active Project")
         OTHER_PROJECTS = "OP", _("Future projects or other projects")
 
-    title = flowbite.ModelCharField(
+    title = models.CharField(
         _("Title"),
         max_length=50,
         blank=False,
@@ -81,7 +81,7 @@ class Project(models.Model):
         verbose_name=_("Project type"),
         help_text=_("Project type"),
     )
-    status = flowbite.ModelSelectDropdownField(
+    status = models.CharField(
         _("Status"),
         max_length=2,
         choices=ProjectStatusChoices.choices,
@@ -89,14 +89,14 @@ class Project(models.Model):
         null=False,
         help_text=_("Project status"),
     )
-    description = flowbite.ModelCharField(
+    description = models.CharField(
         _("Description"),
         max_length=500,
         blank=False,
         null=False,
         help_text=_("Project description"),
     )
-    image = flowbite.ModelImageField(
+    image = models.ImageField(
         _("Image"),
         blank=True,
         null=True,
@@ -104,26 +104,26 @@ class Project(models.Model):
         validators=[validate_image_file_extension],
         help_text=_("Project image"),
     )
-    energy_power = flowbite.ModelIntegerField(
+    energy_power = models.PositiveIntegerField(
         _("Energy power"),
         blank=True,
         null=True,
         help_text=_("Project energy power (kW)"),
     )
-    annual_energy = flowbite.ModelIntegerField(
+    annual_energy = models.PositiveIntegerField(
         _("Annual energy"),
         blank=True,
         null=True,
         help_text=_("Project annual energy (kWh/year)"),
     )
-    investment = flowbite.ModelIntegerField(
+    investment = models.PositiveIntegerField(
         _("Investment"),
         blank=True,
         null=True,
         default=0,
         help_text=_("Project investment (€)"),
     )
-    is_public = flowbite.ModelBooleanField(
+    is_public = models.BooleanField(
         _("Is public"),
         default=False,
         blank=True,
@@ -142,31 +142,21 @@ class Project(models.Model):
 
 
 class Document(models.Model):
-    class AccessPermissionRoleChoices(models.TextChoices):
-        GOB_COUNCIL_DRIVING_GROUP = "GC", _("Governing Council and Driving Group")
-        ALL_USERS = "AU", _("All users")
-
-    class TagsChoices(models.TextChoices):
-        GENERAL_ASSEMBLY = "GA", _("General Assembly")
-        ACTS = "AC", _("Acts")
-        BUDGETS_INVOICES = "BI", _("Budgets and invoices")
-        CORPORATE = "CO", _("Corporate")
-
-    title = flowbite.ModelCharField(
+    title = models.CharField(
         _("Title"),
         max_length=50,
         blank=False,
         null=False,
         help_text=_("Project"),
     )
-    description = flowbite.ModelCharField(
+    description = models.CharField(
         _("Description"),
         max_length=500,
         blank=False,
         null=False,
         help_text=_("Document description"),
     )
-    access_permission_role = flowbite.ModelRadioField(
+    access_permission_role = models.CharField(
         _("Access Permission Role"),
         max_length=2,
         blank=False,
@@ -175,7 +165,7 @@ class Document(models.Model):
         default=AccessPermissionRoleChoices.ALL_USERS,
         help_text=_("Access permission role"),
     )
-    tags = flowbite.ModelSelectCheckboxField(
+    tags = models.SelectCheckboxField(
         _("Tags"),
         max_length=100,
         blank=False,
@@ -190,7 +180,7 @@ class Document(models.Model):
         related_name="documents",
         on_delete=models.CASCADE,
     )
-    file = flowbite.ModelFileField(
+    file = models.FileField(
         _("File"),
         max_length=100,
         blank=False,
@@ -205,14 +195,14 @@ class Document(models.Model):
         null=False,
         help_text=_("Responsible user"),
     )
-    date_document = flowbite.ModelDateField(
+    date_document = models.DateField(
         _("Date of Document"),
         null=False,
         blank=False,
         default=timezone.now(),
         help_text=_("Date of document"),
     )
-    created_at = flowbite.ModelDateField(auto_now_add=True, null=False)
+    created_at = models.DateField(auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("document")
