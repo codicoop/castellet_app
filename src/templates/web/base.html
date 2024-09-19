@@ -2,7 +2,7 @@
 {% wagtail_site as current_site %}
 {% get_current_language as language_code %}
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@
   {% block extra_headers %}
   {% endblock %}
 </head>
-<body id="body" data-lang="{{ language_code }}">
+<body class="flex flex-col min-h-[100%]" id="body" data-lang="{{ language_code }}">
   <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
@@ -44,7 +44,7 @@
         </div>
         <!-- Menú nav -->
         <div id="mobile_menu"
-          class="sm:hidden absolute top-0 bottom-0 left-0 right-0 
+          class="hidden absolute top-0 bottom-0 left-0 right-0 
           justify-between items-center w-full bg-groc-500 px-4 py-3
           lg:static lg:flex lg:gap-3 lg:w-auto lg:order-2 lg:bg-white">
           <!-- Close btn -->
@@ -181,63 +181,115 @@
     </div>
   {% endif %}
 
-  <div class="prefooter">
-    {% include './components/social.html' %}
-  </div>
-  <footer class="footer">
-    <div>
-      <div>
-          <ul>
+  <footer class="bg-blau-500 text-white mt-auto dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-2xl">
+      <div class="grid grid-cols-1 gap-6 px-4 pb-5 pt-8
+        md:grid-cols-2 lg:grid-cols-4 lg:px-20 py-8">
+        <!-- Nav -->
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Menu' %}</h2>
+          <ul class="text-sm font-normal">
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
-              <li>
-                <a href="{{ menu_page.url }}">{{ menu_page.title }}</a>
-              </li>
+            <li class="mb-2">
+              <a href="{{ menu_page.url }}" class="hover:underline">{{ menu_page.title }}</a>
+            </li>
             {% endfor %}
           </ul>
+        </div>
+        <!-- Contacte -->
+        {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Contact' %}</h2>
+          <ul class="text-sm font-normal">
+            {% if settings.web.CustomizationSettings.phone %}
+            <li class="mb-2">
+              <a href="tel:{{ settings.web.CustomizationSettings.phone }}"
+                class="hover:underline">
+                <p>{{ settings.web.CustomizationSettings.phone }}</p>
+              </a>            
+            </li>
+            {% endif %}
+            {% if settings.web.CustomizationSettings.email %}
+            <li class="mb-2">
+              <a href="mailto:{{ settings.web.CustomizationSettings.email }}"
+                class="hover:underline">
+                <p>{{ settings.web.CustomizationSettings.email }}</p>
+              </a>            
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+        <!-- Xxss i subvencions -->
+        {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Follow us in...' %}</h2>
+          <ul class="flex gap-4 items-center mt-3 lg:order-4 lg:mt-0 lg:ml-3">
+            {% if settings.web.SocialMediaIconsSettings.facebook %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.facebook }}">
+                <img src="{% static 'images/icons/icon_facebook.svg' %}" alt="{% translate 'Facebook link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.youtube %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.youtube }}">
+                <img src="{% static 'images/icons/icon_youtube.svg' %}" alt="{% translate 'Youtube link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.instagram %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.instagram }}">
+                <img src="{% static 'images/icons/icon_instagram.svg' %}" alt="{% translate 'Instagram link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.x %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.x }}">
+                <img src="{% static 'images/icons/icon_twitter.svg' %}" alt="{% translate 'Twitter link' %}">
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <h2 class="mb-3 mt-6 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
+          <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
+          <div class="flex gap-3 flex-wrap">
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- newsletter -->
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Newsletter' %}</h2>
+          <p>No tinc clar si volem que el formulari de la newsletter aparegui aquí o si volem que porti a la seva pròpia pàgina</p>
+        </div>
       </div>
-      {% if settings.web.CustomizationSettings.address %}
-      <div class="footer-info grid-item-5-8">
-        <div class="footer-info__heading">
-          {% translate 'Where are we' %}
-        </div>
-        <div class="footer-info__text">
-          <a href='https://maps.apple.com/maps?q={{ settings.web.CustomizationSettings.address|safe }}'>
-            <p>{{ settings.web.CustomizationSettings.address|safe }}</p>
-          </a>
-        </div>
-      </div>
-      {% endif %}
-      {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
-      <div class="footer-info grid-item-9-12">
-        <div class="footer-info__heading">
-          {% translate 'Contact' %}
-        </div>
-        <div class="footer-info__text">
-          {% if settings.web.CustomizationSettings.phone %}
-          <a href="tel:{{ settings.web.CustomizationSettings.phone }}">
-            <p>{{ settings.web.CustomizationSettings.phone }}</p>
-          </a>
-          {% endif %}
-          {% if settings.web.CustomizationSettings.email %}
-            <a href="mailto:{{ settings.web.CustomizationSettings.email }}">
-              <p>{{ settings.web.CustomizationSettings.email }}</p>
-            </a>
-          {% endif %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-    <div class="footer__bottom grid-1">
-      <div class="footer__bottom-container grid-item-4-9">
-        <div class="footer__legal">
-          <p>{{ settings.web.CustomizationSettings.footer_name }}</p>
-        </div>
-        <div class="footer__legal">
-          <p>{% translate 'All rights reserved' %}.</p>
-        </div>
-        <div class="footer__legal">
-          <p>{{ settings.web.CustomizationSettings.authorship }}</p>
-        </div>
+      <div class="flex flex-col bg-blau-700 w-full p-4
+        md:flex-row md:justify-between">
+          <div class="text-xs text-white sm:text-center dark:text-gray-400">
+            <a href="https://castelletsostenible.cat/" class="hover:underline">Castellet Sostenible</a>
+            <span> © 2024</span>
+          </div>
+          <div class="text-xs mt-2 text-white sm:text-center dark:text-gray-400">
+            <span>{% translate 'Developed by' %}</span>
+            <a href="https://codi.coop/" class="hover:underline">Codi Cooperatiu</a>
+            <span>{% translate ' - Designed by' %}</span>
+            <a href="https://utopigstudio.com/" class="hover:underline">Utopig Studio</a>
+          </div>
       </div>
     </div>
   </footer>
