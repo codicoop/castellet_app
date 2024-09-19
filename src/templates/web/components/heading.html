@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
 
 {% if page.header_image %}
   {% image self.header_image width-2000 as bg_heading %}
@@ -34,11 +34,16 @@
   </div>
   <!-- Overlay -->
   {% if page.can_display_header_highlight %}
-  <div class="cols-span-2 row-start-2 relative flex flex-col gap-4 bg-groc-500 rounded-3xl
+  <div id="overlay" class="cols-span-2 row-start-2 relative flex flex-col gap-4 bg-groc-500 rounded-3xl
     p-3 z-30 mt-16 mx-8 w-80">
+    <div class="absolute top-2 right-2 p-2 bg-groc-500 hover:bg-groc-700 cursor-pointer rounded-full"
+      _="on click add .hidden to #overlay"
+    >
+      <img src="{% static 'images/icons/icon_close.svg' %}" alt="{% translate 'Close overlay' %}">
+    </div>
     <div class="rounded-2xl overflow-hidden">
       {% if page.overlay_image %}
-        <img class="h-full w-full object-cover" src="{{ image_overlay.url }}" alt="">
+        <img class="h-full w-full object-cover text-white" src="{{ image_overlay.url }}" alt="">
       {% endif %}
     </div>
     <div>
@@ -58,8 +63,8 @@
           <span>{{ page.overlay_button_text }}</span>
         </a>
       </div>
+      {% endif %}
     </div>
-    {% endif %}
   </div>
   {% endif %}
 </section>
