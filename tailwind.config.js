@@ -33,7 +33,6 @@ module.exports = {
         },
         gris: {
           "500": "#929e9e"  // gris base
-          
         }
       }
     },

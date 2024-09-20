@@ -7,12 +7,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'styles/output.css' %}">
   <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
   <title>{{ settings.web.CustomizationSettings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
+  <style>
+    @font-face {
+      font-family: Montserrat;
+      src: url('{% static "fonts/Montserrat-Regular.ttf" %}') format('woff2');
+    }
+  </style>
   {% if settings.web.AnalyticsSettings.embed %}
     <script>
       {{ settings.web.AnalyticsSettings.embed|safe }}
@@ -173,12 +176,29 @@
   {% endblock %}
 
   {% if page.display_join_us_block %}
-    <div>
-      <h2>{{ settings.web.CustomizationSettings.join_us_title }}</h2>
-      {% if settings.web.CustomizationSettings.join_us_text %}
-        <p>{{ settings.web.CustomizationSettings.join_us_text }}</p>
-      {% endif %}
+  <div class="flex flex-col gap-4 bg-groc-500 rounded-3xl
+      px-4 py-11 my-16 mx-3 shadow-lg
+      lg:my-5 lg:flex-row">
+    <h3 class="font-semibold text-2xl mb-2">
+      {{ settings.web.CustomizationSettings.join_us_title }}
+    </h3>
+    {% if settings.web.CustomizationSettings.join_us_text %}
+    <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis">
+      {{ settings.web.CustomizationSettings.join_us_text }}
+    </p>
+    {% endif %}
+    <div class="my-4">
+      <a href="{% pageurl page.overlay_button_page %}"
+        class="items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+          text-sm border border-gray-900 lg:mr-0
+          hover:bg-groc-700 focus:outline-none
+          focus:ring-4 focus:ring-groc-700
+          dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+      >
+        <span>{% translate 'Join us' %}</span>
+      </a>
     </div>
+  </div>
   {% endif %}
 
   <footer class="bg-blau-500 text-white mt-auto dark:bg-gray-800">
