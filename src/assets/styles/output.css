@@ -1517,6 +1517,10 @@ input:checked + .toggle-bg {
   max-width: 24rem;
 }
 
+.max-w-4xl {
+  max-width: 56rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -3138,6 +3142,11 @@ input:checked + .toggle-bg {
     margin-right: 0px;
   }
 
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .md\:me-24 {
     margin-inline-end: 6rem;
   }
@@ -3216,6 +3225,18 @@ input:checked + .toggle-bg {
 @media (min-width: 1024px) {
   .lg\:static {
     position: static;
+  }
+
+  .lg\:absolute {
+    position: absolute;
+  }
+
+  .lg\:right-16 {
+    right: 4rem;
+  }
+
+  .lg\:top-10 {
+    top: 2.5rem;
   }
 
   .lg\:order-1 {
@@ -3305,6 +3326,10 @@ input:checked + .toggle-bg {
     margin-top: auto;
   }
 
+  .lg\:mr-24 {
+    margin-right: 6rem;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -3329,8 +3354,20 @@ input:checked + .toggle-bg {
     width: auto;
   }
 
+  .lg\:w-full {
+    width: 100%;
+  }
+
   .lg\:max-w-52 {
     max-width: 13rem;
+  }
+
+  .lg\:max-w-md {
+    max-width: 28rem;
+  }
+
+  .lg\:max-w-4xl {
+    max-width: 56rem;
   }
 
   .lg\:translate-x-0 {
@@ -3396,6 +3433,11 @@ input:checked + .toggle-bg {
   .lg\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .lg\:pb-16 {

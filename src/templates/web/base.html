@@ -176,18 +176,18 @@
   {% endblock %}
 
   {% if page.display_join_us_block %}
-  <div class="flex flex-col gap-4 bg-groc-500 rounded-3xl
-      px-4 py-11 my-16 mx-3 shadow-lg
-      lg:my-5 lg:flex-row">
-    <h3 class="font-semibold text-2xl mb-2">
+  <div class="relative flex flex-col bg-groc-500 rounded-3xl
+      px-4 py-11 my-16 mx-3 shadow-lg lg:w-full lg:max-w-4xl md:mx-auto
+      lg:my-5 lg:px-16">
+    <h3 class="font-semibold text-2xl mb-2 lg:mr-24">
       {{ settings.web.CustomizationSettings.join_us_title }}
     </h3>
     {% if settings.web.CustomizationSettings.join_us_text %}
-    <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis">
+    <p class="text-sm lg:max-w-md overflow-hidden overflow-ellipsis">
       {{ settings.web.CustomizationSettings.join_us_text }}
     </p>
     {% endif %}
-    <div class="my-4">
+    <div class="my-4 lg:absolute lg:top-10 lg:right-16">
       <a href="{% pageurl page.overlay_button_page %}"
         class="items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
           text-sm border border-gray-900 lg:mr-0
