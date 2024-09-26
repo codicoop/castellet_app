@@ -3,17 +3,17 @@
 
 {% block content %}
 
-<main class="main home">
+<main class="flex flex-col items-center">
 
   {% include '../components/heading.html' %}
 
-
-  <section class="content">
-    {# Blocs que inclou aquest StreamField: #}
-    {# - Bloc títol + RichText. Maquetar a: web/components/about_us_title_text_block.html #}
-    {# - Bloc "Imatge horitzontal. No té template propi. Es renderitza així: #}
-    {# <div class="block-horizontal_image"><img alt="xx" height="xx" src="..." width="xx"></div> #}
-    {{ page.content }}
+  <section class="mx-auto max-w-screen-2xl">
+    <div class="flex flex-col gap-8 px-3 pb-16 max-w-2xl
+      lg:px-44 lg:pb-32 lg:gap-16 lg:max-w-none
+      [&>img]:w-full"
+    >
+      {{ page.content }}
+    </div>
   </section>
 
 </main>

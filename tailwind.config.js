@@ -4,6 +4,9 @@ module.exports = {
     './src/templates/**/*.html',
     './node_modules/flowbite/**/*.js'
   ],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -44,8 +47,5 @@ module.exports = {
       'video': '0 1.6px 7.2px 0 rgba(0, 0, 0, 0.21)'
     }
   },
-  plugins: [
-    require('flowbite/plugin')
-  ]
 }
 
