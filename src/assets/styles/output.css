@@ -3392,6 +3392,14 @@ input:checked + .toggle-bg {
     margin-right: 5rem;
   }
 
+  .lg\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .lg\:mb-9 {
+    margin-bottom: 2.25rem;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -3479,6 +3487,10 @@ input:checked + .toggle-bg {
 
   .lg\:gap-3 {
     gap: 0.75rem;
+  }
+
+  .lg\:gap-14 {
+    gap: 3.5rem;
   }
 
   .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
