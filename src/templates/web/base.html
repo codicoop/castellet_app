@@ -24,7 +24,7 @@
   {% block extra_headers %}
   {% endblock %}
 </head>
-<body class="flex flex-col min-h-[100%]" id="body" data-lang="{{ language_code }}">
+<body class="relative flex flex-col min-h-[100%]" id="body" data-lang="{{ language_code }}">
   <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
@@ -47,7 +47,7 @@
         </div>
         <!-- Menú nav -->
         <div id="mobile_menu"
-          class="hidden absolute top-0 bottom-0 left-0 right-0 
+          class="hidden absolute top-0 bottom-0 left-0 right-0 z-50
           justify-between items-center w-full bg-groc-500 px-4 py-3
           lg:static lg:flex lg:gap-3 lg:w-auto lg:order-2 lg:bg-white">
           <!-- Close btn -->
