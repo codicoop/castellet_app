@@ -175,7 +175,7 @@
   {% block content %}
   {% endblock %}
 
-  {% if page.display_join_us_block %}
+  {% if page.display_join_us_block and contact_page  %}
   <div class="relative flex flex-col bg-groc-500 rounded-3xl
       px-4 py-11 my-16 mx-3 shadow-lg lg:w-full lg:max-w-4xl md:mx-auto
       lg:my-5 lg:px-16">
@@ -188,7 +188,7 @@
     </p>
     {% endif %}
     <div class="my-4 lg:absolute lg:top-10 lg:right-16">
-      <a href="{% pageurl page.overlay_button_page %}"
+      <a href="{% pageurl contact_page %}"
         class="items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
           text-sm border border-gray-900 lg:mr-0
           hover:bg-groc-700 focus:outline-none
@@ -312,6 +312,15 @@
           </div>
       </div>
     </div>
+
+    {% if legal_page %}
+      <div class="footer__legal">
+        <a href="{% pageurl legal_page %}">
+          <p>{% translate 'Legal warning' %}.</p>
+        </a>
+      </div>
+   {% endif %}
+
   </footer>
 
   {% block extra_js %}

@@ -1,6 +1,6 @@
+from django.apps import apps
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from icecream import ic
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.models import Page, PageManager
 
@@ -42,9 +42,25 @@ class BasePage(Page):
     class Meta:
         abstract = True
 
-    def serve(self, request, *args, **kwargs):
-        ic(request.__dict__)
-        return super().serve(request, *args, **kwargs)
+    def get_context(self, request, *args, **kwargs):
+        ctxt = super().get_context(request, *args, **kwargs)
+        legal_page = (
+            apps.get_model("web", "LegalPage")
+            .objects
+            .first()
+        )
+        contact_page = (
+            apps.get_model("wagtail_htmx_contact_form", "HtmxContactPage")
+            .objects
+            .first()
+        )
+        ctxt.update(
+            {
+                "legal_page": legal_page,
+                "contact_page": contact_page,
+            },
+        )
+        return ctxt
 
 
 class MenuLabelMixin(BasePage):

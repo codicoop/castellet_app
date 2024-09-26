@@ -1,0 +1,70 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block content %}
+  <main class="main home">
+
+    <div>
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.date }}</p>
+    </div>
+
+    {# Al figma no apareix el llistat de tags que té una notícia, però per si els vols incorporar: #}
+    {% if page.tags.all %}
+      <div class="tags">
+        {% for tag in page.tags.all %}
+          <a href="{% pageurl page.get_parent %}?tag={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.header_image %}
+      {% image self.header_image width-2000 as bg_heading %}
+    {% endif %}
+    <section
+      {% if bg_heading %}
+        style="--bg-heading: url('{{ bg_heading.url }}')"
+      {% endif %}
+    >
+    </section>
+
+    <section class="content">
+      {# Blocs que inclou aquest StreamField: #}
+      {# - Image. No té un template propi. L'HTML que genera és com aquest: #}
+      {# <div class="block-image"> #}
+      {#   <img alt="Logo" height="300" src="https://s3.eu-central-1.wasabisys.com/codi-cooperatiu-web-develop/media/web/images/logo.original.png" width="721"> #}
+      {# </div> #}
+      {# - Paràgraf de text. No té un template propi. L'HTML que genera és com aquest: #}
+      {# <div class="block-text"> #}
+      {#   <p data-block-key="codi_aleatori">Cos de la notícia.</p> #}
+      {# </div> #}
+      {# Cal tenir en compte que el <p> és el propi RichText, i que pot contenir #}
+      {# h2, h3, negretes, etc. Caldria que defineixis quines coses vols que es #}
+      {# puguin posar de format i ho configuraré per limitar-ho. #}
+      {# #}
+      {# Si veus que maquetar-ho sense un template propi (per tant, els estils #}
+      {# els has de definir amb les classes block-image i block-text ) és massa #}
+      {# complicat posa'm una tasca explicant quin markup vols que tinguin i #}
+      {# miro de fer que el back el generi així. #}
+      {{ page.content }}
+    </section>
+
+    {% if page.related_news.all %}
+      <section>
+        {% translate "Other news" %}
+        {% for news in page.related_news.all %}
+          {% image news.header_image width-2000 as bg_heading %}
+          <div
+            {% if bg_heading %}
+              style="--bg-heading: url('{{ bg_heading.url }}')"
+            {% endif %}
+          >
+            <a href="{% pageurl news %}">{{ news.title }}</a>
+          </div>
+        {% endfor %}
+      </section>
+    {% endif %}
+
+  </main>
+{% endblock %}
+
