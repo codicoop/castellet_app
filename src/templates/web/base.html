@@ -2,15 +2,20 @@
 {% wagtail_site as current_site %}
 {% get_current_language as language_code %}
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'styles/output.css' %}">
+  <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
   <title>{{ settings.web.CustomizationSettings.title_prefix|safe }} | {% block page_title %}{% endblock %}</title>
+  <style>
+    @font-face {
+      font-family: Montserrat;
+      src: url('{% static "fonts/Montserrat-Regular.ttf" %}') format('woff2');
+    }
+  </style>
   {% if settings.web.AnalyticsSettings.embed %}
     <script>
       {{ settings.web.AnalyticsSettings.embed|safe }}
@@ -19,136 +24,292 @@
   {% block extra_headers %}
   {% endblock %}
 </head>
-<body id="body" class="{% block body_classes %}{% endblock %}" data-lang="{{ language_code }}">
-  <div class="empty-box"></div>
-  <header class="header">
-    <div class="topbar">
-      <a class="topbar__logo" href="/{{ language_code }}/">
-        {% image settings.web.CustomizationSettings.logo width-300 %}
-      </a>
-      <div class="topbar__action">
-        <svg
-            title="{% translate 'Open menu' %}"
-            onclick="openMenu()"
-            class="icon-24 topbar__open"
-            viewbox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-          <path d="M4 16H28" />
-          <path d="M4 8H28" />
-          <path d="M4 24H28" />
-        </svg>
-      </div>
-    </div>
-    <div class="menu">
-      <div class="menu__top">
-        <a class="menu__logo" href="/{{ language_code }}/">
-          {% image settings.web.CustomizationSettings.logo width-300 %}
+<body class="relative flex flex-col min-h-[100%]" id="body" data-lang="{{ language_code }}">
+  <header>
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+        <a href="/{{ language_code }}/" class="flex items-center lg:order-1">
+          <div class="mr-3">
+            {% image settings.web.CustomizationSettings.logo width-150 %}
+          </div>
         </a>
-        <div class="menu__action">
-          <svg
-            title="{% translate 'Close menu' %}"
-            onclick="closeMenu()"
-            class="menu__close icon-close icon-24"
-            viewbox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div class="flex items-center lg:hidden">
+          <!-- Botó burguer -->
+          <button type="button" id="burguer_icon"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg border-2 border-transparent
+              lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            _="on click remove .hidden from #mobile_menu"
           >
-            <path d="M17.7556 6L6.02222 18" />
-            <path d="M6.02222 6L17.7556 18" />
-          </svg>
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+          </button>
         </div>
-      </div>
-      <div>
-        <nav>
-          <ul>
+        <!-- Menú nav -->
+        <div id="mobile_menu"
+          class="hidden absolute top-0 bottom-0 left-0 right-0 z-50
+          justify-between items-center w-full bg-groc-500 px-4 py-3
+          lg:static lg:flex lg:gap-3 lg:w-auto lg:order-2 lg:bg-white">
+          <!-- Close btn -->
+          <button type="button"
+            class="float-right inline-flex items-center p-2 text-sm text-gray-900 rounded-lg
+              border-2 border-gray-900 lg:hidden
+              hover:bg-groc-700 focus:outline-none focus:ring-2 focus:ring-groc-700
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            _="on click add .hidden to #mobile_menu"
+          >
+            <span class="sr-only">Close main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <!-- Nav -->
+          <ul id="nav_items" class="flex flex-col mt-16 font-medium
+            lg:flex-row lg:space-x-8 lg:mt-0 lg:order-1">
+            <li>
+              <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
+                Home
+              </a>
+            </li>
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
-              <li>
-                <a href="{{ menu_page.url }}">{{ menu_page.title }}</a>
-              </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 mb-2 text-gray-700 active:text-groc-700 
+              hover:bg-gray-50 hover:rounded-md
+              lg:hover:bg-white lg:hover:text-groc-700 lg:p-0">
+                {{ menu_page.title }}
+              </a>
+            </li>
             {% endfor %}
           </ul>
-        </nav>
-        <div>
-          <a href="{% url 'registration:login' %}">
-            <div>
-              <p>{% translate 'Partners area' %}</p>
+          <!-- Search mobile -->
+          <form class="flex items-center mt-4 lg:hidden">
+            <label for="search-mobile" class="sr-only">Search</label>
+            <div class="relative w-full">
+              <input type="search" id="search-mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-groc-500 focus:border-groc-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500" placeholder="Search for anything..." required>
+              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
+                  </path>
+                </svg>
+              </div>
             </div>
-          </a>
+            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-medium text-gray-900 bg-groc-500 rounded-full border border-groc-500
+              hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300">
+              {% translate 'Search' %}
+            </button>
+          </form>
+          <!-- Botons -->
+          <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
+            <a href="0#"
+              class="items-center mr-2 px-3 py-2 text-white font-medium rounded-full
+                text-sm bg-gray-950
+                lg:mr-0 lg:gap-3 lg:bg-groc-500 lg:text-gray-900
+                hover:bg-gray-900 focus:outline-none
+                focus:ring-4 focus:ring-groc-700
+                dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            >
+              <p>{% translate 'Join us' %}</p>
+            </a>
+            <a href="{% url 'registration:login' %}"
+              class="sitems-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+                text-sm border border-gray-900 lg:mr-0
+                hover:bg-groc-700 focus:outline-none
+                focus:ring-4 focus:ring-groc-700
+                dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            >
+              <p>{% translate 'Partners area' %}</p>
+            </a>
+          </div>
+          <!-- Barra search oberta -->
+          <form id="search-form" class="hidden mr-3 w-full"> 
+            <div class="relative">
+              <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
+              class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
+                border-gray-900 pr-10
+                hover:bg-gray-50 focus:ring-groc-700 focus:border-groc-700 
+                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
+              _="on focusout toggle .lg:inline-flex on #search_btn 
+                then toggle .hidden on #nav_btns 
+                then toggle .hidden on #nav_items 
+                then toggle .hidden on #search-form"
+              >
+              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+            </div>
+          </form>
+          <!-- Barra search colapsada -->
+          <button data-collapse-toggle="mobile-menu-search" aria-controls="mobile-menu-search"
+            aria-expanded="false" type="button" id="search_btn"
+            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+              text-sm border border-gray-900
+              lg:mr-0 lg:px-5 lg:inline-flex lg:order-3
+              hover:bg-gray-50 focus:outline-none
+              focus:ring-4 focus:ring-gray-300
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            _="on click toggle .hidden on #search-form 
+              then toggle .hidden on #nav_btns 
+              then toggle .hidden on #nav_items 
+              then toggle .lg:inline-flex on me"
+          >
+            <svg class="w-5 h-5 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+          </button>
+          <!-- xxss -->
+          <div class="flex gap-4 mt-6 lg:order-4 lg:mt-0 lg:ml-3">
+            <!-- Per cada icona -->
+            <div class="w-5 h-5">
+              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
+              </svg>            
+            </div>
+            <!-- end -->
+            <div class="w-5 h-5 text-gray-900">
+              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
+              </svg>            
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
   {% block content %}
   {% endblock %}
 
-  {% if page.display_join_us_block and contact_page %}
-    <div>
-      <h2>{{ settings.web.CustomizationSettings.join_us_title }}</h2>
-      {% if settings.web.CustomizationSettings.join_us_text %}
-        <p>{{ settings.web.CustomizationSettings.join_us_text }}</p>
-      {% endif %}
-      <a href="{% pageurl contact_page %}">{% translate "Join us" %}</a>
+  {% if page.display_join_us_block and contact_page  %}
+  <div class="relative flex flex-col bg-groc-500 rounded-3xl
+      px-4 py-11 my-16 mx-3 shadow-lg lg:w-full lg:max-w-4xl md:mx-auto
+      lg:my-5 lg:px-16">
+    <h3 class="font-semibold text-2xl mb-2 lg:mr-24">
+      {{ settings.web.CustomizationSettings.join_us_title }}
+    </h3>
+    {% if settings.web.CustomizationSettings.join_us_text %}
+    <p class="text-sm lg:max-w-md overflow-hidden overflow-ellipsis">
+      {{ settings.web.CustomizationSettings.join_us_text }}
+    </p>
+    {% endif %}
+    <div class="my-4 lg:absolute lg:top-10 lg:right-16">
+      <a href="{% pageurl contact_page %}"
+        class="items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+          text-sm border border-gray-900 lg:mr-0
+          hover:bg-groc-700 focus:outline-none
+          focus:ring-4 focus:ring-groc-700
+          dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+      >
+        <span>{% translate 'Join us' %}</span>
+      </a>
     </div>
+  </div>
   {% endif %}
 
-  <div class="prefooter">
-    {% include './components/social.html' %}
-  </div>
-  <footer class="footer">
-    <div>
-      <div>
-          <ul>
+  <footer class="bg-blau-500 text-white mt-auto dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-2xl">
+      <div class="grid grid-cols-1 gap-6 px-4 pb-5 pt-8
+        md:grid-cols-3 lg:grid-cols-4 lg:px-20 py-8">
+        <!-- Nav -->
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Menu' %}</h2>
+          <ul class="text-sm font-normal">
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
-              <li>
-                <a href="{{ menu_page.url }}">{{ menu_page.title }}</a>
-              </li>
+            <li class="mb-2">
+              <a href="{{ menu_page.url }}" class="hover:underline">{{ menu_page.title }}</a>
+            </li>
             {% endfor %}
           </ul>
+        </div>
+        <!-- Contacte -->
+        {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
+        <div>
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Contact' %}</h2>
+          <ul class="text-sm font-normal">
+            {% if settings.web.CustomizationSettings.phone %}
+            <li class="mb-2">
+              <a href="tel:{{ settings.web.CustomizationSettings.phone }}"
+                class="hover:underline">
+                <p>{{ settings.web.CustomizationSettings.phone }}</p>
+              </a>            
+            </li>
+            {% endif %}
+            {% if settings.web.CustomizationSettings.email %}
+            <li class="mb-2">
+              <a href="mailto:{{ settings.web.CustomizationSettings.email }}"
+                class="hover:underline">
+                <p>{{ settings.web.CustomizationSettings.email }}</p>
+              </a>            
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+        <!-- Xxss i subvencions -->
+        {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
+        <div class="lg:col-start-3">
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Follow us in...' %}</h2>
+          <ul class="flex gap-4 items-center mt-3 lg:order-4 lg:mt-0 lg:ml-3">
+            {% if settings.web.SocialMediaIconsSettings.facebook %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.facebook }}">
+                <img src="{% static 'images/icons/icon_facebook.svg' %}" alt="{% translate 'Facebook link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.youtube %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.youtube }}">
+                <img src="{% static 'images/icons/icon_youtube.svg' %}" alt="{% translate 'Youtube link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.instagram %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.instagram }}">
+                <img src="{% static 'images/icons/icon_instagram.svg' %}" alt="{% translate 'Instagram link' %}">
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.x %}
+            <li class="w-5 h-5">
+              <a href="{{ settings.web.SocialMediaIconsSettings.x }}">
+                <img src="{% static 'images/icons/icon_twitter.svg' %}" alt="{% translate 'Twitter link' %}">
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <h2 class="mb-3 mt-6 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
+          <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
+          <div class="flex gap-3 flex-wrap">
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- newsletter -->
+        <div class="lg:col-start-4">
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'Newsletter' %}</h2>
+          <p>No tinc clar si volem que el formulari de la newsletter aparegui aquí o si volem que porti a la seva pròpia pàgina</p>
+        </div>
       </div>
-      {% if settings.web.CustomizationSettings.address %}
-      <div class="footer-info grid-item-5-8">
-        <div class="footer-info__heading">
-          {% translate 'Where are we' %}
-        </div>
-        <div class="footer-info__text">
-          <a href='https://maps.apple.com/maps?q={{ settings.web.CustomizationSettings.address|safe }}'>
-            <p>{{ settings.web.CustomizationSettings.address|safe }}</p>
-          </a>
-        </div>
-      </div>
-      {% endif %}
-      {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
-      <div class="footer-info grid-item-9-12">
-        <div class="footer-info__heading">
-          {% translate 'Contact' %}
-        </div>
-        <div class="footer-info__text">
-          {% if settings.web.CustomizationSettings.phone %}
-          <a href="tel:{{ settings.web.CustomizationSettings.phone }}">
-            <p>{{ settings.web.CustomizationSettings.phone }}</p>
-          </a>
-          {% endif %}
-          {% if settings.web.CustomizationSettings.email %}
-            <a href="mailto:{{ settings.web.CustomizationSettings.email }}">
-              <p>{{ settings.web.CustomizationSettings.email }}</p>
-            </a>
-          {% endif %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-    <div class="footer__bottom grid-1">
-      <div class="footer__bottom-container grid-item-4-9">
-        <div class="footer__legal">
-          <p>{{ settings.web.CustomizationSettings.footer_name }}</p>
-        </div>
-        <div class="footer__legal">
-          <p>{% translate 'All rights reserved' %}.</p>
-        </div>
-        <div class="footer__legal">
-          <p>{{ settings.web.CustomizationSettings.authorship }}</p>
-        </div>
+      <div class="flex flex-col bg-blau-700 w-full p-4
+        md:flex-row md:justify-between">
+          <div class="text-xs text-white">
+            <a href="https://castelletsostenible.cat/" class="hover:underline">Castellet Sostenible</a>
+            <span> © 2024</span>
+          </div>
+          <div class="text-xs mt-2 text-white md:mt-0">
+            <span>{% translate 'Developed by' %}</span>
+            <a href="https://codi.coop/" class="hover:underline">Codi Cooperatiu</a>
+            <span>{% translate ' - Designed by' %}</span>
+            <a href="https://utopigstudio.com/" class="hover:underline">Utopig Studio</a>
+          </div>
       </div>
     </div>
 

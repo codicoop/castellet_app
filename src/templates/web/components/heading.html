@@ -1,51 +1,77 @@
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
 
 {% if page.header_image %}
   {% image self.header_image width-2000 as bg_heading %}
 {% endif %}
-
-<section class="heading"
-  {% if bg_heading %}
-    style="--bg-heading: url('{{ bg_heading.url }}')"
-  {% endif %}
->
-  <div class="grid-1">
-    <h1 class="title-1 heading__title">{{ page.title }}</h1>
-    {% if page.header_description %}
-      <p>{{ page.header_description }}</p>
-    {% endif %}
-
-    {% if page.header_button_text and page.header_button_link %}
-      <a href="{{ page.header_button_link }}">{{ page.header_button_text }}</a>
-    {% endif %}
-
-  </div>
-</section>
-
-{% if page.can_display_header_highlight %}
-<section class="overlay grid-1">
-  <h3 class="overlay__title title-2">
-    {{ page.overlay_title }}
-  </h3>
-  <div class="overlay__content richtext">
-    <div class="overlay__text">
-      <p>{{ page.overlay_body|richtext }}</p>
-    </div>
-    <div class="overlay__button btn btn--light">
-    {% if page.overlay_button_page and page.overlay_button_text %}
-      <a href="{% pageurl page.overlay_button_page %}">
-        {{ page.overlay_button_text }}
-      </a>
-    {% endif %}
-    </div>
-  </div>
-  <div class="overlay__image">
-    {% if page.overlay_image %}
-      {% image self.overlay_image width-2000 as bg_overlay %}
-    {% endif %}
-    <div class="container-square-image"
-        style="--bg-image: url('{{ bg_overlay.url }}')"
-    ></div>
-  </div>
-</section>
+{% if page.overlay_image %}
+  {% image self.overlay_image width-600 as image_overlay %}
 {% endif %}
+
+<section class="relative min-h-96 py-16 mb-10 shadow-lg
+    lg:pt-0 lg:pb-28 lg:grid-cols-6 lg:mb-16">
+  <div class="absolute top-0 left-0 right-0 bottom-0">
+    <img class="h-full w-full object-cover" src="{{ bg_heading.url }}" alt="">
+  </div>
+  <div class="absolute top-0 left-0 right-0 z-10 h-full w-full bg-gradient-to-r from-white to-transparent"></div>
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+    <div class="grid grid-cols-3">
+      <div class="relative z-20 mx-4 col-span-2
+          lg:mx-24 lg:mr-0 lg:mt-28 lg:row-start-1 lg:col-start-1">
+        <h1 class="w-1/2 font-bold text-5xl mb-4 lg:text-6xl lg:pr-5">{{ page.title }}</h1>
+        {% if page.header_description %}
+        <p class="font-semibold lg:w-2/3">{{ page.header_description }}</p>
+        {% endif %}
+        <div class="mt-4">
+          <a href="{{ page.header_button_link }}"
+            class="items-center px-3 py-2 font-medium rounded-full
+              text-sm bg-groc-500 text-gray-900
+              lg:mr-0 lg:gap-3
+              hover:bg-gray-900 focus:outline-none
+              focus:ring-4 focus:ring-groc-700
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+          >
+            <span>{{ page.header_button_text }}</span>
+          </a>
+        </div>
+      </div>
+      <!-- Overlay -->
+      {% if page.can_display_header_highlight %}
+        <div id="overlay" class="cols-span-2 row-start-2 relative flex flex-col gap-4
+        bg-groc-500 rounded-3xl p-3 z-30 mt-16 mx-8 w-80
+          lg:col-start-2 lg:col-span-2 lg:row-start-1 lg:mt-5 lg:mx-20 lg:w-auto 
+          lg:flex-row lg:h-44">
+          <div class="absolute top-2 right-2 p-2 bg-groc-500 hover:bg-groc-700 cursor-pointer rounded-full"
+            _="on click add .hidden to #overlay"
+          >
+            <img src="{% static 'images/icons/icon_close.svg' %}" alt="{% translate 'Close overlay' %}">
+          </div>
+          <div class="rounded-2xl overflow-hidden min-w-14 flex-shrink-[0.5]">
+            {% if page.overlay_image %}
+              <img class="h-full w-full object-cover text-white" src="{{ image_overlay.url }}" alt="">
+            {% endif %}
+          </div>
+          <div class="lg:flex lg:flex-col">
+            <h3 class="font-semibold text-2xl mb-2">
+              {{ page.overlay_title }}
+            </h3>
+            <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis">{{ page.overlay_body|richtext }}</p>
+            {% if page.overlay_button_page and page.overlay_button_text %}
+            <div class="my-4 float-right lg:float-none lg:mt-auto">
+              <a href="{% pageurl page.overlay_button_page %}"
+                class="sitems-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+                  text-sm border border-gray-900 lg:mr-0
+                  hover:bg-groc-700 focus:outline-none
+                  focus:ring-4 focus:ring-groc-700
+                  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              >
+                <span>{{ page.overlay_button_text }}</span>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
