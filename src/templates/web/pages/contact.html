@@ -6,51 +6,45 @@
 {% endblock %}
 
 {% block content %}
-  <main class="main home">
-    <div>
-      <h1>{{ page.title }}</h1>
-    </div>
-
-    <section class="contact_details">
-      <div class="">
-        {% if settings.web.CustomizationSettings.address %}
-        <div>
-          <div>
-            {% translate "Address" %}
-          </div>
-          <div>
-            <a href='https://maps.apple.com/maps?q={{ settings.web.CustomizationSettings.address|safe }}'>
-              <p>{{ settings.web.CustomizationSettings.address|safe }}</p>
-            </a>
-          </div>
+  <main class="mx-auto max-w-screen-2xl px-3 pb-16 lg:pb-28">
+    <h1 class="font-bold text-5xl mb-6
+      lg:text-6xl lg:mb-9">
+      {{ page.title }}
+    </h1>
+    <section>
+      {% if settings.web.CustomizationSettings.address %}
+      <div>
+        <p class="text-base font-semibold pb-2">{% translate "Address" %}</p>
+        <div class="mb-5 lg:mb-7">
+          <a target="_blank" href="https://maps.apple.com/maps?q={{ settings.web.CustomizationSettings.address|safe }}">
+            <p class="text-sm hover:underline">{{ settings.web.CustomizationSettings.address|safe }}</p>
+          </a>
         </div>
-        {% endif %}
-        {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
-        <div>
-          <div>
-            {% translate 'Contact' %}
-          </div>
-          <div>
-            {% if settings.web.CustomizationSettings.phone %}
-            <a href="tel:{{ settings.web.CustomizationSettings.phone }}">
-              <p>{{ settings.web.CustomizationSettings.phone }}</p>
-            </a>
-            {% endif %}
-            {% if settings.web.CustomizationSettings.email %}
-              <a href="mailto:{{ settings.web.CustomizationSettings.email }}">
-                <p>{{ settings.web.CustomizationSettings.email }}</p>
-              </a>
-            {% endif %}
-          </div>
-        </div>
-        {% endif %}
       </div>
-
+      {% endif %}
+      {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
+      <div class="flex flex-col gap-4 mb-12 lg:mb-9 lg:gap-3">
+        {% if settings.web.CustomizationSettings.phone %}
+        <div class="flex gap-5 items-center">
+          <img class="w-4 h-4" src="{% static 'images/icons/icon_phone.svg' %}" alt="{% translate 'Phone icon' %}">
+          <a href="tel:{{ settings.web.CustomizationSettings.phone }}">
+            <p class="text-sm hover:underline">{{ settings.web.CustomizationSettings.phone }}</p>
+          </a>
+        </div>
+        {% endif %}
+        {% if settings.web.CustomizationSettings.email %}
+        <div class="flex gap-5 items-center">
+          <img class="w-4 h-4" src="{% static 'images/icons/icon_envelope_full.svg' %}" alt="{% translate 'Phone icon' %}">
+          <a href="mailto:{{ settings.web.CustomizationSettings.email }}">
+            <p class="text-sm hover:underline">{{ settings.web.CustomizationSettings.email }}</p>
+          </a>
+        </div>
+        {% endif %}
+        </div>
+      {% endif %}
     </section>
 
-    <section class="contact_form">
-      {% include "./contact_form.html" %}
-    </section>
+    {% include "./contact_form.html" %}
   </main>
 {% endblock %}
 

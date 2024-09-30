@@ -37,15 +37,16 @@ module.exports = {
         gris: {
           "500": "#929e9e"  // gris base
         }
+      },
+      boxShadow: {
+        'video': '0 1.6px 7.2px 0 rgba(0, 0, 0, 0.21)',
+        'card': '0 4px 18px 0 rgba(0, 0, 0, 0.21)'
       }
     },
     fontFamily: {
       'body': ['Montserrat', 'sans-serif'],
       'sans': ['Montserrat', 'sans-serif']
     },
-    boxShadow: {
-      'video': '0 1.6px 7.2px 0 rgba(0, 0, 0, 0.21)'
-    }
   },
 }
 
