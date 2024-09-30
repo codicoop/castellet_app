@@ -2,14 +2,22 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
 
 {% block content %}
-  <main class="main home">
+  <main class="mx-auto max-w-screen-2xl px-3 pb-16 lg:pb-28 lg:px-44">
+    <h1 class="font-bold text-5xl mt-6 mb-9
+      lg:text-6xl lg:my-9 lg:mb-12">
+      {{ page.title }}
+    </h1>
 
-    <div>
-      <h1>{{ page.title }}</h1>
-    </div>
-
-    <section class="content">
-      {{ page.text|richtext }}
+    <section class="flex flex-col w-full max-w-2xl p-6 shadow-card rounded-xl
+      lg:rounded-3xl lg:p-10 lg:max-w-5xl">
+      <div class="text-base [&>p]:mb-4
+        [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 [&>ol]:mb-4
+        [&>ul>li]:list-disc [&>ul>li]:ml-8 [&>ul>li]:pl-1 [&>ul]:mb-4
+        [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
+        [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl"
+      >
+        {{ page.text|richtext }}
+      </div>
     </section>
 
   </main>

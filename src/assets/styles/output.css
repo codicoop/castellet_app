@@ -1221,6 +1221,11 @@ input:checked + .toggle-bg {
   margin-bottom: 1rem;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .-mb-px {
   margin-bottom: -1px;
 }
@@ -1355,6 +1360,10 @@ input:checked + .toggle-bg {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mb-9 {
+  margin-bottom: 2.25rem;
 }
 
 .block {
@@ -3446,6 +3455,11 @@ input:checked + .toggle-bg {
     margin-bottom: 1.25rem;
   }
 
+  .lg\:my-9 {
+    margin-top: 2.25rem;
+    margin-bottom: 2.25rem;
+  }
+
   .lg\:-mt-9 {
     margin-top: -2.25rem;
   }
@@ -3518,6 +3532,10 @@ input:checked + .toggle-bg {
     margin-bottom: 1.75rem;
   }
 
+  .lg\:mb-12 {
+    margin-bottom: 3rem;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -3576,6 +3594,10 @@ input:checked + .toggle-bg {
 
   .lg\:max-w-none {
     max-width: none;
+  }
+
+  .lg\:max-w-5xl {
+    max-width: 64rem;
   }
 
   .lg\:translate-x-0 {
@@ -3649,6 +3671,10 @@ input:checked + .toggle-bg {
 
   .lg\:p-4 {
     padding: 1rem;
+  }
+
+  .lg\:p-10 {
+    padding: 2.5rem;
   }
 
   .lg\:px-16 {
@@ -3920,6 +3946,10 @@ input:checked + .toggle-bg {
   padding-left: 0.25rem;
 }
 
+.\[\&\>ol\]\:mb-4>ol {
+  margin-bottom: 1rem;
+}
+
 .\[\&\>p\]\:mb-4>p {
   margin-bottom: 1rem;
 }
@@ -3955,10 +3985,18 @@ input:checked + .toggle-bg {
   margin-left: 2rem;
 }
 
+.\[\&\>ul\>li\]\:mb-4>ul>li {
+  margin-bottom: 1rem;
+}
+
 .\[\&\>ul\>li\]\:list-disc>ul>li {
   list-style-type: disc;
 }
 
 .\[\&\>ul\>li\]\:pl-1>ul>li {
   padding-left: 0.25rem;
+}
+
+.\[\&\>ul\]\:mb-4>ul {
+  margin-bottom: 1rem;
 }
