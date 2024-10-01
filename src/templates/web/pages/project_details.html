@@ -3,14 +3,127 @@
 
 {% block content %}
 
-<main class="main home">
+<main>
 
   {% include '../components/heading.html' %}
 
-
-  <section class="content">
-    {# maquetar de forma estàtica. Ho programaré quan la propera iteració de la app estigui acabada #}
-  </section>
+  <div class="mx-auto max-w-screen-2xl lg:mb-20">
+    <div class="flex flex-col gap-8 mx-auto lg:gap-20">
+      <!-- Secció amb dades del projecte i descripció, importat de bbdd -->
+      <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44
+        lg:grid lg:grid-cols-5 lg:gap-20">
+        <div class="flex flex-col px-4 py-6 mb-6 shadow-card rounded-lg
+          lg:col-start-1 lg:col-span-2">
+          <h2 class="mb-3 text-2xl font-bold
+            lg:text-4xl lg:mb-6">
+            {% translate 'Data' %}
+          </h2>
+          <p class="mb-4 text-base">{% translate 'Here you have some data of the project.' %}</p>
+          <ul class="ml-6 mb-8 list-disc">
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Title' %}:</span>
+              <span>Autoconsum fotovoltaic compartit Autoconsum fotovoltaic compartit</span>
+            </li>
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Project type' %}:</span>
+              <span>Energies renovables</span>
+            </li>
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Project state' %}:</span>
+              <span>Projecte en marxa</span>
+            </li>
+            <!-- Si hi ha potència energètica -->
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Energy power' %}:</span>
+              <span>100.000</span><span> kW</span>
+            </li>
+            <!-- Endif -->
+            <!-- Si hi ha energia anual -->
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Annual energy' %}:</span>
+              <span>100.000</span><span> kW</span>
+            </li>
+            <!-- Endif -->
+            <!-- Si hi ha inversió -->
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Investment' %}:</span>
+              <span>100.000</span><span> €</span>
+            </li>
+            <!-- Endif -->
+            <!-- Si hi ha participants -->
+            <li class="mb-2">
+              <span class="font-bold">{% translate 'Number of participants' %}:</span>
+              <span>25</span><span> {% translate 'people' %}</span>
+            </li>
+            <!-- Endif -->
+          </ul>
+          <a class="self-end" href="#0">
+            <div class="px-3 py-2 w-fit text-gray-800 font-medium rounded-full
+            text-sm border border-gray-900
+            hover:bg-groc-100 hover:border-groc-300 focus:outline-none
+            focus:ring-4 focus:ring-groc-500">
+              <p class="font-bold">{% translate 'Participate!' %}</p>
+            </div>
+          </a>
+        </div>
+        <!-- Descripció del projecte, importat de bbdd -->
+        <div class="lg:col-start-3 lg:col-span-3">
+          <div class="text-base {&>p:mb-4}">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus orci ac auctor augue mauris augue. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Magna eget est lorem ipsum dolor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla.a cum sociis natoque.
+          </div>
+        </div>
+      </section>
+      <!-- La imatge del projecte, si en té, importat de bbdd -->
+      <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44
+        [&>img]:w-full [&>img]:rounded-2xl">
+        <img src="{% static 'images/placeholder_big.png' %}" alt="">
+      </section>
+      <!-- Seccions de richtext o imatge semblants però diferents de les qui som -->
+      <!-- La idea és que aquestes seccions siguin opcionals, per si volen -->
+      <!-- afegir més informació únicament per la pàgina web -->
+      <!-- i això ho afegirien a wagtail, si volen. Tot lo altre seria automàtic -->
+      <!-- En el cas de que un projecte estigui marcat com a "Públic" -->
+      <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44">
+        <h2 class="text-2xl font-semibold mb-4 max-w-xl
+          lg:text-4xl">
+          Més coses!
+        </h2>
+        <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
+          [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8
+          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 
+          [&>ol]:mb-4 [&>ol]:max-w-xl
+          [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
+          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
+          [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl
+          [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl
+          lg:col-start-6 lg:col-span-7"
+        >
+          <h2>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo, inquit, tibi Q. Te ipsum, dignissimum maioribus tuis, voluptasne induxit, ut adolescentulus eriperes P. <i>Atqui reperies, inquit, in hoc quidem pertinacem;</i> <i>Bork</i> Duo Reges: constructio interrete. Non autem hoc: igitur ne illud quidem. Ut in voluptate sit, qui epuletur, in dolore, qui torqueatur. Egone quaeris, inquit, quid sentiam? Nunc omni virtuti vitium contrario nomine opponitur. Tum ille: Ain tandem? </p>
+          <p>Nunc dicam de voluptate, nihil scilicet novi, ea tamen, quae te ipsum probaturum esse confidam. <i>Magna laus.</i> Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Verum esto: verbum ipsum voluptatis non habet dignitatem, nec nos fortasse intellegimus. <a href="http://loripsum.net/" target="_blank">Maximus dolor, inquit, brevis est.</a> <a href="http://loripsum.net/" target="_blank">Non quam nostram quidem, inquit Pomponius iocans;</a> </p>
+          <h3>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h3>
+          <ul>
+            <li>At iam decimum annum in spelunca iacet.</li>
+            <li>Utrum igitur percurri omnem Epicuri disciplinam placet an de una voluptate quaeri, de qua omne certamen est?</li>
+            <li>Nam aliquando posse recte fieri dicunt nulla expectata nec quaesita voluptate.</li>
+            <li>Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.</li>
+            <li>Negat esse eam, inquit, propter se expetendam.</li>
+          </ul>
+          <h4>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h4>
+          <p>Verba tu fingas et ea dicas, quae non sentias? Ego vero volo in virtute vim esse quam maximam; Nam memini etiam quae nolo, oblivisci non possum quae volo. Quod quidem iam fit etiam in Academia. Quae qui non vident, nihil umquam magnum ac cognitione dignum amaverunt. Sequitur disserendi ratio cognitioque naturae; </p>
+          <ol>
+            <li>Nisi autem rerum natura perspecta erit, nullo modo poterimus sensuum iudicia defendere.</li>
+            <li>Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur.</li>
+            <li>Nam nec vir bonus ac iustus haberi debet qui, ne malum habeat, abstinet se ab iniuria.</li>
+            <li>Paria sunt igitur.</li>
+            <li>Ita cum ea volunt retinere, quae superiori sententiae conveniunt, in Aristonem incidunt;</li>
+            <li>Vides igitur te aut ea sumere, quae non concedantur, aut ea, quae etiam concessa te nihil iuvent.</li>
+            <li>Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt.</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
 
 </main>
 
