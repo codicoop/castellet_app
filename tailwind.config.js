@@ -25,6 +25,8 @@ module.exports = {
           "950":"#0d3014"
         },
         groc: {
+          "100": "#FEEEAE",
+          "300": "#FEE271",
           "500": "#fed116", // groc base
           "700": "#e2bd5a",
           "900": "#a9882e"
