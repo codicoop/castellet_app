@@ -75,7 +75,7 @@
       </section>
       <!-- La imatge del projecte, si en té, importat de bbdd -->
       <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44
-        [&>img]:w-full [&>img]:rounded-2xl">
+        [&>img]:w-full [&>img]:rounded-2xl [&>img]:shadow-card">
         <img src="{% static 'images/placeholder_big.png' %}" alt="">
       </section>
       <!-- Seccions de richtext o imatge semblants però diferents de les qui som -->
@@ -84,12 +84,8 @@
       <!-- i això ho afegirien a wagtail, si volen. Tot lo altre seria automàtic -->
       <!-- En el cas de que un projecte estigui marcat com a "Públic" -->
       <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44">
-        <h2 class="text-2xl font-semibold mb-4 max-w-xl
-          lg:text-4xl">
-          Més coses!
-        </h2>
         <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
-          [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8
+          [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8 [&>img]:shadow-card
           [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 
           [&>ol]:mb-4 [&>ol]:max-w-xl
           [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
@@ -120,6 +116,18 @@
             <li>Vides igitur te aut ea sumere, quae non concedantur, aut ea, quae etiam concessa te nihil iuvent.</li>
             <li>Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt.</li>
           </ol>
+        </div>
+        <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
+          [&>img]:w-full [&>img]:rounded-2xl [&>img]:mb-8 [&>img]:shadow-card
+          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 
+          [&>ol]:mb-4 [&>ol]:max-w-xl
+          [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
+          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
+          [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl
+          [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl
+          lg:col-start-6 lg:col-span-7"
+        >
+        <img src="{% static 'images/placeholder_big.png' %}" alt="">
         </div>
       </section>
     </div>

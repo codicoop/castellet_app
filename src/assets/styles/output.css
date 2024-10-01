@@ -3988,6 +3988,12 @@ input:checked + .toggle-bg {
   border-radius: 1rem;
 }
 
+.\[\&\>img\]\:shadow-card>img {
+  --tw-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.21);
+  --tw-shadow-colored: 0 4px 18px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .\[\&\>input\]\:h-4>input {
   height: 1rem;
 }
