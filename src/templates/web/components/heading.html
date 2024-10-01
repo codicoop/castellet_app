@@ -21,6 +21,7 @@
         {% if page.header_description %}
         <p class="font-semibold lg:w-2/3">{{ page.header_description }}</p>
         {% endif %}
+        {% if page.header_button_link %}
         <div class="mt-4">
           <a href="{{ page.header_button_link }}"
             class="items-center px-3 py-2 font-medium rounded-full
@@ -33,6 +34,7 @@
             <span>{{ page.header_button_text }}</span>
           </a>
         </div>
+        {% endif %}
       </div>
       <!-- Overlay -->
       {% if page.can_display_header_highlight %}
