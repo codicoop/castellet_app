@@ -73,60 +73,6 @@ class UserChangeForm(forms.ModelForm):
         return instance
 
 
-class ProfileDetailsForm(forms.ModelForm):
-    name = forms.CharField(
-        label=_("Name"),
-        widget=forms.TextInput(
-            attrs={
-                "autofocus": True,
-            }
-        ),
-    )
-    surnames = forms.CharField(
-        label=_("Surnames"),
-        widget=forms.TextInput(),
-    )
-    email = forms.EmailField(
-        label=_("Email"),
-        max_length=254,
-        widget=forms.EmailInput(
-            attrs={
-                "autocomplete": "email",
-            }
-        ),
-    )
-    phone = forms.CharField(
-        label=_("Phone"),
-        max_length=9,
-        widget=forms.TextInput(
-            attrs={
-                "autocomplete": "tel",
-            }
-        ),
-    )
-    address = forms.CharField(
-        label=_("Address"),
-        max_length=255,
-        widget=forms.TextInput(),
-    )
-    dni = forms.CharField(
-        label=_("National Identity Document"),
-        max_length=10,
-        widget=forms.TextInput(),
-    )
-
-    class Meta(UserCreationForm.Meta):
-        model = User
-        fields = (
-            "name",
-            "surnames",
-            "email",
-            "phone",
-            "address",
-            "dni",
-        )
-
-
 class PasswordResetForm(BasePasswordResetForm):
     email = forms.EmailField(
         label=_("Email"),

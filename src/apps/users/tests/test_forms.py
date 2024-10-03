@@ -4,7 +4,6 @@ from apps.users.forms import (
     AuthenticationForm,
     EmailVerificationCodeForm,
     PasswordResetForm,
-    ProfileDetailsForm,
     UserChangeForm,
 )
 from apps.users.models import User
@@ -59,26 +58,6 @@ class UserChangeFormTest(TestCase):
         self.assertNotEquals(
             self.old_user_password,
             self.user.password,
-        )
-
-
-class ProfileDetailsFormTest(TestCase):
-    def test_form(self):
-        self.form = ProfileDetailsForm(
-            data={
-                "name": "test_name",
-                "surnames": "test_surnames",
-                "email": "test@test.com",
-            }
-        )
-        self.assertTrue(self.form.is_valid)
-        self.assertEqual(
-            self.form.data,
-            {
-                "name": "test_name",
-                "surnames": "test_surnames",
-                "email": "test@test.com",
-            },
         )
 
 
