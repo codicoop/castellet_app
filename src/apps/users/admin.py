@@ -56,7 +56,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     add_fieldsets = (
         (
             "Autenticació",
-            {"classes": ("wide",), "fields": ("email", "password1", "password2")},
+            {"classes": ("wide",), "fields": ("dni", "password1", "password2")},
         ),
     )
     # common_fieldsets is not a standard ModelAdmin attribute. We extend
@@ -70,7 +70,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
                     "surnames",
                     "phone",
                     "address",
-                    "dni",
+                    "email",
                     "bank_account",
                     "charge",
                     "governing_council_member",
