@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils import timezone
 from django.utils.html import format_html
 
-from apps.users.models import User
+from apps.users.models import User, UserCharge
 from project.admin import ModelAdminMixin
 
 
@@ -38,25 +38,31 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+@admin.register(UserCharge)
+class UserChargeAdmin(admin.ModelAdmin):
+    fields = ("name",)
+    list_display = ("name",)
+    search_fields = ("name",)
 
 @admin.register(User)
 class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     list_display = (
-        "email",
+        "dni",
         "full_name",
+        "email",
+        "charge",
         "is_staff",
-        "is_superuser",
     )
-    list_filter = ("is_superuser",)
-    search_fields = ("email", "name", "surnames")
-    ordering = ("email",)
-    fieldsets = (("Autenticació", {"fields": ("email", "password")}),)
+    list_filter = ("charge", "is_staff", "governing_council_member",)
+    search_fields = ("email", "name", "surnames", "charge", "dni")
+    ordering = ("name",)
+    fieldsets = (("Autenticació", {"fields": ("dni", "password")}),)
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (
             "Autenticació",
-            {"classes": ("wide",), "fields": ("email", "password1", "password2")},
+            {"classes": ("wide",), "fields": ("dni", "password1", "password2")},
         ),
     )
     # common_fieldsets is not a standard ModelAdmin attribute. We extend
@@ -70,7 +76,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
                     "surnames",
                     "phone",
                     "address",
-                    "dni",
+                    "email",
                     "bank_account",
                     "charge",
                     "governing_council_member",

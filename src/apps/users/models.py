@@ -42,53 +42,61 @@ class UserManager(BaseUserManager):
         return user
 
 
+class UserCharge(BaseModel):
+    name = models.CharField(_("Charge name"), max_length=50)
+
+    def __str__(self):
+        return self.name
+
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     name = flowbite.ModelCharField(
         _("name"),
         max_length=50,
         blank=False,
-        null=False,
+        default=""
     )
     surnames = flowbite.ModelCharField(
         _("surname"),
         max_length=50,
         blank=False,
-        null=False,
+        default=""
     )
     email = flowbite.ModelEmailField(
         _("email address"),
         max_length=255,
-        blank=False,
-        null=False,
-        unique=True,
+        blank=True,
+        null=True,
+        help_text=_("If this field is empty a default email will be added.")
     )
     phone = flowbite.ModelCharField(
         _("Contact telephone"),
         max_length=20,
         blank=True,
-        null=True,
+        default=""
     )
     address = flowbite.ModelCharField(
         _("Address"),
         max_length=255,
         blank=True,
-        null=True,
+        default=""
     )
     dni = flowbite.ModelCharField(
         _("National Identity Document"),
         max_length=10,
-        blank=True,
-        null=True,
+        blank=False,
+        default="",
+        unique=True
     )
     bank_account = flowbite.ModelCharField(
         _("Bank account"),
         max_length=24,
         blank=True,
-        null=True,
+        default=""
     )
-    charge = flowbite.ModelCharField(
-        _("Charge"),
-        max_length=50,
+    charge = models.ForeignKey(
+        UserCharge,
+        on_delete=models.SET_NULL,
+        related_name="user_charge",
         blank=True,
         null=True,
     )
@@ -97,7 +105,6 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         default=False,
         blank=True,
         null=True,
-        help_text=_("Is this user a governing council member?"),
     )
     projects = models.ManyToManyField(
         Project,
@@ -109,32 +116,32 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         _("Partner ID"),
         max_length=50,
         blank=True,
-        null=True,
+        default=""
     )
     entry_year = flowbite.ModelCharField(
         _("Entry year"),
         max_length=4,
         blank=True,
-        null=True,
+        default=""
     )
     corporate_contribution = flowbite.ModelCharField(
         _("Corporate contribution"),
         max_length=10,
         blank=True,
-        null=True,
+        default=""
     )
     voluntary_contribution = flowbite.ModelCharField(
         _("Voluntary contribution"),
         max_length=10,
         blank=True,
-        null=True,
+        default=""
     )
-    is_active = models.BooleanField(_("Is staff"), default=True)
-    is_staff = models.BooleanField(_("Is active"), default=False)
+    is_active = models.BooleanField(_("Is active"), default=True)
+    is_staff = models.BooleanField(_("Is staff"), default=False)
 
     objects = UserManager()
 
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = "dni"
     REQUIRED_FIELDS = []
 
     def __str__(self):
@@ -154,3 +161,9 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+    def clean(self):
+        super().clean()
+        print(self.email)
+        if not self.email:
+            self.email = "codi@codi.coop"
