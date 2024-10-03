@@ -157,12 +157,3 @@ class PasswordChangeForm(BasePasswordChangeForm):
     )
 
 
-class EmailVerificationCodeForm(forms.Form):
-    email_verification_code = forms.IntegerField(
-        widget=forms.TextInput(attrs=({"autofocus": True})),
-        label=_("Verification code"),
-    )
-
-
-class SendVerificationCodeForm(forms.Form):
-    pass

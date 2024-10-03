@@ -62,8 +62,6 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         null=False,
         unique=True,
     )
-    email_verification_code = models.CharField(default="0000")
-    email_verified = models.BooleanField(default=False)
     phone = flowbite.ModelCharField(
         _("Contact telephone"),
         max_length=20,

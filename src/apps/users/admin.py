@@ -46,7 +46,6 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
         "full_name",
         "is_staff",
         "is_superuser",
-        "email_verified",
     )
     list_filter = ("is_superuser",)
     search_fields = ("email", "name", "surnames")
@@ -90,7 +89,6 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
                     "is_staff",
                     "is_active",
                     "is_superuser",
-                    "email_verified",
                     "roles_explanation_field",
                     "groups",
                 ),
@@ -110,7 +108,6 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     superuser_fields = ("is_superuser",)
     readonly_fields = (
         "roles_explanation_field",
-        "email_verified",
     )
 
     def get_fieldsets(self, request, obj=None):

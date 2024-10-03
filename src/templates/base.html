@@ -67,9 +67,6 @@
                 </p>
                 <p class="text-sm font-medium text-primary-900 truncate dark:text-gray-300" role="none">
                   {{ request.user.email }} <br>
-                  {% if not request.user.email_verified %}
-                    <a class="text-red-700 hover:underline dark:text-red-500" href="{% url 'registration:send_verification_code' %}">Unverified email</a>
-                  {% endif %}
                 </p>
               </div>
               <ul class="py-1" role="none">

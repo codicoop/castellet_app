@@ -23,11 +23,9 @@ from django.views.generic import FormView
 
 from apps.users.forms import (
     AuthenticationForm,
-    EmailVerificationCodeForm,
     PasswordChangeForm,
     PasswordResetConfirmForm,
     PasswordResetForm,
-    SendVerificationCodeForm,
 )
 from apps.users.services import send_confirmation_mail
 from project.decorators import anonymous_required
@@ -44,49 +42,6 @@ class LoginView(AnonymousRequiredMixin, BaseLoginView):
 def details_view(request):
     context = {"user": request.user }
     return render(request, "profile/details.html", context)
-
-
-class EmailVerificationView(FormView, StandardSuccess):
-    form_class = EmailVerificationCodeForm
-    template_name = "registration/user_validation.html"
-    success_url = reverse_lazy("registration:email_verification_complete")
-
-    def form_valid(self, form):
-        if (
-            str(form.cleaned_data["email_verification_code"])
-            == self.request.user.email_verification_code
-        ):
-            self.request.user.email_verified = True
-            self.request.user.save()
-            return super().form_valid(form)
-        else:
-            form.add_error(
-                "email_verification_code",
-                ValidationError(
-                    "Code entered is not correct and the user cannot "
-                    "be verified. Please try again."
-                ),
-            )
-            return super().form_invalid(form)
-
-
-class SendVerificationCodeView(FormView):
-    template_name = "registration/send_verification_code.html"
-    form_class = SendVerificationCodeForm
-    success_url = reverse_lazy("registration:user_validation")
-
-    def form_valid(self, form):
-        send_confirmation_mail(self.request.user)
-        return super().form_valid(form)
-
-
-class EmailVerificationCompleteView(StandardSuccess):
-    template_name = "standard_success.html"
-    title = _("Done!")
-    page_title = _("Account verified")
-    description = _("Account has been successfully verified.")
-    url = reverse_lazy("registration:profile_details")
-    link_text = _("Go back")
 
 
 class PasswordResetView(AnonymousRequiredMixin, BasePasswordResetView):

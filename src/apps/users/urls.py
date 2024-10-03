@@ -3,8 +3,6 @@ from django.urls import path, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from apps.users.views import (
-    EmailVerificationCompleteView,
-    EmailVerificationView,
     LoginView,
     PasswordChangeDoneView,
     PasswordChangeView,
@@ -13,7 +11,6 @@ from apps.users.views import (
     PasswordResetDoneView,
     PasswordResetInvalidLinkView,
     PasswordResetView,
-    SendVerificationCodeView,
     details_view,
     privacy_policy_view,
 )
@@ -65,33 +62,10 @@ urlpatterns = [
         PasswordChangeDoneView.as_view(),
         name="password_change_done",
     ),
-    # Profile
-    path(
-        _("profile/modified/"),
-        StandardSuccess.as_view(
-            url=reverse_lazy("registration:profile_details"),
-        ),
-        name="profile_details_success",
-    ),
     path(
         _("profile/details/"),
         details_view,
         name="profile_details",
-    ),
-    path(
-        _("user-validation/"),
-        EmailVerificationView.as_view(),
-        name="user_validation",
-    ),
-    path(
-        _("send-verification-code/"),
-        SendVerificationCodeView.as_view(),
-        name="send_verification_code",
-    ),
-    path(
-        _("email-verification-complete/"),
-        EmailVerificationCompleteView.as_view(),
-        name="email_verification_complete",
     ),
     path(
         _("privacy-policy/"),
