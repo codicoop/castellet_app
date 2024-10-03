@@ -47,15 +47,16 @@ class UserChargeAdmin(admin.ModelAdmin):
 @admin.register(User)
 class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     list_display = (
-        "email",
+        "dni",
         "full_name",
+        "email",
         "charge",
         "is_staff",
     )
-    list_filter = ("is_superuser",)
-    search_fields = ("email", "name", "surnames", "charge")
-    ordering = ("email",)
-    fieldsets = (("Autenticació", {"fields": ("email", "password")}),)
+    list_filter = ("charge", "is_staff", "governing_council_member",)
+    search_fields = ("email", "name", "surnames", "charge", "dni")
+    ordering = ("name",)
+    fieldsets = (("Autenticació", {"fields": ("dni", "password")}),)
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (

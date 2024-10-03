@@ -105,7 +105,6 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         default=False,
         blank=True,
         null=True,
-        help_text=_("Is this user a governing council member?"),
     )
     projects = models.ManyToManyField(
         Project,
@@ -137,8 +136,8 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=""
     )
-    is_active = models.BooleanField(_("Is staff"), default=True)
-    is_staff = models.BooleanField(_("Is active"), default=False)
+    is_active = models.BooleanField(_("Is active"), default=True)
+    is_staff = models.BooleanField(_("Is staff"), default=False)
 
     objects = UserManager()
 
