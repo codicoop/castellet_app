@@ -6,7 +6,6 @@ from apps.users.forms import (
     PasswordResetForm,
     ProfileDetailsForm,
     UserChangeForm,
-    UserSignUpForm,
 )
 from apps.users.models import User
 
@@ -60,31 +59,6 @@ class UserChangeFormTest(TestCase):
         self.assertNotEquals(
             self.old_user_password,
             self.user.password,
-        )
-
-
-class UserSignUpFormTest(TestCase):
-    def test_form(self):
-        self.form = UserSignUpForm(
-            data={
-                "name": "test_name",
-                "surnames": "test_surnames",
-                "password1": "password1",
-                "password2": "password2",
-                "email": "test@test.com",
-                "accept_conditions": True,
-            }
-        )
-        self.assertEqual(
-            self.form.data,
-            {
-                "name": "test_name",
-                "surnames": "test_surnames",
-                "password1": "password1",
-                "password2": "password2",
-                "email": "test@test.com",
-                "accept_conditions": True,
-            },
         )
 
 

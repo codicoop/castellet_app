@@ -29,7 +29,6 @@ from apps.users.forms import (
     PasswordResetForm,
     ProfileDetailsForm,
     SendVerificationCodeForm,
-    UserSignUpForm,
 )
 from apps.users.services import send_confirmation_mail
 from project.decorators import anonymous_required
@@ -41,22 +40,6 @@ class LoginView(AnonymousRequiredMixin, BaseLoginView):
     template_name = "registration/login.html"
     success_url = reverse_lazy("registration:profile_details")
     form_class = AuthenticationForm
-
-
-@anonymous_required
-def signup_view(request):
-    if request.method == "POST":
-        form = UserSignUpForm(request.POST, None)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get("email")
-            password = form.cleaned_data.get("password1")
-            user = authenticate(username=email, password=password)
-            login(request, user)
-            return redirect("registration:profile_details")
-    else:
-        form = UserSignUpForm()
-    return render(request, "registration/signup.html", {"form": form})
 
 
 @login_required
