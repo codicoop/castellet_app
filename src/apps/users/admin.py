@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils import timezone
 from django.utils.html import format_html
 
-from apps.users.models import User
+from apps.users.models import User, UserCharge
 from project.admin import ModelAdminMixin
 
 
@@ -38,17 +38,22 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+@admin.register(UserCharge)
+class UserChargeAdmin(admin.ModelAdmin):
+    fields = ("name",)
+    list_display = ("name",)
+    search_fields = ("name",)
 
 @admin.register(User)
 class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     list_display = (
         "email",
         "full_name",
+        "charge",
         "is_staff",
-        "is_superuser",
     )
     list_filter = ("is_superuser",)
-    search_fields = ("email", "name", "surnames")
+    search_fields = ("email", "name", "surnames", "charge")
     ordering = ("email",)
     fieldsets = (("Autenticació", {"fields": ("email", "password")}),)
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin

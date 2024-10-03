@@ -42,6 +42,12 @@ class UserManager(BaseUserManager):
         return user
 
 
+class UserCharge(BaseModel):
+    name = models.CharField(_("Charge name"), max_length=50)
+
+    def __str__(self):
+        return self.name
+
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     name = flowbite.ModelCharField(
         _("name"),
@@ -87,9 +93,10 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=""
     )
-    charge = flowbite.ModelCharField(
-        _("Charge"),
-        max_length=50,
+    charge = models.ForeignKey(
+        UserCharge,
+        on_delete=models.SET_NULL,
+        related_name="user_charge",
         blank=True,
         null=True,
     )
