@@ -38,8 +38,8 @@ class LoginView(AnonymousRequiredMixin, BaseLoginView):
 def details_view(request):
     context = {
         "user": request.user,
-        "email": config.CONTACT_PHONE,
-        "phone": config.CONTACT_PHONE,
+        "contact_email": config.CONTACT_EMAIL,
+        "contact_phone": config.CONTACT_PHONE,
     }
     return render(request, "profile/details.html", context)
 
