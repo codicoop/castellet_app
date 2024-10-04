@@ -47,7 +47,7 @@ def document_list_view(request):
 @login_required
 def project_list_view(request):
     context = {
-        "projects": request.user.projects.all(),
+        "projects": request.user.projects.all().order_by("title"),
     }
     return render(request, "main/projects.html", context)
 
