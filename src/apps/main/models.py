@@ -145,24 +145,20 @@ class Document(models.Model):
         _("Title"),
         max_length=50,
         blank=False,
-        null=False,
-        help_text=_("Project"),
+        default="",
     )
     description = models.CharField(
         _("Description"),
         max_length=500,
         blank=False,
-        null=False,
-        help_text=_("Document description"),
+        default="",
     )
     access_permission_role = models.CharField(
         _("Access Permission Role"),
         max_length=2,
         blank=False,
-        null=False,
         choices=AccessPermissionRoleChoices.choices,
         default=AccessPermissionRoleChoices.ALL_USERS,
-        help_text=_("Access permission role"),
     )
     tags = models.CharField(
         _("Tags"),

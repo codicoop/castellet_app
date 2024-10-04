@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.forms import DocumentAdminForm
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
 from apps.users.models import User
 
@@ -79,6 +80,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
+    form = DocumentAdminForm
     list_display = ("project", "title", "tags", "file", "created_at")
     list_filter = [
         "project",
