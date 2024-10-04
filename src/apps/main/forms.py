@@ -3,12 +3,11 @@ from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import NewsletterSubscriber
-from project.fields.flowbite import FormCharField, FormEmailField
 from project.post_office import send
 
 
 class NewsletterSubscriberForm(forms.ModelForm):
-    name = FormCharField(
+    name = forms.CharField(
         label=_("Name"),
         max_length=100,
         required=True,
@@ -19,11 +18,11 @@ class NewsletterSubscriberForm(forms.ModelForm):
             }
         ),
     )
-    surnames = FormCharField(
+    surnames = forms.CharField(
         label=_("Surnames"),
         widget=forms.TextInput(attrs={"autocomplete": "text"}),
     )
-    email = FormEmailField(
+    email = forms.EmailField(
         label=_("Email"),
         widget=forms.EmailInput(attrs={"autocomplete": "email"}),
         help_text=_("Email where you will receive our newsletter"),

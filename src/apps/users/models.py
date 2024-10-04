@@ -8,7 +8,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import Project
-from project.fields import flowbite
 from project.models import BaseModel
 
 
@@ -48,50 +47,30 @@ class UserCharge(BaseModel):
     def __str__(self):
         return self.name
 
+
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
-    name = flowbite.ModelCharField(
-        _("name"),
-        max_length=50,
-        blank=False,
-        default=""
-    )
-    surnames = flowbite.ModelCharField(
-        _("surname"),
-        max_length=50,
-        blank=False,
-        default=""
-    )
-    email = flowbite.ModelEmailField(
+    name = models.CharField(_("name"), max_length=50, blank=False, default="")
+    surnames = models.CharField(_("surname"), max_length=50, blank=False, default="")
+    email = models.EmailField(
         _("email address"),
         max_length=255,
         blank=True,
-        null=True,
-        help_text=_("If this field is empty a default email will be added.")
+        default="",
+        unique=True,
     )
-    phone = flowbite.ModelCharField(
-        _("Contact telephone"),
-        max_length=20,
-        blank=True,
-        default=""
+    phone = models.CharField(
+        _("Contact telephone"), max_length=20, blank=True, default=""
     )
-    address = flowbite.ModelCharField(
-        _("Address"),
-        max_length=255,
-        blank=True,
-        default=""
-    )
-    dni = flowbite.ModelCharField(
+    address = models.CharField(_("Address"), max_length=255, blank=True, default="")
+    dni = models.CharField(
         _("National Identity Document"),
         max_length=10,
         blank=False,
         default="",
-        unique=True
+        unique=True,
     )
-    bank_account = flowbite.ModelCharField(
-        _("Bank account"),
-        max_length=24,
-        blank=True,
-        default=""
+    bank_account = models.CharField(
+        _("Bank account"), max_length=24, blank=True, default=""
     )
     charge = models.ForeignKey(
         UserCharge,
@@ -100,7 +79,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True,
     )
-    governing_council_member = flowbite.ModelBooleanField(
+    governing_council_member = models.BooleanField(
         _("Is governing council member"),
         default=False,
         blank=True,
@@ -112,29 +91,15 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         related_name="user_projects",
         verbose_name=_("Projects"),
     )
-    partner_id = flowbite.ModelCharField(
-        _("Partner ID"),
-        max_length=50,
-        blank=True,
-        default=""
+    partner_id = models.CharField(
+        _("Partner ID"), max_length=50, blank=True, default=""
     )
-    entry_year = flowbite.ModelCharField(
-        _("Entry year"),
-        max_length=4,
-        blank=True,
-        default=""
+    entry_year = models.CharField(_("Entry year"), max_length=4, blank=True, default="")
+    corporate_contribution = models.CharField(
+        _("Corporate contribution"), max_length=10, blank=True, default=""
     )
-    corporate_contribution = flowbite.ModelCharField(
-        _("Corporate contribution"),
-        max_length=10,
-        blank=True,
-        default=""
-    )
-    voluntary_contribution = flowbite.ModelCharField(
-        _("Voluntary contribution"),
-        max_length=10,
-        blank=True,
-        default=""
+    voluntary_contribution = models.CharField(
+        _("Voluntary contribution"), max_length=10, blank=True, default=""
     )
     is_active = models.BooleanField(_("Is active"), default=True)
     is_staff = models.BooleanField(_("Is staff"), default=False)
