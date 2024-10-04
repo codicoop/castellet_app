@@ -49,6 +49,11 @@ class EmailVerificationView(FormView, StandardSuccess):
     template_name = "registration/user_validation.html"
     success_url = reverse_lazy("registration:email_verification_complete")
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.email:
+            return redirect(reverse_lazy("home"))
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         if (
             str(form.cleaned_data["email_verification_code"])
@@ -72,6 +77,11 @@ class SendVerificationCodeView(FormView):
     template_name = "registration/send_verification_code.html"
     form_class = SendVerificationCodeForm
     success_url = reverse_lazy("registration:user_validation")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.email:
+            return redirect(reverse_lazy("home"))
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         send_confirmation_mail(self.request.user)
