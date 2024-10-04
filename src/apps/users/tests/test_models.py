@@ -20,6 +20,8 @@ class UserManagerTestCase(TestCase):
             self.assertEqual(self.user.name, "test_name")
             self.assertEqual(self.user.surnames, "test_surnames")
             self.assertEqual(self.user.email, "test@test.com")
+            self.assertEqual(self.user.email_verification_code, "0000")
+            self.assertEqual(self.user.email_verified, False)
             self.assertEqual(self.user.is_active, True)
             self.assertEqual(self.user.is_staff, False)
             self.assertTrue(self.user.check_password("test_password"))

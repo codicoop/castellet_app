@@ -58,6 +58,8 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         default="",
         unique=True,
     )
+    email_verification_code = models.CharField(default="0000")
+    email_verified = models.BooleanField(default=False)
     phone = models.CharField(
         _("Contact telephone"), max_length=20, blank=True, default=""
     )
@@ -106,7 +108,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = "dni"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     def __str__(self):
@@ -126,9 +128,3 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
-
-    def clean(self):
-        super().clean()
-        print(self.email)
-        if not self.email:
-            self.email = "codi@codi.coop"

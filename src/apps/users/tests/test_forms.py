@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from apps.users.forms import (
     AuthenticationForm,
+    EmailVerificationCodeForm,
     PasswordResetForm,
     UserChangeForm,
 )
@@ -75,3 +76,18 @@ class PasswordResetFormTest(TestCase):
             },
         )
 
+
+class EmailVerificationCodeFormTest(TestCase):
+    def test_form(self):
+        self.form = EmailVerificationCodeForm(
+            data={
+                "email_verification_code": "1234",
+            }
+        )
+        self.assertTrue(self.form.is_valid())
+        self.assertEqual(
+            self.form.data,
+            {
+                "email_verification_code": "1234",
+            },
+        )

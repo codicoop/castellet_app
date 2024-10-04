@@ -27,6 +27,7 @@ class SampleUser:
     surnames: str
     email: str
     password: str
+    email_verification_code: str
 
 
 class Strings(Enum):
@@ -130,6 +131,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
                 surnames="McTest",
                 email="andrew@codi.coop",
                 password="0pl#9okm8ijn",
+                email_verification_code="1234",
             ),
         }
 
@@ -351,10 +353,14 @@ class MySeleniumTests(StaticLiveServerTestCase):
             self.sample_data["first_user"].email,
             self.sample_data["first_user"].name,
         )
+        verification_code = self.selenium.find_element(
+            By.ID, "id_email_verification_code"
+        )
         self.user = User.objects.filter(
             email=self.sample_data["first_user"].email
         ).first()
-
+        verification_code.send_keys(self.user.email_verification_code)
+        verification_code.send_keys(Keys.RETURN)
         # Template confirm account has been successfully verified.
         # Click on the button Go Back.
         logging.info("Verified email.")
@@ -406,7 +412,14 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # Click on the button to send the verification email.
         send_button = self.selenium.find_element(By.ID, "id_submit")
         send_button.click()
-
+        verification_code = self.selenium.find_element(
+            By.ID, "id_email_verification_code"
+        )
+        code = (
+            User.objects.filter(email=self.user.email).first().email_verification_code
+        )
+        verification_code.send_keys(code)
+        verification_code.send_keys(Keys.RETURN)
         # Template confirm account has been successfully verified.
         # Click on the button Go Back.
         logging.info("Verified email.")

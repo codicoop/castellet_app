@@ -12,6 +12,7 @@ class VerificationRequiredMiddleware:
         view_names = settings.VERIFICATION_REQUIRED_IGNORE_VIEW_NAMES
         if (
             request.user.is_authenticated
+            and not request.user.email_verified
             and view_name not in view_names
             and not request.user.is_superuser
         ):
