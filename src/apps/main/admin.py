@@ -65,16 +65,20 @@ class ProjectAdmin(admin.ModelAdmin):
 
     @admin.display(description=_("Participants"))
     def participants_list(self, *args):
-        return ", ".join(
-            [
-                participant.full_name
-                for participant in User.objects.filter(projects=args[0].id)
-            ]
-        )
+        if Project.objects.all():
+            return ", ".join(
+                [
+                    participant.full_name
+                    for participant in User.objects.filter(projects=args[0].id)
+                ]
+            )
+        return "-"
 
     @admin.display(description=_("Number of participants"))
     def number_participants(self, *args):
-        return User.objects.filter(projects=args[0].id).count()
+        if Project.objects.all():
+            return User.objects.filter(projects=args[0].id).count()
+        return "-"
 
 
 @admin.register(Document)
