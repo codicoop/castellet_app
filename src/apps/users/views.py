@@ -1,5 +1,6 @@
 from itertools import islice
 
+from constance import config
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import (
     LoginView as BaseLoginView,
@@ -35,7 +36,11 @@ class LoginView(AnonymousRequiredMixin, BaseLoginView):
 
 @login_required
 def details_view(request):
-    context = {"user": request.user}
+    context = {
+        "user": request.user,
+        "email": config.CONTACT_PHONE,
+        "phone": config.CONTACT_PHONE,
+    }
     return render(request, "profile/details.html", context)
 
 

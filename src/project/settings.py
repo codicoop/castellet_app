@@ -369,12 +369,17 @@ DJANGO_SUPERUSER_PASSWORD = env("DJANGO_SUPERUSER_PASSWORD", default=None)
 # https://django-constance.readthedocs.io/en/latest/#configuration
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 DEFAULT_PROJECT_NAME = env.str("DEFAULT_PROJECT_NAME", default="")
-DEFAULT_EMAIL = env.str("DEFAULT_FROM_EMAIL", default="")
+CONTACT_EMAIL = env.str("CONTACT_EMAIL", default="")
+CONTACT_PHONE = env.str("CONTACT_PHONE", default="")
 CONSTANCE_CONFIG = {
     "PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Project name")),
-    "DEFAULT_EMAIL": (
-        DEFAULT_EMAIL,
-        _("Email address used in case the user has no email account"),
+    "CONTACT_EMAIL": (
+        CONTACT_EMAIL,
+        _("Email address for user's comunications"),
+    ),
+    "CONTACT_PHONE": (
+        CONTACT_PHONE,
+        _("Phone number for user's comunications"),
     ),
 }
 
