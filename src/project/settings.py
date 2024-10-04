@@ -438,3 +438,8 @@ structlog.configure(
 )
 
 CODI_COOP_ENABLE_MONKEY_PATCH = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'apps.users.authentication_backend.IdNumberBackend',
+]

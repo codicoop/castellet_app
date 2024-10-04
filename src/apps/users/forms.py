@@ -17,22 +17,13 @@ from project.post_office import send
 
 
 class AuthenticationForm(BaseAuthenticationForm):
-    username = forms.EmailField(
-        label=_("Email"),
-        widget=forms.EmailInput(
-            attrs={
-                "autofocus": True,
-                "autocomplete": "email",
-            }
-        ),
-    )
-    password = forms.CharField(
-        widget=forms.PasswordInput(),
-        label=_("Password"),
-    )
     remember_me = forms.BooleanField(
         required=False, widget=forms.CheckboxInput(), label=_("Remember me")
     )
+
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request, *args, **kwargs)
+        self.fields["username"].label = _("Email or DNI")
 
 
 class UserChangeForm(forms.ModelForm):
