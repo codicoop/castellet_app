@@ -128,3 +128,9 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+        if not self.email:
+            self.email_verified = True
+            super(User, self).save(*args, **kwargs)
