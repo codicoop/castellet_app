@@ -123,6 +123,7 @@ INSTALLED_APPS = [
     "apps.users",
     "project",
     "apps.main",
+    "taggit"
 ]
 
 

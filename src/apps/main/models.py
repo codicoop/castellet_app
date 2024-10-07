@@ -2,12 +2,9 @@ from django.core.validators import validate_image_file_extension
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from taggit.managers import TaggableManager
 
-from apps.main.choices import (
-    AccessPermissionRoleChoices,
-    ProjectStatusChoices,
-    TagsChoices,
-)
+from apps.main.choices import AccessPermissionRoleChoices, ProjectStatusChoices
 from project.storage_backends import PrivateMediaStorage
 
 
@@ -159,13 +156,7 @@ class Document(models.Model):
         choices=AccessPermissionRoleChoices.choices,
         default=AccessPermissionRoleChoices.ALL_USERS,
     )
-    tags = models.CharField(
-        _("Tags"),
-        max_length=100,
-        blank=False,
-        null=False,
-        choices=TagsChoices.choices,
-    )
+    tags = TaggableManager()
     project = models.ManyToManyField(
         Project,
         blank=True,

@@ -84,7 +84,6 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "get_projects",
-        "tags",
         "access_permission_role",
         "responsible_user",
         "date_document",
