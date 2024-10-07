@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'styles/output.css' %}">
   <script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
-  <title>Projecte App | {% block page_title %}{% endblock %}</title>
+  <title>Castellet Sostenible | {% block page_title %}{% endblock %}</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900
@@ -67,7 +67,7 @@
                 </p>
                 <p class="text-sm font-medium text-primary-900 truncate dark:text-gray-300" role="none">
                   {{ request.user.email }} <br>
-                  {% if not request.user.email_verified %}
+                  {% if not request.user.email_verified  %}
                   <a class="text-red-700 hover:underline dark:text-red-500" href="{% url 'registration:send_verification_code' %}">Unverified email</a>
                 {% endif %}
                 </p>
@@ -147,7 +147,7 @@
               <span class="ms-3">{% translate "Profile" %}</span>
             </a>
           </li>
-          {% if request.user.email_verified %}
+          {% if request.user.is_superuser or request.user.email_verified %}
           <!-- Projects -->
           <li>
             <a href="{% url 'main:projects' %}"
