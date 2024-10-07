@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.forms import NewsletterSubscriberForm
@@ -42,3 +42,20 @@ def document_list_view(request):
             "projects": Project.objects.all(),
         }
         return render(request, "main/documents_filtered.html", context)
+
+
+@login_required
+def project_list_view(request):
+    context = {
+        "projects": request.user.projects.all().order_by("title"),
+    }
+    return render(request, "main/projects.html", context)
+
+
+@login_required
+def project_detail_view(request, id):
+    project = get_object_or_404(Project, id=id, user_projects=request.user)
+    context = {
+        "project": project,
+    }
+    return render(request, "main/project_details.html", context)

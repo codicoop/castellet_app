@@ -203,14 +203,15 @@
               {% translate "Projects where you participate" %}
             </th>
             <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
-              {% if user.projects.all %}
-                {% for project in user.projects.all %}
-                  Títol del projecte 🎃
-                  {{ project.title }}
-                {% endfor %}
-              {% else %}
-                {% translate "None" %}
-              {% endif %}
+              <ul class="list-disc ml-5">
+                {% if user.projects.all %}
+                  {% for project in user.projects.all %}
+                    <li>{{ project.title }}</li>
+                  {% endfor %}
+                {% else %}
+                  {% translate "None" %}
+                {% endif %}
+              </ul>
             </td>
           </tr>
         </tbody>

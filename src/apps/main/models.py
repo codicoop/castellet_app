@@ -3,7 +3,11 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.choices import AccessPermissionRoleChoices, TagsChoices
+from apps.main.choices import (
+    AccessPermissionRoleChoices,
+    ProjectStatusChoices,
+    TagsChoices,
+)
 from project.storage_backends import PrivateMediaStorage
 
 
@@ -47,7 +51,7 @@ class ProjectType(models.Model):
         _("project type name"),
         max_length=50,
         blank=False,
-        null=False,
+        default="",
         unique=True,
     )
 
@@ -61,40 +65,33 @@ class ProjectType(models.Model):
 
 
 class Project(models.Model):
-    class ProjectStatusChoices(models.TextChoices):
-        PROJECT_STUDY_PHASE = "PS", _("Project in study phase")
-        PROJECT_DEVELOPMENT = "AP", _("Active Project")
-        OTHER_PROJECTS = "OP", _("Future projects or other projects")
-
     title = models.CharField(
         _("Title"),
         max_length=50,
         blank=False,
-        null=False,
+        default="",
         unique=True,
-        help_text=_("Project title"),
     )
     project_type = models.ForeignKey(
         ProjectType,
         blank=False,
-        null=False,
+        default="",
         related_name="project",
         on_delete=models.CASCADE,
         verbose_name=_("Project type"),
-        help_text=_("Project type"),
     )
     status = models.CharField(
         _("Status"),
         max_length=2,
         choices=ProjectStatusChoices.choices,
         blank=False,
-        null=False,
+        default="",
     )
     description = models.CharField(
         _("Description"),
         max_length=500,
         blank=False,
-        null=False,
+        default="",
     )
     image = models.ImageField(
         _("Image"),
@@ -109,7 +106,7 @@ class Project(models.Model):
         null=True,
         help_text=_("Project energy power (kW)"),
     )
-    annual_energy = models.PositiveIntegerField(
+    annual_energy = models.IntegerField(
         _("Annual energy"),
         blank=True,
         null=True,
@@ -124,9 +121,8 @@ class Project(models.Model):
     )
     is_public = models.BooleanField(
         _("Is public"),
-        default=False,
         blank=True,
-        null=True,
+        default=False,
         help_text=_("Is this project public?"),
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)

@@ -13,10 +13,14 @@ from django.contrib.auth.forms import (
 from django.contrib.auth.forms import (
     SetPasswordForm as BaseSetPasswordForm,
 )
+from django.contrib.auth.forms import (
+    UserCreationForm,
+)
 from django.urls import reverse
 from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.models import Project
 from apps.users.models import User
 from project.helpers import absolute_url
 from project.post_office import send
@@ -30,34 +34,6 @@ class AuthenticationForm(BaseAuthenticationForm):
     def __init__(self, request=None, *args, **kwargs):
         super().__init__(request, *args, **kwargs)
         self.fields["username"].label = _("Email or DNI")
-
-
-class UserChangeForm(forms.ModelForm):
-    """
-    A form for updating users with a different approach to password changing.
-    """
-
-    new_password = forms.CharField(
-        label=_("Change password"),
-        help_text=_(
-            "The current password is not displayed for security reasons. "
-            "Use this field and save the changes to set a new password. "
-            "While writing the new password will be visible to make it easier "
-            "for you to copy and send it to the user."
-        ),
-        max_length=150,
-        required=False,
-    )
-
-    class Meta:
-        model = User
-        fields = ("email", "password", "is_active", "is_superuser")
-
-    def save(self, commit=True):
-        instance = super().save(commit)
-        if self.cleaned_data.get("new_password", ""):
-            instance.set_password(self.cleaned_data["new_password"])
-        return instance
 
 
 class PasswordResetForm(BasePasswordResetForm):
@@ -153,3 +129,29 @@ class EmailVerificationCodeForm(forms.Form):
 
 class SendVerificationCodeForm(forms.Form):
     pass
+
+
+class UserAdminForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = []
+
+    projects = forms.ModelMultipleChoiceField(
+        label=_("Projects"),
+        queryset=Project.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("name", "email", "projects")
+
+    projects = forms.ModelMultipleChoiceField(
+        label=_("Projects"),
+        queryset=Project.objects.all().order_by("title"),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
