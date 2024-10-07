@@ -188,7 +188,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = _("document")
         verbose_name_plural = _("documents")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
         return self.title
