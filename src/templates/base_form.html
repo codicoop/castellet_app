@@ -56,15 +56,15 @@
           </form>
           {% endblock %}
 
-          {% include 'components/form_errors.html' %}
-
+          
           {% block form_outro %}
           {% endblock %}
-
+          
         </div>
       </div>
     </div>
   </section>
+  {% include 'components/form_errors.html' %}
 
   {% block after_form_content %}
   {% endblock %}

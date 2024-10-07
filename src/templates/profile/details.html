@@ -43,10 +43,10 @@
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <tbody>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 border-t border-primary-50 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 border-t border-primary-50 font-medium text-gray-900 bg-primary-200">
               {% translate "Name" %}
             </th>
-            <td class="px-2 py-2 border-b border-t border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-t border-primary-200">
               {% if user.name %}
                 {{ user.name }}
               {% else %}
@@ -55,10 +55,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Surnames" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.surnames %}
                 {{ user.surnames }}
               {% else %}
@@ -67,10 +67,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Email" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.email %}
                 {{ user.email }}
               {% else %}
@@ -79,10 +79,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Phone" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.phone %}
                 {{ user.phone }}
               {% else %}
@@ -91,10 +91,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Address" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.address %}
                 {{ user.address }}
               {% else %}
@@ -103,10 +103,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "DNI" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.dni %}
                 {{ user.dni }}
               {% else %}
@@ -115,10 +115,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Bank account" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.bank_account %}
                 {{ user.bank_account }}
               {% else %}
@@ -127,10 +127,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Position" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.charge %}
                 {{ user.charge }}
               {% else %}
@@ -139,10 +139,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Are you a Governing Council member?" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if governing_council_member %}
                 {% translate "Yes" %}
               {% else %}
@@ -151,10 +151,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Year of entry to the cooperative" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.entry_year %}
                 {{ user.entry_year }}
               {% else %}
@@ -163,10 +163,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Partner number" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.partner_id %}
                 {{ user.partner_id }}
               {% else %}
@@ -175,10 +175,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Capital corporate contribution" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.corporate_contribution %}
                 {{ user.corporate_contribution }}
               {% else %}
@@ -187,10 +187,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Capital voluntary contribution" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               {% if user.voluntary_contribution %}
                 {{ user.voluntary_contribution }}
               {% else %}
@@ -199,10 +199,10 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-50 dark:text-white dark:bg-gray-800">
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
               {% translate "Projects where you participate" %}
             </th>
-            <td class="px-2 py-2 border-b border-gray-200 dark:border-gray-700">
+            <td class="px-2 py-2 border-b border-primary-200">
               <ul class="list-disc ml-5">
                 {% if user.projects.all %}
                   {% for project in user.projects.all %}
