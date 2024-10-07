@@ -67,8 +67,8 @@
                 </p>
                 <p class="text-sm font-medium text-primary-900 truncate dark:text-gray-300" role="none">
                   {{ request.user.email }} <br>
-                  {% if not request.user.email_verified  %}
-                  <a class="text-red-700 hover:underline dark:text-red-500" href="{% url 'registration:send_verification_code' %}">Unverified email</a>
+                  {% if not request.user.email_verified and request.user.email %}
+                  <a class="text-red-700 hover:underline dark:text-red-500" href="{% url 'registration:send_verification_code' %}">{% translate "Unverified email" %}</a>
                 {% endif %}
                 </p>
               </div>
@@ -147,7 +147,7 @@
               <span class="ms-3">{% translate "Profile" %}</span>
             </a>
           </li>
-          {% if request.user.is_superuser or request.user.email_verified %}
+          {% if request.user.email_verified or request.user.is_superuser %}
           <!-- Projects -->
           <li>
             <a href="{% url 'main:projects' %}"

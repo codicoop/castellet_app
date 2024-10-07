@@ -218,7 +218,7 @@
       </table>
     </div>
   </section>
-  {% if not user.email_verified %}
+  {% if not user.email_verified and request.user.email %}
   <div class="flex items-center p-4 mb-4 bg-red-50 rounded-lg text-sm text-red-700 dark:text-red-500"
       role="alert">
     <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
