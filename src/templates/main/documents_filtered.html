@@ -6,7 +6,9 @@
       <div>
         <span class="block mb-1 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
         {% for project in document.project.all %} 
+          {% if project in projects %}
           <span class="font-bold text-gray-700 dark:text-white">{{ project.title }} - </span>
+          {% endif %}
         {% endfor %}
          {{ document.created_at|date:"d/m/y" }}
         </span>

@@ -43,7 +43,7 @@
                   value="{{ tag.id }}"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content">
-                  {{ tag }} - {{ tag.id }}  
+                  {{ tag }}
                 </button>
             {% endfor %}
             </div>

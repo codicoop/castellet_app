@@ -131,3 +131,5 @@ class DocumentAdmin(admin.ModelAdmin):
         return ", ".join(o.name for o in obj.tags.all())
 
     get_tags.short_description = _("Tag list")
+
+

@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
-from apps.main.models import Document, Project
+from apps.main.models import Document
 from apps.main.services import send_confirmation_newsletter
 from project.views import StandardSuccess
 
@@ -26,9 +26,6 @@ class NewsletterSubscriberSuccessView(StandardSuccess):
     description = _("Successfully signed up to the newsletter.")
 
 
-from icecream import ic
-
-
 @login_required
 def document_list_view(request):
     user_projects = request.user.projects.all()
@@ -37,9 +34,7 @@ def document_list_view(request):
         documents = documents.filter(
             access_permission_role=AccessPermissionRoleChoices.ALL_USERS
         )
-    projects_with_documents = Project.objects.filter(
-        documents__project__in=user_projects
-    ).distinct()
+    projects_with_documents = user_projects.filter(documents__isnull=False).distinct()
     if request.method == "GET":
         all_tags = set()
         for document in documents:
@@ -52,15 +47,14 @@ def document_list_view(request):
         return render(request, "main/documents.html", context)
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
-        selected_tags = ["2", "4"]
-        ic(selected_tags)
-        ic(selected_projects)
+        selected_tags = request.POST.getlist("selected_tags")
         if selected_projects:
             documents = documents.filter(project__in=selected_projects)
         if selected_tags:
-            documents = documents.filter(tags__in=selected_tags)
-            ic(documents)
+            for tag in selected_tags:
+                documents = documents.filter(tags=tag)
         context = {
+            "projects": projects_with_documents,
             "documents": documents,
         }
         return render(request, "main/documents_filtered.html", context)
