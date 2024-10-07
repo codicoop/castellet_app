@@ -2962,6 +2962,10 @@ input:checked + .toggle-bg {
     padding-right: 1rem;
   }
 
+  .sm\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -3111,6 +3115,10 @@ input:checked + .toggle-bg {
 
   .md\:pb-4 {
     padding-bottom: 1rem;
+  }
+
+  .md\:pb-12 {
+    padding-bottom: 3rem;
   }
 
   .md\:text-2xl {
