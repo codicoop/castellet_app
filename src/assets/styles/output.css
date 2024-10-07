@@ -1265,6 +1265,10 @@ input:checked + .toggle-bg {
   margin-top: auto;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1501,6 +1505,10 @@ input:checked + .toggle-bg {
 
 .list-none {
   list-style-type: none;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-cols-1 {
