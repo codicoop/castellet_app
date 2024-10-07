@@ -147,7 +147,7 @@
               <span class="ms-3">{% translate "Profile" %}</span>
             </a>
           </li>
-          {% if not user.verified_mail %}
+          {% if request.user.email_verified %}
           <!-- Projects -->
           <li>
             <a href="{% url 'main:projects' %}"
