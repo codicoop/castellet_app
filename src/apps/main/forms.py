@@ -83,4 +83,5 @@ class DocumentAdminForm(forms.ModelForm):
         queryset=Project.objects.all().order_by("title"),
         widget=forms.CheckboxSelectMultiple,
         label=_("Projects"),
+        required=False,
     )

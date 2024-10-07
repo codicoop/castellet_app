@@ -123,7 +123,7 @@ INSTALLED_APPS = [
     "apps.users",
     "project",
     "apps.main",
-    "taggit"
+    "taggit",
 ]
 
 
@@ -441,6 +441,8 @@ structlog.configure(
 CODI_COOP_ENABLE_MONKEY_PATCH = True
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'apps.users.authentication_backend.IdNumberBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "apps.users.authentication_backend.IdNumberBackend",
 ]
+
+TAGGIT_CASE_INSENSITIVE = True

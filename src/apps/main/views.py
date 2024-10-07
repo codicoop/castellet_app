@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
 from apps.main.models import Document, Project
 from apps.main.services import send_confirmation_newsletter
@@ -28,9 +29,14 @@ class NewsletterSubscriberSuccessView(StandardSuccess):
 @login_required
 def document_list_view(request):
     if request.method == "GET":
+        documents = Document.objects.all()
+        if not request.user.governing_council_member:
+            documents = Document.objects.filter(
+                access_permission_role=AccessPermissionRoleChoices.ALL_USERS
+            )
         context = {
-            "documents": Document.objects.all(),
-            "projects": Project.objects.all(),
+            "documents": documents,
+            "projects": request.user.projects.all(),
         }
         return render(request, "main/documents.html", context)
     if request.htmx:

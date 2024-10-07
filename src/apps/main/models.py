@@ -156,7 +156,7 @@ class Document(models.Model):
         choices=AccessPermissionRoleChoices.choices,
         default=AccessPermissionRoleChoices.ALL_USERS,
     )
-    tags = TaggableManager()
+    tags = TaggableManager(help_text=_("A comma-separated list of tags."))
     project = models.ManyToManyField(
         Project,
         blank=True,
