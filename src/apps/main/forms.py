@@ -3,7 +3,7 @@ from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.choices import AccessPermissionRoleChoices
-from apps.main.models import Document, NewsletterSubscriber
+from apps.main.models import Document, NewsletterSubscriber, Project
 from project.post_office import send
 
 
@@ -77,4 +77,10 @@ class DocumentAdminForm(forms.ModelForm):
         label=_("Access Permission Role"),
         choices=AccessPermissionRoleChoices.choices,
         widget=forms.RadioSelect,
+    )
+
+    project = forms.ModelMultipleChoiceField(
+        queryset=Project.objects.all().order_by("title"),
+        widget=forms.CheckboxSelectMultiple,
+        label=_("Projects"),
     )

@@ -48,9 +48,9 @@ class ProjectAdmin(admin.ModelAdmin):
         "energy_power",
         "annual_energy",
         "investment",
-        "created_at",
+        "is_public",
     )
-    list_filter = ("project_type", "status", "created_at")
+    list_filter = ("project_type", "status", "created_at", "is_public")
     search_fields = ["title", "created_at"]
     readonly_fields = [
         "documents_list",
@@ -81,16 +81,32 @@ class ProjectAdmin(admin.ModelAdmin):
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     form = DocumentAdminForm
-    list_display = ("project", "title", "tags", "file", "created_at")
+    list_display = (
+        "title",
+        "get_projects",
+        "tags",
+        "access_permission_role",
+        "responsible_user",
+        "date_document",
+    )
     list_filter = [
         "project",
+        "access_permission_role",
         "responsible_user",
         "tags",
     ]
-    search_fields = ["project", "title", "tags", "date_document", "file", "created_at"]
+    search_fields = [
+        "project",
+        "title",
+        "tags",
+        "date_document",
+        "file",
+        "date_document",
+        "access_permission_role",
+    ]
 
     readonly_fields = [
-        "responsible_user",
+        "created_at", "responsible_user",
     ]
 
     def save_model(self, request, instance, form, change):
@@ -101,3 +117,8 @@ class DocumentAdmin(admin.ModelAdmin):
         instance.save()
         form.save_m2m()
         return instance
+
+    def get_projects(self, obj):
+        return ", ".join([project.title for project in obj.project.all()])
+
+    get_projects.short_description = "Projects"

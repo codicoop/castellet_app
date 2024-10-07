@@ -47,8 +47,8 @@ class UserChargeAdmin(admin.ModelAdmin):
 @admin.register(User)
 class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     list_display = (
-        "dni",
         "full_name",
+        "dni",
         "email",
         "charge",
         "is_staff",

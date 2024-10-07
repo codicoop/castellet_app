@@ -3,7 +3,11 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.choices import AccessPermissionRoleChoices, TagsChoices
+from apps.main.choices import (
+    AccessPermissionRoleChoices,
+    ProjectStatusChoices,
+    TagsChoices,
+)
 from project.storage_backends import PrivateMediaStorage
 
 
@@ -61,11 +65,6 @@ class ProjectType(models.Model):
 
 
 class Project(models.Model):
-    class ProjectStatusChoices(models.TextChoices):
-        PROJECT_STUDY_PHASE = "PS", _("Project in study phase")
-        PROJECT_DEVELOPMENT = "AP", _("Active Project")
-        OTHER_PROJECTS = "OP", _("Future projects or other projects")
-
     title = models.CharField(
         _("Title"),
         max_length=50,
@@ -134,7 +133,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = _("project")
         verbose_name_plural = _("projects")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
         return f"{self.title}"
@@ -167,13 +166,11 @@ class Document(models.Model):
         null=False,
         choices=TagsChoices.choices,
     )
-    project = models.ForeignKey(
+    project = models.ManyToManyField(
         Project,
-        null=False,
-        blank=False,
+        blank=True,
         related_name="documents",
         verbose_name=_("Project"),
-        on_delete=models.CASCADE,
     )
     file = models.FileField(
         _("File"),
@@ -195,7 +192,7 @@ class Document(models.Model):
         blank=False,
         default=timezone.now,
     )
-    created_at = models.DateField(auto_now_add=True, null=False)
+    created_at = models.DateField(_("Upload date"), auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("document")
