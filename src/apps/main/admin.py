@@ -1,7 +1,8 @@
 
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
-
+from django.urls import reverse
+from django.utils.html import format_html
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
 from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
 from apps.users.models import User
@@ -46,14 +47,18 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         )
 
     @admin.display(description=_("Participants"))
-    def participants_list(self, *args):
-        if Project.objects.all():
-            return ", ".join(
-                [
+    def participants_list(self, obj):
+        participants = User.objects.filter(projects=obj.id)
+        if participants.exists():
+            link = [
+                format_html(
+                     '<a href="{}">{}</a>',
+                    reverse('admin:users_user_change', args=[participant.id]), 
                     participant.full_name
-                    for participant in User.objects.filter(projects=args[0].id)
-                ]
-            )
+                )
+                for participant in participants
+            ]
+            return format_html(", ".join(link))
         return "-"
 
     @admin.display(description=_("Number of participants"))
@@ -65,13 +70,13 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ("project", "title", "tags", "file", "created_at")
+    list_display = ("title", "project", "tags", "file", "created_at")
     list_filter = [
         "project",
         "responsible_user",
         "tags",
     ]
-    search_fields = ["project", "title", "tags", "date_document", "file", "created_at"]
+    search_fields = ["project",  "tags", "date_document", "file", "created_at"]
 
     readonly_fields = [
         "responsible_user",
