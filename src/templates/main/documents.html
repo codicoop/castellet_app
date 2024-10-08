@@ -26,45 +26,71 @@
   </h1>
   <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
     {% if documents %}
-      <div>
-          {% translate "Filter by" %}:
-        <div>
-          <form method="post">
-            {% csrf_token %}
-            {% if tags %}
-            <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-              {% translate "Tags" %}
-            </h6>
-            <div>
+      <div class="sm:ml-8 md:ml-16 lg:ml-52">
+        <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
+        <form method="post">
+          {% csrf_token %}
+          {% if tags %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Tags' %}</p>
+            <div class="grid grid-cols-2 gap-1 mb-4 w-full
+              sm:grid-cols-3 md:grid-cols-4">
+              <button class="p-1 rounded-md bg-primary-600 text-white
+                hover:bg-primary-700"
+                id="tags_all"
+                name="selected_tags"
+                value="tags_all"
+                hx-post="{% url 'main:documents' %}"
+                hx-target="#htmx-content"
+              >
+                <p>{% translate 'All' %}</p>
+              </button>
               {% for tag in tags %}
-                <button 
-                  id="{{ tag.id }}"
-                  name="selected_tags"
-                  value="{{ tag.id }}"
-                  hx-post="{% url 'main:documents' %}"
-                  hx-target="#htmx-content">
-                  {{ tag }}
-                </button>
-            {% endfor %}
-            </div>
-            {% endif %}
-            {% if projects %}
-            <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-              {% translate "Projects" %}
-            </h6>
-              {% for project in projects %}
-                  <button
-                    id="{{ project.id }}"
-                    name="selected_projects"
-                    value="{{ project.id }}"
-                    hx-post="{% url 'main:documents' %}"
-                    hx-target="#htmx-content"/>
-                    {{ project }}
-                </button>
+              <button class="p-1 rounded-md bg-primary-400 text-white
+                hover:bg-primary-500"
+                id="{{ tag.id }}"
+                name="selected_tags"
+                value="{{ tag.id }}"
+                hx-post="{% url 'main:documents' %}"
+                hx-target="#htmx-content"
+              >
+                <p>Etiqueta A</p>
+              </button>
               {% endfor %}
-            {% endif %}
-          </form>
-        </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if projects %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Projects' %}</p>
+            <div class="grid grid-cols-1 gap-1 mb-4 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <button class="p-1 rounded-md bg-blau-500 text-white
+                hover:bg-blau-600"
+                id="projects_all"
+                name="selected_projects"
+                value="projects_all"
+                hx-post="{% url 'main:documents' %}"
+                hx-target="#htmx-content"
+              >
+                <p>{% translate 'All' %}</p>
+              </button>
+              {% for project in projects %}
+              <button class="p-1 rounded-md bg-blau-300 text-white
+                hover:bg-blau-400"
+                id="{{ project.id }}"
+                name="selected_projects"
+                value="{{ project.id }}"
+                hx-post="{% url 'main:documents' %}"
+                hx-target="#htmx-content"
+              >
+                <p>{{ project }}</p>
+              </button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </form>
       </div>
       <div class="grid space-y-6 mx-auto md:max-w-screen-sm" id="htmx-content">
         {% include 'main/documents_filtered.html' %}
