@@ -1,12 +1,10 @@
-import csv
 
 from django.contrib import admin
-from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
-from apps.users.models import User
 from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
+from apps.users.models import User
 
 
 @admin.register(NewsletterSubscriber)

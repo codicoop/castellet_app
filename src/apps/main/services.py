@@ -1,9 +1,11 @@
-from django.utils import formats, timezone
 import csv
 
-from project.post_office import send
 from django.http import HttpResponse
+from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
+
+from project.post_office import send
+
 
 def send_confirmation_newsletter(subscriber):
     context = {
@@ -29,9 +31,8 @@ def send_confirmation_newsletter(subscriber):
 
 class ExportNewsletterCsvMixin:
     def export_as_csv(self, request, queryset):
-        meta = self.model._meta
         response = HttpResponse(content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename={}.csv".format(meta.model_name)
+        response["Content-Disposition"] = "attachment; filename=newsletter.csv"
         writer = csv.writer(response)
 
         writer.writerow([
@@ -53,11 +54,8 @@ class ExportNewsletterCsvMixin:
 
 class ExportProjectCsvMixin:
     def export_as_csv(self, request, queryset):
-        meta = self.model._meta
-        field_names = [field.name for field in meta.fields]
-        print(self)
         response = HttpResponse(content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename={}.csv".format(meta.model_name)
+        response["Content-Disposition"] = "attachment; filename=projectes.csv"
         writer = csv.writer(response)
 
         writer.writerow([
@@ -69,9 +67,13 @@ class ExportProjectCsvMixin:
             _("Annual energy"),
             _("Investment"),
             _("Is public"),
+            _("Participants"),
+            _("Number of participants"),
         ])
 
         for obj in queryset:
+            project_participants = obj.user_projects.all()
+            participants = ", ".join([doc.name + " " + doc.surnames for doc in project_participants])
             writer.writerow(
                 [
                     getattr(obj, 'title', ''),
@@ -82,6 +84,8 @@ class ExportProjectCsvMixin:
                     getattr(obj, 'annual_energy', '') + " kWh/year" if getattr(obj, 'annual_energy', '') else "",
                     getattr(obj, 'investment', '') + " €" if getattr(obj, 'investment', '') else "",
                     "Sí" if getattr(obj, 'is_public', '') else "No",
+                    participants,
+                    project_participants.count()
                 ]
             )
 
