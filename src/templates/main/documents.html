@@ -46,16 +46,16 @@
                 <p>{% translate 'All' %}</p>
               </button>
               {% for tag in tags %}
-              <button class="p-1 rounded-md bg-primary-400 text-white
-                hover:bg-primary-500"
-                id="{{ tag.id }}"
-                name="selected_tags"
-                value="{{ tag.id }}"
-                hx-post="{% url 'main:documents' %}"
-                hx-target="#htmx-content"
-              >
-                <p>Etiqueta A</p>
-              </button>
+                <button class="p-1 rounded-md bg-primary-400 text-white
+                  hover:bg-primary-500"
+                  id="{{ tag.id }}"
+                  name="selected_tags"
+                  value="{{ tag.id }}"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                >
+                  <p>{{ tag }}</p>
+                </button>
               {% endfor %}
             </div>
           </div>
@@ -92,7 +92,7 @@
           {% endif %}
         </form>
       </div>
-      <div class="grid space-y-6 mx-auto md:max-w-screen-sm" id="htmx-content">
+      <div class="grid gap-6 mx-auto md:max-w-screen-sm pt-8 lg:pt-16" id="htmx-content">
         {% include 'main/documents_filtered.html' %}
       </div>
 

@@ -1,4 +1,6 @@
-<div class="grid space-y-6 mx-auto md:max-w-screen-sm" id="htmx-content">
+{% load i18n %}
+
+
   {% for document in documents %}
   <a href="{{ document.file.url }}" id="id_document_{{ document.id }}" target="_blank">
     <div class="relative flex flex-col justify-between p-4 bg-white rounded-lg border-l-8
@@ -6,24 +8,25 @@
         lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-4">
       <div class="pb-8 lg:row-span-2">
         <span class="block mb-1 text-xs font-medium text-gray-500 uppercase">
-          <span class="font-bold text-gray-700 dark:text-white">
-            {{ document.project }} Projecte producció fotovoltaica compartida
+          {% for project in document.project.all %} 
+            {% if project in projects %}
+              <span class="font-bold text-gray-700 dark:text-white">
+                {{ project.title }} - 
+              </span>
+              {% endif %}
+            {% endfor %}
+            {{ document.created_at|date:"d/m/y" }}
           </span>
-          - {{ document.created_at|date:"d/m/y" }} 13/09/2024
-        </span>
         <span class=" text-base md:text-xl font-semibold text-primary-600">
-          {{ document.title }} Acta de l'enèssima assemblea de setembre
+          {{ document.title }}
         </span>
-        {% for project in document.project.all %} 
-          {% if project in projects %}
-            <span class="font-bold text-gray-700 dark:text-white">{{ project.title }} - </span>
-          {% endif %}
-        {% endfor %}
       </div>
       <div class="absolute bottom-2 right-2 flex gap-3 items-center">
-        <p class="hidden text-base font-bold text-primary-600 lg:block">{% translate 'See the document' %}</p>
+        <p class="hidden text-sm font-bold text-primary-600 lg:block">
+          {% translate 'See the document' %}
+        </p>
         <svg class="w-6 h-6 text-primary-600
-          lg:w-10 lg:h-10" 
+          lg:w-8 lg:h-8" 
           aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
         </svg>
@@ -34,14 +37,9 @@
           <p class="text-sm text-white">{{ tag }}</p>
         </div>
         {% endfor %}
-        <!-- Exemple de tag de projecte -->
-        <div class="p-[2px] px-6 h-fit rounded-md bg-blau-500">
-          <p class="text-sm text-white">Cooperativa</p>
-        </div>
       </div>
     </div>
   </a>
   {% endfor %}
-</div>
 
 
