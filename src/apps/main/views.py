@@ -38,19 +38,23 @@ def document_list_view(request):
     if request.method == "GET":
         all_tags = set()
         for document in documents:
-            all_tags.update(document.tags.all())
+            all_tags.update((document.tags.all()))
         context = {
             "documents": documents,
             "projects": projects_with_documents,
-            "tags": all_tags,
+            "tags": sorted(all_tags),
         }
         return render(request, "main/documents.html", context)
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
         selected_tags = request.POST.getlist("selected_tags")
-        if selected_projects:
+        if selected_projects == ["projects_all"]:
+            documents = Document.objects.filter(project__in=user_projects).distinct()
+        if selected_tags == ["tags_all"]:
+            documents = Document.objects.filter(project__in=user_projects).distinct()
+        if selected_projects and selected_projects != ["projects_all"]:
             documents = documents.filter(project__in=selected_projects)
-        if selected_tags:
+        if selected_tags and selected_tags != ["tags_all"]:
             for tag in selected_tags:
                 documents = documents.filter(tags=tag)
         context = {
