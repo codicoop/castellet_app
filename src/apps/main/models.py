@@ -100,23 +100,23 @@ class Project(models.Model):
         storage=PrivateMediaStorage(),
         validators=[validate_image_file_extension],
     )
-    energy_power = models.PositiveIntegerField(
+    energy_power = models.CharField(
         _("Energy power"),
         blank=True,
-        null=True,
+        default="",
         help_text=_("Project energy power (kW)"),
     )
-    annual_energy = models.IntegerField(
+    annual_energy = models.CharField(
         _("Annual energy"),
         blank=True,
-        null=True,
+                default="",
+
         help_text=_("Project annual energy (kWh/year)"),
     )
-    investment = models.PositiveIntegerField(
+    investment = models.CharField(
         _("Investment"),
         blank=True,
-        null=True,
-        default=0,
+        default="",
         help_text=_("Project investment (€)"),
     )
     is_public = models.BooleanField(

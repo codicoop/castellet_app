@@ -55,7 +55,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         _("email address"),
         max_length=255,
         blank=True,
-        default="",
+        null=True,
         unique=True,
     )
     email_verification_code = models.CharField(default="0000")
@@ -133,4 +133,11 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         super(User, self).save(*args, **kwargs)
         if not self.email:
             self.email_verified = True
+            self.email = None
             super(User, self).save(*args, **kwargs)
+
+    def clean(self):
+        if self.pk and self.email:
+            old_email= User.objects.get(pk=self.pk).email
+            if old_email != self.email:
+                self.email_verified = False
