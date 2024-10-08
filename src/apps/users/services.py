@@ -70,6 +70,8 @@ class ExportUserCsvMixin:
         for obj in queryset:
             user_projects = obj.projects.all()
             project_names = ', '.join([project.title for project in user_projects])
+            corporate_contribution = getattr(obj, 'corporate_contribution', '')
+            voluntary_contribution = getattr(obj, 'voluntary_contribution', '')
             writer.writerow(
                 [
                     getattr(obj, 'name', ''),
@@ -84,8 +86,8 @@ class ExportUserCsvMixin:
                     project_names,
                     getattr(obj, 'partner_id', ''),
                     getattr(obj, 'entry_year', ''),
-                    getattr(obj, 'corporate_contribution', '') + " €" if getattr(obj, 'corporate_contribution', '') else "",
-                    getattr(obj, 'voluntary_contribution', '') + " €" if getattr(obj, 'voluntary_contribution', '') else "",
+                    corporate_contribution + " €" if corporate_contribution else "",
+                    voluntary_contribution + " €" if voluntary_contribution else "",
                 ]
             )
         return response

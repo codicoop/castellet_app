@@ -72,20 +72,30 @@ class ExportProjectCsvMixin:
         ])
 
         for obj in queryset:
-            project_participants = obj.user_projects.all()
-            participants = ", ".join([doc.name + " " + doc.surnames for doc in project_participants])
+            project_users = obj.user_projects.all()
+            names = [f"{doc.name} {doc.surnames}" for doc in project_users]
+            participants = ", ".join(names)
+            status = (
+                obj.get_status_display()
+                if hasattr(obj, 'get_status_display')
+                else ''
+            )
+            energy_power = getattr(obj, 'energy_power', '')
+            annual_energy = getattr(obj, 'annual_energy', '')
+            investment = getattr(obj, 'investment', '')
+
             writer.writerow(
                 [
                     getattr(obj, 'title', ''),
                     getattr(obj, 'project_type', ''),
-                    obj.get_status_display() if hasattr(obj, 'get_status_display') else '',
+                    status,
                     getattr(obj, 'description', ''),
-                    getattr(obj, 'energy_power', '') + " kW" if getattr(obj, 'energy_power', '') else "",
-                    getattr(obj, 'annual_energy', '') + " kWh/year" if getattr(obj, 'annual_energy', '') else "",
-                    getattr(obj, 'investment', '') + " €" if getattr(obj, 'investment', '') else "",
+                    energy_power + " kW" if energy_power else "",
+                    annual_energy + " kWh/year" if annual_energy else "",
+                    investment + " €" if investment else "",
                     "Sí" if getattr(obj, 'is_public', '') else "No",
                     participants,
-                    project_participants.count()
+                    project_users.count()
                 ]
             )
 
