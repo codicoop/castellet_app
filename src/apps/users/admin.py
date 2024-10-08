@@ -4,6 +4,7 @@ from django.utils.html import format_html
 
 from apps.users.forms import CustomUserCreationForm, UserAdminForm
 from apps.users.models import User, UserCharge
+from apps.users.services import ExportUserCsvMixin
 from project.admin import ModelAdminMixin
 
 
@@ -15,13 +16,13 @@ class UserChargeAdmin(admin.ModelAdmin):
 
 
 @admin.register(User)
-class UserAdmin(ModelAdminMixin, BaseUserAdmin):
+class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
     form = UserAdminForm
     add_form = CustomUserCreationForm
     list_display = (
         "dni",
-        "full_name",
         "email",
+        "full_name",
         "charge",
         "is_staff",
     )
@@ -89,6 +90,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin):
     )
     superuser_fields = ("is_superuser",)
     readonly_fields = ("roles_explanation_field",)
+    actions = ["export_as_csv"]
 
     def get_fieldsets(self, request, obj=None):
         return super().get_fieldsets(request, obj) + self.common_fieldsets
