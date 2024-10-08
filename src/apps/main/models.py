@@ -109,8 +109,7 @@ class Project(models.Model):
     annual_energy = models.CharField(
         _("Annual energy"),
         blank=True,
-                default="",
-
+        default="",
         help_text=_("Project annual energy (kWh/year)"),
     )
     investment = models.CharField(
