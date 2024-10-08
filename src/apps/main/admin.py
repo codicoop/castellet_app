@@ -1,8 +1,9 @@
 
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
+
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
 from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
 from apps.users.models import User
@@ -53,7 +54,7 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
             link = [
                 format_html(
                      '<a href="{}">{}</a>',
-                    reverse('admin:users_user_change', args=[participant.id]), 
+                    reverse('admin:users_user_change', args=[participant.id]),
                     participant.full_name
                 )
                 for participant in participants
@@ -70,16 +71,30 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ("title", "project", "tags", "file", "created_at")
+    list_display = [
+        "title",
+        "project",
+        "tags",
+        "access_permission_role",
+        "responsible_user",
+        "date_document",
+    ]
     list_filter = [
         "project",
         "responsible_user",
         "tags",
     ]
-    search_fields = ["project",  "tags", "date_document", "file", "created_at"]
+    search_fields = [
+        "tags",
+        "date_document",
+        "access_permission_role",
+        "created_at",
+        "date_document",
+        "responsible_user"
+    ]
 
     readonly_fields = [
-        "responsible_user",
+        "created_at", "responsible_user",
     ]
     actions = ["export_as_csv"]
 

@@ -194,7 +194,7 @@ class Document(models.Model):
         blank=False,
         default=timezone.now,
     )
-    created_at = models.DateField(auto_now_add=True, null=False)
+    created_at = models.DateField(_("created at"), auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("document")
