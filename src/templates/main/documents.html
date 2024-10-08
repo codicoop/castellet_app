@@ -26,11 +26,12 @@
   </h1>
   <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
     {% if documents %}
+      {% if tags|length > 1 or projects|length > 1%}
       <div class="sm:ml-8 md:ml-16 lg:ml-52">
         <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
         <form method="post">
           {% csrf_token %}
-          {% if tags %}
+          {% if tags|length > 1 %}
           <div class="flex gap-2">
             <p class="text-base pr-2">{% translate 'Tags' %}</p>
             <div class="grid grid-cols-2 gap-1 mb-4 w-full
@@ -54,13 +55,13 @@
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
                 >
-                  <p>{{ tag }}</p>
+                  <p>{{ tag|capfirst }}</p>
                 </button>
               {% endfor %}
             </div>
           </div>
           {% endif %}
-          {% if projects %}
+          {% if projects|length > 1 %}
           <div class="flex gap-2">
             <p class="text-base pr-2">{% translate 'Projects' %}</p>
             <div class="grid grid-cols-1 gap-1 mb-4 w-full
@@ -92,6 +93,7 @@
           {% endif %}
         </form>
       </div>
+      {% endif %}
       <div class="grid gap-6 mx-auto md:max-w-screen-sm pt-8 lg:pt-16" id="htmx-content">
         {% include 'main/documents_filtered.html' %}
       </div>
