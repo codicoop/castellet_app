@@ -43,7 +43,6 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
     @admin.display(description=_("Documents"))
     def documents_list(self, *args):
         documents = Document.objects.filter(project=args[0].id)
-        print(documents, documents.exists())
         if documents.exists():
             link = [
                     format_html(
@@ -55,8 +54,8 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
                 ]
             return format_html(", ".join(link))
         return "-"
-        
-                                            
+
+
     @admin.display(description=_("Participants"))
     def participants_list(self, obj):
         participants = User.objects.filter(projects=obj.id)
