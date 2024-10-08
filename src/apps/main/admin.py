@@ -30,7 +30,6 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         "energy_power",
         "annual_energy",
         "investment",
-        "created_at",
     )
     list_filter = ("project_type", "status", "created_at")
     search_fields = ["title", "created_at"]
@@ -43,10 +42,21 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
 
     @admin.display(description=_("Documents"))
     def documents_list(self, *args):
-        return ", ".join(
-            [document.title for document in Document.objects.filter(project=args[0].id)]
-        )
-
+        documents = Document.objects.filter(project=args[0].id)
+        print(documents, documents.exists())
+        if documents.exists():
+            link = [
+                    format_html(
+                        '<a href="{}">{}</a>',
+                        reverse('admin:main_document_change', args=[doc.id]),
+                        doc.title
+                    )
+                    for doc in documents
+                ]
+            return format_html(", ".join(link))
+        return "-"
+        
+                                            
     @admin.display(description=_("Participants"))
     def participants_list(self, obj):
         participants = User.objects.filter(projects=obj.id)
