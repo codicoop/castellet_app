@@ -34,7 +34,7 @@
       <div class="flex flex-wrap gap-1 mr-8 lg:justify-end">
         {% for tag in document.tags.all %}
         <div class="py-[2px] px-6 h-fit rounded-md bg-primary-600">
-          <p class="text-sm text-white">{{ tag }}</p>
+          <p class="text-sm text-white">{{ tag|capfirst }}</p>
         </div>
         {% endfor %}
       </div>

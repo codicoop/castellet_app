@@ -38,7 +38,7 @@ def document_list_view(request):
     if request.method == "GET":
         all_tags = set()
         for document in documents:
-            all_tags.update((document.tags.all()))
+            all_tags.update(tag.name.capitalize() for tag in document.tags.all())
         context = {
             "documents": documents,
             "projects": projects_with_documents,
@@ -48,9 +48,7 @@ def document_list_view(request):
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
         selected_tags = request.POST.getlist("selected_tags")
-        if selected_projects == ["projects_all"]:
-            documents = Document.objects.filter(project__in=user_projects).distinct()
-        if selected_tags == ["tags_all"]:
+        if selected_projects == ["projects_all"] or selected_tags == ["tags_all"]:
             documents = Document.objects.filter(project__in=user_projects).distinct()
         if selected_projects and selected_projects != ["projects_all"]:
             documents = documents.filter(project__in=selected_projects)
