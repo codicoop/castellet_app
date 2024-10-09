@@ -36,30 +36,42 @@
             <p class="text-base pr-2">{% translate 'Tags' %}</p>
             <div class="grid grid-cols-2 gap-1 mb-4 w-full
               sm:grid-cols-3 md:grid-cols-4">
-              <input type="checkbox"
-                id="tags_all"
-                checked="True"
-                name="selected_tags"
-                value="tags_all"
-                hx-post="{% url 'main:documents' %}"
-                hx-target="#htmx-content"
-                _="on click set .selected_tags.checked to false"
-                >
-                <p>{% translate 'All' %}</p>
-          </input>
+              <label for="tags_all" id="label_tags_all"
+                class="p-1 rounded-md bg-primary-600 text-white
+                hover:bg-primary-700">
+                <input type="checkbox" class="invisible absolute"
+                  id="tags_all"
+                  checked="True"
+                  name="selected_tags"
+                  value="tags_all"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click set .selected_tags.checked to false"
+                  />
+                  <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+                </label>
               {% for tag in tags %}
-                <input 
+              <label for="{{ tag.id }}" id="label_{{ tag.id }}"
+                class="p-1 rounded-md bg-primary-400 text-white
+              hover:bg-primary-500"
+              >
+                <input
                   type="checkbox" 
                   id="{{ tag.id }}"
-                  class="selected_tags"
                   name="selected_tags"
+                  class="selected_tags invisible absolute"
                   value="{{ tag.id }}"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click set #tags_all.checked to false"
-                >
-                  <p>{{ tag|capfirst }}</p>
-                </input>
+                  _="on click set #tags_all.checked to false
+                    then remove .bg-primary-600 from label_tags_all
+                    then add .bg-primary-400 to label_tags_all
+                    then toggle .bg-primary-400 on label_{{ tag.id }}
+                    then toggle .bg-primary-600 on label_{{ tag.id }}
+                  "
+                />
+                <p class="text-center pointer-events-none">{{ tag|capfirst }}</p>
+              </label>
               {% endfor %}
             </div>
           </div>
@@ -69,29 +81,42 @@
             <p class="text-base pr-2">{% translate 'Projects' %}</p>
             <div class="grid grid-cols-1 gap-1 mb-4 w-full
               md:grid-cols-2 lg:grid-cols-3">
-              <input 
-                type="radio"
-                checked="True"
-                id="projects_all"
-                name="selected_projects"
-                value="projects_all"
-                hx-post="{% url 'main:documents' %}"
-                hx-target="#htmx-content"
+              <label for="projects_all" id="label_projects_all"
+                class="p-1 rounded-md bg-blau-500 text-white
+                  hover:bg-blau-600"
               >
-                <p>{% translate 'All' %}</p>
-          </input>
+                <input 
+                  type="radio"
+                  checked="True"
+                  id="projects_all"
+                  class="invisible absolute"
+                  name="selected_projects"
+                  value="projects_all"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
               {% for project in projects %}
-              <input 
-                type="radio"
-                class="selected_projects"
-                id="{{ project.id }}"
-                name="selected_projects"
-                value="{{ project.id }}"
-                hx-post="{% url 'main:documents' %}"
-                hx-target="#htmx-content"
+              <label for="{{ project.id }}" id="label_{{ project.id }}"
+                class="p-1 rounded-md bg-blau-300 text-white
+                  hover:bg-blau-400"
               >
-                <p>{{ project }}</p>
-              </input>
+                <input 
+                  type="radio"
+                  id="{{ project.id }}"
+                  name="selected_projects"
+                  class="selected_projects invisible absolute"
+                  value="{{ project.id }}"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="onclick remove .bg-blau-500 from label_projects_all
+                    then add .bg-blau-300 to label_projects_all
+                    then toggle .bg-blau-300 on label_{{ project.id }}
+                    then toggle .bg-blau-500 on label_{{ project.id }}"
+                />
+                <p class="text-center pointer-events-none">{{ project }}</p>
+              </label>
               {% endfor %}
             </div>
           </div>

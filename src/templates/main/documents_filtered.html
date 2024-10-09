@@ -42,5 +42,7 @@
   </a>
   {% endfor %}
 {% else %}
-  {% translate 'No documents found. Try again!' %}
+  <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
+    <p>{% translate 'There is no result for this search. Try another filter combination' %}</p>
+  </div>
 {% endif %}
