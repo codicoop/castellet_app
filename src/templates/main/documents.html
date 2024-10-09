@@ -36,27 +36,30 @@
             <p class="text-base pr-2">{% translate 'Tags' %}</p>
             <div class="grid grid-cols-2 gap-1 mb-4 w-full
               sm:grid-cols-3 md:grid-cols-4">
-              <button class="p-1 rounded-md bg-primary-600 text-white
-                hover:bg-primary-700"
+              <input type="checkbox"
                 id="tags_all"
+                checked="True"
                 name="selected_tags"
                 value="tags_all"
                 hx-post="{% url 'main:documents' %}"
                 hx-target="#htmx-content"
-              >
+                _="on click set .selected_tags.checked to false"
+                >
                 <p>{% translate 'All' %}</p>
-              </button>
+          </input>
               {% for tag in tags %}
-                <button class="p-1 rounded-md bg-primary-400 text-white
-                  hover:bg-primary-500"
+                <input 
+                  type="checkbox" 
                   id="{{ tag.id }}"
+                  class="selected_tags"
                   name="selected_tags"
                   value="{{ tag.id }}"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
+                  _="on click set #tags_all.checked to false"
                 >
                   <p>{{ tag|capfirst }}</p>
-                </button>
+                </input>
               {% endfor %}
             </div>
           </div>
@@ -66,8 +69,9 @@
             <p class="text-base pr-2">{% translate 'Projects' %}</p>
             <div class="grid grid-cols-1 gap-1 mb-4 w-full
               md:grid-cols-2 lg:grid-cols-3">
-              <button class="p-1 rounded-md bg-blau-500 text-white
-                hover:bg-blau-600"
+              <input 
+                type="radio"
+                checked="True"
                 id="projects_all"
                 name="selected_projects"
                 value="projects_all"
@@ -75,10 +79,11 @@
                 hx-target="#htmx-content"
               >
                 <p>{% translate 'All' %}</p>
-              </button>
+          </input>
               {% for project in projects %}
-              <button class="p-1 rounded-md bg-blau-300 text-white
-                hover:bg-blau-400"
+              <input 
+                type="radio"
+                class="selected_projects"
                 id="{{ project.id }}"
                 name="selected_projects"
                 value="{{ project.id }}"
@@ -86,7 +91,7 @@
                 hx-target="#htmx-content"
               >
                 <p>{{ project }}</p>
-              </button>
+              </input>
               {% endfor %}
             </div>
           </div>
@@ -106,3 +111,4 @@
     {% endif %}
   </div>
 {% endblock %}
+

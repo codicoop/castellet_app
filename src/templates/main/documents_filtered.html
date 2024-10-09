@@ -1,6 +1,6 @@
 {% load i18n %}
 
-
+{% if documents %}
   {% for document in documents %}
   <a href="{{ document.file.url }}" id="id_document_{{ document.id }}" target="_blank">
     <div class="relative flex flex-col justify-between p-4 bg-white rounded-lg border-l-8
@@ -41,5 +41,6 @@
     </div>
   </a>
   {% endfor %}
-
-
+{% else %}
+  {% translate 'No documents found. Try again!' %}
+{% endif %}
