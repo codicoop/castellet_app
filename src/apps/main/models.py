@@ -1,3 +1,5 @@
+import uuid
+
 from django.core.validators import validate_image_file_extension
 from django.db import models
 from django.utils import timezone
@@ -62,6 +64,7 @@ class ProjectType(models.Model):
 
 
 class Project(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(
         _("Title"),
         max_length=50,
