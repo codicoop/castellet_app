@@ -80,7 +80,7 @@
                 </th>
                 <td class="px-2 py-2 border-b border-primary-200">
                   {% if project.energy_power %}
-                    {{ project.energy_power }} (kW)
+                    {{ project.energy_power }} kW
                   {% else %}
                     {% translate "Unknown" %}
                   {% endif %}
@@ -92,7 +92,7 @@
                 </th>
                 <td class="px-2 py-2 border-b border-primary-200">
                   {% if project.annual_energy %}
-                    {{ project.annual_energy }} (kWh/year)
+                    {{ project.annual_energy }} kWh/year
                   {% else %}
                     {% translate "Unknown" %}
                   {% endif %}
@@ -104,7 +104,7 @@
                 </th>
                 <td class="px-2 py-2 border-b border-primary-200">
                   {% if project.investment %}
-                    {{ project.investment }}
+                    {{ project.investment }} €
                   {% else %}
                     {% translate "Unknown" %}
                   {% endif %}

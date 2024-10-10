@@ -138,6 +138,9 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
 
     def clean(self):
         if self.pk and self.email:
-            old_email= User.objects.get(pk=self.pk).email
-            if old_email != self.email:
-                self.email_verified = False
+            try: 
+                old_email= User.objects.get(pk=self.pk).email
+                if old_email != self.email:
+                    self.email_verified = False
+            except:
+                pass

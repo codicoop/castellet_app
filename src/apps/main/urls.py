@@ -9,5 +9,5 @@ urlpatterns = [
     path(_("documents/"), document_list_view, name="documents"),
     # Projects
     path(_("projects/"), project_list_view, name="projects"),
-    path(_("projects/<int:id>"), project_detail_view, name="project_detail"),
+    path(_("projects/<uuid:id>"), project_detail_view, name="project_detail"),
 ]

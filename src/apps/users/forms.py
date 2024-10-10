@@ -147,7 +147,7 @@ class UserAdminForm(forms.ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("name", "email", "projects")
+        fields = []
 
     projects = forms.ModelMultipleChoiceField(
         label=_("Projects"),

@@ -20,9 +20,9 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
     form = UserAdminForm
     add_form = CustomUserCreationForm
     list_display = (
+        "full_name",
         "dni",
         "email",
-        "full_name",
         "charge",
         "is_staff",
     )
@@ -54,6 +54,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
                     "phone",
                     "address",
                     "email",
+                    "email_verified",
                     "bank_account",
                     "charge",
                     "governing_council_member",

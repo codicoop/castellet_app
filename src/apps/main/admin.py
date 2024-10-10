@@ -32,6 +32,7 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         "annual_energy",
         "investment",
         "is_public",
+        "number_participants"
     )
     list_filter = ("project_type", "status", "created_at", "is_public")
     search_fields = ["title", "created_at"]

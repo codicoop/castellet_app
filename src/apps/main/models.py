@@ -9,7 +9,6 @@ from taggit.managers import TaggableManager
 from apps.main.choices import (
     AccessPermissionRoleChoices,
     ProjectStatusChoices,
-    TagsChoices,
 )
 from project.storage_backends import PrivateMediaStorage
 

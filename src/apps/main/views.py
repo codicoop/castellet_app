@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
-from apps.main.models import Document
+from apps.main.models import Document, Project
 from apps.main.services import send_confirmation_newsletter
 from project.views import StandardSuccess
 
