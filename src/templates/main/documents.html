@@ -99,8 +99,8 @@
                   value="projects_all"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click remove .bg-blau-300 from label_projects_all
-                    then add .bg-blau-500 to label_projects_all
+                  _="on click remove .bg-blau-300 from #label_projects_all
+                    then add .bg-blau-500 to #label_projects_all
                     then remove .bg-blau-500 from .label-projects
                     then add .bg-blau-300 to .label-projects
                   "
@@ -109,7 +109,7 @@
               </label>
               {% for project in projects %}
               <label for="{{ project.id }}" id="label_{{ project.id }}"
-                class="p-1 rounded-md bg-blau-300 text-white
+                class="label-projects p-1 rounded-md bg-blau-300 text-white
                   hover:bg-blau-700"
               >
                 <input 
@@ -120,10 +120,12 @@
                   value="{{ project.id }}"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click remove .bg-blau-500 from label_projects_all
-                    then add .bg-blau-300 to label_projects_all
-                    then toggle .bg-blau-300 on label_{{ project.id }}
-                    then toggle .bg-blau-500 on label_{{ project.id }}"
+                  _="on click remove .bg-blau-500 from #label_projects_all
+                    then add .bg-blau-300 to #label_projects_all
+                    then remove .bg-blau-500 from .label-projects
+                    then add .bg-blau-300 to .label-projects
+                    then remove .bg-blau-300 from #label_{{ project.id }}
+                    then add .bg-blau-500 to #label_{{ project.id }}"
                 />
                 <p class="text-center pointer-events-none">{{ project }}</p>
               </label>
