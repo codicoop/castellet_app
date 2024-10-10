@@ -1848,6 +1848,16 @@ input:checked + .toggle-bg {
   background-color: rgb(35 128 52 / var(--tw-bg-opacity)) !important;
 }
 
+.bg-blau-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 175 222 / var(--tw-bg-opacity));
+}
+
+.bg-blau-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 141 180 / var(--tw-bg-opacity));
+}
+
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
@@ -1895,6 +1905,11 @@ input:checked + .toggle-bg {
 .bg-primary-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(167 232 155 / var(--tw-bg-opacity));
+}
+
+.bg-primary-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 207 102 / var(--tw-bg-opacity));
 }
 
 .bg-primary-50 {
@@ -1948,21 +1963,6 @@ input:checked + .toggle-bg {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
-}
-
-.bg-blau-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 175 222 / var(--tw-bg-opacity));
-}
-
-.bg-blau-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 141 180 / var(--tw-bg-opacity));
-}
-
-.bg-primary-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(79 207 102 / var(--tw-bg-opacity));
 }
 
 .p-1 {
@@ -2354,11 +2354,6 @@ input:checked + .toggle-bg {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-.checked\:bg-primary-600:checked {
-  --tw-bg-opacity: 1;
-  background-color: rgb(44 160 65 / var(--tw-bg-opacity));
-}
-
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -2367,6 +2362,16 @@ input:checked + .toggle-bg {
 .hover\:\!bg-primary-800:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(26 96 39 / var(--tw-bg-opacity)) !important;
+}
+
+.hover\:bg-blau-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 158 201 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blau-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 103 141 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-blue-800:hover {
@@ -2387,6 +2392,11 @@ input:checked + .toggle-bg {
 .hover\:bg-primary-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(198 240 187 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(49 180 74 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary-700:hover {
@@ -2419,19 +2429,9 @@ input:checked + .toggle-bg {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blau-400:hover {
+.hover\:bg-blau-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 158 201 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blau-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(12 103 141 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-primary-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(49 180 74 / var(--tw-bg-opacity));
+  background-color: rgb(22 64 102 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-600:hover {
@@ -3110,4 +3110,13 @@ input:checked + .toggle-bg {
 
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right;
+}
+
+.\[\&\>input\]\:border-2>input {
+  border-width: 2px;
+}
+
+.\[\&\>input\]\:border-red-600>input {
+  --tw-border-opacity: 1;
+  border-color: rgb(224 36 36 / var(--tw-border-opacity));
 }

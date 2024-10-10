@@ -46,14 +46,19 @@
                   value="tags_all"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click set .selected_tags.checked to false"
+                  _="on click set .selected_tags.checked to false
+                    then remove .bg-primary-400 from label_tags_all
+                    then add .bg-primary-600 to label_tags_all
+                    then remove .bg-primary-600 from .label-tags
+                    then add .bg-primary-400 to .label-tags
+                  "
                   />
                   <p class="text-center pointer-events-none">{% translate 'All' %}</p>
                 </label>
               {% for tag in tags %}
               <label for="{{ tag.id }}" id="label_{{ tag.id }}"
-                class="p-1 rounded-md bg-primary-400 text-white
-              hover:bg-primary-500"
+                class="label-tags p-1 rounded-md bg-primary-400 text-white
+              hover:bg-primary-700"
               >
                 <input
                   type="checkbox" 
@@ -83,7 +88,7 @@
               md:grid-cols-2 lg:grid-cols-3">
               <label for="projects_all" id="label_projects_all"
                 class="p-1 rounded-md bg-blau-500 text-white
-                  hover:bg-blau-600"
+                  hover:bg-blau-700"
               >
                 <input 
                   type="radio"
@@ -94,13 +99,18 @@
                   value="projects_all"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
+                  _="on click remove .bg-blau-300 from label_projects_all
+                    then add .bg-blau-500 to label_projects_all
+                    then remove .bg-blau-500 from .label-projects
+                    then add .bg-blau-300 to .label-projects
+                  "
                 />
                 <p class="text-center pointer-events-none">{% translate 'All' %}</p>
               </label>
               {% for project in projects %}
               <label for="{{ project.id }}" id="label_{{ project.id }}"
                 class="p-1 rounded-md bg-blau-300 text-white
-                  hover:bg-blau-400"
+                  hover:bg-blau-700"
               >
                 <input 
                   type="radio"
@@ -110,7 +120,7 @@
                   value="{{ project.id }}"
                   hx-post="{% url 'main:documents' %}"
                   hx-target="#htmx-content"
-                  _="onclick remove .bg-blau-500 from label_projects_all
+                  _="on click remove .bg-blau-500 from label_projects_all
                     then add .bg-blau-300 to label_projects_all
                     then toggle .bg-blau-300 on label_{{ project.id }}
                     then toggle .bg-blau-500 on label_{{ project.id }}"
