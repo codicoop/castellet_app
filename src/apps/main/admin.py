@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.forms import DocumentAdminForm
 from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
 from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
 from apps.users.models import User
@@ -30,8 +31,9 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         "energy_power",
         "annual_energy",
         "investment",
+        "is_public",
     )
-    list_filter = ("project_type", "status", "created_at")
+    list_filter = ("project_type", "status", "created_at", "is_public")
     search_fields = ["title", "created_at"]
     readonly_fields = [
         "documents_list",
@@ -80,30 +82,34 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = [
+    form = DocumentAdminForm
+    list_display = (
         "title",
-        "project",
-        "tags",
+        "get_projects",
+        "get_tags",
         "access_permission_role",
         "responsible_user",
         "date_document",
-    ]
+    )
     list_filter = [
         "project",
+        "access_permission_role",
         "responsible_user",
         "tags",
     ]
     search_fields = [
+        "project",
+        "title",
         "tags",
         "date_document",
-        "access_permission_role",
-        "created_at",
+        "file",
         "date_document",
-        "responsible_user"
+        "access_permission_role",
     ]
 
     readonly_fields = [
-        "created_at", "responsible_user",
+        "created_at",
+        "responsible_user",
     ]
     actions = ["export_as_csv"]
 
@@ -115,3 +121,18 @@ class DocumentAdmin(admin.ModelAdmin):
         instance.save()
         form.save_m2m()
         return instance
+
+    def get_projects(self, obj):
+        return ", ".join([project.title for project in obj.project.all()])
+
+    get_projects.short_description = _("Projects")
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related("tags")
+
+    def get_tags(self, obj):
+        return ", ".join(o.name for o in obj.tags.all())
+
+    get_tags.short_description = _("Tag list")
+
+

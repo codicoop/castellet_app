@@ -2,8 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 
+from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
-from apps.main.models import Document, Project
+from apps.main.models import Document
 from apps.main.services import send_confirmation_newsletter
 from project.views import StandardSuccess
 
@@ -27,19 +28,38 @@ class NewsletterSubscriberSuccessView(StandardSuccess):
 
 @login_required
 def document_list_view(request):
+    user_projects = request.user.projects.all()
+    documents = Document.objects.filter(project__in=user_projects).distinct()
+    if not request.user.governing_council_member:
+        documents = documents.filter(
+            access_permission_role=AccessPermissionRoleChoices.ALL_USERS
+        )
+    projects_with_documents = user_projects.filter(documents__isnull=False).distinct()
     if request.method == "GET":
+        all_tags = set()
+        for document in documents:
+            all_tags.update((document.tags.all()))
         context = {
-            "documents": Document.objects.all(),
-            "projects": Project.objects.all(),
+            "documents": documents,
+            "projects": projects_with_documents,
+            "tags": sorted(all_tags),
         }
         return render(request, "main/documents.html", context)
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
+        selected_tags = request.POST.getlist("selected_tags")
+        if selected_projects == ["projects_all"]:
+            documents = Document.objects.filter(project__in=user_projects).distinct()
+        if selected_tags == ["tags_all"]:
+            documents = Document.objects.filter(project__in=user_projects).distinct()
+        if selected_projects and selected_projects != ["projects_all"]:
+            documents = documents.filter(project__in=selected_projects)
+        if selected_tags and selected_tags != ["tags_all"]:
+            for tag in selected_tags:
+                documents = documents.filter(tags=tag)
         context = {
-            "documents": Document.objects.filter(project__in=selected_projects)
-            if selected_projects
-            else Document.objects.all(),
-            "projects": Project.objects.all(),
+            "projects": projects_with_documents,
+            "documents": documents,
         }
         return render(request, "main/documents_filtered.html", context)
 

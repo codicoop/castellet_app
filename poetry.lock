@@ -507,6 +507,20 @@ celery = ["celery (>=5.1)"]
 commands = ["django-extensions (>=1.4.9)"]
 
 [[package]]
+name = "django-taggit"
+version = "6.1.0"
+description = "django-taggit is a reusable Django application for simple tagging."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_taggit-6.1.0-py3-none-any.whl", hash = "sha256:ab776264bbc76cb3d7e49e1bf9054962457831bd21c3a42db9138b41956e4cf0"},
+    {file = "django_taggit-6.1.0.tar.gz", hash = "sha256:c4d1199e6df34125dd36db5eb0efe545b254dec3980ce5dd80e6bab3e78757c3"},
+]
+
+[package.dependencies]
+Django = ">=4.1"
+
+[[package]]
 name = "executing"
 version = "2.0.1"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -1543,4 +1557,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.11"
-content-hash = "01ee4f9e62bb11057f11bdd6e5d980834c10301ecb04bf5d183a8d4e7be8bbd0"
+content-hash = "b4d96bf998fbe57b3e1bb994b975cf00861870615dbcf23efd8d085cadfdb88e"

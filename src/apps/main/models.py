@@ -1,7 +1,10 @@
+import uuid
+
 from django.core.validators import validate_image_file_extension
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from taggit.managers import TaggableManager
 
 from apps.main.choices import (
     AccessPermissionRoleChoices,
@@ -65,6 +68,7 @@ class ProjectType(models.Model):
 
 
 class Project(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(
         _("Title"),
         max_length=50,
@@ -129,7 +133,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = _("project")
         verbose_name_plural = _("projects")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
         return f"{self.title}"
@@ -140,39 +144,27 @@ class Document(models.Model):
         _("Title"),
         max_length=50,
         blank=False,
-        null=False,
-        help_text=_("Project"),
+        default="",
     )
     description = models.CharField(
         _("Description"),
         max_length=500,
         blank=False,
-        null=False,
-        help_text=_("Document description"),
+        default="",
     )
     access_permission_role = models.CharField(
         _("Access Permission Role"),
         max_length=2,
         blank=False,
-        null=False,
         choices=AccessPermissionRoleChoices.choices,
         default=AccessPermissionRoleChoices.ALL_USERS,
-        help_text=_("Access permission role"),
     )
-    tags = models.CharField(
-        _("Tags"),
-        max_length=100,
-        blank=False,
-        null=False,
-        choices=TagsChoices.choices,
-    )
-    project = models.ForeignKey(
+    tags = TaggableManager(help_text=_("A comma-separated list of tags."))
+    project = models.ManyToManyField(
         Project,
-        null=False,
-        blank=False,
+        blank=True,
         related_name="documents",
         verbose_name=_("Project"),
-        on_delete=models.CASCADE,
     )
     file = models.FileField(
         _("File"),
@@ -194,12 +186,12 @@ class Document(models.Model):
         blank=False,
         default=timezone.now,
     )
-    created_at = models.DateField(_("created at"), auto_now_add=True, null=False)
+    created_at = models.DateField(_("Upload date"), auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("document")
         verbose_name_plural = _("documents")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
         return self.title
