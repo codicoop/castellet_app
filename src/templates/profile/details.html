@@ -35,8 +35,12 @@
       {% translate "Your profile" %}
     </h1>
     <p class="pb-4 lg:pb-6">
-      {% translate "Here you can see all your data. If you need to change anything, contact the administrators by" %}
-      <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "email" %}</a></span>{% translate " or calling at "%} <span class="font-bold">{{ contact_phone }}</span>
+      {% translate "Here you can see all your data. If you need to change anything, contact the administrators by " %}
+      <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "email" %}</a></span>
+      {% if contact_phone %}
+      <span>{% translate " or calling at "%} </span>
+      <span class="font-bold">{{ contact_phone }}</span>
+      {% endif %}
       {% translate "and they will update it for you." %}
     </p>
     <div class="relative overflow-x-auto shadow-sm rounded-lg">
