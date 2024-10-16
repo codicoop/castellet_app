@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 11:25+0200\n"
+"POT-Creation-Date: 2024-10-16 12:31+0200\n"
 "PO-Revision-Date: 2024-10-10 15:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,26 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: apps/main/admin.py:46 templates/base.html:171
-#: templates/main/documents.html:5 templates/main/documents.html:25
+#: apps/main/admin.py:39 templates/base.html:171
+#: templates/main/documents.html:5 templates/main/documents.html:27
 msgid "Documents"
 msgstr "Documents"
 
-#: apps/main/admin.py:62 apps/main/services.py:70
+#: apps/main/admin.py:55 apps/main/services.py:70
 msgid "Participants"
 msgstr "Participants"
 
-#: apps/main/admin.py:77 apps/main/services.py:71
+#: apps/main/admin.py:70 apps/main/services.py:71
 msgid "Number of participants"
 msgstr "Nombre de participants"
 
-#: apps/main/admin.py:129 apps/main/forms.py:85 templates/base.html:160
-#: templates/main/documents.html:86 templates/main/project_details.html:27
+#: apps/main/admin.py:122 apps/main/forms.py:85 templates/base.html:160
+#: templates/main/documents.html:88 templates/main/project_details.html:27
 #: templates/main/projects.html:5 templates/main/projects.html:27
 msgid "Projects"
 msgstr "Projectes"
 
-#: apps/main/admin.py:137
+#: apps/main/admin.py:130
 msgid "Tag list"
 msgstr "Llistat d'etiquetes"
 
@@ -227,11 +227,11 @@ msgstr "projectes/"
 msgid "projects/<uuid:id>"
 msgstr "projectes/<uuid:id>"
 
-#: apps/main/views.py:25
+#: apps/main/views.py:26
 msgid "Signed up to the newsletter"
 msgstr "Alta al butlletí completada"
 
-#: apps/main/views.py:26
+#: apps/main/views.py:27
 msgid "Successfully signed up to the newsletter."
 msgstr "La teva alta al butlletí s'ha realitzat correctament."
 
@@ -312,11 +312,7 @@ msgstr "Inici"
 msgid "Log in"
 msgstr "Iniciar sessió"
 
-#: templates/base.html:220
-msgid "Do you want to subscribe to our newsletter?"
-msgstr "Vols subscriure’t a la nostra newsletter?"
-
-#: templates/base.html:277
+#: templates/base.html:265
 msgid ""
 "We use cookies to optimize your experience and to analyze the web traffic. "
 "We don't sell data to third parties. If you continue navigating, we'll "
@@ -326,11 +322,11 @@ msgstr ""
 "web. No venem dades a tercers. Si continues navegant, entendrem que estàs "
 "d’acord amb això."
 
-#: templates/base.html:289
+#: templates/base.html:277
 msgid "Accept"
 msgstr "Accepta"
 
-#: templates/base.html:299
+#: templates/base.html:287
 msgid "Deny"
 msgstr "Denega"
 
@@ -432,19 +428,19 @@ msgstr "Suprimeix el fitxer actual."
 msgid "Internal home page"
 msgstr "Pàgina d’inici interna"
 
-#: templates/main/documents.html:31
+#: templates/main/documents.html:33
 msgid "Filter by:"
 msgstr "Filtra per:"
 
-#: templates/main/documents.html:36
+#: templates/main/documents.html:38
 msgid "Tags"
 msgstr "Etiquetes"
 
-#: templates/main/documents.html:56 templates/main/documents.html:108
+#: templates/main/documents.html:58 templates/main/documents.html:110
 msgid "All"
 msgstr "Tot"
 
-#: templates/main/documents.html:145
+#: templates/main/documents.html:147
 msgid ""
 "There is no documents to show. Once the administrators have added some, you "
 "will be able to download them here."
@@ -452,7 +448,7 @@ msgstr ""
 "No hi ha documents per mostrar. Un cop els administradors n’hagin afegit "
 "alguns, els podràs descarregar aquí."
 
-#: templates/main/documents.html:146
+#: templates/main/documents.html:148
 msgid "Come back soon to check!"
 msgstr "Torna aviat per comprovar-ho!"
 
@@ -497,16 +493,28 @@ msgid "See more"
 msgstr "Veure més"
 
 #: templates/main/projects.html:79
+#, fuzzy
+#| msgid ""
+#| "You don't have any project assinged at the moment. If you want to be "
+#| "assigned to some project get in contact with"
 msgid ""
 "You don't have any project assinged at the moment. If you want to be "
-"assigned to some project get in contact with"
+"assigned to some project get in contact with the administrators "
 msgstr ""
 "No tens cap projecte assignat de moment. Si vols que se t'assigni un, posa't "
 "en contacte amb"
 
-#: templates/main/projects.html:81
-msgid "the administrators."
-msgstr "els adminstradors."
+#: templates/main/projects.html:80
+#, fuzzy
+#| msgid "email"
+msgid "by email"
+msgstr "correu electrònic"
+
+#: templates/main/projects.html:82
+#, fuzzy
+#| msgid " or calling at "
+msgid " or calling at the "
+msgstr "o trucant al"
 
 #: templates/newsletter.html:5
 msgid "Newsletter"
@@ -722,6 +730,12 @@ msgstr ""
 #: templates/registration/user_validation_confirm.html:23
 msgid "Set"
 msgstr "Estableix"
+
+#~ msgid "Do you want to subscribe to our newsletter?"
+#~ msgstr "Vols subscriure’t a la nostra newsletter?"
+
+#~ msgid "the administrators."
+#~ msgstr "els adminstradors."
 
 #~ msgid "Your name"
 #~ msgstr "El teu nom"
