@@ -1,7 +1,7 @@
 from django.shortcuts import reverse
 from django.test import Client, TestCase
+
 from apps.users.models import User
-from django.conf import settings
 
 
 class NewsletterSubscriberViewTest(TestCase):
