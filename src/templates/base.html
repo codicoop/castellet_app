@@ -66,12 +66,14 @@
                 <p class="text-lg pb-1 font-bold text-primary-800 dark:text-white" role="none">
                   {{ request.user }}
                 </p>
+                {% if request.user.email %}
                 <p class="text-sm font-medium text-primary-900 truncate dark:text-gray-300" role="none">
                   {{ request.user.email }} <br>
                   {% if not request.user.email_verified and request.user.email %}
                   <a class="text-red-700 hover:underline dark:text-red-500" href="{% url 'registration:send_verification_code' %}">{% translate "Unverified email" %}</a>
                 {% endif %}
                 </p>
+                {% endif %}
               </div>
               <ul class="py-1" role="none">
                 <li>
