@@ -30,9 +30,8 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
     list_filter = (
         "is_staff",
         "governing_council_member",
-        "charge"
     )
-    search_fields = ("email", "name", "surnames", "governing_council_member", "dni")
+    search_fields = ("email", "name", "surnames", "charge__name", "dni")
     ordering = ("name",)
     fieldsets = (("Autenticació", {"fields": ("dni", "password")}),)
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
