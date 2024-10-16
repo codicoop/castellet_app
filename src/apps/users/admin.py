@@ -54,8 +54,6 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
                     "phone",
                     "address",
                     "email",
-                    "email_verified",
-                    "email_verification_code",
                     "bank_account",
                     "charge",
                     "governing_council_member",

@@ -5,16 +5,9 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from apps.main.forms import DocumentAdminForm
-from apps.main.models import Document, NewsletterSubscriber, Project, ProjectType
-from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
+from apps.main.models import Document, Project, ProjectType
+from apps.main.services import ExportProjectCsvMixin
 from apps.users.models import User
-
-
-@admin.register(NewsletterSubscriber)
-class NewsletterSubscriberAdmin(admin.ModelAdmin, ExportNewsletterCsvMixin):
-    list_display = ("email", "name", "surnames", "created_at")
-    search_fields = ["email", "name", "surnames", "created_at"]
-    actions = ["export_as_csv"]
 
 
 @admin.register(ProjectType)
