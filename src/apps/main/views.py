@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
+from constance import config
 
 from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
@@ -76,6 +77,8 @@ def document_list_view(request):
 def project_list_view(request):
     context = {
         "projects": request.user.projects.all().order_by("title"),
+        "contact_email": config.CONTACT_EMAIL,
+        "contact_phone": config.CONTACT_PHONE,
     }
     return render(request, "main/projects.html", context)
 
