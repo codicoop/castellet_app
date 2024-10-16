@@ -1,7 +1,7 @@
+from constance import config
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
-from constance import config
 
 from apps.main.choices import AccessPermissionRoleChoices
 from apps.main.forms import NewsletterSubscriberForm
