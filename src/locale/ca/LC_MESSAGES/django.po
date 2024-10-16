@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 15:30+0200\n"
+"POT-Creation-Date: 2024-10-16 11:25+0200\n"
 "PO-Revision-Date: 2024-10-10 15:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -62,15 +62,15 @@ msgstr "Projecte actiu"
 msgid "Future projects or other projects"
 msgstr "Projectes futurs o altres projectes"
 
-#: apps/main/forms.py:12 templates/profile/details.html:47
+#: apps/main/forms.py:12 templates/profile/details.html:51
 msgid "Name"
 msgstr "Nom"
 
-#: apps/main/forms.py:23 templates/profile/details.html:59
+#: apps/main/forms.py:23 templates/profile/details.html:63
 msgid "Surnames"
 msgstr "Cognoms"
 
-#: apps/main/forms.py:27 templates/profile/details.html:71
+#: apps/main/forms.py:27 templates/profile/details.html:75
 msgid "Email"
 msgstr "Correu electrònic"
 
@@ -478,13 +478,13 @@ msgstr "Dades"
 #: templates/main/project_details.html:73
 #: templates/main/project_details.html:85
 #: templates/main/project_details.html:97
-#: templates/main/project_details.html:109 templates/profile/details.html:53
-#: templates/profile/details.html:65 templates/profile/details.html:77
-#: templates/profile/details.html:89 templates/profile/details.html:101
-#: templates/profile/details.html:113 templates/profile/details.html:125
-#: templates/profile/details.html:137 templates/profile/details.html:161
-#: templates/profile/details.html:173 templates/profile/details.html:185
-#: templates/profile/details.html:197
+#: templates/main/project_details.html:109 templates/profile/details.html:57
+#: templates/profile/details.html:69 templates/profile/details.html:81
+#: templates/profile/details.html:93 templates/profile/details.html:105
+#: templates/profile/details.html:117 templates/profile/details.html:129
+#: templates/profile/details.html:141 templates/profile/details.html:165
+#: templates/profile/details.html:177 templates/profile/details.html:189
+#: templates/profile/details.html:201
 msgid "Unknown"
 msgstr "Desconegut"
 
@@ -492,11 +492,11 @@ msgstr "Desconegut"
 msgid "Project description"
 msgstr "Descripció del projecte"
 
-#: templates/main/projects.html:72
+#: templates/main/projects.html:68
 msgid "See more"
 msgstr "Veure més"
 
-#: templates/main/projects.html:83
+#: templates/main/projects.html:79
 msgid ""
 "You don't have any project assinged at the moment. If you want to be "
 "assigned to some project get in contact with"
@@ -504,7 +504,7 @@ msgstr ""
 "No tens cap projecte assignat de moment. Si vols que se t'assigni un, posa't "
 "en contacte amb"
 
-#: templates/main/projects.html:85
+#: templates/main/projects.html:81
 msgid "the administrators."
 msgstr "els adminstradors."
 
@@ -536,95 +536,95 @@ msgstr ""
 msgid "email"
 msgstr "correu electrònic"
 
-#: templates/profile/details.html:39
+#: templates/profile/details.html:41
 msgid " or calling at "
 msgstr "o trucant al"
 
-#: templates/profile/details.html:40
+#: templates/profile/details.html:44
 msgid "and they will update it for you."
 msgstr "i ells ho actualitzaran per tu."
 
-#: templates/profile/details.html:83
+#: templates/profile/details.html:87
 msgid "Phone"
 msgstr "Telèfon"
 
-#: templates/profile/details.html:95
+#: templates/profile/details.html:99
 msgid "Address"
 msgstr "Adreça postal"
 
-#: templates/profile/details.html:107
+#: templates/profile/details.html:111
 msgid "DNI"
 msgstr "DNI"
 
-#: templates/profile/details.html:119
+#: templates/profile/details.html:123
 msgid "Bank account"
 msgstr "Compte bancari"
 
-#: templates/profile/details.html:131
+#: templates/profile/details.html:135
 msgid "Position"
 msgstr "Càrrec"
 
-#: templates/profile/details.html:143
+#: templates/profile/details.html:147
 msgid "Are you a Governing Council member?"
 msgstr "Ets un membre del Consell Rector?"
 
-#: templates/profile/details.html:147
+#: templates/profile/details.html:151
 msgid "Yes"
 msgstr "Sí"
 
-#: templates/profile/details.html:149
+#: templates/profile/details.html:153
 msgid "No"
 msgstr "No"
 
-#: templates/profile/details.html:155
+#: templates/profile/details.html:159
 msgid "Year of entry to the cooperative"
 msgstr "Any d'entrada a la cooperativa"
 
-#: templates/profile/details.html:167
+#: templates/profile/details.html:171
 msgid "Partner number"
 msgstr "Número de soci"
 
-#: templates/profile/details.html:179
+#: templates/profile/details.html:183
 msgid "Capital corporate contribution"
 msgstr "Aportació societària"
 
-#: templates/profile/details.html:191
+#: templates/profile/details.html:195
 msgid "Capital voluntary contribution"
 msgstr "Aportació voluntària"
 
-#: templates/profile/details.html:203
+#: templates/profile/details.html:207
 msgid "Projects where you participate"
 msgstr "Projectes als que participes"
 
-#: templates/profile/details.html:212
+#: templates/profile/details.html:216
 msgid "None"
 msgstr "Cap"
 
-#: templates/profile/details.html:229
+#: templates/profile/details.html:233
 msgid "Warning!"
 msgstr "Atenció!"
 
-#: templates/profile/details.html:230
+#: templates/profile/details.html:234
 msgid "Your email is not verified. Before anything else, you must verify it."
 msgstr ""
 "El teu correu electrònic no està verificat. Per poder accedir a la resta "
 "d'apartats de l'aplicatiu, cal verificar-lo."
 
-#: templates/profile/details.html:232
+#: templates/profile/details.html:236
 msgid "Verify email here."
 msgstr "Verifica el correu electrònic aquí."
 
-#: templates/profile/details.html:251
+#: templates/profile/details.html:256
 #: templates/registration/password_change_form.html:5
 #: templates/registration/password_change_form.html:42
 msgid "Password change"
 msgstr "Canvi de contrasenya"
 
-#: templates/profile/details.html:253
+#: templates/profile/details.html:258
 msgid "Here you can change your password."
 msgstr "Aquí pots canviar la contrasenya."
 
-#: templates/profile/details.html:260
+#: templates/profile/details.html:265
 msgid "Change password"
 msgstr "Canvia la contrasenya"
 

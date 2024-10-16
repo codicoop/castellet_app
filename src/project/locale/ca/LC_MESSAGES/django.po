@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 15:30+0200\n"
+"POT-Creation-Date: 2024-10-16 11:25+0200\n"
 "PO-Revision-Date: 2024-10-10 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -41,17 +41,20 @@ msgstr "Nom del projecte"
 
 #: project/settings.py:379
 msgid "Email address for user's comunications"
-msgstr "Correu electrònic per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
+msgstr ""
+"Correu electrònic per tal que els usuaris de l'app es puguin comunicar amb "
+"vosaltres"
 
 #: project/settings.py:383
 msgid "Phone number for user's comunications"
-msgstr "Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
+msgstr ""
+"Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
 
-#: project/test/test_selenium.py:368
+#: project/test/test_selenium.py:333
 msgid "Go back"
 msgstr "Tornar enrere"
 
-#: project/test/test_selenium.py:427
+#: project/test/test_selenium.py:392
 msgid "Enrere"
 msgstr "Enrere"
 
