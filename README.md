@@ -20,8 +20,6 @@ Els usuaris de l'aplicació tenen la particularitat que el campo `email` és opc
   L'usuari pot pertànyer a diversos projectes pel que podrà visualitzar els documents associats a aquests projectes.
   Dins d'aquest tipus de usuari, és fa la distinció de si pertany al consell rector o no i només afectarà a la visualització de certs documents marcats des de el panell admin.
 
-- <u>Newsletter</u>: Qualsevol visitant de l'aplicació, té l'opció de poder rebre la newsletter emplenant un petit formulari i sense registrar-se.
-
 ## 2. Configuració del projecte
 
 1. Descarregar el repositori en el teu ordinador amb `git clone https://github.com/codicoop/castellet_app.git`
