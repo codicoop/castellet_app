@@ -21,11 +21,13 @@
       </li>
     </ol>
   </nav>
-  <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-    {% translate "Documents" %}
-  </h1>
-  <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
+  <section class="md:p-4 lg:p-12">
+    <h1 class="mb-8 text-2xl font-bold leading-tight tracking-tight text-gray-900
+      md:text-3xl lg:text-4xl lg:mb-12">
+      {% translate "Documents" %}
+    </h1>
     {% if documents %}
+    <div class="py-8 sm:py-12">
       {% if tags|length > 1 or projects|length > 1%}
       <div class="sm:ml-8 md:ml-16 lg:ml-52">
         <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
@@ -52,9 +54,9 @@
                     then remove .bg-primary-600 from .label-tags
                     then add .bg-primary-400 to .label-tags
                   "
-                  />
-                  <p class="text-center pointer-events-none">{% translate 'All' %}</p>
-                </label>
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
               {% for tag in tags %}
               <label for="{{ tag.id }}" id="label_{{ tag.id }}"
                 class="label-tags p-1 rounded-md bg-primary-400 text-white
@@ -87,7 +89,7 @@
             <div class="grid grid-cols-1 gap-1 mb-4 w-full
               md:grid-cols-2 lg:grid-cols-3">
               <label for="projects_all" id="label_projects_all"
-                class="p-1 rounded-md bg-blau-500 text-white
+                class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
                   hover:bg-blau-700"
               >
                 <input 
@@ -109,7 +111,7 @@
               </label>
               {% for project in projects %}
               <label for="{{ project.id }}" id="label_{{ project.id }}"
-                class="label-projects p-1 rounded-md bg-blau-300 text-white
+                class="label-projects flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
                   hover:bg-blau-700"
               >
                 <input 
@@ -136,16 +138,16 @@
         </form>
       </div>
       {% endif %}
-      <div class="grid gap-6 mx-auto md:max-w-screen-sm pt-8 lg:pt-16" id="htmx-content">
+      <div class="grid gap-6 pt-8 lg:pt-16" id="htmx-content">
         {% include 'main/documents_filtered.html' %}
       </div>
-
-    {% else %}
-      <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
-        <p>{% translate 'There is no documents to show. Once the administrators have added some, you will be able to download them here.' %}</p>
+    </div>
+  {% else %}
+    <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
+      <p>{% translate 'There is no documents to show. Once the administrators have added some, you will be able to download them here.' %}</p>
         <p class="text-lg font-semibold mt-4">{% translate 'Come back soon to check!' %}</p>
       </div>
     {% endif %}
-  </div>
+  </section>
 {% endblock %}
 

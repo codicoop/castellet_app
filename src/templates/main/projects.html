@@ -25,7 +25,7 @@
     <h1 class="mb-8 text-2xl font-bold leading-tight tracking-tight text-gray-900
       md:text-3xl lg:text-4xl lg:mb-12">
       {% translate "Projects" %}
-    </h1>    
+    </h1>
     {% if projects %}
     <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
       <div class="grid gap-6 grid-cols-1 justify-stretch
@@ -76,9 +76,12 @@
     </div>
   {% else %}
     <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
-      <p>{% translate "You don't have any project assinged at the moment. If you want to be assigned to some project get in contact with" %}
-        <!-- FALTA url contacte o telèfon de contacte -->
-        <a class="font-bold hover:underline" href="">{% translate 'the administrators.' %}</a>
+      <p>{% translate "You don't have any project assinged at the moment. If you want to be assigned to some project get in contact with the administrators " %}
+        <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "by email" %}</a></span>
+        {% if contact_phone %}
+        <span>{% translate " or calling at the "%} </span>
+        <a href="tel:{{ contact_phone }}" class="font-bold">{{ contact_phone }}.</a>
+        {% endif %}
       </p>
     </div>
     {% endif %}
