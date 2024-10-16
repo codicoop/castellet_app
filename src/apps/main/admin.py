@@ -10,13 +10,6 @@ from apps.main.services import ExportNewsletterCsvMixin, ExportProjectCsvMixin
 from apps.users.models import User
 
 
-@admin.register(NewsletterSubscriber)
-class NewsletterSubscriberAdmin(admin.ModelAdmin, ExportNewsletterCsvMixin):
-    list_display = ("email", "name", "surnames", "created_at")
-    search_fields = ["email", "name", "surnames", "created_at"]
-    actions = ["export_as_csv"]
-
-
 @admin.register(ProjectType)
 class ProjectTypeAdmin(admin.ModelAdmin):
     list_display = ("name",)
