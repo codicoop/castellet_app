@@ -1,29 +1,38 @@
-from django.db import models
-from django.utils.translation import gettext_lazy as _
+import uuid
 
-from project.fields import flowbite
+from django.core.validators import validate_image_file_extension
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from taggit.managers import TaggableManager
+
+from apps.main.choices import (
+    AccessPermissionRoleChoices,
+    ProjectStatusChoices,
+)
 from project.storage_backends import PrivateMediaStorage
 
 
 class NewsletterSubscriber(models.Model):
-    email = flowbite.ModelEmailField(
+    email = models.EmailField(
+        _("email address"),
         max_length=100,
         blank=False,
         null=False,
         unique=True,
         help_text=_("Email where you will receive our newsletter"),
     )
-    name = flowbite.ModelCharField(
+    name = models.CharField(
+        _("name"),
         max_length=50,
         blank=False,
         null=False,
-        help_text=_("Your name"),
     )
-    surnames = flowbite.ModelCharField(
+    surnames = models.CharField(
+        _("surname"),
         max_length=100,
         blank=False,
         null=False,
-        help_text=_("Your surnames"),
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
@@ -39,53 +48,149 @@ class NewsletterSubscriber(models.Model):
         return f"{self.name} {self.surnames}".strip()
 
 
-class Project(models.Model):
-    name = flowbite.ModelCharField(
+class ProjectType(models.Model):
+    name = models.CharField(
+        _("project type name"),
         max_length=50,
         blank=False,
-        null=False,
+        default="",
         unique=True,
-        help_text=_("Project name"),
+    )
+
+    class Meta:
+        verbose_name = _("project type")
+        verbose_name_plural = _("project types")
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
+class Project(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(
+        _("Title"),
+        max_length=50,
+        blank=False,
+        default="",
+        unique=True,
+    )
+    project_type = models.ForeignKey(
+        ProjectType,
+        blank=False,
+        default="",
+        related_name="project",
+        on_delete=models.CASCADE,
+        verbose_name=_("Project type"),
+    )
+    status = models.CharField(
+        _("Status"),
+        max_length=2,
+        choices=ProjectStatusChoices.choices,
+        blank=False,
+        default="",
+    )
+    description = models.CharField(
+        _("Description"),
+        max_length=500,
+        blank=False,
+        default="",
+    )
+    image = models.ImageField(
+        _("Image"),
+        blank=True,
+        null=True,
+        storage=PrivateMediaStorage(),
+        validators=[validate_image_file_extension],
+    )
+    energy_power = models.CharField(
+        _("Energy power"),
+        blank=True,
+        default="",
+        help_text=_("Project energy power (kW)"),
+    )
+    annual_energy = models.CharField(
+        _("Annual energy"),
+        blank=True,
+        default="",
+        help_text=_("Project annual energy (kWh/year)"),
+    )
+    investment = models.CharField(
+        _("Investment"),
+        blank=True,
+        default="",
+        help_text=_("Project investment (€)"),
+    )
+    is_public = models.BooleanField(
+        _("Is public"),
+        blank=True,
+        default=False,
+        help_text=_("Is this project public?"),
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("project")
         verbose_name_plural = _("projects")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.title}"
 
 
 class Document(models.Model):
-    project = models.ForeignKey(
-        Project,
-        null=False,
-        blank=False,
-        related_name="documents",
-        on_delete=models.CASCADE,
-    )
-    title = flowbite.ModelCharField(
+    title = models.CharField(
+        _("Title"),
         max_length=50,
         blank=False,
-        null=False,
-        help_text=_("Project"),
+        default="",
+    )
+    description = models.CharField(
+        _("Description"),
+        max_length=500,
+        blank=False,
+        default="",
+    )
+    access_permission_role = models.CharField(
+        _("Access Permission Role"),
+        max_length=2,
+        blank=False,
+        choices=AccessPermissionRoleChoices.choices,
+        default=AccessPermissionRoleChoices.ALL_USERS,
+    )
+    tags = TaggableManager(help_text=_("A comma-separated list of tags."))
+    project = models.ManyToManyField(
+        Project,
+        blank=True,
+        related_name="documents",
+        verbose_name=_("Project"),
     )
     file = models.FileField(
+        _("File"),
         max_length=100,
         blank=False,
         null=False,
-        verbose_name="file name",
         storage=PrivateMediaStorage(),
-        help_text=_("File"),
     )
-    created_at = models.DateTimeField(auto_now_add=True, null=False)
+    responsible_user = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        blank=False,
+        null=False,
+        verbose_name=_("Responsible user"),
+    )
+    date_document = models.DateField(
+        _("Date of Document"),
+        null=False,
+        blank=False,
+        default=timezone.now,
+    )
+    created_at = models.DateField(_("Upload date"), auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("document")
         verbose_name_plural = _("documents")
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
     def __str__(self):
-        return f"{self.title} | Project: {self.project}"
+        return self.title

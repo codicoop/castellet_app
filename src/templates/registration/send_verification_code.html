@@ -1,17 +1,14 @@
 {% extends "../base_form.html" %}
 {% load i18n %}
-
 {# Blocks de base.html #}
 {% block page_title %}{% translate "Email verification" %}{% endblock %}
 {% block bodyclasses %}{% endblock %}
 {% block mainclasses %}{% endblock %}
 {% block extra_js %}{% endblock %}
-
 {# Blocks de base_form.html #}
 {% block enctype %}{% endblock %}
 {% block after_form_content %}{% endblock %}
 {% block form_outro %}{% endblock %}
-
 {% block before_form_content %}
 <nav class="flex mb-4" aria-label="Breadcrumb">
   <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -36,16 +33,13 @@
   </ol>
 </nav>
 {% endblock %}
-
 {% block form_intro %}
 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
   {% translate "Email verification" %}
 </h1>
 {% endblock %}
-
 {% block form_fields %}
   <p>{% translate "By clicking the button a verification code will be send to your email address. Check your email to find it." %}</p>
   {{ form }}
 {% endblock %}
-
 {% block submit_text %}{% translate "Send" %}{% endblock %}

@@ -1,6 +1,6 @@
 from itertools import islice
 
-from django.contrib.auth import authenticate, login
+from constance import config
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import (
     LoginView as BaseLoginView,
@@ -27,12 +27,9 @@ from apps.users.forms import (
     PasswordChangeForm,
     PasswordResetConfirmForm,
     PasswordResetForm,
-    ProfileDetailsForm,
     SendVerificationCodeForm,
-    UserSignUpForm,
 )
 from apps.users.services import send_confirmation_mail
-from project.decorators import anonymous_required
 from project.mixins import AnonymousRequiredMixin
 from project.views import StandardSuccess
 
@@ -43,39 +40,25 @@ class LoginView(AnonymousRequiredMixin, BaseLoginView):
     form_class = AuthenticationForm
 
 
-@anonymous_required
-def signup_view(request):
-    if request.method == "POST":
-        form = UserSignUpForm(request.POST, None)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get("email")
-            password = form.cleaned_data.get("password1")
-            user = authenticate(username=email, password=password)
-            login(request, user)
-            return redirect("registration:profile_details")
-    else:
-        form = UserSignUpForm()
-    return render(request, "registration/signup.html", {"form": form})
-
-
 @login_required
 def details_view(request):
-    form = ProfileDetailsForm(request.POST or None, instance=request.user)
-    new_email = request.user.email
-    if form.is_valid():
-        user = form.save(commit=False)
-        if new_email != user.email:
-            user.email_verified = False
-        user.save()
-        return redirect("registration:profile_details_success")
-    return render(request, "profile/details.html", {"form": form})
+    context = {
+        "user": request.user,
+        "contact_email": config.CONTACT_EMAIL,
+        "contact_phone": config.CONTACT_PHONE,
+    }
+    return render(request, "profile/details.html", context)
 
 
 class EmailVerificationView(FormView, StandardSuccess):
     form_class = EmailVerificationCodeForm
     template_name = "registration/user_validation.html"
     success_url = reverse_lazy("registration:email_verification_complete")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.email:
+            return redirect(reverse_lazy("home"))
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         if (
@@ -100,6 +83,11 @@ class SendVerificationCodeView(FormView):
     template_name = "registration/send_verification_code.html"
     form_class = SendVerificationCodeForm
     success_url = reverse_lazy("registration:user_validation")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.email:
+            return redirect(reverse_lazy("home"))
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         send_confirmation_mail(self.request.user)

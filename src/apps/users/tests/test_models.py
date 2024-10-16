@@ -16,6 +16,7 @@ class UserManagerTestCase(TestCase):
                 surnames="test_surnames",
                 email="test@test.com",
                 password="test_password",
+                dni="12345678A",
             )
             self.assertEqual(self.user.name, "test_name")
             self.assertEqual(self.user.surnames, "test_surnames")
@@ -33,6 +34,7 @@ class UserManagerTestCase(TestCase):
                     surnames="test_surnames",
                     email=None,
                     password="test_password",
+                    dni="12345678A"
                 )
             self.assertEqual(
                 str(error.exception), _("Users must have an email address")
@@ -49,6 +51,7 @@ class UserManagerTestCase(TestCase):
                 surnames="test_surnames",
                 email="test@test.com",
                 password="test_password",
+                dni="12345678A",
                 is_staff=True,
                 is_superuser=True,
             )
@@ -64,6 +67,7 @@ class UserManagerTestCase(TestCase):
                     password=None,
                     is_staff=True,
                     is_superuser=True,
+                    dni="12345678A"
                 )
             self.assertEqual(str(error.exception), _("Superusers must have a password"))
 
@@ -76,5 +80,6 @@ class UserManagerTestCase(TestCase):
             surnames="test_surnames",
             email="test@test.com",
             password="test_password",
+            dni="12345678A"
         )
         self.assertEqual(self.user.full_name, "test_name test_surnames")

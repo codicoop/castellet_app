@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "boilerplate_django"
+name = "castellet_sostenible"
 version = "0.1.0"
-description = "Plantilla per a nous projectes web amb Django."
+description = "Aplicació per sòcies."
 authors = ["Codi Cooperatiu <hola@codi.coop>"]
 license = "gpl-3.0"
 packages = [{ include = "src" }]
@@ -31,6 +31,9 @@ django-structlog = "^6.0.0"
 rich = "^13.4.2"
 icecream = "^2.1.3"
 django-htmx = "^1.17.3"
+pillow = "^10.4.0"
+codi-cooperatiu-internal-tools = "^0.1"
+django-taggit = "^6.1.0"
 
 [tool.poetry.dev-dependencies]
 ruff = "^0.1.4"

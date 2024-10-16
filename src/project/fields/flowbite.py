@@ -130,3 +130,39 @@ class ModelBooleanField(models.BooleanField):
         defaults = {"form_class": FormBooleanField}
         defaults.update(kwargs)
         return super().formfield(**defaults)
+
+
+class FormImageField(forms.ImageField):
+    def get_bound_field(self, form, field_name):
+        return FlowBiteBoundBooleanField(form, self, field_name)
+
+
+class ModelImageField(models.ImageField):
+    def formfield(self, **kwargs):
+        defaults = {"form_class": FormImageField}
+        defaults.update(kwargs)
+        return super().formfield(**defaults)
+
+
+class FormFieldField(forms.FileField):
+    def get_bound_field(self, form, field_name):
+        return FlowBiteBoundBooleanField(form, self, field_name)
+
+
+class ModelFileField(models.ImageField):
+    def formfield(self, **kwargs):
+        defaults = {"form_class": FormFieldField}
+        defaults.update(kwargs)
+        return super().formfield(**defaults)
+
+
+class FormDateField(forms.DateField):
+    def get_bound_field(self, form, field_name):
+        return FlowBiteBoundBooleanField(form, self, field_name)
+
+
+class ModelDateField(models.DateField):
+    def formfield(self, **kwargs):
+        defaults = {"form_class": FormDateField}
+        defaults.update(kwargs)
+        return super().formfield(**defaults)

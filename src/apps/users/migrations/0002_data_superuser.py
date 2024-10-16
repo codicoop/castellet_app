@@ -23,6 +23,8 @@ def generate_superuser(apps, schema_editor):
     user = user_model()
     user.email = BaseUserManager.normalize_email(email)
     user.password = make_password(password)
+    user.name = "Codi"
+    user.surnames = "Coop"
     user.is_staff = True
     user.is_superuser = True
     user.is_validated = timezone.now()

@@ -1,0 +1,89 @@
+{% extends "../base.html" %}
+{% load i18n static %}
+
+{# Blocks de base.html #}
+{% block page_title %}{% translate "Projects" %}{% endblock %}
+{% block bodyclasses %}{% endblock %}
+{% block mainclasses %} projects {% endblock %}
+{% block extra_js %}{% endblock %}
+
+
+{% block main %}
+  <nav class="flex mb-4" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+      <li class="inline-flex items-center">
+        <a href="{% url 'home' %}" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-primary-600" id="id_home">
+          <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
+            <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+          </svg>
+          {% translate 'Home' %}
+        </a>
+      </li>
+    </ol>
+  </nav>
+  <section class="md:p-4 lg:p-12">
+    <h1 class="mb-8 text-2xl font-bold leading-tight tracking-tight text-gray-900
+      md:text-3xl lg:text-4xl lg:mb-12">
+      {% translate "Projects" %}
+    </h1>
+    {% if projects %}
+    <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
+      <div class="grid gap-6 grid-cols-1 justify-stretch
+        sm:grid-cols-2 xl:grid-cols-3">
+        {% for project in projects %}
+        <div class="h-80 w-full max-w-96 mx-auto grid grid-rows-2 grid-cols-1
+            rounded-xl shadow-lg overflow-clip
+            lg:h-96 lg:max-w-96"
+          >
+          <div class="w-full">
+            <a href="{% url 'main:project_detail' project.id %}">
+              {% if project.image %}
+              <img src="{{ project.image.url }}" alt=""
+                class="h-full w-full object-cover"
+              >
+              {% else %}
+              <div class="w-full h-full bg-primary-600"></div>
+              {% endif %}
+            </a>
+          </div>
+          <div class="flex flex-col px-4 pt-3 pb-6 lg:py-4">
+            <p class="uppercase text-primary-700 text-xs
+              lg:text-sm">
+              {{ project.project_type }}
+            </p>
+            <p class="font-semibold text-lg
+              lg:text-xl">
+              {{ project.title }}
+            </p>
+            <p class="text-sm mb-2 text-gray-400
+              lg:text-sm">
+              {{ project.get_status_display }}
+            </p>
+            <div class="self-end mt-auto">
+              <a href="{% url 'main:project_detail' project.id %}">
+                <div class="px-3 py-2 text-gray-900 font-medium rounded-full
+                  text-xs border border-gray-900 w-fit
+                  hover:bg-primary-100 hover:border-primary-400 hover:text-primary-400
+                  focus:outline-none focus:ring-4 focus:ring-primary-500">
+                  <p>{% translate 'See more' %}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
+      <p>{% translate "You don't have any project assinged at the moment. If you want to be assigned to some project get in contact with the administrators " %}
+        <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "by email" %}</a></span>
+        {% if contact_phone %}
+        <span>{% translate " or calling at the "%} </span>
+        <a href="tel:{{ contact_phone }}" class="font-bold">{{ contact_phone }}</a>.
+        {% endif %}
+      </p>
+    </div>
+    {% endif %}
+  </section>
+{% endblock %}

@@ -116,12 +116,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.forms",
+    "flowbite_classes",
     "post_office",
     "django_extensions",
     "phonenumber_field",
     "apps.users",
     "project",
     "apps.main",
+    "taggit",
 ]
 
 
@@ -274,7 +276,7 @@ TEMPLATES = [
         },
     },
 ]
-FORM_RENDERER = "project.form_renderer.CustomFormRenderer"
+FORM_RENDERER = "flowbite_classes.renderers.CustomFormRenderer"
 
 
 ################################################################################
@@ -368,7 +370,19 @@ DJANGO_SUPERUSER_PASSWORD = env("DJANGO_SUPERUSER_PASSWORD", default=None)
 # https://django-constance.readthedocs.io/en/latest/#configuration
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 DEFAULT_PROJECT_NAME = env.str("DEFAULT_PROJECT_NAME", default="")
-CONSTANCE_CONFIG = {"PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Project name"))}
+CONTACT_EMAIL = env.str("CONTACT_EMAIL", default="")
+CONTACT_PHONE = env.str("CONTACT_PHONE", default="")
+CONSTANCE_CONFIG = {
+    "PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Project name")),
+    "CONTACT_EMAIL": (
+        CONTACT_EMAIL,
+        _("Email address for user's comunications"),
+    ),
+    "CONTACT_PHONE": (
+        CONTACT_PHONE,
+        _("Phone number for user's comunications"),
+    ),
+}
 
 
 ################################################################################
@@ -423,3 +437,12 @@ structlog.configure(
     logger_factory=structlog.stdlib.LoggerFactory(),
     cache_logger_on_first_use=True,
 )
+
+CODI_COOP_ENABLE_MONKEY_PATCH = True
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "apps.users.authentication_backend.IdNumberBackend",
+]
+
+TAGGIT_CASE_INSENSITIVE = True

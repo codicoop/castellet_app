@@ -36,6 +36,7 @@
           {% block form_intro %}
           {% endblock %}
 
+          {% block whole_form %}
           <form method="post" enctype="{% block enctype %}application/x-www-form-urlencoded{% endblock %}" {% block form_action %}{% endblock %}
           class="space-y-4 md:space-y-6">
             {% csrf_token %}
@@ -53,16 +54,17 @@
               {% endif %}
             {% endblock %}
           </form>
-
-          {% include 'components/form_errors.html' %}
-
-          {% block form_outro %}
           {% endblock %}
 
+          
+          {% block form_outro %}
+          {% endblock %}
+          
         </div>
       </div>
     </div>
   </section>
+  {% include 'components/form_errors.html' %}
 
   {% block after_form_content %}
   {% endblock %}

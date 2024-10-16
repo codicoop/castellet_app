@@ -13,7 +13,7 @@ def populate_mail_templates(apps, schema_editor):
                 "en": {
                     "subject": "Password reset for your account at " "{{project_name}}",
                     "body": """
-<p>Hello {{user_name}}!</p>
+<p>Hello, {{user_name}},</p>
 <p>We're sending you this e-mail because today {{date}} at {{time}}
 someone requested the reset of the {{user_email}}'s account password
 for {{absolute_url}}.</p>
@@ -35,7 +35,7 @@ We will appreciate it if you could also warn us about the situation.
                     "subject": "Reinicialització de contrasenya del teu compte a "
                     "{{project_name}}",
                     "body": """
-<p>Hola {{user_name}}!</p>
+<p>Hola, {{user_name}},</p>
 <p>T'enviem aquest correu perquè avui {{date}} a les {{time}}
 algú ha sol·licitat el reinici de la contrasenya del compte {{user_email}}
 de l'aplicació {{absolute_url}}.</p>
@@ -60,7 +60,7 @@ ben llarga i t'agrairem que ens informis de la situació.
                 "en": {
                     "subject": "Email verification code for your account at {{project_name}}",
                     "body": """
-    <p>Hello {{user_name}}!</p>
+    <p>Hello, {{user_name}},</p>
     <p>We're sending you this e-mail because today {{date}} at {{time}}
     you have asked to verify your email {{user_email}}
     for {{absolute_url}}.</p>
@@ -98,28 +98,27 @@ ben llarga i t'agrairem que ens informis de la situació.
                 "en": {
                     "subject": "Successful subscription to our Newsletter",
                     "body": """
-    <p>Hello {{user_name}}!</p>
+    <p>Hello, {{user_name}},</p>
     <p>We're sending you this e-mail because today {{date}} at {{time}}
     your subscription to our newsletter has been completed with your email address
-    {{user_email}}.
+    {{user_email}}.</p>
 
-    From now on we will keep you informed with all our news.
+    <p>From now on we will keep you informed with all our news.</p>
 
-    Thank you for being part of our community.</p>
+    <p>Thank you for being part of our community.</p>
                         """,
                 },
                 "ca": {
                     "subject": "S'ha subscrit amb èxit a la nostra Newsletter",
                     "body": """
-    <p>Hola {{user_name}}!</p>
+    <p>Hola, {{user_name}},</p>
     <p>T'enviem aquest correu perquè avui {{date}} a les {{time}}
     s'ha completat la teva subscripció a nostra newsletter amb el teu correu electrònic
-    {{user_email}}
+    {{user_email}}.</p>
 
-    D'ara endavant et mantindrem informat amb totes les nostres novetats.
+     <p>D'ara endavant et mantindrem informat amb totes les nostres novetats.</p>
 
-    Gràcies per formar part de la nostra comunitat.
-    </p>
+     <p>Gràcies per formar part de la nostra comunitat.</p>
                         """,
                 },
             },
