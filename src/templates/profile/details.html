@@ -35,7 +35,7 @@
       {% translate "Your profile" %}
     </h1>
     <p class="pb-4 lg:pb-6">
-      {% translate "Here you can see all your data. If you need to change anything, contact the administrators by " %}
+      {% translate "Here you can see all your data. If you need to change anything, contact the administrators by" %}
       <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "email" %}</a></span>
       {% if contact_phone %}
       <span>{% translate " or calling at "%} </span>
@@ -242,6 +242,7 @@
 
 
 {% block after_form_content %}
+{% if request.user.email %}
 <section class="bg-gray-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 pb-8 mx-auto
   lg:pb-16 lg:-mt-9">
@@ -268,4 +269,5 @@
     </div>
   </div>
 </section>
+{% endif %}
 {% endblock %}

@@ -44,6 +44,10 @@ class UserManager(BaseUserManager):
 class UserCharge(BaseModel):
     name = models.CharField(_("Charge name"), max_length=50)
 
+    class Meta:
+        verbose_name = _("charge")
+        verbose_name_plural = _("charges")
+
     def __str__(self):
         return self.name
 
@@ -78,6 +82,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         UserCharge,
         on_delete=models.SET_NULL,
         related_name="user_charge",
+        verbose_name=_("charge"),
         blank=True,
         null=True,
     )

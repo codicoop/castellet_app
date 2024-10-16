@@ -29,12 +29,16 @@ class NewsletterSubscriberSuccessView(StandardSuccess):
 @login_required
 def document_list_view(request):
     user_projects = request.user.projects.all()
+    projects_with_documents = user_projects.filter(documents__isnull=False).distinct()
     documents = Document.objects.filter(project__in=user_projects).distinct()
     if not request.user.governing_council_member:
         documents = documents.filter(
             access_permission_role=AccessPermissionRoleChoices.ALL_USERS
         )
-    projects_with_documents = user_projects.filter(documents__isnull=False).distinct()
+        projects_with_documents = projects_with_documents.filter(
+            documents__access_permission_role=AccessPermissionRoleChoices.ALL_USERS
+            )
+
     if request.method == "GET":
         all_tags = set()
         for document in documents:
@@ -57,6 +61,10 @@ def document_list_view(request):
         if selected_tags and selected_tags != ["tags_all"]:
             for tag in selected_tags:
                 documents = documents.filter(tags=tag)
+        if not request.user.governing_council_member:
+            documents = documents.filter(
+            access_permission_role=AccessPermissionRoleChoices.ALL_USERS
+        )
         context = {
             "projects": projects_with_documents,
             "documents": documents,

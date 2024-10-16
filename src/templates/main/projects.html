@@ -37,10 +37,6 @@
           >
           <div class="w-full">
             <a href="{% url 'main:project_detail' project.id %}">
-              <!-- Imatge del projecte -->
-              <!-- <img src="{% static 'images/Placeholder_small.png' %}" alt=""
-              class="h-full w-full object-cover"
-              > -->
               {% if project.image %}
               <img src="{{ project.image.url }}" alt=""
                 class="h-full w-full object-cover"
