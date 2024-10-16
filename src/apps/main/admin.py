@@ -92,15 +92,13 @@ class DocumentAdmin(admin.ModelAdmin):
         "tags",
     ]
     search_fields = [
-        "project",
+        "project__title",
         "title",
-        "tags",
-        "date_document",
+        "tags__name",
         "file",
         "date_document",
         "access_permission_role",
     ]
-
     readonly_fields = [
         "created_at",
         "responsible_user",
