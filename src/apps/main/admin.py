@@ -28,7 +28,7 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         "number_participants"
     )
     list_filter = ("project_type", "status", "created_at", "is_public")
-    search_fields = ["title", "created_at"]
+    search_fields = ["title", ]
     readonly_fields = [
         "documents_list",
         "participants_list",
