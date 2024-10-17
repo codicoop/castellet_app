@@ -71,14 +71,13 @@ ben llarga i t'agrairem que ens informis de la situació.
      <a href="{{email_verification_url}}">{{email_verification_url}}</a>
     </p>
 
-    <p> If it weren't you who requested it,
-    ignore this message.</p>
+    <p> If it weren't you who requested it, ignore this message.</p>
                         """,
                 },
                 "ca": {
                     "subject": "Verificació del correu electrònic a {{project_name}}",
                     "body": """
-    <p>Hola {{user_name}}!</p>
+    <p>Hola, {{user_name}},</p>
     <p>T'enviem aquest correu electrònic perquè avui {{date}} a les {{time}}
         has sol·licitat verificar el teu correu electrònic {{user_email}}
         per a {{absolute_url}}.</p>
