@@ -182,10 +182,6 @@ STATICFILES_DIRS = [
     str(BASE_DIR / "assets"),
 ]
 
-# https://docs.djangoproject.com/en/4.2/ref/settings/#staticfiles-storage
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
 ################################################################################
 #                             Authentication                                   #
 ################################################################################
@@ -335,6 +331,14 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = "static"
 
+STORAGES = {
+    "default": {
+        "BACKEND": "project.storage_backends.PublicMediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 ################################################################################
 #                                  Email                                       #
