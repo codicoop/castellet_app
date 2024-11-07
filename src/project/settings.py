@@ -193,7 +193,7 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_URL = reverse_lazy("registration:login")
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGIN_REDIRECT_URL = reverse_lazy("partners:home")
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#logout-redirect-url
 LOGOUT_REDIRECT_URL = "/"

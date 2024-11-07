@@ -39,7 +39,7 @@ class DocumentViewTest(TestCase):
         self.client.force_login(self.user)
 
     def test_get(self):
-        response = self.client.get(reverse("main:documents"))
+        response = self.client.get(reverse("partners:documents"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.request["PATH_INFO"], "/ca/documents/")
         self.assertTemplateUsed(response, "main/documents.html")

@@ -12,7 +12,7 @@
   <nav class="flex mb-4" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
-        <a href="{% url 'home' %}" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-primary-600" id="id_home">
+        <a href="{% url 'partners:home' %}" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-primary-600" id="id_home">
           <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
             <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
           </svg>
@@ -36,7 +36,7 @@
             lg:h-96 lg:max-w-96"
           >
           <div class="w-full">
-            <a href="{% url 'main:project_detail' project.id %}">
+            <a href="{% url 'partners:project_detail' project.id %}">
               {% if project.image %}
               <img src="{{ project.image.url }}" alt=""
                 class="h-full w-full object-cover"
@@ -60,7 +60,7 @@
               {{ project.get_status_display }}
             </p>
             <div class="self-end mt-auto">
-              <a href="{% url 'main:project_detail' project.id %}">
+              <a href="{% url 'partners:project_detail' project.id %}">
                 <div class="px-3 py-2 text-gray-900 font-medium rounded-full
                   text-xs border border-gray-900 w-fit
                   hover:bg-primary-100 hover:border-primary-400 hover:text-primary-400

@@ -12,7 +12,7 @@
   <nav class="flex mb-4" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
-        <a href="{% url 'main:home' %}" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white" id="id_home">
+        <a href="{% url 'partners:home' %}" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white" id="id_home">
           <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
             <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
           </svg>
@@ -46,7 +46,7 @@
                   checked="True"
                   name="selected_tags"
                   value="tags_all"
-                  hx-post="{% url 'main:documents' %}"
+                  hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click set .selected_tags.checked to false
                     then remove .bg-primary-400 from label_tags_all
@@ -63,12 +63,12 @@
               hover:bg-primary-700"
               >
                 <input
-                  type="checkbox" 
+                  type="checkbox"
                   id="{{ tag.id }}"
                   name="selected_tags"
                   class="selected_tags invisible absolute"
                   value="{{ tag.id }}"
-                  hx-post="{% url 'main:documents' %}"
+                  hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click set #tags_all.checked to false
                     then remove .bg-primary-600 from label_tags_all
@@ -92,14 +92,14 @@
                 class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
                   hover:bg-blau-700"
               >
-                <input 
+                <input
                   type="radio"
                   checked="True"
                   id="projects_all"
                   class="invisible absolute"
                   name="selected_projects"
                   value="projects_all"
-                  hx-post="{% url 'main:documents' %}"
+                  hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click remove .bg-blau-300 from #label_projects_all
                     then add .bg-blau-500 to #label_projects_all
@@ -114,13 +114,13 @@
                 class="label-projects flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
                   hover:bg-blau-700"
               >
-                <input 
+                <input
                   type="radio"
                   id="{{ project.id }}"
                   name="selected_projects"
                   class="selected_projects invisible absolute"
                   value="{{ project.id }}"
-                  hx-post="{% url 'main:documents' %}"
+                  hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click remove .bg-blau-500 from #label_projects_all
                     then add .bg-blau-300 to #label_projects_all
