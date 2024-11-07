@@ -335,6 +335,9 @@ STORAGES = {
     "default": {
         "BACKEND": "project.storage_backends.PublicMediaStorage",
     },
+    "wagtail_renditions": {
+        "BACKEND": "project.storage_backends.WagtailRenditionsMediaStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -478,6 +481,7 @@ WAGTAIL_SITE_NAME = env.str(
 WAGTAILADMIN_BASE_URL = env.str("WAGTAILADMIN_BASE_URL", default="")
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = DEFAULT_FROM_EMAIL
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+WAGTAILIMAGES_RENDITION_STORAGE = "wagtail_renditions"
 
 ################################################################################
 #                        Codi Cooperatiu Internal Tools                        #
