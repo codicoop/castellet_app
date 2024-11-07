@@ -158,7 +158,14 @@ class Document(models.Model):
         choices=AccessPermissionRoleChoices.choices,
         default=AccessPermissionRoleChoices.ALL_USERS,
     )
-    tags = TaggableManager(help_text=_("A comma-separated list of tags."))
+    tags = TaggableManager(
+        help_text=_("A comma-separated list of tags."),
+        # Because Wagtail also has a Document model with tags in it
+        # (AbstractDocument.tags) in which no related_name is specified, then
+        # Django tries to create 2 reverse accessors with the same name
+        # (Tag.document_set) and raises an error.
+        related_name="partners_documents",
+    )
     project = models.ManyToManyField(
         Project,
         blank=True,
