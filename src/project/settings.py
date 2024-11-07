@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     "logentry_admin",
     "django.contrib.admin",
     "django.forms",
+    "flowbite_classes",
     "post_office",
     "django_extensions",
     "phonenumber_field",
@@ -241,6 +242,11 @@ VERIFICATION_REQUIRED_IGNORE_VIEW_NAMES = LOGIN_REQUIRED_IGNORE_VIEW_NAMES + [
     "registration:email_verification_complete",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "apps.users.authentication_backend.IdNumberBackend",
+]
+
 ################################################################################
 #                               Passwords                                      #
 ################################################################################
@@ -294,7 +300,7 @@ TEMPLATES = [
         },
     },
 ]
-FORM_RENDERER = "project.form_renderer.CustomFormRenderer"
+FORM_RENDERER = "flowbite_classes.renderers.CustomFormRenderer"
 
 
 ################################################################################
@@ -328,10 +334,6 @@ AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
 AWS_LOCATION = "static"
-
-# Wagtail will use this media storage, so we need to set it to the public one
-# by default, and let the app manually specify the private one when needed.
-DEFAULT_FILE_STORAGE = "project.storage_backends.WebMediaStorage"
 
 
 ################################################################################
@@ -392,7 +394,19 @@ DJANGO_SUPERUSER_PASSWORD = env("DJANGO_SUPERUSER_PASSWORD", default=None)
 # https://django-constance.readthedocs.io/en/latest/#configuration
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 DEFAULT_PROJECT_NAME = env.str("DEFAULT_PROJECT_NAME", default="")
-CONSTANCE_CONFIG = {"PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Project name"))}
+CONTACT_EMAIL = env.str("CONTACT_EMAIL", default="")
+CONTACT_PHONE = env.str("CONTACT_PHONE", default="")
+CONSTANCE_CONFIG = {
+    "PROJECT_NAME": (DEFAULT_PROJECT_NAME, _("Project name")),
+    "CONTACT_EMAIL": (
+        CONTACT_EMAIL,
+        _("Email address for user's comunications"),
+    ),
+    "CONTACT_PHONE": (
+        CONTACT_PHONE,
+        _("Phone number for user's comunications"),
+    ),
+}
 
 
 ################################################################################
@@ -460,3 +474,15 @@ WAGTAIL_SITE_NAME = env.str(
 WAGTAILADMIN_BASE_URL = env.str("WAGTAILADMIN_BASE_URL", default="")
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = DEFAULT_FROM_EMAIL
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+
+################################################################################
+#                        Codi Cooperatiu Internal Tools                        #
+################################################################################
+
+CODI_COOP_ENABLE_MONKEY_PATCH = True
+
+################################################################################
+#                                  Taggit                                      #
+################################################################################
+
+TAGGIT_CASE_INSENSITIVE = True

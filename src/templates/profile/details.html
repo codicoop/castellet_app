@@ -10,6 +10,8 @@
 {# Blocks de base_form.html #}
 {% block enctype %}{% endblock %}
 {% block submit_text %}{% endblock %}
+{% block form_fields %}{% endblock %}
+{% block submit_whole %}{% endblock %}
 
 {% block before_form_content %}
 <nav class="flex mb-4" aria-label="Breadcrumb">
@@ -26,17 +28,201 @@
 </nav>
 {% endblock %}
 
-{% block form_intro %}
-  <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-    {% translate "Your profile" %}
-  </h1>
-  <p>{% translate "Here you can see and edit all your data." %}</p>
-{% endblock %}
-
-{% block form_fields %}
-  {{ form }}
-
-  {% if not user.email_verified %}
+{% block whole_form %}
+  <section>
+    <h1 class="pb-4 text-2xl font-bold leading-tight tracking-tight text-gray-900
+      md:text-3xl lg:pb-6 dark:text-white">
+      {% translate "Your profile" %}
+    </h1>
+    <p class="pb-4 lg:pb-6">
+      {% translate "Here you can see all your data. If you need to change anything, contact the administrators by" %}
+      <span class="font-bold hover:underline"><a href="mailto:{{ contact_email }}">{% translate "email" %}</a></span>
+      {% if contact_phone %}
+      <span>{% translate " or calling at "%} </span>
+      <a href="tel:{{ contact_phone }}" class="font-bold">{{ contact_phone }}</a>
+      {% endif %}
+      {% translate "and they will update it for you." %}
+    </p>
+    <div class="relative overflow-x-auto shadow-sm rounded-lg">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <tbody>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 border-t border-primary-50 font-medium text-gray-900 bg-primary-200">
+              {% translate "Name" %}
+            </th>
+            <td class="px-2 py-2 border-b border-t border-primary-200">
+              {% if user.name %}
+                {{ user.name }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Surnames" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.surnames %}
+                {{ user.surnames }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Email" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.email %}
+                {{ user.email }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Phone" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.phone %}
+                {{ user.phone }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Address" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.address %}
+                {{ user.address }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "DNI" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.dni %}
+                {{ user.dni }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Bank account" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.bank_account %}
+                {{ user.bank_account }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Position" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.charge %}
+                {{ user.charge }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Are you a Governing Council member?" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if governing_council_member %}
+                {% translate "Yes" %}
+              {% else %}
+                {% translate "No" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Year of entry to the cooperative" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.entry_year %}
+                {{ user.entry_year }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Partner number" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.partner_id %}
+                {{ user.partner_id }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Capital corporate contribution" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.corporate_contribution %}
+                {{ user.corporate_contribution }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Capital voluntary contribution" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.voluntary_contribution %}
+                {{ user.voluntary_contribution }}
+              {% else %}
+                {% translate "Unknown" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Projects where you participate" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              <ul class="list-disc ml-5">
+                {% if user.projects.all %}
+                  {% for project in user.projects.all %}
+                    <li>{{ project.title }}</li>
+                  {% endfor %}
+                {% else %}
+                  {% translate "None" %}
+                {% endif %}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% if not user.email_verified and request.user.email %}
   <div class="flex items-center p-4 mb-4 bg-red-50 rounded-lg text-sm text-red-700 dark:text-red-500"
       role="alert">
     <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -52,20 +238,11 @@
     </div>
   </div>
   {% endif %}
-
 {% endblock %}
 
-{% block submit_whole %}
-  <input type="submit"
-  class="w-full px-5 py-2.5 rounded-lg bg-primary-600 text-white font-bold text-sm text-center cursor-pointer
-    hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300
-    dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800
-    disabled:opacity-50  disabled:bg-gray-400 disabled:hover:bg-gray-400 disabled:cursor-not-allowed"
-    value="{% translate 'Save' %}"
-  >
-{% endblock %}
 
 {% block after_form_content %}
+{% if request.user.email %}
 <section class="bg-gray-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 pb-8 mx-auto
   lg:pb-16 lg:-mt-9">
@@ -92,4 +269,5 @@
     </div>
   </div>
 </section>
+{% endif %}
 {% endblock %}

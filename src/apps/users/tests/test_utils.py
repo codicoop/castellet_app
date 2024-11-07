@@ -12,6 +12,7 @@ class UtilsTest(TestCase):
             email="test@test.com",
             password="test_password",
             email_verification_code="1234",
+            dni="12345678A"
         )
 
     def test_email_verification_code_regeneration(self):
@@ -19,7 +20,6 @@ class UtilsTest(TestCase):
         Test generates a new email verification code randomly for the user
         and stores it in the database.
         """
-
         self.assertEqual(self.user.email_verification_code, "1234")
         new_code = email_verification_code_regeneration(self.user)
         self.assertEqual(self.user.email_verification_code, new_code)

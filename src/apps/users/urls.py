@@ -16,14 +16,11 @@ from apps.users.views import (
     SendVerificationCodeView,
     details_view,
     privacy_policy_view,
-    signup_view,
 )
-from project.views import StandardSuccess
 
 app_name = "registration"
 urlpatterns = [
     # Registration
-    path(_("sign-up/"), signup_view, name="signup"),
     path(_("sign-in/"), LoginView.as_view(), name="login"),
     path(
         _("log-out/"),
@@ -66,14 +63,6 @@ urlpatterns = [
         _("password-change/done/"),
         PasswordChangeDoneView.as_view(),
         name="password_change_done",
-    ),
-    # Profile
-    path(
-        _("profile/modified/"),
-        StandardSuccess.as_view(
-            url=reverse_lazy("registration:profile_details"),
-        ),
-        name="profile_details_success",
     ),
     path(
         _("profile/details/"),

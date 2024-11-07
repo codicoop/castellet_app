@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from project.fields import flowbite
+from apps.main.models import Project
 from project.models import BaseModel
 
 
@@ -41,23 +41,75 @@ class UserManager(BaseUserManager):
         return user
 
 
+class UserCharge(BaseModel):
+    name = models.CharField(_("Charge name"), max_length=50)
+
+    class Meta:
+        verbose_name = _("charge")
+        verbose_name_plural = _("charges")
+
+    def __str__(self):
+        return self.name
+
+
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
-    name = flowbite.ModelCharField(_("name"), max_length=50)
-    surnames = flowbite.ModelCharField(
-        _("surname"),
-        max_length=50,
-        default="",
-        blank=True,
-    )
-    email = flowbite.ModelEmailField(
-        verbose_name=_("email address"),
+    name = models.CharField(_("name"), max_length=50, blank=False, default="")
+    surnames = models.CharField(_("surname"), max_length=50, blank=False, default="")
+    email = models.EmailField(
+        _("email address"),
         max_length=255,
+        blank=True,
+        null=True,
         unique=True,
     )
     email_verification_code = models.CharField(default="0000")
     email_verified = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    phone = models.CharField(
+        _("Contact telephone"), max_length=20, blank=True, default=""
+    )
+    address = models.CharField(_("Address"), max_length=255, blank=True, default="")
+    dni = models.CharField(
+        _("National Identity Document"),
+        max_length=10,
+        blank=False,
+        default="",
+        unique=True,
+    )
+    bank_account = models.CharField(
+        _("Bank account"), max_length=24, blank=True, default=""
+    )
+    charge = models.ForeignKey(
+        UserCharge,
+        on_delete=models.SET_NULL,
+        related_name="user_charge",
+        verbose_name=_("charge"),
+        blank=True,
+        null=True,
+    )
+    governing_council_member = models.BooleanField(
+        _("Is governing council member"),
+        default=False,
+        blank=True,
+        null=True,
+    )
+    projects = models.ManyToManyField(
+        Project,
+        blank=True,
+        related_name="user_projects",
+        verbose_name=_("Projects"),
+    )
+    partner_id = models.CharField(
+        _("Partner ID"), max_length=50, blank=True, default=""
+    )
+    entry_year = models.CharField(_("Entry year"), max_length=4, blank=True, default="")
+    corporate_contribution = models.CharField(
+        _("Corporate contribution"), max_length=10, blank=True, default=""
+    )
+    voluntary_contribution = models.CharField(
+        _("Voluntary contribution"), max_length=10, blank=True, default=""
+    )
+    is_active = models.BooleanField(_("Is active"), default=True)
+    is_staff = models.BooleanField(_("Is staff"), default=False)
 
     objects = UserManager()
 
@@ -81,3 +133,19 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+        if not self.email:
+            self.email_verified = True
+            self.email = None
+            super(User, self).save(*args, **kwargs)
+
+    def clean(self):
+        if self.pk and self.email:
+            try:
+                old_email= User.objects.get(pk=self.pk).email
+                if old_email != self.email:
+                    self.email_verified = False
+            except Exception:
+                pass

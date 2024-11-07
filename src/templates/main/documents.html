@@ -21,56 +21,133 @@
       </li>
     </ol>
   </nav>
-  <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-    {% translate "Documents" %}
-  </h1>
-  <div class="py-8 mx-auto max-w-screen-xl sm:py-12">
+  <section class="md:p-4 lg:p-12">
+    <h1 class="mb-8 text-2xl font-bold leading-tight tracking-tight text-gray-900
+      md:text-3xl lg:text-4xl lg:mb-12">
+      {% translate "Documents" %}
+    </h1>
     {% if documents %}
-      <div class="flex items-center justify-end mb-4 mx-auto md:max-w-screen-sm">
-        <button id="dropdownDefault" data-dropdown-toggle="dropdown"
-          class="text-white bg-primary-500 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          type="button">
-          {% translate "Filter by project" %}
-          <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700" name="project_list">
-          <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-            {% translate "Projects" %}
-          </h6>
-          <form method="post">
-            {% csrf_token %}
-            <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-              {% for project in projects %}
-                <li class="flex items-center">
-                  <input
-                    id="{{ project.id }}"
-                    type="checkbox"
-                    name="selected_projects"
-                    value="{{ project.id }}"
-                    hx-post="{% url 'main:documents' %}"
-                    hx-target="#htmx-content"
-                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                  <label for="{{ project.id }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                    {{ project }}
-                  </label>
-                </li>
+    <div class="py-8 sm:py-12">
+      {% if tags|length > 1 or projects|length > 1%}
+      <div class="sm:ml-8 md:ml-16 lg:ml-52">
+        <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
+        <form method="post">
+          {% csrf_token %}
+          {% if tags|length > 1 %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Tags' %}</p>
+            <div class="grid grid-cols-2 gap-1 mb-4 w-full
+              sm:grid-cols-3 md:grid-cols-4">
+              <label for="tags_all" id="label_tags_all"
+                class="p-1 rounded-md bg-primary-600 text-white
+                hover:bg-primary-700">
+                <input type="checkbox" class="invisible absolute"
+                  id="tags_all"
+                  checked="True"
+                  name="selected_tags"
+                  value="tags_all"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click set .selected_tags.checked to false
+                    then remove .bg-primary-400 from label_tags_all
+                    then add .bg-primary-600 to label_tags_all
+                    then remove .bg-primary-600 from .label-tags
+                    then add .bg-primary-400 to .label-tags
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for tag in tags %}
+              <label for="{{ tag.id }}" id="label_{{ tag.id }}"
+                class="label-tags p-1 rounded-md bg-primary-400 text-white
+              hover:bg-primary-700"
+              >
+                <input
+                  type="checkbox" 
+                  id="{{ tag.id }}"
+                  name="selected_tags"
+                  class="selected_tags invisible absolute"
+                  value="{{ tag.id }}"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click set #tags_all.checked to false
+                    then remove .bg-primary-600 from label_tags_all
+                    then add .bg-primary-400 to label_tags_all
+                    then toggle .bg-primary-400 on label_{{ tag.id }}
+                    then toggle .bg-primary-600 on label_{{ tag.id }}
+                  "
+                />
+                <p class="text-center pointer-events-none">{{ tag|capfirst }}</p>
+              </label>
               {% endfor %}
-            </ul>
-          </form>
-        </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if projects|length > 1 %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Projects' %}</p>
+            <div class="grid grid-cols-1 gap-1 mb-4 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <label for="projects_all" id="label_projects_all"
+                class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
+                  hover:bg-blau-700"
+              >
+                <input 
+                  type="radio"
+                  checked="True"
+                  id="projects_all"
+                  class="invisible absolute"
+                  name="selected_projects"
+                  value="projects_all"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-300 from #label_projects_all
+                    then add .bg-blau-500 to #label_projects_all
+                    then remove .bg-blau-500 from .label-projects
+                    then add .bg-blau-300 to .label-projects
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for project in projects %}
+              <label for="{{ project.id }}" id="label_{{ project.id }}"
+                class="label-projects flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
+                  hover:bg-blau-700"
+              >
+                <input 
+                  type="radio"
+                  id="{{ project.id }}"
+                  name="selected_projects"
+                  class="selected_projects invisible absolute"
+                  value="{{ project.id }}"
+                  hx-post="{% url 'main:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-500 from #label_projects_all
+                    then add .bg-blau-300 to #label_projects_all
+                    then remove .bg-blau-500 from .label-projects
+                    then add .bg-blau-300 to .label-projects
+                    then remove .bg-blau-300 from #label_{{ project.id }}
+                    then add .bg-blau-500 to #label_{{ project.id }}"
+                />
+                <p class="text-center pointer-events-none">{{ project }}</p>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </form>
       </div>
-      <div class="grid space-y-6 mx-auto md:max-w-screen-sm" id="htmx-content">
+      {% endif %}
+      <div class="grid gap-6 pt-8 lg:pt-16" id="htmx-content">
         {% include 'main/documents_filtered.html' %}
       </div>
-    {% else %}
-      <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
-        <p>{% translate 'There is no documents to show. Once the administrators have added some, you will be able to download them here.' %}</p>
+    </div>
+  {% else %}
+    <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
+      <p>{% translate 'There is no documents to show. Once the administrators have added some, you will be able to download them here.' %}</p>
         <p class="text-lg font-semibold mt-4">{% translate 'Come back soon to check!' %}</p>
       </div>
     {% endif %}
-  </div>
+  </section>
 {% endblock %}
+

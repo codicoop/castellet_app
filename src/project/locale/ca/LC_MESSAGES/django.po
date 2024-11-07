@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 10:04+0200\n"
-"PO-Revision-Date: 2024-05-28 15:59+0200\n"
+"POT-Creation-Date: 2024-10-16 11:25+0200\n"
+"PO-Revision-Date: 2024-10-10 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: project/models.py:24
 msgid "created at"
@@ -35,13 +35,28 @@ msgstr "actualitzat el"
 msgid "Catalan"
 msgstr "Català"
 
-#: project/settings.py:371
+#: project/settings.py:376
 msgid "Project name"
 msgstr "Nom del projecte"
 
-#: project/test/test_selenium.py:369 project/test/test_selenium.py:430
+#: project/settings.py:379
+msgid "Email address for user's comunications"
+msgstr ""
+"Correu electrònic per tal que els usuaris de l'app es puguin comunicar amb "
+"vosaltres"
+
+#: project/settings.py:383
+msgid "Phone number for user's comunications"
+msgstr ""
+"Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
+
+#: project/test/test_selenium.py:333
 msgid "Go back"
 msgstr "Tornar enrere"
+
+#: project/test/test_selenium.py:392
+msgid "Enrere"
+msgstr "Enrere"
 
 #: project/urls.py:30
 msgid "registration/"
