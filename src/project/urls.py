@@ -20,7 +20,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.admin import urls as wagtailadmin_urls
 
-from apps.main.views import NewsletterSubscriberSuccessView, newsletter_view
+from apps.partners.views import NewsletterSubscriberSuccessView, newsletter_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,7 +30,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path(_("registration/"), include("apps.users.urls", namespace="registration")),
-    path(_("partners/"), include("apps.main.urls", namespace="partners")),
+    path(_("partners/"), include("apps.partners.urls", namespace="partners")),
     path(_("newsletter/"), newsletter_view, name="newsletter"),
     path(
         _("newsletter/success/"),

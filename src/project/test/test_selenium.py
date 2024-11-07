@@ -15,7 +15,7 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
-from apps.main.models import Document, Project
+from apps.partners.models import Document, Project
 from apps.users.models import User
 
 logging.basicConfig(level=logging.INFO)
@@ -418,7 +418,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self.logging_url_title_and_assert_title(Strings.PROFILE_TITLE.value)
 
     def _home(self):
-        # Open the main menu to select the Home option.
+        # Open the partners menu to select the Home option.
         self.burger_menu_action()
         home_menu_option = self.selenium.find_element(By.ID, "menu_home")
         home_menu_option.click()
@@ -469,7 +469,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             file=self.create_file("Mock_file_2.pdf", "Test file content"),
         )
 
-        # Open the main menu to select the Documents option.
+        # Open the partners menu to select the Documents option.
         self.burger_menu_action()
         documents_menu_option = self.selenium.find_element(By.ID, "menu_documents")
         documents_menu_option.click()

@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
 
-from apps.main.choices import (
+from apps.partners.choices import (
     AccessPermissionRoleChoices,
     ProjectStatusChoices,
 )

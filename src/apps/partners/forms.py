@@ -2,8 +2,8 @@ from django import forms
 from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.choices import AccessPermissionRoleChoices
-from apps.main.models import Document, NewsletterSubscriber, Project
+from apps.partners.choices import AccessPermissionRoleChoices
+from apps.partners.models import Document, NewsletterSubscriber, Project
 from project.post_office import send
 
 

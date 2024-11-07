@@ -3,10 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.choices import AccessPermissionRoleChoices
-from apps.main.forms import NewsletterSubscriberForm
-from apps.main.models import Document, Project
-from apps.main.services import send_confirmation_newsletter
+from apps.partners.choices import AccessPermissionRoleChoices
+from apps.partners.forms import NewsletterSubscriberForm
+from apps.partners.models import Document, Project
+from apps.partners.services import send_confirmation_newsletter
 from project.views import StandardSuccess
 
 
@@ -49,7 +49,7 @@ def document_list_view(request):
             "projects": projects_with_documents,
             "tags": sorted(all_tags),
         }
-        return render(request, "main/documents.html", context)
+        return render(request, "partners/documents.html", context)
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
         selected_tags = request.POST.getlist("selected_tags")
@@ -70,7 +70,7 @@ def document_list_view(request):
             "projects": projects_with_documents,
             "documents": documents,
         }
-        return render(request, "main/documents_filtered.html", context)
+        return render(request, "partners/documents_filtered.html", context)
 
 
 @login_required
@@ -80,7 +80,7 @@ def project_list_view(request):
         "contact_email": config.CONTACT_EMAIL,
         "contact_phone": config.CONTACT_PHONE,
     }
-    return render(request, "main/projects.html", context)
+    return render(request, "partners/projects.html", context)
 
 
 @login_required
@@ -89,4 +89,4 @@ def project_detail_view(request, id):
     context = {
         "project": project,
     }
-    return render(request, "main/project_details.html", context)
+    return render(request, "partners/project_details.html", context)

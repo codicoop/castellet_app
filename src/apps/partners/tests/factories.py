@@ -1,6 +1,6 @@
 from factory.django import DjangoModelFactory
 
-from apps.main.models import NewsletterSubscriber
+from apps.partners.models import NewsletterSubscriber
 
 
 class NewsletterSubscriberFactory(DjangoModelFactory):

@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from apps.main.forms import NewsletterSubscriberForm
+from apps.partners.forms import NewsletterSubscriberForm
 
 
 class NewsletterSubscriberFormTest(TestCase):

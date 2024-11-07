@@ -20,7 +20,7 @@ from django.urls import reverse
 from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Project
+from apps.partners.models import Project
 from apps.users.models import User
 from project.helpers import absolute_url
 from project.post_office import send

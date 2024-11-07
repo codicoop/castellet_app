@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from apps.main.models import NewsletterSubscriber
-from apps.main.tests.factories import NewsletterSubscriberFactory
+from apps.partners.models import NewsletterSubscriber
+from apps.partners.tests.factories import NewsletterSubscriberFactory
 
 
 class NewsletterSubscriberTest(TestCase):

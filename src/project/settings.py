@@ -120,7 +120,7 @@ INSTALLED_APPS = [
     "apps.web",
     "apps.wagtail_htmx_contact_form",
     "project",
-    "apps.main",
+    "apps.partners",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",

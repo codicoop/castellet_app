@@ -42,4 +42,4 @@ class DocumentViewTest(TestCase):
         response = self.client.get(reverse("partners:documents"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.request["PATH_INFO"], "/ca/documents/")
-        self.assertTemplateUsed(response, "main/documents.html")
+        self.assertTemplateUsed(response, "partners/documents.html")

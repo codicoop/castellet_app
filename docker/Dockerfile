@@ -61,7 +61,7 @@ COPY poetry.lock pyproject.toml ./
 RUN set -x \
   && apt-get update \
   && apt-get install -y --no-install-recommends git \
-  && poetry install --only main --no-root --no-ansi \
+  && poetry install --only partners --no-root --no-ansi \
   && apt-get purge -y --auto-remove git \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*

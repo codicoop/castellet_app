@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('auth', '0012_alter_user_first_name_max_length'),
-        ('main', '0001_initial'),
+        ('partners', '0001_initial'),
     ]
 
     operations = [
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, verbose_name='Is staff')),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='%(app_label)s_%(class)s_related', to=settings.AUTH_USER_MODEL, verbose_name='created by')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
-                ('projects', models.ManyToManyField(blank=True, related_name='user_projects', to='main.project', verbose_name='Projects')),
+                ('projects', models.ManyToManyField(blank=True, related_name='user_projects', to='partners.project', verbose_name='Projects')),
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
             ],
             options={

@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('main', '0001_initial'),
+        ('partners', '0001_initial'),
         ('taggit', '0006_rename_taggeditem_content_type_object_id_taggit_tagg_content_8fc721_idx'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
@@ -30,11 +30,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='document',
             name='project',
-            field=models.ManyToManyField(blank=True, related_name='documents', to='main.project', verbose_name='Project'),
+            field=models.ManyToManyField(blank=True, related_name='documents', to='partners.project', verbose_name='Project'),
         ),
         migrations.AddField(
             model_name='project',
             name='project_type',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='project', to='main.projecttype', verbose_name='Project type'),
+            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='project', to='partners.projecttype', verbose_name='Project type'),
         ),
     ]
