@@ -216,7 +216,6 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
     # Beware that "home" only ignores requests when a language is included in the
     # URL. See LOGIN_REQUIRED_IGNORE_PATHS comments above.
     "home",
-    "registration:signup",
     "registration:privacy_policy",
     "registration:login",
     "registration:password_reset",
