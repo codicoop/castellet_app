@@ -4,6 +4,9 @@ module.exports = {
     './src/templates/**/*.html',
     './node_modules/flowbite/**/*.js'
   ],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -24,22 +27,30 @@ module.exports = {
         blau: {
           "300":"#02AFDE",
           "400":"#029EC9",
-          "500":"#028db4", // blau app
+          "500":"#028db4", // blau logo
           "600":"#0C678D",
           "700":"#164066",
         },
-        accent: {
-          "100": "#fdd360"
+        groc: {
+          "100": "#FEEEAE",
+          "300": "#FEE271",
+          "500": "#fed116", // groc logo
+          "700": "#e2bd5a",
+          "900": "#a9882e"
+        },
+        gris: {
+          "500": "#929e9e"  // gris logo
         }
+      },
+      boxShadow: {
+        'video': '0 1.6px 7.2px 0 rgba(0, 0, 0, 0.21)',
+        'card': '0 4px 18px 0 rgba(0, 0, 0, 0.21)'
       }
     },
     fontFamily: {
       'body': ['Montserrat', 'sans-serif'],
       'sans': ['Montserrat', 'sans-serif']
-    }
+    },
   },
-  plugins: [
-    require('flowbite/plugin')
-  ]
 }
 
