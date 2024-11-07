@@ -41,3 +41,5 @@ Els usuaris de l'aplicació tenen la particularitat que el campo `email` és opc
 - htmx
 - Flowbite
 - Python 3.11
+- Django
+- Django Wagtail
