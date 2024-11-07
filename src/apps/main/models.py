@@ -178,6 +178,7 @@ class Document(models.Model):
         blank=False,
         null=False,
         verbose_name=_("Responsible user"),
+        related_name="documents",
     )
     date_document = models.DateField(
         _("Date of Document"),
