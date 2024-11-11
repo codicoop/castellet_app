@@ -2,7 +2,7 @@ from django.apps import apps
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.models import Page, PageManager
+from wagtail.models import Page, PageManager, Orderable
 
 
 class RequestedLocalePageManager(PageManager):
@@ -11,7 +11,7 @@ class RequestedLocalePageManager(PageManager):
         return self.get_queryset().filter(locale=request.current_locale)
 
 
-class BasePage(Page):
+class BasePage(Orderable, Page):
     display_join_us_block = models.BooleanField(
         verbose_name=_("Display join us block"),
         help_text=_("Show the join us block at the botton of this page. To "
@@ -22,12 +22,6 @@ class BasePage(Page):
     max_count = 1
     show_in_menus_default = False
     parent_page_types = ["web.HomePage"]
-    is_submitable = False
-    is_unpublishable = False
-    # Removing this dropdown is also removing the "Delete" page option that it
-    # contains. If you enable it, make sure that you actually pretend to give
-    # the editor access to every action it provides!
-    show_more_dropdown_in_list_actions = False
     objects = RequestedLocalePageManager()
 
     settings_panels = [
