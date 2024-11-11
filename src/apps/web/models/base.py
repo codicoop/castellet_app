@@ -11,7 +11,7 @@ class RequestedLocalePageManager(PageManager):
         return self.get_queryset().filter(locale=request.current_locale)
 
 
-class BasePage(Orderable, Page):
+class BasePage(Page):
     display_join_us_block = models.BooleanField(
         verbose_name=_("Display join us block"),
         help_text=_("Show the join us block at the botton of this page. To "
