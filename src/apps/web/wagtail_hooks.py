@@ -1,4 +1,3 @@
-from icecream import ic
 from wagtail import hooks
 
 @hooks.register("construct_settings_menu")
