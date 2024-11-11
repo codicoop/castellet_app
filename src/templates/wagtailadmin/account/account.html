@@ -1,0 +1,17 @@
+{% extends "wagtailadmin/generic/base.html" %}
+{% load i18n wagtailadmin_tags %}
+
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title=_("Account") icon="user" merged=1 %}
+
+    <div class="w-tabs" data-tabs>
+        <div class="w-tabs__wrapper">
+            <div role="tablist" class="w-tabs__list">
+              <p>{% translate "To manage your user's details, as well as the other users, you must use the Users section in the administration panel, here:" %}</p>
+              <a href="{% url 'admin:users_user_changelist' %}">{% translate "User's admin panel" %}</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
