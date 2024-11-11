@@ -8,14 +8,17 @@ def hide_user_and_group_settings(request, menu_items):
     We need that to leave the users management to Django's admin and the public
     app.
 
-    If in the future you need to manage groups or users in Wagtail, you'll see that
-    Wagtail by default expects the User model to inherit from BaseUser, which we do,
-    but we removed some fields, i.ex. `last_name`.
-    Wagtail will throw an error because of this.
-    Therefore, you will need to create a custom user form for wagtail.
-    Documentation: https://docs.wagtail.org/en/stable/advanced_topics/customisation/custom_user_models.html
+    If in the future you need to manage groups or users in Wagtail, check if
+    this issue is resolved:
+    https://github.com/wagtail/wagtail/issues/7410#issuecomment-2468115196
 
-    For the same reason, you'll se that when a user edits its own profile in Wagtail
-    the Surnames field is empty, and
+    There are problems related to this app extending AbstractBaseUser instead of
+    AbstractUser.
+    Wagtail counts on the User model to inherit from AbstractUser and therefore
+    include `first_name` and `last_name` fields, among some other.
+
+    Unless they fixed that or some other simpler solution is found, you'll need
+    to create a custom user form for wagtail:
+    https://docs.wagtail.org/en/stable/advanced_topics/customisation/custom_user_models.html
     """
     menu_items[:] = [item for item in menu_items if item.name not in ("users", "groups")]
