@@ -18,9 +18,16 @@ class NewsListPage(MenuLabelMixin, BasePage):
         context = super().get_context(request, *args, **kwargs)
         context["news_list"] = NewsDetailPage.objects.live().order_by("-date")
         tag = request.GET.get("tag")
-        if tag:
+        ALL_NEWS_TAG_SLUG = "Totes"
+        if tag and tag != ALL_NEWS_TAG_SLUG:
             context["news_list"] = context["news_list"].filter(tags__name=tag)
-        context["tags"] = [tagged_news.tag for tagged_news in TaggedNews.objects.all()]
+        # each tag will be a dictionary. The key is the tag slug, and the value
+        # is the "active" True or False, for the template to style it.
+        context["tags"] = {"Totes": tag == "Totes"}
+        context["tags"].update({
+            tagged_news.tag.slug: tagged_news.tag.slug == tag
+            for tagged_news in TaggedNews.objects.all()
+        })
         return context
 
 

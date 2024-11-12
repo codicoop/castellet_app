@@ -11,8 +11,8 @@
     <section class="content">
       {% if tags %}
         <div class="tags">
-          {% for tag in tags %}
-            <a href="{% pageurl page %}?tag={{ tag }}">{{ tag }}</a>
+          {% for tag, active in tags.items %}
+            <a class="{% if active %}active{% endif %}" href="{% pageurl page %}?tag={{ tag }}">{{ tag }}</a>
           {% endfor %}
         </div>
       {% endif %}
