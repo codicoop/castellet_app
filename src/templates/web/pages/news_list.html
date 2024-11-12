@@ -12,7 +12,7 @@
       {% if tags %}
         <div class="tags">
           {% for tag, active in tags.items %}
-            <a class="{% if active %}active{% endif %}" href="{% pageurl page %}?tag={{ tag }}&page={{ request.GET.page }}">{{ tag }}</a>
+            <a class="{% if active %}active{% endif %}" href="{% pageurl page %}{% querystring tag=tag %}">{{ tag }}</a>
           {% endfor %}
         </div>
       {% endif %}
@@ -24,19 +24,19 @@
       {% if news_list.paginator.num_pages > 1 %}
         <div class="pagination">
           {% if news_list.has_previous %}
-            <a href="{% pageurl page %}?tag={{ request.GET.tag }}&page={{ news_list.previous_page_number }}">{% translate "Previous" %}</a>
+            <a href="{% pageurl page %}{% querystring page=news_list.previous_page_number %}">{% translate "Previous" %}</a>
           {% endif %}
 
           {% for i in news_list.paginator.page_range %}
               {% if news_list.number == i %}
                   <li class="active">{{ i }}</li>
               {% else %}
-                  <li><a href="{% pageurl page %}?tag={{ request.GET.tag }}&page={{ i }}">{{ i }}</a></li>
+                  <li><a href="{% pageurl page %}{% querystring page=i %}">{{ i }}</a></li>
               {% endif %}
           {% endfor %}
 
           {% if news_list.has_next %}
-              <a href="{% pageurl page %}?tag={{ request.GET.tag }}&page={{ news_list.next_page_number }}">{% translate "Next" %}</a>
+              <a href="{% pageurl page %}{% querystring page=news_list.next_page_number %}">{% translate "Next" %}</a>
           {% endif %}
         </div>
       </section>
