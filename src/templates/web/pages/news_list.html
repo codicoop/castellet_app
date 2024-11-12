@@ -24,7 +24,8 @@
             style="--bg-heading: url('{{ bg_heading.url }}')"
           {% endif %}
         >
-          <a href="{% pageurl news %}">{{ news.title }}</a>
+            {{ news.title }}
+            <a href="{% pageurl news %}">{% translate "Read more" %}</a>
         </div>
       {% endfor %}
 

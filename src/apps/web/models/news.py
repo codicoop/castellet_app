@@ -103,3 +103,7 @@ class NewsDetailPage(BasePage):
     show_in_menus_default = False
     max_count = None
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["related_news"] = self.tags.similar_objects()[:3]
+        return context

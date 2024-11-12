@@ -49,17 +49,18 @@
       {{ page.content }}
     </section>
 
-    {% if page.related_news.all %}
+    {% if related_news %}
       <section>
-        {% translate "Other news" %}
-        {% for news in page.related_news.all %}
-          {% image news.header_image width-2000 as bg_heading %}
+        {% translate "Related news" %}
+        {% for news in related_news %}
+          {% image news.header_image width-350 as bg_heading %}
           <div
             {% if bg_heading %}
               style="--bg-heading: url('{{ bg_heading.url }}')"
             {% endif %}
           >
-            <a href="{% pageurl news %}">{{ news.title }}</a>
+            {{ news.title }}
+            <a href="{% pageurl news %}">{% translate "Read more" %}</a>
           </div>
         {% endfor %}
       </section>
