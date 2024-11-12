@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n wagtailcore_tags %}
 
 <div class="relative w-full rounded-2xl shadow-card px-4 py-6 lg:p-6 lg:pr-28">
 	<img id="open_btn" src="{% static 'images/icons/icon_plus.svg' %}" alt="{% translate 'Icon to open an' %}"
@@ -15,6 +15,6 @@
 	>
 	<h2 class="text-lg font-semibold pr-7">{{ value.question }}</h2>
 	<div id="answer" class="hidden text-base pt-4 [&>p]:mb-4">
-		{{ value.answer }}
+		{{ value.answer|richtext }}
 	</div>
 </div>
