@@ -33,7 +33,7 @@ class NewsListPage(MenuLabelMixin, BasePage):
         })
 
         # Pagination
-        NEWS_PER_PAGE = 1
+        NEWS_PER_PAGE = 9
         paginator = Paginator(context["news_list"], NEWS_PER_PAGE)
         page_number = request.GET.get("page")
         context["news_list"] = paginator.get_page(page_number)

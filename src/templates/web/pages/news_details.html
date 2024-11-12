@@ -53,15 +53,7 @@
       <section>
         {% translate "Related news" %}
         {% for news in related_news %}
-          {% image news.header_image width-350 as bg_heading %}
-          <div
-            {% if bg_heading %}
-              style="--bg-heading: url('{{ bg_heading.url }}')"
-            {% endif %}
-          >
-            {{ news.title }}
-            <a href="{% pageurl news %}">{% translate "Read more" %}</a>
-          </div>
+          {% include "../components/news_summary.html" %}
         {% endfor %}
       </section>
     {% endif %}
