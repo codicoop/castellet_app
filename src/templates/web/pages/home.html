@@ -12,11 +12,11 @@
       <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:order-1 lg:text-4xl">
         {{ page.video_title }}
       </h2>
-      <div class="text-base text-center mb-4 max-w-96 
+      <div class="text-base text-center mb-4 max-w-96
         lg:order-2 lg:text-lg lg:max-w-md lg:text-left">
         {{ page.video_description|richtext }}
       </div>
-      <div class="relative flex items-center justify-center shadow-video p-1 
+      <div class="relative flex items-center justify-center shadow-video p-1
         rounded-2xl w-fit mb-4 lg:order-4 lg:min-w-32">
         <div class="w-fit rounded-2xl overflow-clip">
           {% embed page.video_youtube_url max_width=900 %}
@@ -48,7 +48,7 @@
       <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:text-4xl">
         {{ page.documents_title }}
       </h2>
-      <div class="text-base text-center mb-12 max-w-96 
+      <div class="text-base text-center mb-12 max-w-96
         lg:text-lg lg:max-w-md lg:text-left lg:mb-24">
         {{ page.documents_description|richtext }}
       </div>
@@ -70,6 +70,16 @@
     </div>
   </section>
   {% endif %}
+
+  <!--  Últimes notícies-->
+  <section class="mx-auto max-w-screen-2xl">
+    <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:text-4xl">
+      {% translate "Last news" %}
+    </h2>
+    {% for news in last_news %}
+      {% include "../components/news_summary.html" %}
+    {% endfor %}
+  </section>
 
 </main>
 

@@ -6,6 +6,7 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
 from apps.web.models.base import BaseHeaderOverlayPage
+from apps.web.models.news import NewsDetailPage
 
 
 class DocumentBlock(StructBlock):
@@ -112,3 +113,8 @@ class HomePage(BaseHeaderOverlayPage):
             and self.video_description
             and self.video_youtube_url
         )
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["last_news"] = NewsDetailPage.objects.live().order_by("-date")[:3]
+        return context

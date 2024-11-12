@@ -65,13 +65,13 @@
           <ul id="nav_items" class="flex flex-col mt-16 font-medium
             lg:flex-row lg:space-x-8 lg:mt-0 lg:order-1">
             <li>
-              <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
-                Home
+              <a href="{{ current_site.root_url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
+                {% translate "Home" %}
               </a>
             </li>
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
             <li>
-              <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-gray-700 active:text-groc-700 
+              <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-gray-700 active:text-groc-700
               hover:bg-gray-50 hover:rounded-md
               lg:hover:bg-white lg:hover:text-groc-700 lg:p-0">
                 {{ menu_page.title }}
@@ -119,16 +119,16 @@
             </a>
           </div>
           <!-- Barra search oberta -->
-          <form id="search-form" class="hidden mr-3 w-full"> 
+          <form id="search-form" class="hidden mr-3 w-full">
             <div class="relative">
               <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
               class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
                 border-gray-900 pr-10
-                hover:bg-gray-50 focus:ring-groc-700 focus:border-groc-700 
+                hover:bg-gray-50 focus:ring-groc-700 focus:border-groc-700
                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
-              _="on focusout toggle .lg:inline-flex on #search_btn 
-                then toggle .hidden on #nav_btns 
-                then toggle .hidden on #nav_items 
+              _="on focusout toggle .lg:inline-flex on #search_btn
+                then toggle .hidden on #nav_btns
+                then toggle .hidden on #nav_items
                 then toggle .hidden on #search-form"
               >
               <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
@@ -145,9 +145,9 @@
               hover:bg-gray-50 focus:outline-none
               focus:ring-4 focus:ring-gray-300
               dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-            _="on click toggle .hidden on #search-form 
-              then toggle .hidden on #nav_btns 
-              then toggle .hidden on #nav_items 
+            _="on click toggle .hidden on #search-form
+              then toggle .hidden on #nav_btns
+              then toggle .hidden on #nav_items
               then toggle .lg:inline-flex on me"
           >
             <svg class="w-5 h-5 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -158,13 +158,13 @@
             <div class="w-5 h-5">
               <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-              </svg>            
+              </svg>
             </div>
             <!-- end -->
             <div class="w-5 h-5 text-gray-900">
               <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-              </svg>            
+              </svg>
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@
               <a href="tel:{{ settings.web.CustomizationSettings.phone }}"
                 class="hover:underline">
                 <p>{{ settings.web.CustomizationSettings.phone }}</p>
-              </a>            
+              </a>
             </li>
             {% endif %}
             {% if settings.web.CustomizationSettings.email %}
@@ -234,7 +234,7 @@
               <a href="mailto:{{ settings.web.CustomizationSettings.email }}"
                 class="hover:underline">
                 <p>{{ settings.web.CustomizationSettings.email }}</p>
-              </a>            
+              </a>
             </li>
             {% endif %}
           </ul>
