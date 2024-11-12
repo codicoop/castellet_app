@@ -14,6 +14,15 @@ from apps.web.models.base import BasePage, MenuLabelMixin
 class NewsListPage(MenuLabelMixin, BasePage):
     template = "web/pages/news_list.html"
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["news_list"] = NewsDetailPage.objects.live().order_by("-date")
+        tag = request.GET.get("tag")
+        if tag:
+            context["news_list"] = context["news_list"].filter(tags__name=tag)
+        context["tags"] = [tagged_news.tag for tagged_news in TaggedNews.objects.all()]
+        return context
+
 
 class NewsTag(TagBase):
     subpage_types = ["web.NewsDetailPage"]
@@ -23,7 +32,7 @@ class NewsTag(TagBase):
         verbose_name_plural = "news tags"
 
 
-class TaggedBlog(ItemBase):
+class TaggedNews(ItemBase):
     tag = models.ForeignKey(
         NewsTag, related_name="tagged_news", on_delete=models.CASCADE
     )
@@ -54,7 +63,7 @@ class NewsDetailPage(BasePage):
         verbose_name=_("Date"),
         blank=False,
     )
-    tags = ClusterTaggableManager(through=TaggedBlog, blank=True)
+    tags = ClusterTaggableManager(through=TaggedNews, blank=True)
     content = StreamField(
         [
             ("text", RichTextBlock()),

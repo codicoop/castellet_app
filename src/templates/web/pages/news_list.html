@@ -9,7 +9,24 @@
     </div>
 
     <section class="content">
-      {# pendent #}
+      {% if tags %}
+        <div class="tags">
+          {% for tag in tags %}
+            <a href="{% pageurl page %}?tag={{ tag }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% for news in news_list %}
+        {% image news.header_image width-350 as bg_heading %}
+        <div
+          {% if bg_heading %}
+            style="--bg-heading: url('{{ bg_heading.url }}')"
+          {% endif %}
+        >
+          <a href="{% pageurl news %}">{{ news.title }}</a>
+        </div>
+      {% endfor %}
     </section>
 
   </main>
