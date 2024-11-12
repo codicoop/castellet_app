@@ -8,6 +8,6 @@ class AccessPermissionRoleChoices(models.TextChoices):
 
 
 class ProjectStatusChoices(models.TextChoices):
-    PROJECT_STUDY_PHASE = "PS", _("Project in study phase")
-    PROJECT_DEVELOPMENT = "AP", _("Active Project")
-    OTHER_PROJECTS = "OP", _("Future projects or other projects")
+    STUDY_PHASE = "PS", _("Project in study phase")
+    ACTIVE = "AP", _("Active Project")
+    OTHER = "OP", _("Future projects or other projects")

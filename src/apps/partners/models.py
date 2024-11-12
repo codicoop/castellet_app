@@ -125,7 +125,7 @@ class Project(models.Model):
         _("Is public"),
         blank=True,
         default=False,
-        help_text=_("Is this project public?"),
+        help_text=_("If checked, this project will be published to the website."),
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
