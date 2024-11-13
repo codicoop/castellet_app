@@ -79,11 +79,11 @@ class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
             is_public=True,
             status=ProjectStatusChoices.ACTIVE,
         ).order_by("title")
-        context["active_study_phase"] = Project.objects.filter(
+        context["study_phase_projects"] = Project.objects.filter(
             is_public=True,
             status=ProjectStatusChoices.STUDY_PHASE,
         ).order_by("title")
-        context["active_other"] = Project.objects.filter(
+        context["other_projects"] = Project.objects.filter(
             is_public=True,
             status=ProjectStatusChoices.OTHER,
         ).order_by("title")

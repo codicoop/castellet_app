@@ -10,6 +10,7 @@
   <div class="mx-auto max-w-screen-2xl">
     <div class="flex flex-col gap-8 mx-auto  px-3 pb-16 max-w-2xl
       lg:px-44 lg:pb-28 lg:gap-16 lg:max-w-none">
+
       {% if active_projects %}
       <section class="mb-20 lg:mb-28">
         <div class="mx-auto max-w-screen-sm">
@@ -29,40 +30,47 @@
         </div>
       </section>
       {% endif %}
-      <!-- Si hi ha projectes en fase estudi -->
-      <section class="mb-20 lg:mb-28">
-        <div class="mx-auto max-w-screen-sm">
-          <h2 class="mx-auto mb-5 text-center text-2xl font-bold
-            lg:text-4xl lg:mb-6">
-            {{ page.projects_study_phase_title }}
-          </h2>
-          {{ page.projects_study_phase_description|richtext }}
-        </div>
-        <div class="grid gap-6 grid-cols-1 justify-items-center
-          sm:grid-cols-2 xl:grid-cols-3">
 
-          {% include "../components/project_summary.html" %}
+      {% if study_phase_projects %}
+        <section class="mb-20 lg:mb-28">
+          <div class="mx-auto max-w-screen-sm">
+            <h2 class="mx-auto mb-5 text-center text-2xl font-bold
+              lg:text-4xl lg:mb-6">
+              {{ page.projects_study_phase_title }}
+            </h2>
+            {{ page.projects_study_phase_description|richtext }}
+          </div>
+          <div class="grid gap-6 grid-cols-1 justify-items-center
+            sm:grid-cols-2 xl:grid-cols-3">
 
-        </div>
-      </section>
-      <!-- Endif -->
-      <!-- Si hi ha projectes futurs -->
-      <section class="mb-20 lg:mb-28">
-        <div class="mx-auto max-w-screen-sm">
-          <h2 class="mx-auto mb-5 text-center text-2xl font-bold
-            lg:text-4xl lg:mb-6">
-            {{ page.projects_other_title }}
-          </h2>
-          {{ page.projects_other_description|richtext }}
-        </div>
-        <div class="grid gap-6 grid-cols-1 justify-items-center
-          sm:grid-cols-2 xl:grid-cols-3">
+            {% for project in study_phase_projects %}
+              {% include "../components/project_summary.html" %}
+            {% endfor %}
 
-          {% include "../components/project_summary.html" %}
+          </div>
+        </section>
+      {% endif %}
 
-        </div>
-      </section>
-      <!-- Endif -->
+      {% if other_projects %}
+        <section class="mb-20 lg:mb-28">
+          <div class="mx-auto max-w-screen-sm">
+            <h2 class="mx-auto mb-5 text-center text-2xl font-bold
+              lg:text-4xl lg:mb-6">
+              {{ page.projects_other_title }}
+            </h2>
+            {{ page.projects_other_description|richtext }}
+          </div>
+          <div class="grid gap-6 grid-cols-1 justify-items-center
+            sm:grid-cols-2 xl:grid-cols-3">
+
+            {% for project in other_projects %}
+              {% include "../components/project_summary.html" %}
+            {% endfor %}
+
+          </div>
+        </section>
+      {% endif %}
+
     </div>
   </div>
 
