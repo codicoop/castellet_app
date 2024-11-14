@@ -130,7 +130,7 @@ class ProjectDetailPage(BasePage):
         blank=True,
         verbose_name=_("Paragraphs and pictures"),
     )
-    project = models.ForeignKey(
+    partners_project = models.ForeignKey(
         "partners.Project",
         verbose_name=_("Related project in the Partners app"),
         help_text=mark_safe(
@@ -152,7 +152,7 @@ class ProjectDetailPage(BasePage):
         FieldPanel("header_image"),
         FieldPanel("status"),
         FieldPanel("description"),
-        FieldPanel("project"),
+        FieldPanel("partners_project"),
         FieldPanel("content"),
     ]
 

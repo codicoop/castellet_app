@@ -12,6 +12,8 @@
       <!-- Secció amb dades del projecte i descripció, importat de bbdd -->
       <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44
         lg:grid lg:grid-cols-5 lg:gap-20">
+
+        {% if page.partners_project %}
         <div class="flex flex-col px-4 py-6 mb-6 shadow-card rounded-lg
           lg:col-start-1 lg:col-span-2">
           <h2 class="mb-3 text-2xl font-bold
@@ -20,42 +22,36 @@
           </h2>
           <p class="mb-4 text-base">{% translate 'Here you have some data of the project.' %}</p>
           <ul class="ml-6 mb-8 list-disc">
-            <li class="mb-2">
-              <span class="font-bold">{% translate 'Title' %}:</span>
-              <span>Autoconsum fotovoltaic compartit Autoconsum fotovoltaic compartit</span>
-            </li>
+            {% if page.partners_project.project_type %}
             <li class="mb-2">
               <span class="font-bold">{% translate 'Project type' %}:</span>
-              <span>Energies renovables</span>
+              <span>{{ page.partners_project.project_type.name }}</span>
             </li>
+            {% endif %}
+            {% if page.partners_project.status %}
             <li class="mb-2">
               <span class="font-bold">{% translate 'Project state' %}:</span>
-              <span>Projecte en marxa</span>
+              <span>{{ page.partners_project.get_status_display }}</span>
             </li>
-            <!-- Si hi ha potència energètica -->
+            {% endif %}
+            {% if page.partners_project.energy_power %}
             <li class="mb-2">
               <span class="font-bold">{% translate 'Energy power' %}:</span>
-              <span>100.000</span><span> kW</span>
+              <span>{{ page.partners_project.energy_power }}</span><span> kW</span>
             </li>
-            <!-- Endif -->
-            <!-- Si hi ha energia anual -->
+            {% endif %}
+            {% if page.partners_project.annual_energy %}
             <li class="mb-2">
               <span class="font-bold">{% translate 'Annual energy' %}:</span>
-              <span>100.000</span><span> kW</span>
+              <span>{{ page.partners_project.annual_energy }}</span><span> kW</span>
             </li>
-            <!-- Endif -->
-            <!-- Si hi ha inversió -->
+            {% endif %}
+            {% if page.partners_project.investment %}
             <li class="mb-2">
               <span class="font-bold">{% translate 'Investment' %}:</span>
-              <span>100.000</span><span> €</span>
+              <span>{{ page.partners_project.investment }}</span><span> €</span>
             </li>
-            <!-- Endif -->
-            <!-- Si hi ha participants -->
-            <li class="mb-2">
-              <span class="font-bold">{% translate 'Number of participants' %}:</span>
-              <span>25</span><span> {% translate 'people' %}</span>
-            </li>
-            <!-- Endif -->
+            {% endif %}
           </ul>
           <a class="self-end" href="#0">
             <div class="px-3 py-2 w-fit text-gray-800 font-medium rounded-full
@@ -66,10 +62,11 @@
             </div>
           </a>
         </div>
-        <!-- Descripció del projecte, importat de bbdd -->
+        {% endif %}
+
         <div class="lg:col-start-3 lg:col-span-3">
           <div class="text-base {&>p:mb-4}">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus orci ac auctor augue mauris augue. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Magna eget est lorem ipsum dolor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla.a cum sociis natoque.
+            {{ page.description|richtext }}
           </div>
         </div>
       </section>
@@ -86,7 +83,7 @@
       <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44">
         <div class="text-base mb-8 lg:mb-20 [&>p]:mb-4 lg:[&>p]:columns-2
           [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8 [&>img]:shadow-card
-          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 
+          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1
           [&>ol]:mb-4 [&>ol]:max-w-xl
           [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
           [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
@@ -119,7 +116,7 @@
         </div>
         <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
           [&>img]:w-full [&>img]:rounded-2xl [&>img]:mb-8 [&>img]:shadow-card
-          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 
+          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1
           [&>ol]:mb-4 [&>ol]:max-w-xl
           [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
           [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
