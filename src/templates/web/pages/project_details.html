@@ -94,40 +94,8 @@
           [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl
           lg:col-start-6 lg:col-span-7"
         >
-          <h2>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo, inquit, tibi Q. Te ipsum, dignissimum maioribus tuis, voluptasne induxit, ut adolescentulus eriperes P. <i>Atqui reperies, inquit, in hoc quidem pertinacem;</i> <i>Bork</i> Duo Reges: constructio interrete. Non autem hoc: igitur ne illud quidem. Ut in voluptate sit, qui epuletur, in dolore, qui torqueatur. Egone quaeris, inquit, quid sentiam? Nunc omni virtuti vitium contrario nomine opponitur. Tum ille: Ain tandem? </p>
-          <p>Nunc dicam de voluptate, nihil scilicet novi, ea tamen, quae te ipsum probaturum esse confidam. <i>Magna laus.</i> Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Verum esto: verbum ipsum voluptatis non habet dignitatem, nec nos fortasse intellegimus. <a href="http://loripsum.net/" target="_blank">Maximus dolor, inquit, brevis est.</a> <a href="http://loripsum.net/" target="_blank">Non quam nostram quidem, inquit Pomponius iocans;</a> </p>
-          <h3>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h3>
-          <ul>
-            <li>At iam decimum annum in spelunca iacet.</li>
-            <li>Utrum igitur percurri omnem Epicuri disciplinam placet an de una voluptate quaeri, de qua omne certamen est?</li>
-            <li>Nam aliquando posse recte fieri dicunt nulla expectata nec quaesita voluptate.</li>
-            <li>Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.</li>
-            <li>Negat esse eam, inquit, propter se expetendam.</li>
-          </ul>
-          <h4>Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant?</h4>
-          <p>Verba tu fingas et ea dicas, quae non sentias? Ego vero volo in virtute vim esse quam maximam; Nam memini etiam quae nolo, oblivisci non possum quae volo. Quod quidem iam fit etiam in Academia. Quae qui non vident, nihil umquam magnum ac cognitione dignum amaverunt. Sequitur disserendi ratio cognitioque naturae; </p>
-          <ol>
-            <li>Nisi autem rerum natura perspecta erit, nullo modo poterimus sensuum iudicia defendere.</li>
-            <li>Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur.</li>
-            <li>Nam nec vir bonus ac iustus haberi debet qui, ne malum habeat, abstinet se ab iniuria.</li>
-            <li>Paria sunt igitur.</li>
-            <li>Ita cum ea volunt retinere, quae superiori sententiae conveniunt, in Aristonem incidunt;</li>
-            <li>Vides igitur te aut ea sumere, quae non concedantur, aut ea, quae etiam concessa te nihil iuvent.</li>
-            <li>Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt.</li>
-          </ol>
-        </div>
-        <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
-          [&>img]:w-full [&>img]:rounded-2xl [&>img]:mb-8 [&>img]:shadow-card
-          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1
-          [&>ol]:mb-4 [&>ol]:max-w-xl
-          [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
-          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
-          [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl
-          [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl
-          lg:col-start-6 lg:col-span-7"
-        >
-        <img src="{% static 'images/placeholder_big.png' %}" alt="">
+          {# Compte! A la maquetació vas posar un div pel text i un per la imatge. Ara això és un streamfield així que la imatge vindrà amb l'HTML que toqui, igual que passa a Notícies. De fet, igual que a Notícies, cal fer el que comentava al Taiga, de omplir una fitxa amb text, notícia i posar tots els formats que permeti el text per comprovar si estan maquetats i es veuen bé #}
+          {{ page.content }}
         </div>
       </section>
     </div>
