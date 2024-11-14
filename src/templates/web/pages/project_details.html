@@ -53,7 +53,9 @@
             </li>
             {% endif %}
           </ul>
-          <a class="self-end" href="#0">
+
+          {% if contact_page %}
+          <a class="self-end" href="{% pageurl contact_page %}">
             <div class="px-3 py-2 w-fit text-gray-800 font-medium rounded-full
             text-sm border border-gray-900
             hover:bg-groc-100 hover:border-groc-300 focus:outline-none
@@ -61,6 +63,7 @@
               <p class="font-bold">{% translate 'Participate!' %}</p>
             </div>
           </a>
+          {% endif %}
         </div>
         {% endif %}
 
