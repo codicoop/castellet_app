@@ -7,6 +7,7 @@ from wagtail.fields import RichTextField, StreamField
 
 from apps.web.models.base import BaseHeaderOverlayPage
 from apps.web.models.news import NewsDetailPage
+from apps.web.models.projects import ProjectDetailPage
 
 
 class DocumentBlock(StructBlock):
@@ -83,6 +84,18 @@ class HomePage(BaseHeaderOverlayPage):
         null=True,
         blank=True,
     )
+    projects_title = models.CharField(
+        _("Title"),
+        max_length=80,
+        default=_("What does Castellet Sostenible offer?"),
+        blank=False,
+    )
+    news_title = models.CharField(
+        _("Title"),
+        max_length=80,
+        default=_("Last news"),
+        blank=False,
+    )
 
     content_panels = BaseHeaderOverlayPage.content_panels + [
         MultiFieldPanel(
@@ -101,19 +114,30 @@ class HomePage(BaseHeaderOverlayPage):
             ],
             heading=_("Documents"),
         ),
-        HelpPanel(
-            content=_(
-                "To add projects at the home page, you have to go navigate the "
-                "edit the project page (which are inside the Projects page in the "
-                "pages tree) and click the Configuration tab."
-            ),
+        MultiFieldPanel(
+            children=[
+                FieldPanel("projects_title"),
+                HelpPanel(
+                    content=_(
+                        "To add projects at the home page, you have to go navigate the "
+                        "edit the project page (which are inside the Projects page in the "
+                        "pages tree) and click the Configuration tab."
+                    ),
+                ),
+            ],
             heading=_("Projects / What Castellet offers"),
-        ),        HelpPanel(
-            content=_(
-                "The latest news block is automatically generated taking the "
-                "latest 3 news created in the News page."
-            ),
-            heading=_("News"),
+        ),
+        MultiFieldPanel(
+            children=[
+                FieldPanel("news_title"),
+                HelpPanel(
+                    content=_(
+                        "The latest news block is automatically generated taking the "
+                        "latest 3 news created in the News page."
+                    ),
+                ),
+            ],
+            heading=_("Last news section"),
         ),
     ]
 
@@ -130,4 +154,7 @@ class HomePage(BaseHeaderOverlayPage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["last_news"] = NewsDetailPage.objects.live().order_by("-date")[:3]
+        context["projects"] = ProjectDetailPage.objects.live().filter(
+            show_in_home=True,
+        ).order_by("title")
         return context

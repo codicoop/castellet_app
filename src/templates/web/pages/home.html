@@ -38,9 +38,16 @@
     </section>
   {% endif %}
 
-  <section class="mx-auto max-w-screen-2xl">
-    {# to do, quan l'apartat projectes estigui fet #}
-  </section>
+  {% if projects %}
+    <section class="mx-auto max-w-screen-2xl">
+      <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:text-4xl">
+        {{ page.projects_title }}
+      </h2>
+      {% for project in projects %}
+        {% include "../components/project_summary.html" %}
+      {% endfor %}
+    </section>
+  {% endif %}
 
   {% if page.documents %}
   <section class="mx-auto max-w-screen-2xl">
@@ -74,7 +81,7 @@
   <!--  Últimes notícies-->
   <section class="mx-auto max-w-screen-2xl">
     <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:text-4xl">
-      {% translate "Last news" %}
+      {{ page.news_title }}
     </h2>
     {% for news in last_news %}
       {% include "../components/news_summary.html" %}
