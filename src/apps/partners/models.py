@@ -10,6 +10,7 @@ from apps.partners.choices import (
     AccessPermissionRoleChoices,
     ProjectStatusChoices,
 )
+from project.models import BaseModel
 from project.storage_backends import PrivateMediaStorage
 
 
@@ -66,7 +67,7 @@ class ProjectType(models.Model):
         return self.name
 
 
-class Project(models.Model):
+class Project(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(
         _("Title"),
@@ -90,9 +91,8 @@ class Project(models.Model):
         blank=False,
         default="",
     )
-    description = models.CharField(
+    description = models.TextField(
         _("Description"),
-        max_length=500,
         blank=False,
         default="",
     )
@@ -121,13 +121,6 @@ class Project(models.Model):
         default="",
         help_text=_("Project investment (€)"),
     )
-    is_public = models.BooleanField(
-        _("Is public"),
-        blank=True,
-        default=False,
-        help_text=_("If checked, this project will be published to the website."),
-    )
-    created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:
         verbose_name = _("project")

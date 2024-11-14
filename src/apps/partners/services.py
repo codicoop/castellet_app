@@ -66,7 +66,6 @@ class ExportProjectCsvMixin:
             _("Energy power"),
             _("Annual energy"),
             _("Investment"),
-            _("Is public"),
             _("Participants"),
             _("Number of participants"),
         ])
@@ -93,7 +92,6 @@ class ExportProjectCsvMixin:
                     energy_power + " kW" if energy_power else "",
                     annual_energy + " kWh/year" if annual_energy else "",
                     investment + " €" if investment else "",
-                    "Sí" if getattr(obj, 'is_public', '') else "No",
                     participants,
                     project_users.count()
                 ]

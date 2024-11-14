@@ -76,15 +76,12 @@ class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["active_projects"] = Project.objects.filter(
-            is_public=True,
             status=ProjectStatusChoices.ACTIVE,
         ).order_by("title")
         context["study_phase_projects"] = Project.objects.filter(
-            is_public=True,
             status=ProjectStatusChoices.STUDY_PHASE,
         ).order_by("title")
         context["other_projects"] = Project.objects.filter(
-            is_public=True,
             status=ProjectStatusChoices.OTHER,
         ).order_by("title")
         return context

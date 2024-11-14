@@ -8,6 +8,7 @@ from apps.partners.forms import DocumentAdminForm
 from apps.partners.models import Document, Project, ProjectType
 from apps.partners.services import ExportProjectCsvMixin
 from apps.users.models import User
+from project.admin import ModelAdmin
 
 
 @admin.register(ProjectType)
@@ -16,7 +17,7 @@ class ProjectTypeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
+class ProjectAdmin(ModelAdmin, ExportProjectCsvMixin):
     list_display = (
         "title",
         "project_type",
@@ -24,17 +25,16 @@ class ProjectAdmin(admin.ModelAdmin, ExportProjectCsvMixin):
         "energy_power",
         "annual_energy",
         "investment",
-        "is_public",
         "number_participants"
     )
-    list_filter = ("project_type", "status", "created_at", "is_public")
-    search_fields = ["title", ]
-    readonly_fields = [
+    list_filter = ("project_type", "status", "created_at", )
+    search_fields = ("title", )
+    readonly_fields = (
         "documents_list",
         "participants_list",
         "number_participants",
-    ]
-    actions = ["export_as_csv"]
+    )
+    actions = ("export_as_csv", )
 
     @admin.display(description=_("Documents"))
     def documents_list(self, *args):
