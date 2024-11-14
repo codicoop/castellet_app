@@ -147,6 +147,14 @@ class ProjectDetailPage(BasePage):
         on_delete=models.SET_NULL,
         related_name="web_pages",
     )
+    show_in_home = models.BooleanField(
+        _("Show in the home page"),
+        default=False,
+        help_text=_(
+            "If selected, this project will appear on the home page in the "
+            "'What do we offer?' block."
+        ),
+    )
 
     content_panels = BasePage.content_panels + [
         FieldPanel("header_image"),
@@ -154,6 +162,14 @@ class ProjectDetailPage(BasePage):
         FieldPanel("description"),
         FieldPanel("partners_project"),
         FieldPanel("content"),
+    ]
+    settings_panels = BasePage.settings_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel("show_in_home"),
+            ],
+            heading=_("Configuration of projects in the home page"),
+        ),
     ]
 
     template = "web/pages/project_details.html"
