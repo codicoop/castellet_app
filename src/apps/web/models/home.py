@@ -76,7 +76,6 @@ class HomePage(BaseHeaderOverlayPage):
             "ul",
         ],
     )
-
     documents = StreamField(
         [
             ("document", DocumentBlock()),
