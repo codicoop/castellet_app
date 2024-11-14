@@ -1,11 +1,16 @@
+from django.apps import apps
 from django.db import models
+from django.urls import reverse_lazy
+from django.utils.safestring import mark_safe
+from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import MultiFieldPanel, FieldPanel
-from wagtail.fields import RichTextField
+from wagtail.blocks import RichTextBlock
+from wagtail.fields import RichTextField, StreamField
+from wagtail.images.blocks import ImageChooserBlock
 
 from apps.partners.choices import ProjectStatusChoices
-from apps.partners.models import Project
-from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin
+from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin, BasePage
 
 
 class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
@@ -75,21 +80,84 @@ class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["active_projects"] = Project.objects.filter(
+        project_model = apps.get_model("partners", "Project")
+        context["active_projects"] = project_model.objects.filter(
             status=ProjectStatusChoices.ACTIVE,
         ).order_by("title")
-        context["study_phase_projects"] = Project.objects.filter(
+        context["study_phase_projects"] = project_model.objects.filter(
             status=ProjectStatusChoices.STUDY_PHASE,
         ).order_by("title")
-        context["other_projects"] = Project.objects.filter(
+        context["other_projects"] = project_model.objects.filter(
             status=ProjectStatusChoices.OTHER,
         ).order_by("title")
         return context
 
 
-class ProjectDetailPage(BaseHeaderOverlayPage):
+class ProjectDetailPage(BasePage):
+    header_image = models.ForeignKey(
+        "wagtailimages.Image",
+        verbose_name=_("Header image"),
+        on_delete=models.PROTECT,
+        related_name="+",
+        null=True,
+        blank=False,
+        help_text=_(
+            "Aquesta imatge està pensada per ser decorativa i crear "
+            "acompanyar el contingut. Segons la resolució i el dispositiu de "
+            "l'usuari, la mida i proporció variarà, i per tant es retallaran "
+            "parts de la imatge. La proporció recomanada és de 2x1, amb una "
+            "mida mínima de 2.000x1.000px."
+        ),
+    )
+    status = models.CharField(
+        _("Status"),
+        max_length=2,
+        choices=ProjectStatusChoices.choices,
+        blank=False,
+        default="",
+    )
+    description = RichTextField(
+        verbose_name=_("Description"),
+        features=["bold", "italic"],
+        default="",
+        blank=False,
+    )
+    content = StreamField(
+        [
+            ("text", RichTextBlock()),
+            ("image", ImageChooserBlock()),
+        ],
+        null=True,
+        blank=True,
+        verbose_name=_("Paragraphs and pictures"),
+    )
+    project = models.ForeignKey(
+        "partners.Project",
+        verbose_name=_("Related project in the Partners app"),
+        help_text=mark_safe(
+            format_lazy(
+                _("If set, some project details from the projects section in the "
+                  "partners app will be included in the website. To create or "
+                  "edit those projects, go to the <a href=\"{link}\">"
+                  "admin panel</a>."),
+                link=reverse_lazy("admin:partners_project_changelist"),
+            )
+        ),
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="web_pages",
+    )
+
+    content_panels = BasePage.content_panels + [
+        FieldPanel("header_image"),
+        FieldPanel("status"),
+        FieldPanel("description"),
+        FieldPanel("project"),
+        FieldPanel("content"),
+    ]
+
     template = "web/pages/project_details.html"
     parent_page_types = ["web.ProjectListPage"]
-    max_count = 1
-    max_count_per_parent = 1
     show_in_menus_default = False
+    max_count = None
