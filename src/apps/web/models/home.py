@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, HelpPanel
 from wagtail.blocks import ChoiceBlock, StructBlock, CharBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
@@ -100,6 +100,20 @@ class HomePage(BaseHeaderOverlayPage):
                 FieldPanel("documents"),
             ],
             heading=_("Documents"),
+        ),
+        HelpPanel(
+            content=_(
+                "To add projects at the home page, you have to go navigate the "
+                "edit the project page (which are inside the Projects page in the "
+                "pages tree) and click the Configuration tab."
+            ),
+            heading=_("Projects / What Castellet offers"),
+        ),        HelpPanel(
+            content=_(
+                "The latest news block is automatically generated taking the "
+                "latest 3 news created in the News page."
+            ),
+            heading=_("News"),
         ),
     ]
 
