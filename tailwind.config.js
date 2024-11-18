@@ -36,7 +36,7 @@ module.exports = {
           "300": "#FEE271",
           "500": "#fed116", // groc base
           "700": "#e2bd5a",
-          "900": "#a9882e"
+          "900": "#665200"
         },
         gris: {
           "500": "#929e9e"  // gris base
