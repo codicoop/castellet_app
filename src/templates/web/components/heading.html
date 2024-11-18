@@ -17,15 +17,18 @@
     <div class="grid grid-cols-3">
       <div class="relative z-20 mx-4 col-span-2
           lg:mx-24 lg:mr-0 lg:mt-36 lg:row-start-1 lg:col-start-1">
-        <h1 class="w-1/2 font-bold text-5xl mb-4 lg:text-6xl lg:pr-5">{{ page.title }}</h1>
+        <h1 class="w-1/2 font-semibold text-5xl mb-4 font-title 
+          lg:text-6xl lg:pr-5">
+          {{ page.title }}
+        </h1>
         {% if page.header_description %}
-        <p class="font-semibold lg:w-2/3">{{ page.header_description }}</p>
+        <p class="font-regular font-body lg:w-2/3">{{ page.header_description }}</p>
         {% endif %}
         {% if page.header_button_link %}
         <div class="mt-4">
           <a href="{{ page.header_button_link }}"
-            class="items-center px-3 py-2 font-medium rounded-full
-              text-sm bg-groc-500 text-gray-900
+            class="items-center px-3 py-2 font-semibold rounded-full
+              text-sm bg-groc-500 text-gray-900 font-body
               lg:mr-0 lg:gap-3
               hover:bg-gray-900 focus:outline-none
               focus:ring-4 focus:ring-groc-700
@@ -53,15 +56,16 @@
             {% endif %}
           </div>
           <div class="lg:flex lg:flex-col">
-            <h3 class="font-semibold text-2xl mb-2">
+            <h3 class="font-semibold text-2xl mb-2 font-title">
               {{ page.overlay_title }}
             </h3>
-            <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis">{{ page.overlay_body|richtext }}</p>
+            <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
+              font-body text-balance">{{ page.overlay_body|richtext }}</p>
             {% if page.overlay_button_page and page.overlay_button_text %}
             <div class="my-4 float-right lg:float-none lg:mt-auto">
               <a href="{% pageurl page.overlay_button_page %}"
-                class="sitems-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
-                  text-sm border border-gray-900 lg:mr-0
+                class="items-center mr-2 px-3 py-2 text-gray-800 font-semibold rounded-full
+                  text-sm border border-gray-900 font-body lg:mr-0
                   hover:bg-groc-700 focus:outline-none
                   focus:ring-4 focus:ring-groc-700
                   dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"

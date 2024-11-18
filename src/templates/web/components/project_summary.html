@@ -4,16 +4,29 @@
   lg:h-96 lg:max-w-96"
 >
   <div class="flex flex-col p-6 lg:py-8">
+    <a href="{% pageurl project %}">
+      <div class="w-full">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" alt="{{ project.title }}"
+            class="h-full w-full object-cover"
+          >
+        {% else %}
+          <img src="{% static 'images/Placeholder_small.png' %}" alt=""
+            class="h-full w-full object-cover"
+          >
+        {% endif %}
+      </div>
+    </a>
     <!-- Títol projecte -->
-    <p class="font-semibold text-lg mb-2
+    <p class="font-semibold text-lg mb-2 font-title
       lg:text-2xl">
       {{ project.title }}
     </p>
     <!-- Url pàgina projecte -->
     <div class="mb-12">
       <a href="{% pageurl project %}">
-        <div class="px-3 py-2 text-gray-900 font-medium rounded-full
-          text-xs border border-gray-900 w-fit
+        <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
+          text-xs border border-gray-900 w-fit font-body
           hover:bg-groc-100 focus:outline-none
           focus:ring-4 focus:ring-groc-500">
           <p>{% translate 'See more' %}</p>

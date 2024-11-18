@@ -2711,6 +2711,10 @@ input:checked + .toggle-bg {
   border-radius: 0.375rem;
 }
 
+.hover\:border:hover {
+  border-width: 1px;
+}
+
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -2724,6 +2728,11 @@ input:checked + .toggle-bg {
 .hover\:border-primary-400:hover {
   --tw-border-opacity: 1;
   border-color: rgb(79 207 102 / var(--tw-border-opacity));
+}
+
+.hover\:border-groc-700:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(226 189 90 / var(--tw-border-opacity));
 }
 
 .hover\:\!bg-primary-800:hover {

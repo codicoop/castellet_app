@@ -13,7 +13,11 @@
   <style>
     @font-face {
       font-family: Montserrat;
-      src: url('{% static "fonts/Montserrat-Regular.ttf" %}') format('woff2');
+      src: url('{% static "fonts/Montserrat-VariableFont_wght.ttf" %}') format('woff2');
+    }
+    @font-face {
+      font-family: 'Source Sans Pro';
+      src: url('{% static "fonts/SourceSansPro-Regular.ttf" %}') format('woff2');
     }
   </style>
   {% if settings.web.AnalyticsSettings.embed %}
@@ -62,7 +66,7 @@
             <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
           </button>
           <!-- Nav -->
-          <ul id="nav_items" class="flex flex-col mt-16 font-medium
+          <ul id="nav_items" class="flex flex-col mt-16 font-semibold font-title
             lg:flex-row lg:space-x-8 lg:mt-0 lg:order-1">
             <li>
               <a href="{{ current_site.root_url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
@@ -80,7 +84,7 @@
             {% endfor %}
           </ul>
           <!-- Search mobile -->
-          <form class="flex items-center mt-4 lg:hidden">
+          <form class="flex items-center mt-4 font-body lg:hidden">
             <label for="search-mobile" class="sr-only">Search</label>
             <div class="relative w-full">
               <input type="search" id="search-mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-groc-500 focus:border-groc-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500" placeholder="Search for anything..." required>
@@ -91,7 +95,7 @@
                 </svg>
               </div>
             </div>
-            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-medium text-gray-900 bg-groc-500 rounded-full border border-groc-500
+            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-semibold text-gray-900 bg-groc-500 rounded-full border border-groc-500
               hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300">
               {% translate 'Search' %}
             </button>
@@ -99,7 +103,7 @@
           <!-- Botons -->
           <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
             <a href="0#"
-              class="items-center mr-2 px-3 py-2 text-white font-medium rounded-full
+              class="items-center mr-2 px-3 py-2 text-white font-semibold rounded-full
                 text-sm bg-gray-950
                 lg:mr-0 lg:gap-3 lg:bg-groc-500 lg:text-gray-900
                 hover:bg-gray-900 focus:outline-none
@@ -109,7 +113,7 @@
               <p>{% translate 'Join us' %}</p>
             </a>
             <a href="{% url 'registration:login' %}"
-              class="sitems-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+              class="sitems-center mr-2 px-3 py-2 text-gray-800 font-semibold rounded-full
                 text-sm border border-gray-900 lg:mr-0
                 hover:bg-groc-700 focus:outline-none
                 focus:ring-4 focus:ring-groc-700
@@ -139,7 +143,7 @@
           <!-- Barra search colapsada -->
           <button data-collapse-toggle="mobile-menu-search" aria-controls="mobile-menu-search"
             aria-expanded="false" type="button" id="search_btn"
-            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+            class="hidden items-center mr-2 px-3 py-2 text-gray-800 font-semibold rounded-full
               text-sm border border-gray-900
               lg:mr-0 lg:px-5 lg:inline-flex lg:order-3
               hover:bg-gray-50 focus:outline-none
@@ -189,7 +193,7 @@
     {% endif %}
     <div class="my-4 lg:absolute lg:top-10 lg:right-16">
       <a href="{% pageurl contact_page %}"
-        class="items-center mr-2 px-3 py-2 text-gray-800 font-medium rounded-full
+        class="items-center mr-2 px-3 py-2 text-gray-800 font-semibold rounded-full
           text-sm border border-gray-900 lg:mr-0
           hover:bg-groc-700 focus:outline-none
           focus:ring-4 focus:ring-groc-700
@@ -207,20 +211,34 @@
         md:grid-cols-3 lg:grid-cols-4 lg:px-20 py-8">
         <!-- Nav -->
         <div>
-          <h2 class="mb-3 text-lg font-semibold">{% translate 'Menu' %}</h2>
-          <ul class="text-sm font-normal">
+          <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Menu' %}</h2>
+          <ul class="text-sm font-normal font-body">
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
             <li class="mb-2">
               <a href="{{ menu_page.url }}" class="hover:underline">{{ menu_page.title }}</a>
             </li>
             {% endfor %}
+            {% if faq_page %}
+            <li class="mb-2">
+              <a href="{% pageurl faq_page %}" class="hover:underline">
+                <p>{% translate 'FAQs' %}.</p>
+              </a>
+            </li>
+            {% endif %}
+            {% if legal_page %}
+            <li class="mb-2">
+              <a href="{% pageurl legal_page %}" class="hover:underline">
+                <p>{% translate 'Legal warning' %}.</p>
+              </a>
+            </li>
+            {% endif %}
           </ul>
         </div>
         <!-- Contacte -->
         {% if settings.web.CustomizationSettings.phone or settings.web.CustomizationSettings.email %}
         <div>
-          <h2 class="mb-3 text-lg font-semibold">{% translate 'Contact' %}</h2>
-          <ul class="text-sm font-normal">
+          <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Contact' %}</h2>
+          <ul class="text-sm font-normal font-body">
             {% if settings.web.CustomizationSettings.phone %}
             <li class="mb-2">
               <a href="tel:{{ settings.web.CustomizationSettings.phone }}"
@@ -243,8 +261,8 @@
         <!-- Xxss i subvencions -->
         {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
         <div class="lg:col-start-3">
-          <h2 class="mb-3 text-lg font-semibold">{% translate 'Follow us in...' %}</h2>
-          <ul class="flex gap-4 items-center mt-3 lg:order-4 lg:mt-0 lg:ml-3">
+          <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Follow us in...' %}</h2>
+          <ul class="flex gap-4 items-center mt-3 font-body lg:order-4 lg:mt-0 lg:ml-3">
             {% if settings.web.SocialMediaIconsSettings.facebook %}
             <li class="w-5 h-5">
               <a href="{{ settings.web.SocialMediaIconsSettings.facebook }}">
@@ -294,11 +312,11 @@
         {% endif %}
         <!-- newsletter -->
         <div class="lg:col-start-4">
-          <h2 class="mb-3 text-lg font-semibold">{% translate 'Newsletter' %}</h2>
+          <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
           <p>No tinc clar si volem que el formulari de la newsletter aparegui aquí o si volem que porti a la seva pròpia pàgina</p>
         </div>
       </div>
-      <div class="flex flex-col bg-blau-700 w-full p-4
+      <div class="flex flex-col bg-blau-700 w-full p-4 font-body
         md:flex-row md:justify-between">
           <div class="text-xs text-white">
             <a href="https://castelletsostenible.cat/" class="hover:underline">Castellet Sostenible</a>
@@ -312,15 +330,6 @@
           </div>
       </div>
     </div>
-
-    {% if legal_page %}
-      <div class="footer__legal">
-        <a href="{% pageurl legal_page %}">
-          <p>{% translate 'Legal warning' %}.</p>
-        </a>
-      </div>
-   {% endif %}
-
   </footer>
 
   {% block extra_js %}
