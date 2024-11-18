@@ -1,11 +1,31 @@
 {% load wagtailcore_tags wagtailimages_tags i18n %}
 
-{% image news.header_image width-350 as bg_heading %}
-<div
-  {% if bg_heading %}
-    style="--bg-heading: url('{{ bg_heading.url }}')"
-  {% endif %}
+<div class="w-full max-w-80 h-80 grid grid-rows-2 grid-cols-1
+  rounded-xl shadow-card overflow-clip
+  lg:h-96 lg:max-w-96"
 >
-  {{ news.title }}
-  <a href="{% pageurl news %}">{% translate "Read more" %}</a>
+  <a href="{{ news.url }}">
+    <div class="w-full h-full bg-primary-500">
+      {% if news.image %}
+        <img src="{{ news.image.url }}" alt="{{ news.title }}"
+          class="h-full w-full object-cover"
+        >
+      {% endif %}
+    </div>
+  </a>
+  <div class="flex flex-col p-6 lg:py-8">
+    <p class="font-semibold text-lg mb-2 text-balance
+      lg:text-2xl">
+      {{ news.title }}
+    </p>
+    <a class="block w-fit" href="{{ news.url }}">
+      <div class="px-3 py-2 text-gray-900 font-medium rounded-full
+        text-xs border border-gray-900 w-fit
+        hover:bg-groc-100 focus:outline-none
+        focus:ring-4 focus:ring-groc-500">
+        <p>{% translate 'Read more' %}</p>
+      </div>
+    </a>
+  </div>
+
 </div>

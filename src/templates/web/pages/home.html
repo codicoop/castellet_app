@@ -9,10 +9,11 @@
 
   {% if page.can_display_video_block %}
     <section class="flex flex-col items-center justify-center mb-24 px-3">
-      <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:order-1 lg:text-4xl">
+      <h2 class="text-3xl font-semibold text-center mb-4 text-balance
+        lg:mb-8 lg:order-1 lg:text-4xl">
         {{ page.video_title }}
       </h2>
-      <div class="text-base text-center mb-4 max-w-96
+      <div class="text-base text-center mb-4 max-w-96 text-balance
         lg:order-2 lg:text-lg lg:max-w-md lg:text-left">
         {{ page.video_description|richtext }}
       </div>
@@ -62,11 +63,12 @@
       <div class="flex flex-col gap-9 max-w-80 px-40
         lg:grid lg:grid-cols-3 lg:max-w-none lg:gap-14">
         {% for document in page.documents %}
-          {% with "images/icons/"|add:document.value.icon|add:".svg" as icon_static %}
           <div class="flex flex-col items-center">
+            {% with "images/icons/"|add:document.value.icon|add:".svg" as icon_static %}
             <a href="{{ document.value.file.url }}">
               <img class="h-20 mb-5 lg:mb-9"
-                src="{% static icon_static %}" title="{{ document.value.icon }}"  alt="{{ document.value.icon }}"/>
+                src="{% static icon_static %}" title="{{ document.value.icon }}"  alt="{{ document.value.icon }}"
+              />
             </a>
             {% endwith %}
             <p class="text-center text-lg font-bold">{{ document.value.title }}</p>
@@ -79,14 +81,44 @@
   {% endif %}
 
   <!--  Últimes notícies-->
+  <!-- If news -->
   <section class="mx-auto max-w-screen-2xl">
-    <h2 class="text-3xl font-semibold text-center mb-4 lg:mb-8 lg:text-4xl">
-      {{ page.news_title }}
-    </h2>
-    {% for news in last_news %}
-      {% include "../components/news_summary.html" %}
-    {% endfor %}
+    <div class="flex justify-center md:justify-between px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8 lg:mb-12 lg:text-4xl">
+        {{ page.news_title }}
+      </h2>
+      <a href="">
+        <div class="hidden px-3 py-2 text-gray-900 font-medium rounded-full
+          text-xs border border-gray-900 w-fit
+          hover:bg-groc-100 focus:outline-none
+          focus:ring-4 focus:ring-groc-500
+          lg:block"
+        >
+          {% translate "See more" %}
+        </div>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center 
+      gap-7 mb-7 px-3">
+      {% for news in last_news %}
+        {% include "../components/news_summary.html" %}
+      {% endfor %}
+    </div>
+    <div class="flex items-center justify-center">
+      <a href="">
+        <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
+          text-sm border border-gray-900 w-fit
+          hover:bg-groc-100 focus:outline-none
+          focus:ring-4 focus:ring-groc-500
+          lg:hidden"
+        >
+          {% translate "See more" %}
+        </div>
+      </a>
+    </div>
   </section>
+  <!-- endif -->
 
 </main>
 

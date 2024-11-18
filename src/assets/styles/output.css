@@ -1373,6 +1373,14 @@ input:checked + .toggle-bg {
   margin-top: auto;
 }
 
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1781,6 +1789,10 @@ input:checked + .toggle-bg {
   gap: 2.25rem;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
@@ -1879,6 +1891,10 @@ input:checked + .toggle-bg {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 .rounded {
@@ -2067,7 +2083,7 @@ input:checked + .toggle-bg {
 
 .bg-blau-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 141 180 / var(--tw-bg-opacity));
+  background-color: rgb(2 175 222 / var(--tw-bg-opacity));
 }
 
 .bg-blau-500 {
@@ -3276,6 +3292,10 @@ input:checked + .toggle-bg {
     max-width: 28rem;
   }
 
+  .sm\:max-w-80 {
+    max-width: 20rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3374,6 +3394,10 @@ input:checked + .toggle-bg {
 
   .md\:max-w-screen-sm {
     max-width: 640px;
+  }
+
+  .md\:max-w-80 {
+    max-width: 20rem;
   }
 
   .md\:columns-2 {
@@ -3631,6 +3655,10 @@ input:checked + .toggle-bg {
 
   .lg\:mt-auto {
     margin-top: auto;
+  }
+
+  .lg\:mb-10 {
+    margin-bottom: 2.5rem;
   }
 
   .lg\:block {
