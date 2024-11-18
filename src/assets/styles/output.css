@@ -46,7 +46,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Montserrat, sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -1273,6 +1273,10 @@ input:checked + .toggle-bg {
   margin-bottom: 1.5rem;
 }
 
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -1371,14 +1375,6 @@ input:checked + .toggle-bg {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
-.mb-7 {
-  margin-bottom: 1.75rem;
 }
 
 .block {
@@ -1781,16 +1777,16 @@ input:checked + .toggle-bg {
   gap: 1.5rem;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .gap-8 {
   gap: 2rem;
 }
 
 .gap-9 {
   gap: 2.25rem;
-}
-
-.gap-7 {
-  gap: 1.75rem;
 }
 
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
@@ -2280,11 +2276,6 @@ input:checked + .toggle-bg {
   padding-right: 1rem;
 }
 
-.px-40 {
-  padding-left: 10rem;
-  padding-right: 10rem;
-}
-
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -2293,6 +2284,11 @@ input:checked + .toggle-bg {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
 }
 
 .py-1 {
@@ -2438,6 +2434,14 @@ input:checked + .toggle-bg {
 
 .text-right {
   text-align: right;
+}
+
+.font-body {
+  font-family: Source Sans Pro, sans-serif;
+}
+
+.font-title {
+  font-family: Montserrat, sans-serif;
 }
 
 .text-2xl {
@@ -3292,10 +3296,6 @@ input:checked + .toggle-bg {
     max-width: 28rem;
   }
 
-  .sm\:max-w-80 {
-    max-width: 20rem;
-  }
-
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3394,10 +3394,6 @@ input:checked + .toggle-bg {
 
   .md\:max-w-screen-sm {
     max-width: 640px;
-  }
-
-  .md\:max-w-80 {
-    max-width: 20rem;
   }
 
   .md\:columns-2 {
@@ -3657,10 +3653,6 @@ input:checked + .toggle-bg {
     margin-top: auto;
   }
 
-  .lg\:mb-10 {
-    margin-bottom: 2.5rem;
-  }
-
   .lg\:block {
     display: block;
   }
@@ -3855,6 +3847,11 @@ input:checked + .toggle-bg {
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .lg\:px-40 {
+    padding-left: 10rem;
+    padding-right: 10rem;
   }
 
   .lg\:px-44 {

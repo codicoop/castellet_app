@@ -48,8 +48,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      'body': ['Montserrat', 'sans-serif'],
-      'sans': ['Montserrat', 'sans-serif']
+      'title': ['Montserrat', 'sans-serif'],
+      'body': ['Source Sans Pro', 'sans-serif']
     },
   },
 }
