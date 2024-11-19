@@ -129,23 +129,32 @@
             </a>
           </div>
           <!-- Barra search oberta -->
-          <form id="search-form" class="hidden mr-3 w-full">
+          <div id="search-form" class="hidden mr-3 w-full">
             <div class="relative">
               <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
-              class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
-                border-gray-900 pr-10
-                hover:bg-gray-100 focus:ring-groc-700 focus:border-groc-700
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
-              _="on focusout toggle .lg:inline-flex on #search_btn
-                then toggle .hidden on #nav_btns
-                then toggle .hidden on #nav_items
-                then toggle .hidden on #search-form"
+                class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
+                  border-gray-900 pr-10
+                  hover:bg-gray-100 focus:ring-groc-700 focus:border-groc-700
+                  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
+                _="on focusout toggle .lg:inline-flex on #search_btn
+                  then toggle .hidden on #nav_btns
+                  then toggle .hidden on #nav_items
+                  then toggle .hidden on #search-form
+                "
               >
-              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              </div>
+              <a href="https://www.google.com/search?q=site:castellet-k42yk.ondigitalocean.app%20"
+                target="_blank" id="search_icon"
+                _="on click 
+                    set myValue to #search_bar.value
+                    set my.href to `https://www.google.com/search?q=site:castellet-k42yk.ondigitalocean.app%20${myValue}`
+                "
+              >
+                <div class="flex absolute inset-y-0 right-0 items-center pr-3">
+                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+              </a>
             </div>
-          </form>
+          </div>
           <!-- Barra search colapsada -->
           <button data-collapse-toggle="mobile-menu-search" aria-controls="mobile-menu-search"
             aria-expanded="false" type="button" id="search_btn"
@@ -300,26 +309,39 @@
           </ul>
           <h2 class="mb-3 mt-6 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
           <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
-          <div class="flex gap-3 flex-wrap">
+          <div class="flex gap-3 flex-wrap font-title">
             <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
             </div>
             <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
             </div>
             <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
             </div>
             <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Facebook link' %}">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
             </div>
           </div>
         </div>
         {% endif %}
         <!-- newsletter -->
-        <div class="lg:col-start-4">
+        <div class="mb-14 lg:col-start-4">
           <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
-          <p>No tinc clar si volem que el formulari de la newsletter aparegui aquí o si volem que porti a la seva pròpia pàgina</p>
+          <form action="post" class="flex flex-col gap-3 w-full">
+            <input type="text" placeholder="{% translate 'Nom' %}"
+              class="rounded-md border-0">
+            <input type="email" placeholder="{% translate 'Email' %}"
+              class="rounded-md border-0">
+            <button type="submit"
+              class="bg-blau-700 text-white font-body font-semibold 
+                text-sm rounded-md py-2">
+              {% translate 'Subscribe' %}
+            </button>
+            <span class="text-white text-xs text-center">
+              {% translate 'When subscribing you are accepting the privacy policy.' %}
+            </span>
+          </form>
         </div>
       </div>
       <div class="flex flex-col bg-blau-700 w-full p-4 font-body
