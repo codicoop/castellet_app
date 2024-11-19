@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<main class="mt-16 lg:mt-40">
+<main class="mt-16 lg:mt-20">
   <div class="mx-auto max-w-screen-2xl">
     <div class="flex flex-col mx-auto px-3 pb-16 max-w-2xl
       lg:px-20 lg:pb-28 lg:max-w-none">
@@ -32,7 +32,7 @@
       {% endif %}
       </section>
 
-      <div class="flex flex-wrap items-center justify-center gap-7 mb-10 px-3
+      <div class="flex flex-wrap items-center justify-center gap-7 mb-10
         md:grid md:grid-cols-2 lg:mb-8 lg:grid-cols-3">
         {% for news in news_list %}
           {% include "../components/news_summary.html" %}
