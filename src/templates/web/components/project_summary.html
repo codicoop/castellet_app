@@ -1,22 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags static i18n %}
-<div class="h-80 max-w-80 grid grid-rows-2 grid-cols-1
+<div class="w-full max-w-80 h-80 grid grid-rows-2 grid-cols-1
   rounded-xl shadow-card overflow-clip
-  lg:h-96 lg:max-w-96"
+  lg:h-96 lg:max-w-none"
 >
-  <div class="flex flex-col p-6 lg:py-8">
-    <a href="{% pageurl project %}">
-      <div class="w-full">
-        {% if project.image %}
-          <img src="{{ project.image.url }}" alt="{{ project.title }}"
-            class="h-full w-full object-cover"
-          >
-        {% else %}
-          <img src="{% static 'images/Placeholder_small.png' %}" alt=""
-            class="h-full w-full object-cover"
-          >
-        {% endif %}
-      </div>
-    </a>
+{% image project.header_image width-350 as bg_heading %}
+
+  <div class="flex flex-col p-[22px] lg:py-8">
     <!-- Títol projecte -->
     <p class="font-semibold text-lg mb-2 font-title
       lg:text-2xl">
@@ -34,15 +23,13 @@
       </a>
     </div>
   </div>
-  <div class="w-full">
-    {% if project.image %}
-      <img src="{{ project.image.url }}" alt="{{ project.title }}"
-        class="h-full w-full object-cover"
-      >
-    {% else %}
-      <img src="{% static 'images/Placeholder_small.png' %}" alt=""
-        class="h-full w-full object-cover"
-      >
-    {% endif %}
-  </div>
+  <a href="{% pageurl project %}">
+    <div class="w-full h-full bg-blau-500">
+      {% if project.header_image %}
+        <img src="{{ bg_heading.url }}" alt="{{ project.title }}"
+          class="h-full w-full object-cover"
+        >
+      {% endif %}
+    </div>
+  </a>
 </div>

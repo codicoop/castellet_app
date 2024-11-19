@@ -1182,6 +1182,10 @@ input:checked + .toggle-bg {
   grid-row-start: 2;
 }
 
+.row-start-1 {
+  grid-row-start: 1;
+}
+
 .float-right {
   float: right;
 }
@@ -4338,6 +4342,12 @@ input:checked + .toggle-bg {
   --tw-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.21);
   --tw-shadow-colored: 0 4px 18px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (min-width: 1024px) {
+  .lg\:\[\&\>img\]\:rounded-2xl>img {
+    border-radius: 1rem;
+  }
 }
 
 .\[\&\>input\]\:h-4>input {

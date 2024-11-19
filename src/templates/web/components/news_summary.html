@@ -2,12 +2,14 @@
 
 <div class="w-full max-w-80 h-80 grid grid-rows-2 grid-cols-1
   rounded-xl shadow-card overflow-clip
-  lg:max-w-none"
+  lg:h-96 lg:max-w-none"
 >
+{% image news.header_image width-350 as bg_heading %}
+
   <a href="{{ news.url }}">
     <div class="w-full h-full bg-primary-500">
-      {% if news.image %}
-        <img src="{{ news.image.url }}" alt="{{ news.title }}"
+      {% if news.header_image %}
+        <img src="{{ bg_heading.url }}" alt="{{ news.title }}"
           class="h-full w-full object-cover"
         >
       {% endif %}

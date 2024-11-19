@@ -13,14 +13,14 @@
 
       {% if active_projects %}
       <section class="mb-20 lg:mb-28">
-        <div class="mx-auto max-w-screen-sm">
+        <div class="mx-auto max-w-screen-sm mb-7 lg:mb-12">
           <h2 class="mx-auto mb-5 text-center text-2xl font-bold
             lg:text-4xl lg:mb-6">
             {{ page.projects_active_title }}
           </h2>
-          {{ page.projects_active_description|richtext }}
+          <p>{{ page.projects_active_description|richtext }}</p>
         </div>
-        <div class="grid gap-6 grid-cols-1 justify-items-center
+        <div class="grid gap-7 grid-cols-1 justify-items-center
           sm:grid-cols-2 xl:grid-cols-3">
 
           {% for project in active_projects %}
@@ -33,14 +33,14 @@
 
       {% if study_phase_projects %}
         <section class="mb-20 lg:mb-28">
-          <div class="mx-auto max-w-screen-sm">
+          <div class="mx-auto max-w-screen-sm mb-7 lg:mb-12">
             <h2 class="mx-auto mb-5 text-center text-2xl font-bold
               lg:text-4xl lg:mb-6">
               {{ page.projects_study_phase_title }}
             </h2>
             {{ page.projects_study_phase_description|richtext }}
           </div>
-          <div class="grid gap-6 grid-cols-1 justify-items-center
+          <div class="grid gap-7 grid-cols-1 justify-items-center
             sm:grid-cols-2 xl:grid-cols-3">
 
             {% for project in study_phase_projects %}
@@ -53,14 +53,14 @@
 
       {% if other_projects %}
         <section class="mb-20 lg:mb-28">
-          <div class="mx-auto max-w-screen-sm">
+          <div class="mx-auto max-w-screen-sm mb-7 lg:mb-12">
             <h2 class="mx-auto mb-5 text-center text-2xl font-bold
               lg:text-4xl lg:mb-6">
               {{ page.projects_other_title }}
             </h2>
             {{ page.projects_other_description|richtext }}
           </div>
-          <div class="grid gap-6 grid-cols-1 justify-items-center
+          <div class="grid gap-7 grid-cols-1 justify-items-center
             sm:grid-cols-2 xl:grid-cols-3">
 
             {% for project in other_projects %}
