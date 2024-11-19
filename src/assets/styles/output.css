@@ -1349,6 +1349,10 @@ input:checked + .toggle-bg {
   margin-inline-start: auto;
 }
 
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -1573,6 +1577,10 @@ input:checked + .toggle-bg {
 
 .max-w-60 {
   max-width: 15rem;
+}
+
+.max-w-72 {
+  max-width: 18rem;
 }
 
 .max-w-80 {
@@ -2270,6 +2278,10 @@ input:checked + .toggle-bg {
   padding: 1.5rem;
 }
 
+.p-\[22px\] {
+  padding: 22px;
+}
+
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -2549,6 +2561,10 @@ input:checked + .toggle-bg {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
 }
 
 .tracking-tight {
@@ -3623,6 +3639,10 @@ input:checked + .toggle-bg {
     margin-top: -2.25rem;
   }
 
+  .lg\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
+
   .lg\:mb-12 {
     margin-bottom: 3rem;
   }
@@ -3687,6 +3707,10 @@ input:checked + .toggle-bg {
     margin-top: 0px;
   }
 
+  .lg\:mt-28 {
+    margin-top: 7rem;
+  }
+
   .lg\:mt-36 {
     margin-top: 9rem;
   }
@@ -3697,6 +3721,10 @@ input:checked + .toggle-bg {
 
   .lg\:mt-auto {
     margin-top: auto;
+  }
+
+  .lg\:mt-40 {
+    margin-top: 10rem;
   }
 
   .lg\:block {
@@ -3930,6 +3958,11 @@ input:checked + .toggle-bg {
     padding-bottom: 2rem;
   }
 
+  .lg\:py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
   .lg\:pb-10 {
     padding-bottom: 2.5rem;
   }
@@ -4013,6 +4046,11 @@ input:checked + .toggle-bg {
   .lg\:hover\:bg-white:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+
+  .lg\:hover\:bg-groc-700:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 189 90 / var(--tw-bg-opacity));
   }
 
   .lg\:hover\:text-groc-700:hover {

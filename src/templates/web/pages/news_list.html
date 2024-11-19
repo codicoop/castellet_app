@@ -3,16 +3,16 @@
 
 {% block content %}
 
-<main>
+<main class="mt-16 lg:mt-40">
   <div class="mx-auto max-w-screen-2xl">
-    <div class="flex flex-col gap-8 mx-auto  px-3 pb-16 max-w-2xl
-      lg:px-44 lg:pb-28 lg:gap-16 lg:max-w-none">
-      <h1 class="font-semibold text-5xl mb-4 font-title 
+    <div class="flex flex-col mx-auto px-3 pb-16 max-w-2xl
+      lg:px-20 lg:pb-28 lg:max-w-none">
+      <h1 class="font-semibold text-5xl mb-6 font-title 
         lg:text-6xl lg:pr-5">
         {{ page.title }}
       </h1>
 
-      <section class="mb-9 lg:mb-28">
+      <section class="mb-9 lg:mb-10">
       {% if tags %}
         <div class="flex flex-wrap gap-2">
           {% for tag, active in tags.items %}
@@ -31,6 +31,13 @@
         </div>
       {% endif %}
       </section>
+
+      <div class="flex flex-wrap items-center justify-center gap-7 mb-10 px-3
+        md:grid md:grid-cols-2 lg:mb-8 lg:grid-cols-3">
+        {% for news in news_list %}
+          {% include "../components/news_summary.html" %}
+        {% endfor %}
+      </div>
 
       {# {% if news_list.paginator.num_pages > 1 %} #}
         <div class="w-full flex items-center justify-center">
