@@ -1,20 +1,11 @@
 {% load static i18n wagtailcore_tags %}
 
-<div class="relative w-full rounded-2xl shadow-card px-4 py-6 lg:p-6 lg:pr-28">
-	<img id="open_btn" src="{% static 'images/icons/icon_plus.svg' %}" alt="{% translate 'Icon to open an' %}"
-		class="absolute p-2 right-2 top-4 w-10 h-10 cursor-pointer lg:right-12"
-		_="on click remove .hidden from #close_btn
-			then add .hidden to #open_btn
-			then remove .hidden from #answer"
-	>
-	<img id="close_btn" src="{% static 'images/icons/icon_minus.svg' %}"
-		class="absolute p-2 right-2 top-4 w-10 h-10 cursor-pointer hidden lg:right-12"
-		_="on click remove .hidden from #open_btn
-			then add .hidden to #close_btn
-			then add .hidden to #answer"
-	>
-	<h2 class="text-lg font-semibold pr-7">{{ value.question }}</h2>
-	<div id="answer" class="hidden text-base pt-4 [&>p]:mb-4">
+<details class="relative w-full rounded-2xl shadow-card px-4 py-6 lg:p-6 lg:pr-28">
+	<summary class="leading-5 text-xl text-primary-500 font-bold cursor-pointer">
+		<h2 class="inline leading-5 font-title text-lg font-semibold pr-7 text-gray-900">{{ value.question }}</h2>
+	</summary>
+	<div class="text-base pt-4 [&>p]:mb-4 
+		[&>a]:underline [&>a]:text-primary-500">
 		{{ value.answer|richtext }}
 	</div>
-</div>
+</details>
