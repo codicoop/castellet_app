@@ -59,8 +59,10 @@
             <h3 class="font-semibold text-2xl mb-2 font-title">
               {{ page.overlay_title }}
             </h3>
-            <p class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
-              font-body text-balance">{{ page.overlay_body|richtext }}</p>
+            <span class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
+              font-body text-balance">
+              {{ page.overlay_body|richtext }}
+            </span>
             {% if page.overlay_button_page and page.overlay_button_text %}
             <div class="my-4 float-right lg:float-none lg:mt-auto">
               <a href="{% pageurl page.overlay_button_page %}"

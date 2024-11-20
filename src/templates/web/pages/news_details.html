@@ -52,23 +52,6 @@
       [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-4 lg:[&>h3]:text-2xl
       [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-3 lg:[&>h4]:text-xl
       lg:px-40">
-      {# Blocs que inclou aquest StreamField: #}
-      {# - Image. No té un template propi. L'HTML que genera és com aquest: #}
-      {# <div class="block-image"> #}
-      {#   <img alt="Logo" height="300" src="https://s3.eu-central-1.wasabisys.com/codi-cooperatiu-web-develop/media/web/images/logo.original.png" width="721"> #}
-      {# </div> #}
-      {# - Paràgraf de text. No té un template propi. L'HTML que genera és com aquest: #}
-      {# <div class="block-text"> #}
-      {#   <p data-block-key="codi_aleatori">Cos de la notícia.</p> #}
-      {# </div> #}
-      {# Cal tenir en compte que el <p> és el propi RichText, i que pot contenir #}
-      {# h2, h3, negretes, etc. Caldria que defineixis quines coses vols que es #}
-      {# puguin posar de format i ho configuraré per limitar-ho. #}
-      {# #}
-      {# Si veus que maquetar-ho sense un template propi (per tant, els estils #}
-      {# els has de definir amb les classes block-image i block-text ) és massa #}
-      {# complicat posa'm una tasca explicant quin markup vols que tinguin i #}
-      {# miro de fer que el back el generi així. #}
       {{ page.content }}
     </section>
 

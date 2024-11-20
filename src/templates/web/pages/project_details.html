@@ -68,7 +68,15 @@
         {% endif %}
 
         <div class="lg:col-start-3 lg:col-span-3">
-          <div class="text-base {&>p:mb-4}">
+          <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
+            [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8 [&>img]:shadow-card
+            [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1
+            [&>ol]:mb-4 [&>ol]:max-w-xl
+            [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
+            [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
+            [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl
+            [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl"
+          >
             {{ page.description|richtext }}
           </div>
         </div>

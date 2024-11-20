@@ -5,9 +5,14 @@
     hx-target="this"
     hx-swap="outerHTML"
   >
-    <div class="flex flex-col w-full max-w-2xl px-4 py-8 shadow-card rounded-xl lg:rounded-3xl">
-      <h2 class="mb-2 font-semibold text-xl">{% translate "Send us your query" %}</h2>
-      <p class="mb-14 text-base">{% translate "Fill up this form and we will answer back as soon as possible." %}</p>
+    <div class="flex flex-col w-full max-w-2xl px-4 py-8 shadow-card rounded-xl 
+      lg:rounded-3xl lg:p-8">
+      <h2 class="mb-2 font-semibold text-xl font-title lg:text-2xl">
+      {% translate "Send us your query" %}
+    </h2>
+      <p class="mb-14 text-base text-balance lg:mb-8">
+        {% translate "Fill up this form and we will answer back as soon as possible." %}
+      </p>
       {% csrf_token %}
       <div class="flex flex-col gap-1 mb-3
         [&>input]:border [&>input]:border-gray-300 [&>input]:rounded-md 
@@ -78,7 +83,7 @@
   
       <button type="submit"
         class="self-end px-3 py-2 text-gray-900 font-semibold rounded-full
-        text-sm bg-groc-500
+        text-sm bg-groc-500 font-body lg:text-base lg:px-6
         hover:bg-groc-700 focus:outline-none
         focus:ring-4 focus:ring-groc-900
         dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
@@ -89,7 +94,17 @@
       </button>
   
       {% if form.is_valid %}
-        <div>{{ page.success_msg|richtext }}</div>
+        <div class="text-base [&>p]:mb-4 lg:[&>p]:columns-2
+          [&>img]:w-full [&>img]:rounded-lg [&>img]:mb-8 [&>img]:shadow-card
+          [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1
+          [&>ol]:mb-4 [&>ol]:max-w-xl
+          [&>ul>li]:list-disc [&>ul>li]:ml-12 [&>ul>li]:pl-1 [&>ul]:mb-4 [&>ul]:max-w-xl
+          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-2 lg:[&>h2]:text-3xl
+          [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-2 lg:[&>h3]:text-2xl
+          [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-2 lg:[&>h4]:text-xl"
+        >
+          {{ page.success_msg|richtext }}
+        </div>
       {% endif %}
       {% if messages %}
         <div id="messages" class="messages">

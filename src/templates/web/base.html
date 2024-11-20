@@ -69,15 +69,19 @@
           <ul id="nav_items" class="flex flex-col mt-16 font-semibold font-title
             lg:flex-row lg:space-x-8 lg:mt-0 lg:order-1">
             <li>
-              <a href="{{ current_site.root_url }}" class="block py-2 pr-4 pl-3 mb-2 text-groc-700 dark:hover:bg-gray-700 hover:bg-gray-50 rounded lg:text-groc-700 lg:p-0 dark:text-white" aria-current="page">
+              <a href="/{{ language_code }}/" aria-current="page"
+                class="block py-2 pr-4 pl-3 mb-2 rounded text-gray-700
+                  hover:bg-gray-50 hover:rounded-md
+                  lg:hover:bg-white lg:hover:text-groc-700 lg:p-0 lg:mb-0">
                 {% translate "Home" %}
               </a>
             </li>
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
             <li>
-              <a href="{{ menu_page.url }}" class="block py-2 pr-4 pl-3 mb-2 text-gray-700 active:text-groc-700
-              hover:bg-gray-50 hover:rounded-md
-              lg:hover:bg-white lg:hover:text-groc-700 lg:p-0">
+              <a href="{{ menu_page.url }}" 
+                class="block py-2 pr-4 pl-3 mb-2 rounded text-gray-700
+                  hover:bg-gray-50 hover:rounded-md
+                  lg:hover:bg-white lg:hover:text-groc-700 lg:p-0 lg:mb-0">
                 {{ menu_page.title }}
               </a>
             </li>

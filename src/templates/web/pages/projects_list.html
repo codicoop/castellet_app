@@ -18,7 +18,9 @@
             lg:text-4xl lg:mb-6">
             {{ page.projects_active_title }}
           </h2>
-          <p>{{ page.projects_active_description|richtext }}</p>
+          <span class="mx-auto mb-6 text-base text-center lg:mb-12">
+            {{ page.projects_active_description|richtext }}
+          </span>
         </div>
         <div class="grid gap-7 grid-cols-1 justify-items-center
           sm:grid-cols-2 xl:grid-cols-3">
@@ -38,7 +40,9 @@
               lg:text-4xl lg:mb-6">
               {{ page.projects_study_phase_title }}
             </h2>
-            {{ page.projects_study_phase_description|richtext }}
+            <span class="mx-auto mb-6 text-base text-center lg:mb-12">
+              {{ page.projects_study_phase_description|richtext }}
+            </span>
           </div>
           <div class="grid gap-7 grid-cols-1 justify-items-center
             sm:grid-cols-2 xl:grid-cols-3">
@@ -58,7 +62,9 @@
               lg:text-4xl lg:mb-6">
               {{ page.projects_other_title }}
             </h2>
-            {{ page.projects_other_description|richtext }}
+            <span class="mx-auto mb-6 text-base text-center lg:mb-12">
+              {{ page.projects_other_description|richtext }}
+            </span>
           </div>
           <div class="grid gap-7 grid-cols-1 justify-items-center
             sm:grid-cols-2 xl:grid-cols-3">
@@ -73,7 +79,6 @@
 
     </div>
   </div>
-
 </main>
 
 {% endblock %}
