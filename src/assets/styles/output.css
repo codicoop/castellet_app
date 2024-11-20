@@ -3416,6 +3416,18 @@ input:checked + .toggle-bg {
 }
 
 @media (min-width: 768px) {
+  .md\:-bottom-8 {
+    bottom: -2rem;
+  }
+
+  .md\:-right-8 {
+    right: -2rem;
+  }
+
+  .md\:-right-6 {
+    right: -1.5rem;
+  }
+
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -3468,6 +3480,10 @@ input:checked + .toggle-bg {
 
   .md\:h-60 {
     height: 15rem;
+  }
+
+  .md\:w-16 {
+    width: 4rem;
   }
 
   .md\:max-w-screen-sm {
@@ -3566,6 +3582,14 @@ input:checked + .toggle-bg {
 
   .lg\:top-10 {
     top: 2.5rem;
+  }
+
+  .lg\:-bottom-14 {
+    bottom: -3.5rem;
+  }
+
+  .lg\:-right-14 {
+    right: -3.5rem;
   }
 
   .lg\:order-1 {
@@ -4215,6 +4239,30 @@ input:checked + .toggle-bg {
   .lg\:\[\&\>h4\]\:text-xl>h4 {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:\[\&\>iframe\]\:h-\[225px\]>iframe {
+    height: 225px;
+  }
+
+  .md\:\[\&\>iframe\]\:h-\[275px\]>iframe {
+    height: 275px;
+  }
+
+  .md\:\[\&\>iframe\]\:w-\[500px\]>iframe {
+    width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:\[\&\>iframe\]\:h-\[425px\]>iframe {
+    height: 425px;
+  }
+
+  .lg\:\[\&\>iframe\]\:w-\[700px\]>iframe {
+    width: 700px;
   }
 }
 

@@ -19,10 +19,15 @@
       </div>
       <div class="relative flex items-center justify-center shadow-video p-1
         rounded-2xl w-fit mb-4 lg:order-4 lg:min-w-32">
-        <div class="w-fit rounded-2xl overflow-clip">
+        <div class="w-fit rounded-2xl overflow-clip
+          md:[&>iframe]:w-[500px] md:[&>iframe]:h-[275px]
+          lg:[&>iframe]:w-[700px] lg:[&>iframe]:h-[425px]
+        ">
           {% embed page.video_youtube_url max_width=900 %}
         </div>
-        <img class="absolute -bottom-6 -right-4 h-auto lg:w-32"
+        <img class="absolute -bottom-6 -right-4 h-auto
+          md:w-16 md:-bottom-8 md:-right-6
+          lg:w-32 lg:-bottom-14 lg:-right-14"
           src="{% static 'images/leaf.svg' %}" alt="{% translate 'Leaf decoration' %}">
       </div>
       <div class="my-4 lg:order-3 lg:mt-0 lg:mb-8">
