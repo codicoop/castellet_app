@@ -3490,6 +3490,10 @@ input:checked + .toggle-bg {
     max-width: 640px;
   }
 
+  .md\:max-w-none {
+    max-width: none;
+  }
+
   .md\:columns-2 {
     -moz-columns: 2;
          columns: 2;

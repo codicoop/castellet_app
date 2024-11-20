@@ -44,17 +44,17 @@
     </section>
   {% endif %}
 
-  {% if projects %}
+  <!-- {# {% if page.projects %} #} -->
     <section class="mx-auto max-w-screen-2xl">
       <h2 class="text-3xl font-semibold text-center mb-4
         font-title lg:mb-8 lg:text-4xl">
         {{ page.projects_title }}
       </h2>
-      {% for project in projects %}
+      {% for project in page.projects %}
         {% include "../components/project_summary.html" %}
       {% endfor %}
     </section>
-  {% endif %}
+    <!-- {# {% endif %} #} -->
 
   {% if page.documents %}
   <section class="mx-auto max-w-screen-2xl">
@@ -87,8 +87,7 @@
   </section>
   {% endif %}
 
-  <!--  Últimes notícies-->
-  <!-- If news -->
+  <!-- {# {% if page.news %} #} -->
   <section class="mx-auto max-w-screen-2xl">
     <div class="flex justify-center md:justify-between px-4 lg:px-20">
       <h2 class="text-3xl font-semibold text-center mb-8 font-title
@@ -107,8 +106,8 @@
       </a>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center 
-      gap-7 mb-7 px-3 lg:mb-24">
+    <div class="flex flex-wrap items-center justify-center gap-7 mb-7 px-3
+    md:grid md:grid-cols-2 lg:grid-cols-3  lg:mb-24">
       {% for news in last_news %}
         {% include "../components/news_summary.html" %}
       {% endfor %}
@@ -126,7 +125,7 @@
       </a>
     </div>
   </section>
-  <!-- endif -->
+  <!-- {# {% endif %} #} -->
 
 </main>
 
