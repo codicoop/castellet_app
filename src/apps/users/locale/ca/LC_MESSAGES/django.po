@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 11:25+0200\n"
-"PO-Revision-Date: 2024-10-16 11:30+0200\n"
+"POT-Creation-Date: 2024-11-20 15:01+0100\n"
+"PO-Revision-Date: 2024-11-20 15:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -66,11 +66,11 @@ msgstr "Nom del càrrec"
 
 #: apps/users/models.py:48 apps/users/models.py:85
 msgid "charge"
-msgstr "Càrrec"
+msgstr "càrrec"
 
 #: apps/users/models.py:49
 msgid "charges"
-msgstr "Càrrecs"
+msgstr "càrrecs"
 
 #: apps/users/models.py:56 apps/users/models.py:125 apps/users/services.py:54
 msgid "name"
@@ -90,7 +90,7 @@ msgstr "Telèfon de contacte"
 
 #: apps/users/models.py:70 apps/users/services.py:58
 msgid "Address"
-msgstr "Adreça"
+msgstr "Direcció postal"
 
 #: apps/users/models.py:72 apps/users/services.py:59
 msgid "National Identity Document"
@@ -138,7 +138,7 @@ msgstr "usuaris"
 
 #: apps/users/services.py:55
 msgid "surnames "
-msgstr "cognoms"
+msgstr "cognoms "
 
 #: apps/users/services.py:61
 msgid "Charge"
@@ -150,7 +150,7 @@ msgstr "Exporta la selección a un arxiu CSV"
 
 #: apps/users/urls.py:24
 msgid "sign-in/"
-msgstr "iniciar_sessió/"
+msgstr "iniciar_sessio/"
 
 #: apps/users/urls.py:26
 msgid "log-out/"
@@ -202,7 +202,7 @@ msgstr "verificacio_correu_electronic_completada/"
 
 #: apps/users/urls.py:88
 msgid "privacy-policy/"
-msgstr "política_privacitat/"
+msgstr "politica_privacitat/"
 
 #: apps/users/views.py:99 apps/users/views.py:200
 msgid "Done!"

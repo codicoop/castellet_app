@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 11:25+0200\n"
-"PO-Revision-Date: 2024-10-10 15:42+0200\n"
+"POT-Creation-Date: 2024-11-20 15:01+0100\n"
+"PO-Revision-Date: 2024-11-20 15:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -35,17 +35,17 @@ msgstr "actualitzat el"
 msgid "Catalan"
 msgstr "Català"
 
-#: project/settings.py:376
+#: project/settings.py:406
 msgid "Project name"
 msgstr "Nom del projecte"
 
-#: project/settings.py:379
+#: project/settings.py:409
 msgid "Email address for user's comunications"
 msgstr ""
 "Correu electrònic per tal que els usuaris de l'app es puguin comunicar amb "
 "vosaltres"
 
-#: project/settings.py:383
+#: project/settings.py:413
 msgid "Phone number for user's comunications"
 msgstr ""
 "Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
@@ -58,15 +58,19 @@ msgstr "Tornar enrere"
 msgid "Enrere"
 msgstr "Enrere"
 
-#: project/urls.py:30
+#: project/urls.py:32
 msgid "registration/"
 msgstr "registre/"
 
-#: project/urls.py:32
+#: project/urls.py:33
+msgid "partners/"
+msgstr "socis/"
+
+#: project/urls.py:34
 msgid "newsletter/"
 msgstr "butlleti/"
 
-#: project/urls.py:34
+#: project/urls.py:36
 msgid "newsletter/success/"
 msgstr "butlleti/alta/"
 
