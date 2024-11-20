@@ -84,7 +84,7 @@
             {% endfor %}
           </ul>
           <!-- Search mobile -->
-          <form class="flex items-center mt-4 font-body lg:hidden">
+          <div class="flex items-center mt-4 font-body lg:hidden">
             <label for="search-mobile" class="sr-only">Search</label>
             <div class="relative w-full">
               <input type="search" id="search-mobile"
@@ -101,11 +101,16 @@
                 </svg>
               </div>
             </div>
-            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-semibold text-gray-900 bg-groc-500 rounded-full border border-groc-500
-              hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300">
+            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-semibold border border-gray-900
+              text-gray-900 bg-groc-500 rounded-full
+              hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300"
+              _="on click
+                go to url `https://www.google.com/search?q=site:castelletsostenible.cat/%20${#search-mobile.value}`
+              "
+            >
               {% translate 'Search' %}
             </button>
-          </form>
+          </div>
           <!-- Botons -->
           <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
             <a href="0#"
@@ -130,29 +135,28 @@
           </div>
           <!-- Barra search oberta -->
           <div id="search-form" class="hidden mr-3 w-full">
-            <div class="relative">
+            <div class="relative"
+              _="on mouseleave toggle .lg:inline-flex on #search_btn
+                then toggle .hidden on #nav_btns
+                then toggle .hidden on #nav_items
+                then toggle .hidden on #search-form
+              end
+            "
+            >
               <input type="search" id="search-bar" placeholder="{% translate 'Search...' %}" required
                 class="block py-2 px-4 w-96 text-sm text-gray-900 border rounded-full
                   border-gray-900 pr-10
                   hover:bg-gray-100 focus:ring-groc-700 focus:border-groc-700
                   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
-                _="on focusout toggle .lg:inline-flex on #search_btn
-                  then toggle .hidden on #nav_btns
-                  then toggle .hidden on #nav_items
-                  then toggle .hidden on #search-form
+              />
+              <div class="flex absolute inset-y-0 -right-[2px] items-center px-3
+                cursor-pointer rounded-full hover:bg-groc-500"
+                _="on click
+                  go to url `https://www.google.com/search?q=site:castellet-k42yk.ondigitalocean.app%20${#search-bar.value}`
                 "
               >
-              <a href="https://www.google.com/search?q=site:castellet-k42yk.ondigitalocean.app%20"
-                target="_blank" id="search_icon"
-                _="on click 
-                    set myValue to #search_bar.value
-                    set my.href to `https://www.google.com/search?q=site:castellet-k42yk.ondigitalocean.app%20${myValue}`
-                "
-              >
-                <div class="flex absolute inset-y-0 right-0 items-center pr-3">
-                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-              </a>
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
             </div>
           </div>
           <!-- Barra search colapsada -->
@@ -164,7 +168,7 @@
               hover:bg-gray-50 focus:outline-none
               focus:ring-4 focus:ring-gray-300
               dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-            _="on click toggle .hidden on #search-form
+            _="on mouseenter toggle .hidden on #search-form
               then toggle .hidden on #nav_btns
               then toggle .hidden on #nav_items
               then toggle .lg:inline-flex on me"
