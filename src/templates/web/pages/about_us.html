@@ -11,7 +11,10 @@
       lg:px-44 lg:pb-28 lg:gap-16 lg:max-w-none
       [&>img]:w-full"
     >
-      {{ page.content }}
+      {# Explicitly looping blocks to skip the default div that Wagtail includes in each block: https://docs.wagtail.org/en/stable/topics/streamfield.html#template-rendering #}
+      {% for block in page.content %}
+        {% include_block block %}
+      {% endfor %}
     </div>
   </section>
 
