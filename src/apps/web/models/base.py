@@ -48,10 +48,16 @@ class BasePage(Page):
             .objects
             .first()
         )
+        faq_page = (
+            apps.get_model("web", "FaqPage")
+            .objects
+            .first()
+        )
         ctxt.update(
             {
                 "legal_page": legal_page,
                 "contact_page": contact_page,
+                "faq_page": faq_page,
             },
         )
         return ctxt

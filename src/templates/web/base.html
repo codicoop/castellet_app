@@ -43,7 +43,7 @@
             class="inline-flex items-center p-2 text-sm text-gray-900 rounded-lg border-2 border-transparent
               lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
               dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            _="on click 
+            _="on click
               remove .hidden from #mobile_menu
               then add .overflow-hidden .h-full to #body
             "
@@ -84,7 +84,7 @@
             </li>
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
             <li>
-              <a href="{{ menu_page.url }}" 
+              <a href="{{ menu_page.url }}"
                 class="block py-2 pr-4 pl-3 mb-2 rounded text-gray-700
                   hover:bg-gray-50 hover:rounded-md
                   lg:hover:bg-white lg:hover:text-groc-700 lg:p-0 lg:mb-0">
@@ -102,8 +102,9 @@
                   block w-full p-2.5 pr-10 cursor-pointer hover:bg-gray-100
                   focus:ring-groc-500 focus:border-groc-500
                   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                  dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500" 
-                placeholder="Search for anything..." required>
+                  dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
+                  placeholder="Search for anything..." required
+                >
               <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                 <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
@@ -125,7 +126,7 @@
           <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
             <a href="0#"
               class="items-center mr-2 px-3 py-2 text-white font-semibold rounded-full
-                text-sm bg-gray-950 hover:bg-gray-900 
+                text-sm bg-gray-950 hover:bg-gray-900
                 lg:mr-0 lg:gap-3 lg:bg-groc-500 lg:text-gray-900
                 lg:hover:bg-groc-700
                 focus:ring-4 focus:ring-groc-700 focus:outline-none
@@ -250,14 +251,14 @@
             {% if faq_page %}
             <li class="mb-2">
               <a href="{% pageurl faq_page %}" class="hover:underline">
-                <p>{% translate 'FAQs' %}.</p>
+                <p>{{ faq_page.title }}</p>
               </a>
             </li>
             {% endif %}
             {% if legal_page %}
             <li class="mb-2">
               <a href="{% pageurl legal_page %}" class="hover:underline">
-                <p>{% translate 'Legal warning' %}.</p>
+                <p>{{ legal_page.title }}</p>
               </a>
             </li>
             {% endif %}
@@ -348,7 +349,7 @@
             <input type="email" placeholder="{% translate 'Email' %}"
               class="rounded-md border-0">
             <button type="submit"
-              class="bg-blau-700 text-white font-body font-semibold 
+              class="bg-blau-700 text-white font-body font-semibold
                 text-sm rounded-md py-2">
               {% translate 'Subscribe' %}
             </button>
