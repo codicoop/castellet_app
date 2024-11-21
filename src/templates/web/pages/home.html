@@ -44,22 +44,22 @@
     </section>
   {% endif %}
 
-  <!-- {# {% if page.projects %} #} -->
+  {% if projects %}
     <section class="mx-auto max-w-screen-2xl">
       <h2 class="text-3xl font-semibold text-center mb-4
         font-title lg:mb-8 lg:text-4xl">
         {{ page.projects_title }}
       </h2>
-      {% for project in page.projects %}
+      {% for project in projects %}
         {% include "../components/project_summary.html" %}
       {% endfor %}
     </section>
-    <!-- {# {% endif %} #} -->
+    {% endif %}
 
   {% if page.documents %}
   <section class="mx-auto max-w-screen-2xl">
     <div class="flex flex-col items-center justify-center mb-24 px-3">
-      <h2 class="text-3xl font-semibold text-center mb-4 
+      <h2 class="text-3xl font-semibold text-center mb-4
         font-title lg:mb-8 lg:text-4xl">
         {{ page.documents_title }}
       </h2>
@@ -87,7 +87,7 @@
   </section>
   {% endif %}
 
-  <!-- {# {% if page.news %} #} -->
+  {% if last_news %}
   <section class="mx-auto max-w-screen-2xl">
     <div class="flex justify-center md:justify-between px-4 lg:px-20">
       <h2 class="text-3xl font-semibold text-center mb-8 font-title
