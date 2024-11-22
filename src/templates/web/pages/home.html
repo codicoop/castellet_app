@@ -15,7 +15,7 @@
       </h2>
       <div class="text-base text-center mb-4 max-w-96 text-balance
         font-body lg:order-2 lg:text-lg lg:max-w-md lg:text-left">
-        {{ page.video_description }}
+        {{ page.video_description|richtext }}
       </div>
       <div class="relative flex items-center justify-center shadow-video p-1
         rounded-2xl w-fit mb-4 lg:order-4 lg:min-w-32">
@@ -70,7 +70,7 @@
       </h2>
       <div class="text-base text-center mb-12 max-w-96 font-body text-balance
         lg:text-lg lg:max-w-md lg:text-left lg:mb-24">
-        {{ page.documents_description }}
+        {{ page.documents_description|richtext }}
       </div>
       <div class="flex flex-wrap justify-center items-center gap-7 mb-7
         md:grid md:grid-cols-2 lg:grid-cols-3 lg:mb-24">

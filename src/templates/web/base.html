@@ -37,8 +37,8 @@
             {% image settings.web.CustomizationSettings.logo width-150 %}
           </div>
         </a>
+        <!-- Botó burguer -->
         <div class="flex items-center lg:hidden">
-          <!-- Botó burguer -->
           <button type="button" id="burguer_icon"
             class="inline-flex items-center p-2 text-sm text-gray-900 rounded-lg border-2 border-transparent
               lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
@@ -96,8 +96,8 @@
           <!-- Search mobile -->
           <div class="flex items-center mt-4 font-body lg:hidden">
             <label for="search-mobile" class="sr-only">{% translate "Search" %}</label>
-            <form action="https://www.google.com/search" method="get">
-              <div class="relative w-full">
+            <form class="relative w-full" action="https://www.google.com/search" method="get">
+              <div >
                 <input type="search" id="search-mobile"
                   name="q"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full
