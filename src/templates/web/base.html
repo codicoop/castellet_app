@@ -241,10 +241,10 @@
 
   <footer class="bg-blau-500 text-white mt-auto dark:bg-gray-800">
     <div class="mx-auto max-w-screen-2xl">
-      <div class="grid grid-cols-1 gap-6 px-4 pb-5 pt-8
-        md:grid-cols-3 lg:grid-cols-4 lg:px-20 py-8">
+      <div class="flex flex-col gap-6 px-4 pb-5 pt-8
+          md:grid md:grid-cols-3 lg:grid-cols-4 lg:px-20 py-8">
         <!-- Nav -->
-        <div>
+        <div class="md:row-span-2 lg:row-span-1">
           <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Menu' %}</h2>
           <ul class="text-sm font-normal font-body">
             {% for menu_page in page.get_site.root_page.get_children.live.in_menu %}
@@ -292,9 +292,9 @@
           </ul>
         </div>
         {% endif %}
-        <!-- Xxss i subvencions -->
+        <!-- Xxss -->
         {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
-        <div class="lg:col-start-3">
+        <div class="md:col-start-2 lg:col-start-3">
           <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Follow us in...' %}</h2>
           <ul class="flex gap-4 items-center mt-3 font-body lg:order-4 lg:mt-0 lg:ml-3">
             {% if settings.web.SocialMediaIconsSettings.facebook %}
@@ -326,26 +326,10 @@
             </li>
             {% endif %}
           </ul>
-          <h2 class="mb-3 mt-6 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
-          <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
-          <div class="flex gap-3 flex-wrap font-title">
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-          </div>
         </div>
         {% endif %}
         <!-- newsletter -->
-        <div class="mb-14 lg:col-start-4">
+        <div class="md:row-span-2 md:col-start-3 md:row-start-1 lg:row-span-1 lg:col-start-4">
           <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
           <form action="post" class="flex flex-col gap-3 w-full">
             <input type="text" placeholder="{% translate 'Nom' %}"
@@ -361,6 +345,25 @@
               {% translate 'When subscribing you are accepting the privacy policy.' %}
             </span>
           </form>
+        </div>
+        <!-- Subvencions -->
+        <div class="md:col-span-3 lg:col-span-4">
+          <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
+          <h2 class="mb-3 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
+          <div class="flex gap-3 flex-wrap font-title">
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
+            </div>
+            <div class="max-w-40 lg:max-w-52">
+              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
+            </div>
+          </div>
         </div>
       </div>
       <div class="flex flex-col bg-blau-700 w-full p-4 font-body
