@@ -139,6 +139,18 @@ class HomePage(BaseHeaderOverlayPage):
             ],
             heading=_("Last news section"),
         ),
+        MultiFieldPanel(
+            children=[
+                HelpPanel(
+                    # Translators: Snippets in catalan is "Fragments"
+                    content=_(
+                        "To manage the logos for the 'With the support of...' footer "
+                        "section, go to the Snippets section of the main menu."
+                    ),
+                ),
+            ],
+            heading=_("Footer logos"),
+        ),
     ]
 
     template = "web/pages/home.html"
