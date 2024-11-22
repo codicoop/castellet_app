@@ -2467,6 +2467,10 @@ input:checked + .toggle-bg {
   padding-top: 2rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -3562,6 +3566,10 @@ input:checked + .toggle-bg {
     padding: 1.5rem;
   }
 
+  .md\:pt-8 {
+    padding-top: 2rem;
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -4073,6 +4081,10 @@ input:checked + .toggle-bg {
     padding-top: 4rem;
   }
 
+  .lg\:pb-14 {
+    padding-bottom: 3.5rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
@@ -4173,6 +4185,19 @@ input:checked + .toggle-bg {
   text-align: right;
 }
 
+.\[\&\>a\]\:font-bold>a {
+  font-weight: 700;
+}
+
+.\[\&\>a\]\:text-primary-700>a {
+  --tw-text-opacity: 1;
+  color: rgb(35 128 52 / var(--tw-text-opacity));
+}
+
+.\[\&\>a\]\:underline>a {
+  text-decoration-line: underline;
+}
+
 .\[\&\>h2\]\:mb-2>h2 {
   margin-bottom: 0.5rem;
 }
@@ -4263,6 +4288,38 @@ input:checked + .toggle-bg {
   .lg\:\[\&\>iframe\]\:w-\[700px\]>iframe {
     width: 700px;
   }
+}
+
+.\[\&\>img\.full-width\]\:w-3\/4>img.full-width {
+  width: 75%;
+}
+
+.\[\&\>img\.left\]\:ml-auto>img.left {
+  margin-left: auto;
+}
+
+.\[\&\>img\.left\]\:mr-0>img.left {
+  margin-right: 0px;
+}
+
+.\[\&\>img\.left\]\:ml-0>img.left {
+  margin-left: 0px;
+}
+
+.\[\&\>img\.left\]\:w-1\/2>img.left {
+  width: 50%;
+}
+
+.\[\&\>img\.left\]\:border-4>img.left {
+  border-width: 4px;
+}
+
+.\[\&\>img\.right\]\:mr-0>img.right {
+  margin-right: 0px;
+}
+
+.\[\&\>img\.right\]\:w-1\/2>img.right {
+  width: 50%;
 }
 
 .\[\&\>img\]\:my-10>img {
@@ -4416,6 +4473,11 @@ input:checked + .toggle-bg {
   margin-bottom: 1rem;
 }
 
+.\[\&\>p\]\:text-blau-500>p {
+  --tw-text-opacity: 1;
+  color: rgb(2 141 180 / var(--tw-text-opacity));
+}
+
 @media (min-width: 1024px) {
   .lg\:\[\&\>p\]\:columns-2>p {
     -moz-columns: 2;
@@ -4426,6 +4488,15 @@ input:checked + .toggle-bg {
 .\[\&\>\.block-text\]\:\[\&\>p\]\:bg-green-400>p>.block-text {
   --tw-bg-opacity: 1;
   background-color: rgb(49 196 141 / var(--tw-bg-opacity));
+}
+
+.\[\&\>p\]\:\[\&\>a\]\:font-bold>a>p {
+  font-weight: 700;
+}
+
+.\[\&\>p\]\:\[\&\>a\]\:text-groc-500>a>p {
+  --tw-text-opacity: 1;
+  color: rgb(254 209 22 / var(--tw-text-opacity));
 }
 
 .\[\&\>textarea\]\:w-full>textarea {

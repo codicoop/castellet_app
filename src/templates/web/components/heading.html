@@ -59,8 +59,8 @@
             <h3 class="font-semibold text-2xl mb-2 font-title">
               {{ page.overlay_title }}
             </h3>
-            <span class="text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
-              font-body text-balance">
+            <span class="inline-block text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
+              font-body text-balance [&>p]:mb-4">
               {{ page.overlay_body|richtext }}
             </span>
             {% if page.overlay_button_page and page.overlay_button_text %}
