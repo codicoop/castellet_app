@@ -2,7 +2,7 @@ from django.apps import apps
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.models import Page, PageManager, Orderable
+from wagtail.models import Page, PageManager
 
 
 class RequestedLocalePageManager(PageManager):
@@ -53,11 +53,13 @@ class BasePage(Page):
             .objects
             .first()
         )
+        footer_logos = apps.get_model("web", "FooterLogo").objects.all()
         ctxt.update(
             {
                 "legal_page": legal_page,
                 "contact_page": contact_page,
                 "faq_page": faq_page,
+                "footer_logos": footer_logos,
             },
         )
         return ctxt

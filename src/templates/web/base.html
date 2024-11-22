@@ -348,22 +348,16 @@
         </div>
         <!-- Subvencions -->
         <div class="pt-4 md:pt-8 md:col-span-3 lg:col-span-4">
-          <!-- Aquí que apareguin els logos que pugin de les seubvencions -->
-          <h2 class="mb-3 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
-          <div class="flex gap-3 flex-wrap font-title">
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
+          {% if footer_logos %}
+            <h2 class="mb-3 text-lg font-semibold">{% translate 'With the support of:' %}</h2>
+            <div class="flex gap-3 flex-wrap font-title">
+              {% for logo in footer_logos %}
+                <div class="max-w-40 lg:max-w-52">
+                  {% image logo.logo width-210 %}
+                </div>
+              {% endfor %}
             </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-            <div class="max-w-40 lg:max-w-52">
-              <img src="{% static 'images/logo.png' %}" alt="{% translate 'Subvenció X' %}">
-            </div>
-          </div>
+          {% endif %}
         </div>
       </div>
       <div class="flex flex-col bg-blau-700 w-full p-4 font-body

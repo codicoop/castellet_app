@@ -6,3 +6,4 @@ from .projects import ProjectListPage
 from .faq import FaqPage
 from .legal import LegalPage
 from .news import NewsListPage
+from .snippets import FooterLogo
