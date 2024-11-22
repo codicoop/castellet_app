@@ -45,20 +45,25 @@
   {% endif %}
 
   {% if projects %}
-    <section class="mx-auto max-w-screen-2xl">
-      <h2 class="text-3xl font-semibold text-center mb-4
-        font-title lg:mb-8 lg:text-4xl">
-        {{ page.projects_title }}
-      </h2>
-      {% for project in projects %}
-        {% include "../components/project_summary.html" %}
-      {% endfor %}
+    <section class="mx-auto max-w-screen-2xl mb-24 lg:mb-48">
+      <div class="px-3 lg:px-20">
+        <h2 class="text-3xl font-semibold text-center mb-11
+          font-title lg:mb-14 lg:text-4xl">
+          {{ page.projects_title }}
+        </h2>
+        <div class="grid gap-7 grid-cols-1 justify-items-center
+          sm:grid-cols-2 xl:grid-cols-3">
+          {% for project in projects %}
+            {% include "../components/project_summary.html" %}
+          {% endfor %}
+        </div>
+      </div>
     </section>
     {% endif %}
 
   {% if page.documents %}
   <section class="mx-auto max-w-screen-2xl">
-    <div class="flex flex-col items-center justify-center mb-24 px-3">
+    <div class="flex flex-col items-center justify-center mb-24 px-3 lg:px-20">
       <h2 class="text-3xl font-semibold text-center mb-4
         font-title lg:mb-8 lg:text-4xl">
         {{ page.documents_title }}
@@ -67,8 +72,8 @@
         lg:text-lg lg:max-w-md lg:text-left lg:mb-24">
         {{ page.documents_description|richtext }}
       </div>
-      <div class="flex flex-wrap justify-center items-center gap-9 max-w-80 px-7 lg:px-40
-        lg:grid lg:grid-cols-3 lg:max-w-none lg:gap-14">
+      <div class="flex flex-wrap justify-center items-center gap-7 mb-7
+        md:grid md:grid-cols-2 lg:grid-cols-3 lg:mb-24">
         {% for document in page.documents %}
           <div class="flex flex-col items-center">
             {% with "images/icons/"|add:document.value.icon|add:".svg" as icon_static %}
@@ -89,40 +94,41 @@
 
   {% if last_news %}
   <section class="mx-auto max-w-screen-2xl">
-    <div class="flex justify-center md:justify-between px-4 lg:px-20">
-      <h2 class="text-3xl font-semibold text-center mb-8 font-title
-        lg:mb-12 lg:text-4xl">
-        {{ page.news_title }}
-      </h2>
-      <a href="">
-        <div class="hidden px-3 py-2 text-gray-900 font-semibold rounded-full
-          text-xs border border-gray-900 w-fit font-body
-          hover:bg-groc-100 focus:outline-none
-          focus:ring-4 focus:ring-groc-500
-          lg:block"
-        >
-          {% translate "See more" %}
-        </div>
-      </a>
-    </div>
-
-    <div class="flex flex-wrap items-center justify-center gap-7 mb-7 px-3
-    md:grid md:grid-cols-2 lg:grid-cols-3  lg:mb-24">
-      {% for news in last_news %}
-        {% include "../components/news_summary.html" %}
-      {% endfor %}
-    </div>
-    <div class="flex items-center justify-center">
-      <a href="">
-        <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
-          text-sm border border-gray-900 w-fit font-body
-          hover:bg-groc-100 focus:outline-none
-          focus:ring-4 focus:ring-groc-500
-          lg:hidden"
-        >
-          {% translate "See more" %}
-        </div>
-      </a>
+    <div class="px-4 lg:px-20">
+      <div class="flex justify-center md:justify-between">
+        <h2 class="text-3xl font-semibold text-center mb-8 font-title
+          lg:mb-12 lg:text-4xl">
+          {{ page.news_title }}
+        </h2>
+        <a href="">
+          <div class="hidden px-3 py-2 text-gray-900 font-semibold rounded-full
+            text-xs border border-gray-900 w-fit font-body
+            hover:bg-groc-100 focus:outline-none
+            focus:ring-4 focus:ring-groc-500
+            lg:block"
+          >
+            {% translate "See more" %}
+          </div>
+        </a>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-7 mb-7
+        md:grid md:grid-cols-2 lg:grid-cols-3 lg:mb-24">
+        {% for news in last_news %}
+          {% include "../components/news_summary.html" %}
+        {% endfor %}
+      </div>
+      <div class="flex items-center justify-center">
+        <a href="">
+          <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
+            text-sm border border-gray-900 w-fit font-body
+            hover:bg-groc-100 focus:outline-none
+            focus:ring-4 focus:ring-groc-500
+            lg:hidden"
+          >
+            {% translate "See more" %}
+          </div>
+        </a>
+      </div>
     </div>
   </section>
   {% endif %}
