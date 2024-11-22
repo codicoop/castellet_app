@@ -37,8 +37,8 @@
             {% image settings.web.CustomizationSettings.logo width-150 %}
           </div>
         </a>
+        <!-- Botó burguer -->
         <div class="flex items-center lg:hidden">
-          <!-- Botó burguer -->
           <button type="button" id="burguer_icon"
             class="inline-flex items-center p-2 text-sm text-gray-900 rounded-lg border-2 border-transparent
               lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
@@ -94,35 +94,34 @@
             {% endfor %}
           </ul>
           <!-- Search mobile -->
-          <div class="flex items-center mt-4 font-body lg:hidden">
+          <form action="https://www.google.com/search" method="get" 
+            class="flex items-center mt-4 font-body lg:hidden">
             <label for="search-mobile" class="sr-only">{% translate "Search" %}</label>
-            <form action="https://www.google.com/search" method="get">
-              <div class="relative w-full">
-                <input type="search" id="search-mobile"
-                  name="q"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full
-                    block w-full p-2.5 pr-10 cursor-pointer hover:bg-gray-100
-                    focus:ring-groc-500 focus:border-groc-500
-                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                    dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
-                  placeholder="{% translate 'Search for anything...' %}" required
-                >
-                <input type="hidden" name="sitesearch" value="castelletsostenible.cat" />
-                <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
-                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-semibold border border-gray-900
-                text-gray-900 bg-groc-500 rounded-full
-                hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300"
+            <div class="relative w-full">
+              <input type="search" id="search-mobile"
+                name="q"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full
+                  block w-full p-2.5 pr-10 cursor-pointer hover:bg-gray-100
+                  focus:ring-groc-500 focus:border-groc-500
+                  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                  dark:text-white dark:focus:ring-groc-500 dark:focus:border-groc-500"
+                placeholder="{% translate 'Search for anything...' %}" required
               >
-                {% translate 'Search' %}
-              </button>
-            </form>
-          </div>
+              <input type="hidden" name="sitesearch" value="castelletsostenible.cat" />
+              <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <button type="submit" class="inline-flex items-center p-2.5 ml-2 text-sm font-semibold border border-gray-900
+              text-gray-900 bg-groc-500 rounded-full
+              hover:bg-groc-700 focus:ring-4 focus:outline-none focus:ring-groc-300"
+            >
+              {% translate 'Search' %}
+            </button>
+          </form>
           <!-- Botons -->
           <div class="flex gap-2 mt-6 lg:order-2 lg:mt-0 lg:ml-3" id="nav_btns">
             <a href="0#"

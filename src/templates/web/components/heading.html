@@ -61,7 +61,7 @@
             </h3>
             <span class="inline-block text-sm max-h-32 lg:max-h-14 overflow-hidden overflow-ellipsis
               font-body text-balance [&>p]:mb-4">
-              {{ page.overlay_body|richtext }}
+              {{ page.overlay_body|linebreaks }}
             </span>
             {% if page.overlay_button_page and page.overlay_button_text %}
             <div class="my-4 float-right lg:float-none lg:mt-auto">
