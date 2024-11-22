@@ -1,8 +1,17 @@
 {% extends "web/base.html" %}
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
 
-{% block content %}
+{% block extra_headers %}
+<style>
+  .richtext a {
+    color: #31b44a;
+    font-weight:600;
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
 
+{% block content %}
 <main>
 
   {% include '../components/heading.html' %}
@@ -78,7 +87,7 @@
         [&>img]:w-full [&>img]:rounded-2xl [&>img]:shadow-card">
         <img src="{% static 'images/placeholder_big.png' %}" alt="">
       </section>
-      <section class="px-3 mx-auto max-w-xl lg:max-w-none lg:px-44">
+      <section class="richtext px-3 mx-auto max-w-xl lg:max-w-none lg:px-44">
         <div class="text-base mb-8 lg:mb-20 [&>p]:mb-4 lg:[&>p]:columns-2
           [&>img]:rounded-lg lg:[&>img]:rounded-2xl [&>img]:my-12 [&>img]:mx-auto
           [&>img]:shadow-md [&>img]:w-full

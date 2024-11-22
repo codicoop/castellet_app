@@ -1,6 +1,16 @@
 {% extends "web/base.html" %}
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
 
+{% block extra_headers %}
+<style>
+  .richtext a {
+    color: #31b44a;
+    font-weight:600;
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 
 <main class="mt-16 lg:mt-20">
@@ -43,17 +53,18 @@
     </section>
     {% endif %}
 
-    <section class="mb-20 text-base font-body [&>p]:mb-4 lg:[&>p]:columns-2
-      [&>img]:rounded-lg lg:[&>img]:rounded-2xl [&>img]:my-12 [&>img]:mx-auto
-      [&>img]:shadow-md [&>img]:w-full
-      [&>img.full-width]:w-3/4 
-      [&>img.left]:w-1/2 [&>img.left]:ml-0 [&>img.right]:w-1/2 [&>img.right]:mr-0
-      [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 [&>ol]:mb-4
-      [&>ul>li]:list-disc [&>ul>li]:ml-8 [&>ul>li]:pl-1 [&>ul]:mb-4
-      [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-4 lg:[&>h2]:text-3xl
-      [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-4 lg:[&>h3]:text-2xl
-      [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-3 lg:[&>h4]:text-xl
-      lg:px-40"
+    <section
+      class="richtext mb-20 text-base font-body [&>p]:mb-4 lg:[&>p]:columns-2
+        [&>img]:rounded-lg lg:[&>img]:rounded-2xl [&>img]:my-12 [&>img]:mx-auto
+        [&>img]:shadow-md [&>img]:w-full
+        [&>img.full-width]:w-3/4 
+        [&>img.left]:w-1/2 [&>img.left]:ml-0 [&>img.right]:w-1/2 [&>img.right]:mr-0
+        [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 [&>ol]:mb-4
+        [&>ul>li]:list-disc [&>ul>li]:ml-8 [&>ul>li]:pl-1 [&>ul]:mb-4
+        [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-4 lg:[&>h2]:text-3xl
+        [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-4 lg:[&>h3]:text-2xl
+        [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-3 lg:[&>h4]:text-xl
+        lg:px-40"
     >
       {# Explicitly looping blocks to skip the default div that Wagtail includes in each block: https://docs.wagtail.org/en/stable/topics/streamfield.html#template-rendering #}
       {% for block in page.content %}
