@@ -198,20 +198,47 @@
             <svg class="w-5 h-5 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
           </button>
           <!-- xxss -->
+          {% if settings.web.SocialMediaIconsSettings.facebook or settings.web.SocialMediaIconsSettings.youtube or settings.web.SocialMediaIconsSettings.instagram or settings.web.SocialMediaIconsSettings.x %}
           <div class="flex gap-4 mt-6 lg:order-4 lg:mt-0 lg:ml-3">
-            <!-- Per cada icona -->
-            <div class="w-5 h-5">
-              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-              </svg>
-            </div>
-            <!-- end -->
-            <div class="w-5 h-5 text-gray-900">
-              <svg class="text-gray-900" width="20" height="20" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M19.6875 10C19.6875 14.8438 16.1328 18.8672 11.4844 19.5703V12.8125H13.75L14.1797 10H11.4844V8.20312C11.4844 7.42188 11.875 6.67969 13.0859 6.67969H14.2969V4.29688C14.2969 4.29688 13.2031 4.10156 12.1094 4.10156C9.92188 4.10156 8.47656 5.46875 8.47656 7.89062V10H6.01562V12.8125H8.47656V19.5703C3.82812 18.8672 0.3125 14.8438 0.3125 10C0.3125 4.64844 4.64844 0.3125 10 0.3125C15.3516 0.3125 19.6875 4.64844 19.6875 10Z" fill="white"/>
-              </svg>
-            </div>
+            {% if settings.web.SocialMediaIconsSettings.facebook %}
+            <a href="{{ settings.web.SocialMediaIconsSettings.facebook }}">
+              <div class="w-5 h-5">
+                <img class="text-gray-900 w-5 h-5"
+                  src="{% static 'images/icons/icon_facebook.svg' %}" 
+                  alt="{% translate 'Facebook link' %}">
+              </div>
+            </a>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.youtube %}
+            <a href="{{ settings.web.SocialMediaIconsSettings.youtube }}">
+              <div class="w-5 h-5">
+                <img class="text-gray-900 w-5 h-5"
+                  src="{% static 'images/icons/icon_youtube.svg' %}" 
+                  alt="{% translate 'Youtube link' %}">
+              </div>
+            </a>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.instagram %}
+            <a href="{{ settings.web.SocialMediaIconsSettings.instagram }}">
+              <div class="w-5 h-5">
+                <img class="text-gray-900 w-5 h-5"
+                  src="{% static 'images/icons/icon_instagram.svg' %}" 
+                  alt="{% translate 'Instagram link' %}">
+              </div>
+            </a>
+            {% endif %}
+            {% if settings.web.SocialMediaIconsSettings.x %}
+            <a href="{{ settings.web.SocialMediaIconsSettings.x }}">
+              <div class="w-5 h-5">
+                <img class="text-gray-900 w-5 h-5"
+                  src="{% static 'images/icons/icon_twitter.svg' %}" 
+                  alt="{% translate 'X link' %}">
+              </div>
+            </a>
+            {% endif %}
+
           </div>
+          {% endif %}
         </div>
       </div>
     </nav>
@@ -307,28 +334,28 @@
             {% if settings.web.SocialMediaIconsSettings.facebook %}
             <li class="w-5 h-5">
               <a href="{{ settings.web.SocialMediaIconsSettings.facebook }}">
-                <img src="{% static 'images/icons/icon_facebook.svg' %}" alt="{% translate 'Facebook link' %}">
+                <img src="{% static 'images/icons/icon_facebook_white.svg' %}" alt="{% translate 'Facebook link' %}">
               </a>
             </li>
             {% endif %}
             {% if settings.web.SocialMediaIconsSettings.youtube %}
             <li class="w-5 h-5">
               <a href="{{ settings.web.SocialMediaIconsSettings.youtube }}">
-                <img src="{% static 'images/icons/icon_youtube.svg' %}" alt="{% translate 'Youtube link' %}">
+                <img src="{% static 'images/icons/icon_youtube_white.svg' %}" alt="{% translate 'Youtube link' %}">
               </a>
             </li>
             {% endif %}
             {% if settings.web.SocialMediaIconsSettings.instagram %}
             <li class="w-5 h-5">
               <a href="{{ settings.web.SocialMediaIconsSettings.instagram }}">
-                <img src="{% static 'images/icons/icon_instagram.svg' %}" alt="{% translate 'Instagram link' %}">
+                <img src="{% static 'images/icons/icon_instagram_white.svg' %}" alt="{% translate 'Instagram link' %}">
               </a>
             </li>
             {% endif %}
             {% if settings.web.SocialMediaIconsSettings.x %}
             <li class="w-5 h-5">
               <a href="{{ settings.web.SocialMediaIconsSettings.x }}">
-                <img src="{% static 'images/icons/icon_twitter.svg' %}" alt="{% translate 'Twitter link' %}">
+                <img src="{% static 'images/icons/icon_twitter_white.svg' %}" alt="{% translate 'Twitter link' %}">
               </a>
             </li>
             {% endif %}
