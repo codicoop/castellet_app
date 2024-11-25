@@ -327,29 +327,33 @@
           </ul>
         </div>
         {% endif %}
+
         <!-- newsletter -->
-        <div class="md:row-span-2 md:col-start-3 md:row-start-1 lg:row-span-1 lg:col-start-4">
-          <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
-          <form method="post" class="flex flex-col gap-3 w-full">
-            {% csrf_token %}
-            {{ newsletter_form }}
-            <button type="submit"
-              class="bg-blau-700 text-white font-body font-semibold
-                text-sm rounded-md py-2">
-              {% translate 'Subscribe' %}
-            </button>
-            <span class="text-white text-xs text-center">
-              {% translate 'When subscribing you are accepting the privacy policy.' %}
-            </span>
-            {% if messages %}
-              {% for message in messages %}
-                <div class="block mb-4 text-sm text-red-700 dark:text-red-500">
-                  {{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-          </form>
-        </div>
+        {% if newsletter_form %}
+          <div class="md:row-span-2 md:col-start-3 md:row-start-1 lg:row-span-1 lg:col-start-4">
+            <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
+            <form method="post" class="flex flex-col gap-3 w-full">
+              {% csrf_token %}
+              {{ newsletter_form }}
+              <button type="submit"
+                class="bg-blau-700 text-white font-body font-semibold
+                  text-sm rounded-md py-2">
+                {% translate 'Subscribe' %}
+              </button>
+              <span class="text-white text-xs text-center">
+                {% translate 'When subscribing you are accepting the privacy policy.' %}
+              </span>
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="block mb-4 text-sm text-red-700 dark:text-red-500">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </form>
+          </div>
+        {% endif %}
+
         <!-- Subvencions -->
         <div class="pt-4 md:pt-8 md:col-span-3 lg:col-span-4">
           {% if footer_logos %}
