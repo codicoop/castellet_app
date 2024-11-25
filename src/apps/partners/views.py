@@ -1,30 +1,9 @@
 from constance import config
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
-from django.utils.translation import gettext_lazy as _
+from django.shortcuts import get_object_or_404, render
 
 from apps.partners.choices import AccessPermissionRoleChoices
-from apps.partners.forms import NewsletterSubscriberForm
 from apps.partners.models import Document, Project
-from apps.partners.services import send_confirmation_newsletter
-from project.views import StandardSuccess
-
-
-def newsletter_view(request):
-    if request.method == "GET":
-        form = NewsletterSubscriberForm()
-    else:
-        form = NewsletterSubscriberForm(request.POST)
-        if form.is_valid():
-            form.save()
-            send_confirmation_newsletter(form.data)
-            return redirect("newsletter_success")
-    return render(request, "newsletter.html", {"form": form})
-
-
-class NewsletterSubscriberSuccessView(StandardSuccess):
-    page_title = _("Signed up to the newsletter")
-    description = _("Successfully signed up to the newsletter.")
 
 
 @login_required
