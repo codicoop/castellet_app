@@ -84,7 +84,7 @@ class BasePage(Page):
                 messages.add_message(
                     request,
                     messages.SUCCESS,
-                    _("You've been successfully subscribed to the newsletter."),
+                    _("Successfully signed up to the newsletter."),
                 )
         else:
             newsletter_form = NewsletterSubscriberForm()

@@ -8,10 +8,10 @@
         lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-4">
       <div class="pb-8 lg:row-span-2">
         <span class="block mb-1 text-xs font-medium text-gray-500 uppercase">
-          {% for project in document.project.all %} 
+          {% for project in document.project.all %}
             {% if project in projects %}
               <span class="font-bold text-gray-700 dark:text-white">
-                {{ project.title }} - 
+                {{ project.title }} -
               </span>
               {% endif %}
             {% endfor %}
@@ -26,7 +26,7 @@
           {% translate 'See the document' %}
         </p>
         <svg class="w-6 h-6 text-primary-600
-          lg:w-8 lg:h-8" 
+          lg:w-8 lg:h-8"
           aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
         </svg>
@@ -43,6 +43,6 @@
   {% endfor %}
 {% else %}
   <div class="mb-4 mx-auto text-gray-900 dark:text-white md:max-w-screen-sm md:mx-0">
-    <p>{% translate 'There is no result for this search. Try another filter combination' %}</p>
+    <p>{% translate 'There is no result for this search. Try another filter combination.' %}</p>
   </div>
 {% endif %}
