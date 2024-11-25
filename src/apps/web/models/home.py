@@ -43,14 +43,7 @@ class HomePage(BaseHeaderOverlayPage):
         _("Description"),
         default="",
         blank=True,
-        features=[
-            "h2",
-            "h3",
-            "bold",
-            "italic",
-            "link",
-            "ul",
-        ],
+        features=[],
     )
     video_youtube_url = models.CharField(
         _("YouTube URL"),
@@ -68,14 +61,7 @@ class HomePage(BaseHeaderOverlayPage):
         _("Description"),
         default="",
         blank=True,
-        features=[
-            "h2",
-            "h3",
-            "bold",
-            "italic",
-            "link",
-            "ul",
-        ],
+        features=[],
     )
     documents = StreamField(
         [

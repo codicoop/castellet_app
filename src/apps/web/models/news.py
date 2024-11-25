@@ -85,7 +85,10 @@ class NewsDetailPage(BasePage):
     tags = ClusterTaggableManager(through=TaggedNews, blank=True)
     content = StreamField(
         [
-            ("text", RichTextBlock()),
+            ("text", RichTextBlock(
+                features=["h2", "h3", "h4", "bold", "italic", "ol", "ul", "hr",
+                          "link", "image", ],
+            )),
             ("image", ImageChooserBlock()),
         ],
         null=False,
