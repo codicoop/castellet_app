@@ -53,9 +53,9 @@ class CustomizationSettings(BaseSiteSetting):
         blank=False,
     )
     join_us_title = models.CharField(
-        verbose_name=_("Títol"),
+        verbose_name=_("Title"),
         blank=False,
-        default=_("Uneix-te a Castellet Sostenible"),
+        default=_("Join Castellet Sostenible"),
         max_length=240,
     )
     join_us_text = models.CharField(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-20 15:01+0100\n"
+"POT-Creation-Date: 2024-11-25 15:27+0100\n"
 "PO-Revision-Date: 2024-11-20 15:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -58,21 +58,13 @@ msgstr "Tornar enrere"
 msgid "Enrere"
 msgstr "Enrere"
 
-#: project/urls.py:32
+#: project/urls.py:30
 msgid "registration/"
 msgstr "registre/"
 
-#: project/urls.py:33
+#: project/urls.py:31
 msgid "partners/"
 msgstr "socis/"
-
-#: project/urls.py:34
-msgid "newsletter/"
-msgstr "butlleti/"
-
-#: project/urls.py:36
-msgid "newsletter/success/"
-msgstr "butlleti/alta/"
 
 #: project/views.py:37
 msgid "Back"
@@ -93,6 +85,12 @@ msgstr "Fet!"
 #: project/views.py:41
 msgid "The registry was updated correctly."
 msgstr "El registre ha estat actualitzat correctament."
+
+#~ msgid "newsletter/"
+#~ msgstr "butlleti/"
+
+#~ msgid "newsletter/success/"
+#~ msgstr "butlleti/alta/"
 
 #~ msgid "Site administration | Django Administrative Site"
 #~ msgstr "Administració del lloc | Lloc administratiu de Django"
