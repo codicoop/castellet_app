@@ -8,27 +8,6 @@ from project.post_office import send
 
 
 class NewsletterSubscriberForm(forms.ModelForm):
-    name = forms.CharField(
-        label=_("Name"),
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(
-            attrs={
-                "autofocus": True,
-                "autocomplete": "text",
-            }
-        ),
-    )
-    surnames = forms.CharField(
-        label=_("Surnames"),
-        widget=forms.TextInput(attrs={"autocomplete": "text"}),
-    )
-    email = forms.EmailField(
-        label=_("Email"),
-        widget=forms.EmailInput(attrs={"autocomplete": "email"}),
-        help_text=_("Email where you will receive our newsletter"),
-    )
-
     class Meta:
         model = NewsletterSubscriber
         fields = [
@@ -36,6 +15,16 @@ class NewsletterSubscriberForm(forms.ModelForm):
             "surnames",
             "email",
         ]
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    "autofocus": True,
+                }
+            ),
+        }
+        help_texts = {
+            "email": "",
+        }
 
     def send_mail(self, context, to_email):
         context = {

@@ -94,7 +94,7 @@
             {% endfor %}
           </ul>
           <!-- Search mobile -->
-          <form action="https://www.google.com/search" method="get" 
+          <form action="https://www.google.com/search" method="get"
             class="flex items-center mt-4 font-body lg:hidden">
             <label for="search-mobile" class="sr-only">{% translate "Search" %}</label>
             <div class="relative w-full">
@@ -330,11 +330,9 @@
         <!-- newsletter -->
         <div class="md:row-span-2 md:col-start-3 md:row-start-1 lg:row-span-1 lg:col-start-4">
           <h2 class="mb-3 text-lg font-semibold font-title">{% translate 'Newsletter' %}</h2>
-          <form action="post" class="flex flex-col gap-3 w-full">
-            <input type="text" placeholder="{% translate 'Nom' %}"
-              class="rounded-md border-0">
-            <input type="email" placeholder="{% translate 'Email' %}"
-              class="rounded-md border-0">
+          <form method="post" class="flex flex-col gap-3 w-full">
+            {% csrf_token %}
+            {{ newsletter_form }}
             <button type="submit"
               class="bg-blau-700 text-white font-body font-semibold
                 text-sm rounded-md py-2">
@@ -343,6 +341,13 @@
             <span class="text-white text-xs text-center">
               {% translate 'When subscribing you are accepting the privacy policy.' %}
             </span>
+            {% if messages %}
+              {% for message in messages %}
+                <div class="block mb-4 text-sm text-red-700 dark:text-red-500">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
           </form>
         </div>
         <!-- Subvencions -->

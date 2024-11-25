@@ -1,8 +1,13 @@
 from django.apps import apps
+from django.contrib import messages
 from django.db import models
+from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.models import Page, PageManager
+
+from apps.partners.forms import NewsletterSubscriberForm
+from apps.partners.services import send_confirmation_newsletter
 
 
 class RequestedLocalePageManager(PageManager):
@@ -63,6 +68,35 @@ class BasePage(Page):
             },
         )
         return ctxt
+
+    def serve(self, request, *args, **kwargs):
+        """
+        Refactor pending!
+        The newsletter form was originally developed in the partners app.
+        Now we're moving it to the website, but not moving all the code
+        from one app to the other because of time limitations.
+        """
+        if request.method == "POST":
+            newsletter_form = NewsletterSubscriberForm(request.POST)
+            if newsletter_form.is_valid():
+                newsletter_form.save()
+                send_confirmation_newsletter(newsletter_form.data)
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    _("You've been successfully subscribed to the newsletter."),
+                )
+        else:
+            newsletter_form = NewsletterSubscriberForm()
+
+        context = {
+            **self.get_context(request, *args, **kwargs),
+            "newsletter_form": newsletter_form,
+        }
+        return render(request,
+            template_name=self.get_template(request, *args, **kwargs),
+            context=context,
+        )
 
 
 class MenuLabelMixin(BasePage):
