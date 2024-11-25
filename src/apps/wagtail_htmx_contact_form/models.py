@@ -46,8 +46,10 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
     )
     personal_data_auth_text = models.TextField(
         _("personal data authorization legal text"),
-        help_text=_("Legal text displayed alongside the personal data "
-                    "authorization checkbox."),
+        help_text=_(
+            "Legal text displayed alongside the personal data "
+            "authorization checkbox."
+        ),
         default="",
         blank=True,
     )
@@ -106,7 +108,6 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
 
     template = "web/pages/contact.html"
 
-
     def serve(self, request, *args, **kwargs):
         form_class = self.get_contact_form()
         form = form_class()
@@ -134,7 +135,8 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
             **self.get_context(request, *args, **kwargs),
             "form": form,
         }
-        return render(request,
+        return render(
+            request,
             template_name=self.get_template(request, *args, **kwargs),
             context=context,
         )
@@ -156,10 +158,6 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
 
 
 class ContactSubmission(models.Model):
-    class Meta:
-        verbose_name = _("contact form submission")
-        verbose_name_plural = _("contact form submissions")
-
     created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(
         _("name"),
@@ -180,6 +178,9 @@ class ContactSubmission(models.Model):
         _("Treatment of personal data authorization"),
     )
 
+    class Meta:
+        verbose_name = _("contact form submission")
+        verbose_name_plural = _("contact form submissions")
 
     def __str__(self):
         return f"{self.subject} ({self.email}) on {self.created}"

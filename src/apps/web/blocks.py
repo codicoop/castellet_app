@@ -1,4 +1,4 @@
-from wagtail.blocks import StructBlock, CharBlock, RichTextBlock
+from wagtail.blocks import CharBlock, RichTextBlock, StructBlock
 
 
 class TitleTextBlock(StructBlock):

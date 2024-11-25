@@ -3,13 +3,13 @@ from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import MultiFieldPanel, FieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
 
 from apps.partners.choices import ProjectStatusChoices
-from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin, BasePage
+from apps.web.models.base import BaseHeaderOverlayPage, BasePage, MenuLabelMixin
 
 
 class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
@@ -79,15 +79,27 @@ class ProjectListPage(MenuLabelMixin, BaseHeaderOverlayPage):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["active_projects"] = ProjectDetailPage.objects.live().filter(
-            status=ProjectStatusChoices.ACTIVE,
-        ).order_by("title")
-        context["study_phase_projects"] = ProjectDetailPage.objects.live().filter(
-            status=ProjectStatusChoices.STUDY_PHASE,
-        ).order_by("title")
-        context["other_projects"] = ProjectDetailPage.objects.live().filter(
-            status=ProjectStatusChoices.OTHER,
-        ).order_by("title")
+        context["active_projects"] = (
+            ProjectDetailPage.objects.live()
+            .filter(
+                status=ProjectStatusChoices.ACTIVE,
+            )
+            .order_by("title")
+        )
+        context["study_phase_projects"] = (
+            ProjectDetailPage.objects.live()
+            .filter(
+                status=ProjectStatusChoices.STUDY_PHASE,
+            )
+            .order_by("title")
+        )
+        context["other_projects"] = (
+            ProjectDetailPage.objects.live()
+            .filter(
+                status=ProjectStatusChoices.OTHER,
+            )
+            .order_by("title")
+        )
         return context
 
 
@@ -134,10 +146,12 @@ class ProjectDetailPage(BasePage):
         verbose_name=_("Related project in the Partners app"),
         help_text=mark_safe(
             format_lazy(
-                _("If set, some project details from the projects section in the "
-                  "partners app will be included in the website. To create or "
-                  "edit those projects, go to the <a href=\"{link}\">"
-                  "admin panel</a>."),
+                _(
+                    "If set, some project details from the projects section in the "
+                    "partners app will be included in the website. To create or "
+                    'edit those projects, go to the <a href="{link}">'
+                    "admin panel</a>."
+                ),
                 link=reverse_lazy("admin:partners_project_changelist"),
             )
         ),

@@ -1,5 +1,6 @@
 from wagtail import hooks
 
+
 @hooks.register("construct_settings_menu")
 def hide_user_and_group_settings(request, menu_items):
     """
@@ -20,4 +21,6 @@ def hide_user_and_group_settings(request, menu_items):
     to create a custom user form for wagtail:
     https://docs.wagtail.org/en/stable/advanced_topics/customisation/custom_user_models.html
     """
-    menu_items[:] = [item for item in menu_items if item.name not in ("users", "groups")]
+    menu_items[:] = [
+        item for item in menu_items if item.name not in ("users", "groups")
+    ]

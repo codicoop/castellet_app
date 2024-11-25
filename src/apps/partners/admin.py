@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
@@ -25,32 +24,35 @@ class ProjectAdmin(ModelAdmin, ExportProjectCsvMixin):
         "energy_power",
         "annual_energy",
         "investment",
-        "number_participants"
+        "number_participants",
     )
-    list_filter = ("project_type", "status", "created_at", )
-    search_fields = ("title", )
+    list_filter = (
+        "project_type",
+        "status",
+        "created_at",
+    )
+    search_fields = ("title",)
     readonly_fields = (
         "documents_list",
         "participants_list",
         "number_participants",
     )
-    actions = ("export_as_csv", )
+    actions = ("export_as_csv",)
 
     @admin.display(description=_("Documents"))
     def documents_list(self, *args):
         documents = Document.objects.filter(project=args[0].id)
         if documents.exists():
             link = [
-                    format_html(
-                        '<a href="{}">{}</a>',
-                        reverse('admin:main_document_change', args=[doc.id]),
-                        doc.title
-                    )
-                    for doc in documents
-                ]
+                format_html(
+                    '<a href="{}">{}</a>',
+                    reverse("admin:main_document_change", args=[doc.id]),
+                    doc.title,
+                )
+                for doc in documents
+            ]
             return format_html(", ".join(link))
         return "-"
-
 
     @admin.display(description=_("Participants"))
     def participants_list(self, obj):
@@ -58,9 +60,9 @@ class ProjectAdmin(ModelAdmin, ExportProjectCsvMixin):
         if participants.exists():
             link = [
                 format_html(
-                     '<a href="{}">{}</a>',
-                    reverse('admin:users_user_change', args=[participant.id]),
-                    participant.full_name
+                    '<a href="{}">{}</a>',
+                    reverse("admin:users_user_change", args=[participant.id]),
+                    participant.full_name,
                 )
                 for participant in participants
             ]
@@ -126,5 +128,3 @@ class DocumentAdmin(admin.ModelAdmin):
         return ", ".join(o.name for o in obj.tags.all())
 
     get_tags.short_description = _("Tag list")
-
-

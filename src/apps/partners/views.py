@@ -17,7 +17,7 @@ def document_list_view(request):
         )
         projects_with_documents = projects_with_documents.filter(
             documents__access_permission_role=AccessPermissionRoleChoices.ALL_USERS
-            )
+        )
 
     if request.method == "GET":
         all_tags = set()
@@ -43,8 +43,8 @@ def document_list_view(request):
                 documents = documents.filter(tags=tag)
         if not request.user.governing_council_member:
             documents = documents.filter(
-            access_permission_role=AccessPermissionRoleChoices.ALL_USERS
-        )
+                access_permission_role=AccessPermissionRoleChoices.ALL_USERS
+            )
         context = {
             "projects": projects_with_documents,
             "documents": documents,

@@ -19,9 +19,10 @@ class RequestedLocalePageManager(PageManager):
 class BasePage(Page):
     display_join_us_block = models.BooleanField(
         verbose_name=_("Display join us block"),
-        help_text=_("Show the join us block at the botton of this page. To "
-                    "modify its content, go to Settings - Website "
-                    "customization."),
+        help_text=_(
+            "Show the join us block at the botton of this page. To "
+            "modify its content, go to Settings - Website customization."
+        ),
         default=True,
     )
     max_count = 1
@@ -43,21 +44,11 @@ class BasePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         ctxt = super().get_context(request, *args, **kwargs)
-        legal_page = (
-            apps.get_model("web", "LegalPage")
-            .objects
-            .first()
-        )
-        contact_page = (
-            apps.get_model("wagtail_htmx_contact_form", "HtmxContactPage")
-            .objects
-            .first()
-        )
-        faq_page = (
-            apps.get_model("web", "FaqPage")
-            .objects
-            .first()
-        )
+        legal_page = apps.get_model("web", "LegalPage").objects.first()
+        contact_page = apps.get_model(
+            "wagtail_htmx_contact_form", "HtmxContactPage"
+        ).objects.first()
+        faq_page = apps.get_model("web", "FaqPage").objects.first()
         footer_logos = apps.get_model("web", "FooterLogo").objects.all()
         ctxt.update(
             {
@@ -93,7 +84,8 @@ class BasePage(Page):
             **self.get_context(request, *args, **kwargs),
             "newsletter_form": newsletter_form,
         }
-        return render(request,
+        return render(
+            request,
             template_name=self.get_template(request, *args, **kwargs),
             context=context,
         )
@@ -110,7 +102,6 @@ class MenuLabelMixin(BasePage):
     menu_label = models.CharField(
         _("Menu title"),
         max_length=15,
-        null=True,
         blank=True,
         help_text=_("If not set, the menu title will be the page title."),
     )
@@ -195,8 +186,8 @@ class BaseHeaderOverlayPage(BasePage):
         _("Display header highlighted overlay"),
         default=True,
         help_text="Per mostrar el missatge superposat a la capçalera cal marcar "
-                  "aquesta opció i omplir les dades del bloc "
-                  f"{_('Header overlay message')}."
+        "aquesta opció i omplir les dades del bloc "
+        f"{_('Header overlay message')}.",
     )
 
     content_panels = BasePage.content_panels + [
@@ -204,8 +195,8 @@ class BaseHeaderOverlayPage(BasePage):
             children=[
                 FieldPanel("header_image"),
                 FieldPanel("header_description"),
-                FieldPanel("header_button_text",),
-                FieldPanel("header_button_page",),
+                FieldPanel("header_button_text"),
+                FieldPanel("header_button_page"),
             ],
             heading=_("Header"),
         ),

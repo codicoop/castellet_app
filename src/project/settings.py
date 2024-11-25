@@ -476,7 +476,8 @@ structlog.configure(
 # which welcomes users upon login to the Wagtail admin.
 WAGTAIL_SITE_NAME = env.str(
     "WAGTAIL_SITE_NAME",
-    default="Comunitat energètica de Sant Vicenç de Castellet",)
+    default="Comunitat energètica de Sant Vicenç de Castellet",
+)
 WAGTAILADMIN_BASE_URL = env.str("WAGTAILADMIN_BASE_URL", default="")
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = DEFAULT_FROM_EMAIL
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True

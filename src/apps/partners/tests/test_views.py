@@ -34,7 +34,7 @@ class DocumentViewTest(TestCase):
             surnames="test_surnames",
             email="test@test.com",
             dni="12345678A",
-            email_verified=True
+            email_verified=True,
         )
         self.client.force_login(self.user)
 

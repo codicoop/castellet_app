@@ -8,10 +8,7 @@ from apps.web.models.base import BaseHeaderOverlayPage, MenuLabelMixin
 
 class AboutUsPage(MenuLabelMixin, BaseHeaderOverlayPage):
     content = StreamField(
-        [
-            ("title_text", TitleTextBlock()),
-            ("horizontal_image", ImageChooserBlock())
-        ],
+        [("title_text", TitleTextBlock()), ("horizontal_image", ImageChooserBlock())],
         null=False,
         blank=False,
     )

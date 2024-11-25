@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, HelpPanel
-from wagtail.blocks import ChoiceBlock, StructBlock, CharBlock
+from wagtail.admin.panels import FieldPanel, HelpPanel, MultiFieldPanel
+from wagtail.blocks import CharBlock, ChoiceBlock, StructBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
@@ -102,7 +102,7 @@ class HomePage(BaseHeaderOverlayPage):
             children=[
                 FieldPanel("video_title"),
                 FieldPanel("video_description"),
-                FieldPanel("video_youtube_url",),
+                FieldPanel("video_youtube_url"),
             ],
             heading=_("Video"),
         ),
@@ -120,8 +120,8 @@ class HomePage(BaseHeaderOverlayPage):
                 HelpPanel(
                     content=_(
                         "To add projects at the home page, you have to go navigate the "
-                        "edit the project page (which are inside the Projects page in the "
-                        "pages tree) and click the Configuration tab."
+                        "edit the project page (which are inside the Projects page in "
+                        "the pages tree) and click the Configuration tab."
                     ),
                 ),
             ],
@@ -157,16 +157,16 @@ class HomePage(BaseHeaderOverlayPage):
     parent_page_types = ["wagtailcore.Page"]
 
     def can_display_video_block(self):
-        return (
-            self.video_title
-            and self.video_description
-            and self.video_youtube_url
-        )
+        return self.video_title and self.video_description and self.video_youtube_url
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["last_news"] = NewsDetailPage.objects.live().order_by("-date")[:3]
-        context["projects"] = ProjectDetailPage.objects.live().filter(
-            show_in_home=True,
-        ).order_by("title")
+        context["projects"] = (
+            ProjectDetailPage.objects.live()
+            .filter(
+                show_in_home=True,
+            )
+            .order_by("title")
+        )
         return context

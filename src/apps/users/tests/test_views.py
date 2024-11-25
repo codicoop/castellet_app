@@ -10,7 +10,7 @@ class LoginTestCase(TestCase):
             name="test_name",
             surnames="test_surnames",
             email="test@test.com",
-            dni="12345678A"
+            dni="12345678A",
         )
         self.user.set_password("password")
         self.user.save()

@@ -8,7 +8,6 @@ from .models import ContactSubmission
 
 
 class ReadonlyPermissionPolicy(ModelPermissionPolicy):
-
     def user_has_permission(self, user, action):
         if action in ("change", "delete", "add"):
             return False

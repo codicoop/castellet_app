@@ -1,7 +1,6 @@
 from django.utils.translation import gettext_lazy as _
-
 from wagtail.admin.panels import FieldPanel
-from wagtail.blocks import StructBlock, RichTextBlock, CharBlock
+from wagtail.blocks import CharBlock, RichTextBlock, StructBlock
 from wagtail.fields import StreamField
 
 from apps.web.models.base import BasePage, MenuLabelMixin
@@ -13,9 +12,7 @@ class QuestionAnswerBlock(StructBlock):
         label=_("Question"),
     )
     answer = RichTextBlock(
-        required=True,
-        label=_("Answer"),
-        features=["bold", "italic", "link"]
+        required=True, label=_("Answer"), features=["bold", "italic", "link"]
     )
 
     class Meta:

@@ -300,7 +300,6 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self.logging_url_title_and_assert_title(Strings.ADMIN_TITLE.value)
         logging.info("Logged in to admin with initial superuser.")
 
-
     def _verify_email(self):
         # self.logging_url_title_and_assert_title(Strings.PROFILE_TITLE.value)
         # Verify email

@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
-from taggit.models import TagBase, ItemBase
+from taggit.models import ItemBase, TagBase
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
@@ -21,20 +21,22 @@ class NewsListPage(MenuLabelMixin, BasePage):
 
         # Prepare tags for rendering and filter by it
         tag = request.GET.get("tag")
-        ALL_NEWS_TAG_SLUG = "Totes"
-        if tag and tag != ALL_NEWS_TAG_SLUG:
+        all_news_tag_slug = "Totes"
+        if tag and tag != all_news_tag_slug:
             context["news_list"] = context["news_list"].filter(tags__name=tag)
         # each tag will be a dictionary. The key is the tag slug, and the value
         # is the "active" True or False, for the template to style it.
-        context["tags"] = {ALL_NEWS_TAG_SLUG: tag == ALL_NEWS_TAG_SLUG}
-        context["tags"].update({
-            tagged_news.tag.slug: tagged_news.tag.slug == tag
-            for tagged_news in TaggedNews.objects.all()
-        })
+        context["tags"] = {all_news_tag_slug: tag == all_news_tag_slug}
+        context["tags"].update(
+            {
+                tagged_news.tag.slug: tagged_news.tag.slug == tag
+                for tagged_news in TaggedNews.objects.all()
+            }
+        )
 
         # Pagination
-        NEWS_PER_PAGE = 9
-        paginator = Paginator(context["news_list"], NEWS_PER_PAGE)
+        news_per_page = 9
+        paginator = Paginator(context["news_list"], news_per_page)
         page_number = request.GET.get("page")
         context["news_list"] = paginator.get_page(page_number)
 
