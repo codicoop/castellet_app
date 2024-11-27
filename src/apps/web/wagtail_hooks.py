@@ -71,8 +71,18 @@ class ExportNewsletterSubscribersBulkAction(SnippetBulkAction):
 
     @classmethod
     def execute_action(cls, objects, **kwargs):
-        for obj in objects:
-            print(obj)
+        """
+        Wagtaoil's bilk actions system is not created with the idea of returning
+        a response different than a template. Instead its meant for you to make
+        some actions in this method and go back to the items list.
+        For that reason we're overriding the post method instead, but we are still
+        required to override the execute_action method.
+
+        Also, it expects this method to return the number of parent items and
+        the number of children items. These concepts are not clarified in the
+        documentation and as far as I tested we could return any numbers here
+        and it doesn't have any effect anywhere.
+        """
         return len(objects), 0
 
     def post(self, request, *args, **kwargs):
