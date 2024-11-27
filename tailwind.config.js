@@ -29,19 +29,19 @@ module.exports = {
           "200":"#0DC9FD",
           "300":"#02AFDE",
           "400":"#029EC9",
-          "500":"#028db4", // blau app
+          "500":"#028db4", // blau logo
           "600":"#0C678D",
           "700":"#164066",
         },
         groc: {
           "100": "#FEEEAE",
           "300": "#FEE271",
-          "500": "#fed116", // groc base
+          "500": "#fed116", // groc logo
           "700": "#e2bd5a",
           "900": "#665200"
         },
         gris: {
-          "500": "#929e9e"  // gris base
+          "500": "#929e9e"  // gris logo
         }
       },
       boxShadow: {
