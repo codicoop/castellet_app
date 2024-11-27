@@ -57,7 +57,7 @@ class EmailVerificationView(FormView, StandardSuccess):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.email:
-            return redirect(reverse_lazy("home"))
+            return redirect(reverse_lazy("partners:home"))
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -86,7 +86,7 @@ class SendVerificationCodeView(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.email:
-            return redirect(reverse_lazy("home"))
+            return redirect(reverse_lazy("partners:home"))
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):

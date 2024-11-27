@@ -1,0 +1,120 @@
+{% load wagtailcore_tags i18n %}
+<section class="w-full">
+  <form
+    hx-post="{% pageurl page %}"
+    hx-target="this"
+    hx-swap="outerHTML"
+  >
+    <div class="flex flex-col w-full max-w-2xl px-4 py-8 shadow-card rounded-xl 
+      lg:rounded-3xl lg:p-8">
+      <h2 class="mb-2 font-semibold text-xl font-title lg:text-2xl">
+      {% translate "Send us your query" %}
+    </h2>
+      <p class="mb-14 text-base text-balance lg:mb-8">
+        {% translate "Fill up this form and we will answer back as soon as possible." %}
+      </p>
+      {% csrf_token %}
+      <div class="flex flex-col gap-1 mb-3
+        [&>input]:border [&>input]:border-gray-300 [&>input]:rounded-md 
+        [&>input]:py-4 [&>input]:px-3">
+        <label class="text-sm" for="{{ form.name.id_for_label }}">
+          {{ page.name_label }}
+        </label>
+        <p class="text-xs text-red-600">
+          {{ form.name.errors }}
+        </p>
+        {{ form.name }}
+      </div>
+      <div class="flex flex-col gap-1 mb-3        
+        [&>input]:border [&>input]:border-gray-300 [&>input]:rounded-md 
+        [&>input]:py-4 [&>input]:px-3">
+        <label class="text-sm" for="{{ form.email.id_for_label }}">
+          {{ page.email_label }}
+        </label>
+        <p class="text-xs text-red-600">
+          {{ form.email.errors }}
+        </p>
+        {{ form.email }}
+      </div>
+      <div class="flex flex-col gap-1 mb-3        
+        [&>input]:border [&>input]:border-gray-300 [&>input]:rounded-md 
+        [&>input]:py-4 [&>input]:px-3">
+        <label class="text-sm" for="{{ form.subject.id_for_label }}">
+          {{ page.subject_label }}
+        </label>
+        <p class="text-xs text-red-600">
+          {{ form.subject.errors }}
+        </p>
+        {{ form.subject }}
+      </div>
+      <div class="[&>textarea]:w-full [&>textarea]:border [&>textarea]:border-gray-300
+        [&>textarea]:rounded-md [&>textarea]:py-4 [&>textarea]:px-3">
+        <label class="text-sm" for="{{ form.message.id_for_label }}">
+          {{ page.message_label }}
+        </label>
+        <p class="text-xs text-red-600 mb-1">
+          {{ form.message.errors }}
+        </p>
+        {{ form.message }}
+      </div>
+      <div class="flex flex-col mb-4 mt-3"
+      >
+        <p class="text-xs text-red-600 pl-6">
+          {{ form.personal_data_auth.errors }}
+        </p>
+        <div class="flex items-center
+          [&>input]:w-4 [&>input]:h-4 [&>input]:text-groc-700 [&>input]:bg-gray-100 
+          [&>input]:border-gray-300 [&>input]:rounded focus:[&>input]:ring-groc-700
+          focus:[&>input]:ring-2"
+        >
+          {{ form.personal_data_auth }}
+          <label for="{{ form.personal_data_auth.id_for_label }}"
+            class="ms-2 text-sm font-medium text-gray-900"
+          >
+            {{ page.personal_data_auth_label }}
+          </label>
+        </div>
+        {% if page.personal_data_auth_text %}
+        <div class="text-xs font-normal text-gray-500 pl-6">
+          {{ page.personal_data_auth_text }}
+        </div>
+        {% endif %}
+      </div>
+  
+      <button type="submit"
+        class="self-end px-3 py-2 text-gray-900 font-semibold rounded-full
+        text-sm bg-groc-500 font-body lg:text-base lg:px-6
+        hover:bg-groc-700 focus:outline-none
+        focus:ring-4 focus:ring-groc-900
+        dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+      >
+        <span class="font-bold">
+          {% translate 'Send query' %}
+        </span>
+      </button>
+  
+      {% if form.is_valid %}
+        <div class="text-base [&>p]:mb-4">
+          {{ page.success_msg|richtext }}
+        </div>
+      {% endif %}
+      {% if messages %}
+        <div id="messages" class="messages">
+          <ul>
+            {% for message in messages %}
+              {% if message.tags == "success" %}
+                <li class="text">{{ message }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <button class="btn btn--primary"
+            onclick="document.getElementById('messages').remove()">Tancar</button>
+        </div>
+      {% endif %}
+  
+      {% if form.errors %}
+        <div>Si us plau, corregeix els camps marcats en vermell.</div>
+      {% endif %}
+    </div>
+  </form>
+</section>

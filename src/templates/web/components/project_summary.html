@@ -1,0 +1,35 @@
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
+<div class="w-full max-w-80 h-80 grid grid-rows-2 grid-cols-1
+  rounded-xl shadow-card overflow-clip
+  lg:h-96 lg:max-w-none"
+>
+{% image project.header_image width-350 as bg_heading %}
+
+  <div class="flex flex-col p-[22px] lg:py-8">
+    <!-- Títol projecte -->
+    <p class="font-semibold text-lg mb-2 font-title
+      lg:text-2xl">
+      {{ project.title }}
+    </p>
+    <!-- Url pàgina projecte -->
+    <div class="mb-12">
+      <a href="{% pageurl project %}">
+        <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
+          text-xs border border-gray-900 w-fit font-body
+          hover:bg-groc-100 focus:outline-none
+          focus:ring-4 focus:ring-groc-500">
+          <p>{% translate 'See more' %}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <a href="{% pageurl project %}">
+    <div class="w-full h-full bg-blau-500">
+      {% if project.header_image %}
+        <img src="{{ bg_heading.url }}" alt="{{ project.title }}"
+          class="h-full w-full object-cover"
+        >
+      {% endif %}
+    </div>
+  </a>
+</div>

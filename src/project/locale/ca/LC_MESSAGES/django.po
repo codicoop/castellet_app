@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 11:25+0200\n"
-"PO-Revision-Date: 2024-10-10 15:42+0200\n"
+"POT-Creation-Date: 2024-11-27 10:37+0100\n"
+"PO-Revision-Date: 2024-11-20 15:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -35,26 +35,26 @@ msgstr "actualitzat el"
 msgid "Catalan"
 msgstr "Català"
 
-#: project/settings.py:376
+#: project/settings.py:406
 msgid "Project name"
 msgstr "Nom del projecte"
 
-#: project/settings.py:379
+#: project/settings.py:409
 msgid "Email address for user's comunications"
 msgstr ""
 "Correu electrònic per tal que els usuaris de l'app es puguin comunicar amb "
 "vosaltres"
 
-#: project/settings.py:383
+#: project/settings.py:413
 msgid "Phone number for user's comunications"
 msgstr ""
 "Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
 
-#: project/test/test_selenium.py:333
+#: project/test/test_selenium.py:332
 msgid "Go back"
 msgstr "Tornar enrere"
 
-#: project/test/test_selenium.py:392
+#: project/test/test_selenium.py:391
 msgid "Enrere"
 msgstr "Enrere"
 
@@ -62,13 +62,9 @@ msgstr "Enrere"
 msgid "registration/"
 msgstr "registre/"
 
-#: project/urls.py:32
-msgid "newsletter/"
-msgstr "butlleti/"
-
-#: project/urls.py:34
-msgid "newsletter/success/"
-msgstr "butlleti/alta/"
+#: project/urls.py:31
+msgid "partners/"
+msgstr "socis/"
 
 #: project/views.py:37
 msgid "Back"
@@ -89,6 +85,12 @@ msgstr "Fet!"
 #: project/views.py:41
 msgid "The registry was updated correctly."
 msgstr "El registre ha estat actualitzat correctament."
+
+#~ msgid "newsletter/"
+#~ msgstr "butlleti/"
+
+#~ msgid "newsletter/success/"
+#~ msgstr "butlleti/alta/"
 
 #~ msgid "Site administration | Django Administrative Site"
 #~ msgstr "Administració del lloc | Lloc administratiu de Django"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 11:25+0200\n"
-"PO-Revision-Date: 2024-10-16 11:30+0200\n"
+"POT-Creation-Date: 2024-11-27 10:37+0100\n"
+"PO-Revision-Date: 2024-11-20 15:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -48,7 +48,7 @@ msgid "Verification code"
 msgstr "Codi de verificació"
 
 #: apps/users/forms.py:140 apps/users/forms.py:153 apps/users/models.py:99
-#: apps/users/services.py:63
+#: apps/users/services.py:64
 msgid "Projects"
 msgstr "Projectes"
 
@@ -66,13 +66,13 @@ msgstr "Nom del càrrec"
 
 #: apps/users/models.py:48 apps/users/models.py:85
 msgid "charge"
-msgstr "Càrrec"
+msgstr "càrrec"
 
 #: apps/users/models.py:49
 msgid "charges"
-msgstr "Càrrecs"
+msgstr "càrrecs"
 
-#: apps/users/models.py:56 apps/users/models.py:125 apps/users/services.py:54
+#: apps/users/models.py:56 apps/users/models.py:125 apps/users/services.py:55
 msgid "name"
 msgstr "nom"
 
@@ -80,43 +80,43 @@ msgstr "nom"
 msgid "surname"
 msgstr "cognom"
 
-#: apps/users/models.py:59 apps/users/services.py:56
+#: apps/users/models.py:59 apps/users/services.py:57
 msgid "email address"
 msgstr "adreça electrònica"
 
-#: apps/users/models.py:68 apps/users/services.py:57
+#: apps/users/models.py:68 apps/users/services.py:58
 msgid "Contact telephone"
 msgstr "Telèfon de contacte"
 
-#: apps/users/models.py:70 apps/users/services.py:58
+#: apps/users/models.py:70 apps/users/services.py:59
 msgid "Address"
-msgstr "Adreça"
+msgstr "Direcció postal"
 
-#: apps/users/models.py:72 apps/users/services.py:59
+#: apps/users/models.py:72 apps/users/services.py:60
 msgid "National Identity Document"
 msgstr "Document Nacional d’Identitat"
 
-#: apps/users/models.py:79 apps/users/services.py:60
+#: apps/users/models.py:79 apps/users/services.py:61
 msgid "Bank account"
 msgstr "Compte bancari"
 
-#: apps/users/models.py:90 apps/users/services.py:62
+#: apps/users/models.py:90 apps/users/services.py:63
 msgid "Is governing council member"
 msgstr "És membre del Consell Rector"
 
-#: apps/users/models.py:102 apps/users/services.py:64
+#: apps/users/models.py:102 apps/users/services.py:65
 msgid "Partner ID"
 msgstr "Número de soci"
 
-#: apps/users/models.py:104 apps/users/services.py:65
+#: apps/users/models.py:104 apps/users/services.py:66
 msgid "Entry year"
 msgstr "Any d’entrada"
 
-#: apps/users/models.py:106 apps/users/services.py:66
+#: apps/users/models.py:106 apps/users/services.py:67
 msgid "Corporate contribution"
 msgstr "Aportació societària"
 
-#: apps/users/models.py:109 apps/users/services.py:67
+#: apps/users/models.py:109 apps/users/services.py:68
 msgid "Voluntary contribution"
 msgstr "Aportació voluntària"
 
@@ -136,21 +136,21 @@ msgstr "usuari"
 msgid "users"
 msgstr "usuaris"
 
-#: apps/users/services.py:55
+#: apps/users/services.py:56
 msgid "surnames "
-msgstr "cognoms"
+msgstr "cognoms "
 
-#: apps/users/services.py:61
+#: apps/users/services.py:62
 msgid "Charge"
 msgstr "Càrrec"
 
-#: apps/users/services.py:95
+#: apps/users/services.py:97
 msgid "Export selected to CSV file"
 msgstr "Exporta la selección a un arxiu CSV"
 
 #: apps/users/urls.py:24
 msgid "sign-in/"
-msgstr "iniciar_sessió/"
+msgstr "iniciar_sessio/"
 
 #: apps/users/urls.py:26
 msgid "log-out/"
@@ -202,7 +202,7 @@ msgstr "verificacio_correu_electronic_completada/"
 
 #: apps/users/urls.py:88
 msgid "privacy-policy/"
-msgstr "política_privacitat/"
+msgstr "politica_privacitat/"
 
 #: apps/users/views.py:99 apps/users/views.py:200
 msgid "Done!"

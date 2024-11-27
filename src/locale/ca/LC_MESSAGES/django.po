@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 12:31+0200\n"
-"PO-Revision-Date: 2024-10-10 15:41+0200\n"
+"POT-Creation-Date: 2024-11-27 13:08+0100\n"
+"PO-Revision-Date: 2024-11-27 13:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -19,221 +19,677 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: apps/main/admin.py:39 templates/base.html:171
-#: templates/main/documents.html:5 templates/main/documents.html:27
+#: apps/partners/admin.py:42 apps/web/models/home.py:101
+#: templates/base.html:175 templates/main/documents.html:5
+#: templates/main/documents.html:27
 msgid "Documents"
 msgstr "Documents"
 
-#: apps/main/admin.py:55 apps/main/services.py:70
+#: apps/partners/admin.py:57 apps/partners/services.py:73
 msgid "Participants"
 msgstr "Participants"
 
-#: apps/main/admin.py:70 apps/main/services.py:71
+#: apps/partners/admin.py:72 apps/partners/services.py:74
 msgid "Number of participants"
 msgstr "Nombre de participants"
 
-#: apps/main/admin.py:122 apps/main/forms.py:85 templates/base.html:160
+#: apps/partners/admin.py:122 apps/partners/forms.py:74 templates/base.html:164
 #: templates/main/documents.html:88 templates/main/project_details.html:27
 #: templates/main/projects.html:5 templates/main/projects.html:27
 msgid "Projects"
 msgstr "Projectes"
 
-#: apps/main/admin.py:130
+#: apps/partners/admin.py:130
 msgid "Tag list"
 msgstr "Llistat d'etiquetes"
 
-#: apps/main/choices.py:6
+#: apps/partners/choices.py:6
 msgid "Governing Council and Driving Group"
 msgstr "Consell rector i grup motor"
 
-#: apps/main/choices.py:7
+#: apps/partners/choices.py:7
 msgid "All users"
 msgstr "Tothom"
 
-#: apps/main/choices.py:11
+#: apps/partners/choices.py:11
 msgid "Project in study phase"
 msgstr "Projecte en fase d’estudi"
 
-#: apps/main/choices.py:12
+#: apps/partners/choices.py:12
 msgid "Active Project"
 msgstr "Projecte actiu"
 
-#: apps/main/choices.py:13
+#: apps/partners/choices.py:13
 msgid "Future projects or other projects"
 msgstr "Projectes futurs o altres projectes"
 
-#: apps/main/forms.py:12 templates/profile/details.html:51
-msgid "Name"
-msgstr "Nom"
-
-#: apps/main/forms.py:23 templates/profile/details.html:63
-msgid "Surnames"
-msgstr "Cognoms"
-
-#: apps/main/forms.py:27 templates/profile/details.html:75
-msgid "Email"
-msgstr "Correu electrònic"
-
-#: apps/main/forms.py:29 apps/main/models.py:23
-msgid "Email where you will receive our newsletter"
-msgstr "Correu electrònic on vols rebre el nostre butlletí"
-
-#: apps/main/forms.py:77 apps/main/models.py:155
+#: apps/partners/forms.py:66 apps/partners/models.py:149
 msgid "Access Permission Role"
 msgstr "Permisos d’accés per rol"
 
-#: apps/main/models.py:18 apps/main/services.py:39
+#: apps/partners/models.py:17 apps/partners/services.py:40
 msgid "email address"
 msgstr "correu electrònic"
 
-#: apps/main/models.py:26 apps/main/services.py:40
+#: apps/partners/models.py:22
+msgid "Email where you will receive our newsletter"
+msgstr "Correu electrònic on vols rebre el nostre butlletí"
+
+#: apps/partners/models.py:25 apps/partners/services.py:41
+#: apps/wagtail_htmx_contact_form/models.py:12
+#: apps/wagtail_htmx_contact_form/models.py:163
 msgid "name"
 msgstr "nom"
 
-#: apps/main/models.py:32
-msgid "surname"
-msgstr "cognom"
+#: apps/partners/models.py:31
+msgid "surnames"
+msgstr "cognoms"
 
-#: apps/main/models.py:40
+#: apps/partners/models.py:37
+msgid "created at"
+msgstr "creat el"
+
+#: apps/partners/models.py:43
 msgid "newsletter subscriber"
 msgstr "subcriptor al butlletí"
 
-#: apps/main/models.py:41
+#: apps/partners/models.py:44
 msgid "newsletter subscribers"
 msgstr "subscriptors al butlletí"
 
-#: apps/main/models.py:53
+#: apps/partners/models.py:56
 msgid "project type name"
 msgstr "nom del tipus de projecte"
 
-#: apps/main/models.py:61
+#: apps/partners/models.py:64
 msgid "project type"
 msgstr "tipus de projecte"
 
-#: apps/main/models.py:62
+#: apps/partners/models.py:65
 msgid "project types"
 msgstr "tipus de projecte"
 
-#: apps/main/models.py:72 apps/main/models.py:143 apps/main/services.py:62
+#: apps/partners/models.py:74 apps/partners/models.py:137
+#: apps/partners/services.py:66 apps/web/models/base.py:157
+#: apps/web/models/home.py:37 apps/web/models/home.py:55
+#: apps/web/models/home.py:74 apps/web/models/home.py:80
+#: apps/web/models/projects.py:20 apps/web/models/projects.py:32
+#: apps/web/models/projects.py:44 apps/web/models/settings.py:58
 msgid "Title"
 msgstr "Títol"
 
-#: apps/main/models.py:84 apps/main/services.py:63
+#: apps/partners/models.py:86 apps/partners/services.py:67
 #: templates/main/project_details.html:55
+#: templates/web/pages/project_details.html:36
 msgid "Project type"
 msgstr "Tipus de projecte"
 
-#: apps/main/models.py:87 apps/main/services.py:64
-#: templates/main/project_details.html:67
+#: apps/partners/models.py:89 apps/partners/services.py:68
+#: apps/web/models/projects.py:123 templates/main/project_details.html:67
 msgid "Status"
 msgstr "Estat"
 
-#: apps/main/models.py:94 apps/main/models.py:149 apps/main/services.py:65
+#: apps/partners/models.py:96 apps/partners/models.py:143
+#: apps/partners/services.py:69 apps/web/models/home.py:43
+#: apps/web/models/home.py:61 apps/web/models/projects.py:26
+#: apps/web/models/projects.py:38 apps/web/models/projects.py:50
+#: apps/web/models/projects.py:130
 msgid "Description"
 msgstr "Descripció"
 
-#: apps/main/models.py:100
+#: apps/partners/models.py:101 apps/web/models/base.py:179
 msgid "Image"
 msgstr "Imatge"
 
-#: apps/main/models.py:107 apps/main/services.py:66
+#: apps/partners/models.py:108 apps/partners/services.py:70
 #: templates/main/project_details.html:79
+#: templates/web/pages/project_details.html:48
 msgid "Energy power"
 msgstr "Potència energètica"
 
-#: apps/main/models.py:110
+#: apps/partners/models.py:111
 msgid "Project energy power (kW)"
 msgstr "Potència energètica del projecte (kW)"
 
-#: apps/main/models.py:113 apps/main/services.py:67
+#: apps/partners/models.py:114 apps/partners/services.py:71
 #: templates/main/project_details.html:91
+#: templates/web/pages/project_details.html:54
 msgid "Annual energy"
 msgstr "Energia anual"
 
-#: apps/main/models.py:116
+#: apps/partners/models.py:117
 msgid "Project annual energy (kWh/year)"
 msgstr "Energia anual del projecte (kWh/any)"
 
-#: apps/main/models.py:119 apps/main/services.py:68
+#: apps/partners/models.py:120 apps/partners/services.py:72
 #: templates/main/project_details.html:103
+#: templates/web/pages/project_details.html:60
 msgid "Investment"
 msgstr "Inversió"
 
-#: apps/main/models.py:122
+#: apps/partners/models.py:123
 msgid "Project investment (€)"
 msgstr "Inversió del projecte (€)"
 
-#: apps/main/models.py:125 apps/main/services.py:69
-msgid "Is public"
-msgstr "És públic"
-
-#: apps/main/models.py:128
-msgid "Is this project public?"
-msgstr "Aquest projecte és públic?"
-
-#: apps/main/models.py:133
+#: apps/partners/models.py:127
 msgid "project"
 msgstr "projecte"
 
-#: apps/main/models.py:134
+#: apps/partners/models.py:128
 msgid "projects"
 msgstr "projectes"
 
-#: apps/main/models.py:161
+#: apps/partners/models.py:156
 msgid "A comma-separated list of tags."
-msgstr "Llistat d'etiquetes separades per una coma"
+msgstr "Llistat d'etiquetes separades per una coma."
 
-#: apps/main/models.py:166
+#: apps/partners/models.py:167
 msgid "Project"
 msgstr "Projecte"
 
-#: apps/main/models.py:169
+#: apps/partners/models.py:170
 msgid "File"
 msgstr "Fitxer"
 
-#: apps/main/models.py:180
+#: apps/partners/models.py:181
 msgid "Responsible user"
 msgstr "Usuari responsable"
 
-#: apps/main/models.py:183
+#: apps/partners/models.py:185
 msgid "Date of Document"
 msgstr "Data del document"
 
-#: apps/main/models.py:188
+#: apps/partners/models.py:190
 msgid "Upload date"
 msgstr "Data de pujada"
 
-#: apps/main/models.py:191
+#: apps/partners/models.py:193
 msgid "document"
 msgstr "document"
 
-#: apps/main/models.py:192
+#: apps/partners/models.py:194
 msgid "documents"
 msgstr "documents"
 
-#: apps/main/services.py:53 apps/main/services.py:104
+#: apps/partners/services.py:55 apps/partners/services.py:105
 msgid "Export selected to CSV file"
 msgstr "Exporta la selecció a un fitxer CSV"
 
-#: apps/main/urls.py:9
+#: apps/partners/urls.py:15
 msgid "documents/"
 msgstr "documents/"
 
-#: apps/main/urls.py:11
+#: apps/partners/urls.py:17
 msgid "projects/"
 msgstr "projectes/"
 
-#: apps/main/urls.py:12
+#: apps/partners/urls.py:18
 msgid "projects/<uuid:id>"
 msgstr "projectes/<uuid:id>"
 
-#: apps/main/views.py:26
-msgid "Signed up to the newsletter"
-msgstr "Alta al butlletí completada"
+#: apps/wagtail_htmx_contact_form/models.py:14
+msgid "Label for the Name field."
+msgstr "Etiqueta pel camp Nom."
 
-#: apps/main/views.py:27
+#: apps/wagtail_htmx_contact_form/models.py:15
+msgid "Your name"
+msgstr "El teu nom"
+
+#: apps/wagtail_htmx_contact_form/models.py:18
+#: templates/profile/details.html:39
+msgid "email"
+msgstr "correu electrònic"
+
+#: apps/wagtail_htmx_contact_form/models.py:20
+msgid "Label for the e-mail field."
+msgstr "Etiqueta pel camp Email."
+
+#: apps/wagtail_htmx_contact_form/models.py:21
+msgid "Your e-mail"
+msgstr "El teu correu electrònic"
+
+#: apps/wagtail_htmx_contact_form/models.py:24
+#: apps/wagtail_htmx_contact_form/models.py:30
+#: apps/wagtail_htmx_contact_form/models.py:73
+#: apps/wagtail_htmx_contact_form/models.py:171
+msgid "subject"
+msgstr "assumpte"
+
+#: apps/wagtail_htmx_contact_form/models.py:26
+msgid "Label for the Phone field."
+msgstr "Etiqueta pel camp Telèfon."
+
+#: apps/wagtail_htmx_contact_form/models.py:27 apps/web/models/settings.py:21
+#: templates/profile/details.html:87
+msgid "Phone"
+msgstr "Telèfon"
+
+#: apps/wagtail_htmx_contact_form/models.py:32
+msgid "Label for the Subject field."
+msgstr "Etiqueta pel camp Assumpte."
+
+#: apps/wagtail_htmx_contact_form/models.py:33
+msgid "Subject"
+msgstr "Assumpte"
+
+#: apps/wagtail_htmx_contact_form/models.py:36
+#: apps/wagtail_htmx_contact_form/models.py:175
+msgid "message"
+msgstr "missatge"
+
+#: apps/wagtail_htmx_contact_form/models.py:38
+msgid "Label for the Message field."
+msgstr "Etiqueta pel camp Missatge."
+
+#: apps/wagtail_htmx_contact_form/models.py:39
+msgid "Message"
+msgstr "Missatge"
+
+#: apps/wagtail_htmx_contact_form/models.py:42
+msgid "personal data authorization"
+msgstr "autorització de dades personals"
+
+#: apps/wagtail_htmx_contact_form/models.py:44
+msgid "Label for the Personal data authorization field."
+msgstr "Etiqueta pel camp Autorització de dades personals."
+
+#: apps/wagtail_htmx_contact_form/models.py:45
+msgid "I authorize my personal data treatment"
+msgstr "Autoritzo el tractament de les meves dades personals"
+
+#: apps/wagtail_htmx_contact_form/models.py:48
+msgid "personal data authorization legal text"
+msgstr "text legal per l'autorització de dades personals"
+
+#: apps/wagtail_htmx_contact_form/models.py:50
+msgid ""
+"Legal text displayed alongside the personal data authorization checkbox."
+msgstr ""
+"Text legal que apareixerà al costat de la casella d'autorització de dades "
+"personals."
+
+#: apps/wagtail_htmx_contact_form/models.py:59
+msgid "success message"
+msgstr "missatge d'èxit"
+
+#: apps/wagtail_htmx_contact_form/models.py:60
+msgid "Message sent, thanks for contacting us!"
+msgstr "Missatge enviat, gràcies per contactar amb nosaltres!"
+
+#: apps/wagtail_htmx_contact_form/models.py:64
+msgid "to address"
+msgstr "a l'adreça"
+
+#: apps/wagtail_htmx_contact_form/models.py:67
+msgid ""
+"E-mail to notify when a new submission is received. Leave it empty to "
+"disable the notifications."
+msgstr ""
+"Correu electrònic per notificar quan hi ha un nou missatge rebut. Deixa-ho "
+"en blanc per deshabilitar les notificacions."
+
+#: apps/wagtail_htmx_contact_form/models.py:77
+msgid ""
+"If empty, you will not get e-mail notifications for new form submissions."
+msgstr ""
+"Si és buit, no rebràs les notificacions per correu electrònic quan hi hagi "
+"nous missatges."
+
+#: apps/wagtail_htmx_contact_form/models.py:101
+msgid "Field labels"
+msgstr "Etiquetes dels camps"
+
+#: apps/wagtail_htmx_contact_form/models.py:105
+msgid "Form settings"
+msgstr "Configuració del formulari"
+
+#: apps/wagtail_htmx_contact_form/models.py:167
+msgid "e-mail"
+msgstr "correu electrònic"
+
+#: apps/wagtail_htmx_contact_form/models.py:178
+msgid "Treatment of personal data authorization"
+msgstr "Tractament de l'autorització de dades personals"
+
+#: apps/wagtail_htmx_contact_form/models.py:182
+msgid "contact form submission"
+msgstr "enviament del formulari de contacte"
+
+#: apps/wagtail_htmx_contact_form/models.py:183
+msgid "contact form submissions"
+msgstr "enviaments del formulari de contacte"
+
+#: apps/wagtail_htmx_contact_form/wagtail_hooks.py:23
+msgid "Form submissions"
+msgstr "Enviaments del formulari"
+
+#: apps/web/models/base.py:21
+msgid "Display join us block"
+msgstr "Mostra el bloc \"Uneix-te\""
+
+#: apps/web/models/base.py:23
+msgid ""
+"Show the join us block at the botton of this page. To modify its content, go "
+"to Settings - Website customization."
+msgstr ""
+"Mostra el bloc \"Uneix-te\" al final d'aquesta página. Per modificar aquest "
+"contingut, ves a \"Configuració\" - \"Personalització del web\"."
+
+#: apps/web/models/base.py:38
+msgid "Sections visibility configuration"
+msgstr "Configuració de la visibilitat de les seccions"
+
+#: apps/web/models/base.py:78
 msgid "Successfully signed up to the newsletter."
 msgstr "La teva alta al butlletí s'ha realitzat correctament."
+
+#: apps/web/models/base.py:103
+msgid "Menu title"
+msgstr "Títol del menú"
+
+#: apps/web/models/base.py:106
+msgid "If not set, the menu title will be the page title."
+msgstr ""
+"Si és buit, el títol que apareixerà al menú serà el títol de la pàgina."
+
+#: apps/web/models/base.py:121 apps/web/models/news.py:68
+#: apps/web/models/projects.py:109
+msgid "Header image"
+msgstr "Imatge de la capçalera"
+
+#: apps/web/models/base.py:129 apps/web/models/news.py:74
+#: apps/web/models/projects.py:115
+msgid ""
+"This image is intended to be decorative and creative to accompany the "
+"content. Depending on the resolution and device of the user, the size and "
+"proportion will vary, and therefore parts of the image will be cropped. The "
+"recommended proportion is 2x1, with a minimum size of 2,000x1,000px."
+msgstr ""
+"Aquesta imatge és decorativa, per acompanyar el contingut. La proporció en "
+"la que es mostrarà i la manera com quedarà retallada dependrà de la "
+"resolució i dispositiu del visitant. Recomanem una proporció de 2x1, amb una "
+"mida mínima de 2.000x1000 píxels."
+
+#: apps/web/models/base.py:137
+msgid "Header description"
+msgstr "Descripció de la capçalera"
+
+#: apps/web/models/base.py:143
+msgid "Header button title"
+msgstr "Text del botó de la capçalera"
+
+#: apps/web/models/base.py:150
+msgid "Header button linked page"
+msgstr "Enllaç del botó de la capçalera"
+
+#: apps/web/models/base.py:162 apps/web/models/legal.py:10
+#: apps/web/models/settings.py:64
+msgid "Text"
+msgstr "Text"
+
+#: apps/web/models/base.py:164
+msgid "Button title"
+msgstr "Text del botó"
+
+#: apps/web/models/base.py:171
+msgid "Linked page"
+msgstr "Pàgina enllaçada"
+
+#: apps/web/models/base.py:186
+msgid "Display header highlighted overlay"
+msgstr "Mostrar el missatge destacat per sobre la capçalera"
+
+#: apps/web/models/base.py:201
+msgid "Header"
+msgstr "Capçalera"
+
+#: apps/web/models/base.py:218
+msgid "Header overlay message"
+msgstr "Missatge sobre la capçalera"
+
+#: apps/web/models/faq.py:12
+msgid "Question"
+msgstr "Pregunta"
+
+#: apps/web/models/faq.py:15
+msgid "Answer"
+msgstr "Resposta"
+
+#: apps/web/models/faq.py:30
+msgid "Questions & Answers"
+msgstr "Preguntes i respostes"
+
+#: apps/web/models/home.py:17
+msgid "General document"
+msgstr "Document general"
+
+#: apps/web/models/home.py:18
+msgid "Image file"
+msgstr "Arxiu d'imatge"
+
+#: apps/web/models/home.py:19
+msgid "Video file"
+msgstr "Arxiu de vídeo"
+
+#: apps/web/models/home.py:20
+msgid "Audio file"
+msgstr "Arxiu d'àudio"
+
+#: apps/web/models/home.py:49
+msgid "YouTube URL"
+msgstr "Url de YouTube"
+
+#: apps/web/models/home.py:76
+msgid "What does Castellet Sostenible offer?"
+msgstr "Què t'ofereix Castellet Sostenible?"
+
+#: apps/web/models/home.py:82
+msgid "Last news"
+msgstr "Últimes notícies"
+
+#: apps/web/models/home.py:93
+msgid "Video"
+msgstr "Vídeo"
+
+#: apps/web/models/home.py:108
+msgid ""
+"To add projects at the home page, you have to go navigate the edit the "
+"project page (which are inside the Projects page in the pages tree) and "
+"click the Configuration tab."
+msgstr ""
+"Per afegir projectes a la pàgina d'inici, has d'anar a editar la pàgina de "
+"Projecte (que es troba dins de la pàgina Projectes) i fer click a la "
+"pestanya de Configuració."
+
+#: apps/web/models/home.py:114
+msgid "Projects / What Castellet offers"
+msgstr "Projectes / Què ofereix Castellet"
+
+#: apps/web/models/home.py:121
+msgid ""
+"The latest news block is automatically generated taking the latest 3 news "
+"created in the News page."
+msgstr ""
+"El bloc de les últimes noticies es genera automàticament agafant les 3 "
+"últimes notícies creades a la pàgina de \"Notícies\"."
+
+#: apps/web/models/home.py:126
+msgid "Last news section"
+msgstr "Secció últimes notícies"
+
+#: apps/web/models/home.py:133
+msgid ""
+"To manage the logos for the 'With the support of...' footer section, go to "
+"the Snippets section of the main menu."
+msgstr ""
+"Per gestionar els logos de l'apartat \"Amb el suport de...\" que hi ha a peu "
+"de pàgina, ves a l'apartat Segments del menú principal."
+
+#: apps/web/models/home.py:138
+msgid "Footer logos"
+msgstr "Logotips a peu de pàgina"
+
+#: apps/web/models/news.py:82
+msgid "Date"
+msgstr "Data"
+
+#: apps/web/models/news.py:109 apps/web/models/projects.py:158
+msgid "Paragraphs and pictures"
+msgstr "Paràgrafs i imatges"
+
+#: apps/web/models/projects.py:22
+msgid "Projects we are currently working on"
+msgstr "Projectes en els que ja estem treballant"
+
+#: apps/web/models/projects.py:34
+msgid "Projects being studied"
+msgstr "Projectes en fase d’estudi"
+
+#: apps/web/models/projects.py:46
+msgid "Future and other projects"
+msgstr "Projectes futurs o altres projectes"
+
+#: apps/web/models/projects.py:62
+msgid "Currently active projects"
+msgstr "Projectes actius actualment"
+
+#: apps/web/models/projects.py:69
+msgid "Working on projects"
+msgstr "Projectes en els que estem treballant"
+
+#: apps/web/models/projects.py:76
+msgid "Other and future projects"
+msgstr "Projectes futurs i altres"
+
+#: apps/web/models/projects.py:162
+msgid "Related project in the Partners app"
+msgstr "Projecte relacionat a l'aplicació interna"
+
+#: apps/web/models/projects.py:166
+#, python-brace-format
+msgid ""
+"If set, some project details from the projects section in the partners app "
+"will be included in the website. To create or edit those projects, go to the "
+"<a href=\"{link}\">admin panel</a>."
+msgstr ""
+"Si es selecciona, alguns detalls del projecte que hi ha a l'aplicació "
+"interna seran inclosos a la pàgina web. Per crear o editar aquells "
+"projectes, ves al  <a href=\"{link}\">panell d'adminsitració</a>."
+
+#: apps/web/models/projects.py:180
+msgid "Show in the home page"
+msgstr "Mostra a la pàgina d'inici"
+
+#: apps/web/models/projects.py:183
+msgid ""
+"If selected, this project will appear on the home page in the 'What do we "
+"offer?' block."
+msgstr ""
+"Si es selecciona, aquest projecte apareixerà a la pàgina d'inici al bloc de "
+"projectes."
+
+#: apps/web/models/projects.py:200
+msgid "Configuration of projects in the home page"
+msgstr "Configuració dels projectes a la pàgina d'inici"
+
+#: apps/web/models/settings.py:12
+msgid "Contact e-mail"
+msgstr "Correu electrònic de contacte"
+
+#: apps/web/models/settings.py:16 templates/profile/details.html:99
+#: templates/web/pages/contact.html:18
+msgid "Address"
+msgstr "Adreça postal"
+
+#: apps/web/models/settings.py:27
+msgid "Footer name"
+msgstr "Nom del peu de pàgina"
+
+#: apps/web/models/settings.py:29
+msgid "Legal name and year"
+msgstr "Nom legal i any"
+
+#: apps/web/models/settings.py:34
+msgid "Title prefix"
+msgstr "Prefixe del títol"
+
+#: apps/web/models/settings.py:37
+msgid ""
+"This will be prefixed to every page title. the title is shown in the "
+"browser's tab."
+msgstr ""
+"Això serà prefixat a tots els títols de les pàgines. El títol que es mostra "
+"a la pestanya del navegador."
+
+#: apps/web/models/settings.py:44
+msgid "Authorship"
+msgstr "Autoria"
+
+#: apps/web/models/settings.py:51 apps/web/models/snippets.py:11
+msgid "Logo"
+msgstr "Logo"
+
+#: apps/web/models/settings.py:60
+msgid "Join Castellet Sostenible"
+msgstr "Uneix-te a Castellet Sostenible"
+
+#: apps/web/models/settings.py:77
+msgid "Contact Details"
+msgstr "Informació de contacte"
+
+#: apps/web/models/settings.py:85
+msgid "Header and footer"
+msgstr "Capçalera i peu de pàgina"
+
+#: apps/web/models/settings.py:92
+msgid "Join us block"
+msgstr "Bloc Uneix-te"
+
+#: apps/web/models/settings.py:97
+msgid "Website customization"
+msgstr "Personalització de la página web"
+
+#: apps/web/models/settings.py:103
+msgid "Embed code"
+msgstr "Incrusta el codi"
+
+#: apps/web/models/settings.py:117
+msgid "Facebook URL"
+msgstr "Url de facebook"
+
+#: apps/web/models/settings.py:122
+msgid "Youtube URL"
+msgstr "Url de Youtube"
+
+#: apps/web/models/settings.py:127
+msgid "Instagram URL"
+msgstr "Url d'Instagram"
+
+#: apps/web/models/settings.py:132
+msgid "X URL"
+msgstr "Url de X"
+
+#: apps/web/models/settings.py:144
+msgid "Social Media URLs"
+msgstr "Urls de les xarxes socials"
+
+#: apps/web/models/snippets.py:24
+msgid "Footer logo without image"
+msgstr "Logo de peu de pàgina sense imatge"
+
+#: apps/web/wagtail_hooks.py:45
+msgid "Newsletter subscribers"
+msgstr "Subscriptors al butlletí"
+
+#: apps/web/wagtail_hooks.py:67 templates/web/cms/confirm_csv_export.html:7
+msgid "Export"
+msgstr "Exportar"
+
+#: apps/web/wagtail_hooks.py:68
+msgid "Export newsletter subscribers to a Mailchimp-compatible CSV."
+msgstr ""
+"Exportar els subscriptors del butlletí a un fitxer CSV compatible amb "
+"MailChimp."
 
 #: templates/404.html:13 templates/500.html:13 templates/503.html:13
 msgid "Go back"
@@ -272,31 +728,32 @@ msgid ""
 "The application is currently under maintenance, please try again in few "
 "minutes."
 msgstr ""
-"L’aplicació està actualment en manteniment, torna-ho a provar en pocs minuts."
+"L’aplicació està actualment en manteniment, torna-ho a provar d'aquí una "
+"estona."
 
-#: templates/base.html:41
+#: templates/base.html:42
 msgid "Logo of Comunitat energètica Castellet"
 msgstr "Logo de la Castellet Sostenible"
 
-#: templates/base.html:72
+#: templates/base.html:74
 msgid "Unverified email"
 msgstr "Correu electrònic no verificat"
 
-#: templates/base.html:80 templates/base.html:148
+#: templates/base.html:83 templates/base.html:151
 #: templates/registration/password_change_form.html:32
 #: templates/registration/send_verification_code.html:29
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/base.html:86 templates/base.html:185
+#: templates/base.html:89 templates/base.html:201
 msgid "Administration panel"
 msgstr "Panell d’administració"
 
-#: templates/base.html:93
+#: templates/base.html:96
 msgid "Log out"
 msgstr "Tancar sessió"
 
-#: templates/base.html:123 templates/home.html:5 templates/home.html:19
+#: templates/base.html:126 templates/home.html:5 templates/home.html:19
 #: templates/home.html:25 templates/main/documents.html:19
 #: templates/main/project_details.html:18 templates/main/projects.html:19
 #: templates/newsletter.html:23 templates/profile/details.html:24
@@ -304,15 +761,19 @@ msgstr "Tancar sessió"
 #: templates/registration/password_change_form.html:23
 #: templates/registration/privacy_policy.html:19
 #: templates/registration/send_verification_code.html:20
+#: templates/web/base.html:90
 msgid "Home"
 msgstr "Inici"
 
-#: templates/base.html:136 templates/registration/login.html:5
-#: templates/registration/login_old.html:5
+#: templates/base.html:139 templates/registration/login.html:5
 msgid "Log in"
 msgstr "Iniciar sessió"
 
-#: templates/base.html:265
+#: templates/base.html:188
+msgid "Web"
+msgstr "Pàgina web"
+
+#: templates/base.html:280
 msgid ""
 "We use cookies to optimize your experience and to analyze the web traffic. "
 "We don't sell data to third parties. If you continue navigating, we'll "
@@ -322,11 +783,11 @@ msgstr ""
 "web. No venem dades a tercers. Si continues navegant, entendrem que estàs "
 "d’acord amb això."
 
-#: templates/base.html:277
+#: templates/base.html:292
 msgid "Accept"
 msgstr "Accepta"
 
-#: templates/base.html:287
+#: templates/base.html:302
 msgid "Deny"
 msgstr "Denega"
 
@@ -362,67 +823,11 @@ msgstr "Hi ha un error en el formulari."
 msgid "Please, check the fields marked in red."
 msgstr "Si us plau, comprova els camps marcats en vermell."
 
-#: templates/demo_flowbite.html:51 templates/fields/field_default.html:36
+#: templates/fields/field_default.html:36
 #: templates/fields/field_default.html:87
 #: templates/fields/field_default.html:140
 msgid "Show information"
 msgstr "Mostra la informació"
-
-#: templates/demo_flowbite.html:346
-msgid "Error alert"
-msgstr "Alerta d’error"
-
-#: templates/demo_flowbite.html:348
-msgid "There is an error in the form!"
-msgstr "Hi ha un error en el formulari!"
-
-#: templates/demo_flowbite.html:350
-msgid "Please check the fields marked in red"
-msgstr "Comprova els camps marcats en vermell"
-
-#: templates/demo_flowbite.html:362
-msgid "Close error alert"
-msgstr "Tanca l’alerta d’error"
-
-#: templates/demo_flowbite.html:374
-msgid "Form error"
-msgstr "Error de formulari"
-
-#: templates/demo_flowbite.html:376
-msgid "There was an error!"
-msgstr "S’ha produït un error!"
-
-#: templates/demo_flowbite.html:416
-msgid "Upload a file"
-msgstr "Puja un fitxer"
-
-#: templates/demo_flowbite.html:498
-msgid "New file"
-msgstr "Fitxer nou"
-
-#: templates/demo_flowbite.html:519
-msgid "Current file"
-msgstr "Fitxer actual"
-
-#: templates/demo_flowbite.html:539
-msgid "Delete file"
-msgstr "Suprimeix el fitxer"
-
-#: templates/demo_flowbite.html:559
-msgid "This is the current uploaded file:"
-msgstr "Aquest és el fitxer pujat:"
-
-#: templates/demo_flowbite.html:584
-msgid ""
-"Select a new file. Beware that if there was a file already uploaded, it will "
-"be erased."
-msgstr ""
-"Selecciona un fitxer nou. Tingues en compte que si ja hi ha un fitxer pujat, "
-"s’esborrarà."
-
-#: templates/demo_flowbite.html:633
-msgid "Delete the current file."
-msgstr "Suprimeix el fitxer actual."
 
 #: templates/home_internal.html:5
 msgid "Internal home page"
@@ -457,16 +862,17 @@ msgid "See the document"
 msgstr "Veure el document"
 
 #: templates/main/documents_filtered.html:46
-msgid "There is no result for this search. Try another filter combination"
+msgid "There is no result for this search. Try another filter combination."
 msgstr ""
-"No hi ha resultats per aquesta búsqueda. Prova una combinació diferent de "
+"No hi ha resultats per aquesta cerca. Prova una combinació diferent de "
 "filtres."
 
 #: templates/main/project_details.html:5
 msgid "Project details"
-msgstr "Detalls del projecte"
+msgstr "Informació del projecte"
 
 #: templates/main/project_details.html:48
+#: templates/web/pages/project_details.html:30
 msgid "Data"
 msgstr "Dades"
 
@@ -489,34 +895,28 @@ msgid "Project description"
 msgstr "Descripció del projecte"
 
 #: templates/main/projects.html:68
+#: templates/web/components/project_summary.html:21
+#: templates/web/pages/home.html:110 templates/web/pages/home.html:128
 msgid "See more"
-msgstr "Veure més"
+msgstr "Veure'n més"
 
 #: templates/main/projects.html:79
-#, fuzzy
-#| msgid ""
-#| "You don't have any project assinged at the moment. If you want to be "
-#| "assigned to some project get in contact with"
 msgid ""
 "You don't have any project assinged at the moment. If you want to be "
-"assigned to some project get in contact with the administrators "
+"assigned to some project get in contact with the administrators."
 msgstr ""
-"No tens cap projecte assignat de moment. Si vols que se t'assigni un, posa't "
-"en contacte amb"
+"No tens cap projecte assignat de moment. Si vols que se te'n assigni un, "
+"posa't en contacte amb els administradors."
 
 #: templates/main/projects.html:80
-#, fuzzy
-#| msgid "email"
 msgid "by email"
-msgstr "correu electrònic"
+msgstr "per correu electrònic"
 
 #: templates/main/projects.html:82
-#, fuzzy
-#| msgid " or calling at "
 msgid " or calling at the "
-msgstr "o trucant al"
+msgstr " o trucant al "
 
-#: templates/newsletter.html:5
+#: templates/newsletter.html:5 templates/web/base.html:369
 msgid "Newsletter"
 msgstr "Butlletí"
 
@@ -526,7 +926,7 @@ msgstr "Subscriu-te al nostre butlletí"
 
 #: templates/profile/details.html:5
 msgid "Profile details"
-msgstr "Detalls del perfil"
+msgstr "Informació del perfil"
 
 #: templates/profile/details.html:35
 msgid "Your profile"
@@ -537,28 +937,28 @@ msgid ""
 "Here you can see all your data. If you need to change anything, contact the "
 "administrators by"
 msgstr ""
-"Aquí pots veure totes les teves dades. Si necessites fer algún canvi, "
-"contacta els administradors per"
-
-#: templates/profile/details.html:39
-msgid "email"
-msgstr "correu electrònic"
+"Aquí pots veure totes les teves dades. Si necessites modificar-les, contacta "
+"els administradors per"
 
 #: templates/profile/details.html:41
 msgid " or calling at "
-msgstr "o trucant al"
+msgstr " o trucant al "
 
 #: templates/profile/details.html:44
 msgid "and they will update it for you."
 msgstr "i ells ho actualitzaran per tu."
 
-#: templates/profile/details.html:87
-msgid "Phone"
-msgstr "Telèfon"
+#: templates/profile/details.html:51
+msgid "Name"
+msgstr "Nom"
 
-#: templates/profile/details.html:99
-msgid "Address"
-msgstr "Adreça postal"
+#: templates/profile/details.html:63
+msgid "Surnames"
+msgstr "Cognoms"
+
+#: templates/profile/details.html:75
+msgid "Email"
+msgstr "Correu electrònic"
 
 #: templates/profile/details.html:111
 msgid "DNI"
@@ -648,30 +1048,6 @@ msgstr "Iniciar sessió"
 msgid "Forgot your password?"
 msgstr "Has oblidat la contrasenya?"
 
-#: templates/registration/login_old.html:15
-msgid "Log-in"
-msgstr "Iniciar sessió"
-
-#: templates/registration/login_old.html:21
-msgid "Enter your account details to authenticate."
-msgstr "Introdueix les dades del teu compte per a autenticar-te."
-
-#: templates/registration/login_old.html:66
-msgid "Go in"
-msgstr "Anar"
-
-#: templates/registration/login_old.html:73
-msgid "Forgotten your password?"
-msgstr "Has oblidat la contrasenya?"
-
-#: templates/registration/login_old.html:77
-msgid "If you are not registered yet:"
-msgstr "Si encara no estàs registrat:"
-
-#: templates/registration/login_old.html:80
-msgid "Sign-up"
-msgstr "Registrar-se"
-
 #: templates/registration/password_change_form.html:50
 #: templates/registration/password_reset_confirm.html:29
 #: templates/registration/password_reset_form.html:26
@@ -731,23 +1107,284 @@ msgstr ""
 msgid "Set"
 msgstr "Estableix"
 
+#: templates/wagtailadmin/account/account.html:5
+msgid "Account"
+msgstr "Compte"
+
+#: templates/wagtailadmin/account/account.html:10
+msgid ""
+"To manage your user's details, as well as the other users, you must use the "
+"Users section in the administration panel, here:"
+msgstr ""
+"Per gestionar els detalls del teu usuari, així com la dels altres usuaris, "
+"has d'entrar a la secció Usuaris al panell d'administració. Aquí:"
+
+#: templates/wagtailadmin/account/account.html:11
+msgid "User's admin panel"
+msgstr "Usuaris - Panell d'administració"
+
+#: templates/web/base.html:107 templates/web/base.html:130
+msgid "Search"
+msgstr "Cerca"
+
+#: templates/web/base.html:116
+msgid "Search for anything..."
+msgstr "Cerca alguna cosa..."
+
+#: templates/web/base.html:143 templates/web/base.html:270
+#: templates/web/pages/home.html:41
+msgid "Join us"
+msgstr "Uneix-te"
+
+#: templates/web/base.html:152
+msgid "Partners area"
+msgstr "Àrea interna"
+
+#: templates/web/base.html:166
+msgid "Search..."
+msgstr "Cerca..."
+
+#: templates/web/base.html:208 templates/web/base.html:337
+msgid "Facebook link"
+msgstr "Enllaç de Facebook"
+
+#: templates/web/base.html:217 templates/web/base.html:344
+msgid "Youtube link"
+msgstr "Enllaç de Youtube"
+
+#: templates/web/base.html:226 templates/web/base.html:351
+msgid "Instagram link"
+msgstr "Enllaç d'Instagram"
+
+#: templates/web/base.html:235
+msgid "X link"
+msgstr "Enllaç de X"
+
+#: templates/web/base.html:282
+msgid "Menu"
+msgstr "Menú"
+
+#: templates/web/base.html:308
+msgid "Contact"
+msgstr "Contacte"
+
+#: templates/web/base.html:332
+msgid "Follow us in..."
+msgstr "Segueix-nos a..."
+
+#: templates/web/base.html:358
+msgid "Twitter link"
+msgstr "Enllaç de X"
+
+#: templates/web/base.html:376
+msgid "Subscribe"
+msgstr "Subscriu-te"
+
+#: templates/web/base.html:379
+msgid "When subscribing you are accepting the privacy policy."
+msgstr "Al subscriure't acceptes la política de privacitat."
+
+#: templates/web/base.html:417
+msgid "With the support of:"
+msgstr "Amb el suport de:"
+
+#: templates/web/base.html:435
+msgid "Developed by"
+msgstr "Desenvolupat per"
+
+#: templates/web/base.html:437
+msgid " - Designed by"
+msgstr " - Dissenyat per"
+
+#: templates/web/cms/confirm_csv_export.html:4
+#, python-format
+msgid "Export 1 item"
+msgid_plural "Export %(counter)s items"
+msgstr[0] "Export 1 item"
+msgstr[1] "Exportar %(counter)s elements"
+
+#: templates/web/cms/confirm_csv_export.html:13
+msgid "Are you sure you want to export these items?"
+msgstr "Segur que vols exportar aquests elements?"
+
+#: templates/web/cms/confirm_csv_export.html:29
+msgid "Yes, export"
+msgstr "Sí, exportar"
+
+#: templates/web/cms/confirm_csv_export.html:30
+msgid "No, don't export"
+msgstr "No, no els exportis"
+
+#: templates/web/components/heading.html:51
+msgid "Close overlay"
+msgstr "Tancar missatge"
+
+#: templates/web/components/news_summary.html:28
+msgid "Read more"
+msgstr "Llegir més"
+
+#: templates/web/pages/contact.html:30 templates/web/pages/contact.html:38
+msgid "Phone icon"
+msgstr "Icona de telèfon"
+
+#: templates/web/pages/contact_form.html:11
+msgid "Send us your query"
+msgstr "Envia'ns la teva consulta"
+
+#: templates/web/pages/contact_form.html:14
+msgid "Fill up this form and we will answer back as soon as possible."
+msgstr ""
+"Omple aquest formulari i et respondre'm tan aviat com ens sigui possible."
+
+#: templates/web/pages/contact_form.html:92
+msgid "Send query"
+msgstr "Enviar consulta"
+
+#: templates/web/pages/faq.html:17
+msgid "Frequently asked questions"
+msgstr "Preguntes freqüents"
+
+#: templates/web/pages/home.html:31
+msgid "Leaf decoration"
+msgstr "Fulla de decoració"
+
+#: templates/web/pages/news_details.html:19
+msgid "Article"
+msgstr "Notícia"
+
+#: templates/web/pages/news_details.html:79
+msgid "Related news"
+msgstr "Notícies relacionades"
+
+#: templates/web/pages/news_list.html:52
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/web/pages/news_list.html:80
+msgid "Next"
+msgstr "Següent"
+
+#: templates/web/pages/project_details.html:32
+msgid "Here you have some data of the project."
+msgstr "Aquí tens algunes dades del projecte."
+
+#: templates/web/pages/project_details.html:42
+msgid "Project state"
+msgstr "Estat del projecte"
+
+#: templates/web/pages/project_details.html:72
+msgid "Participate!"
+msgstr "Participa!"
+
+#~ msgid "Error alert"
+#~ msgstr "Alerta d’error"
+
+#~ msgid "There is an error in the form!"
+#~ msgstr "Hi ha un error al formulari!"
+
+#~ msgid "Please check the fields marked in red"
+#~ msgstr "Comprova els camps marcats en vermell"
+
+#~ msgid "Close error alert"
+#~ msgstr "Tanca l’alerta d’error"
+
+#~ msgid "Form error"
+#~ msgstr "Error de formulari"
+
+#~ msgid "There was an error!"
+#~ msgstr "S’ha produït un error!"
+
+#~ msgid "Upload a file"
+#~ msgstr "Puja un fitxer"
+
+#~ msgid "New file"
+#~ msgstr "Fitxer nou"
+
+#~ msgid "Current file"
+#~ msgstr "Fitxer actual"
+
+#~ msgid "Delete file"
+#~ msgstr "Suprimeix el fitxer"
+
+#~ msgid "This is the current uploaded file:"
+#~ msgstr "Aquest és el fitxer pujat:"
+
+#~ msgid ""
+#~ "Select a new file. Beware that if there was a file already uploaded, it "
+#~ "will be erased."
+#~ msgstr ""
+#~ "Selecciona un fitxer nou. Tingues en compte que si ja hi ha un fitxer "
+#~ "pujat, s’esborrarà."
+
+#~ msgid "Delete the current file."
+#~ msgstr "Suprimeix el fitxer actual."
+
+#~ msgid "Títol"
+#~ msgstr "Títol"
+
+#~ msgid "Signed up to the newsletter"
+#~ msgstr "Alta al butlletí completada"
+
+#, fuzzy
+#~| msgid "Successfully signed up to the newsletter."
+#~ msgid "You've been successfully subscribed to the newsletter."
+#~ msgstr "La teva alta al butlletí s'ha realitzat correctament."
+
+#~ msgid ""
+#~ "Aquesta imatge està pensada per ser decorativa i crear acompanyar el "
+#~ "contingut. Segons la resolució i el dispositiu de l'usuari, la mida i "
+#~ "proporció variarà, i per tant es retallaran parts de la imatge. La "
+#~ "proporció recomanada és de 2x1, amb una mida mínima de 2.000x1.000px."
+#~ msgstr ""
+#~ "Aquesta imatge està pensada per ser decorativa i crear acompanyar el "
+#~ "contingut. Segons la resolució i el dispositiu de l'usuari, la mida i "
+#~ "proporció variarà, i per tant es retallaran parts de la imatge. La "
+#~ "proporció recomanada és de 2x1, amb una mida mínima de 2.000x1.000px."
+
+#~ msgid "FAQs"
+#~ msgstr "FAQs"
+
+#~ msgid "Legal warning"
+#~ msgstr "Avís legal"
+
+#~ msgid "Subvenció X"
+#~ msgstr "Subvenció X"
+
+#~ msgid "Nom"
+#~ msgstr "Nom"
+
+#~ msgid "Is public"
+#~ msgstr "És públic"
+
+#~ msgid "Is this project public?"
+#~ msgstr "Aquest projecte és públic?"
+
+#~ msgid "Log-in"
+#~ msgstr "Iniciar sessió"
+
+#~ msgid "Enter your account details to authenticate."
+#~ msgstr "Introdueix les dades del teu compte per a autenticar-te."
+
+#~ msgid "Go in"
+#~ msgstr "Anar"
+
+#~ msgid "Forgotten your password?"
+#~ msgstr "Has oblidat la contrasenya?"
+
+#~ msgid "If you are not registered yet:"
+#~ msgstr "Si encara no estàs registrat:"
+
+#~ msgid "Sign-up"
+#~ msgstr "Registrar-se"
+
 #~ msgid "Do you want to subscribe to our newsletter?"
 #~ msgstr "Vols subscriure’t a la nostra newsletter?"
 
 #~ msgid "the administrators."
 #~ msgstr "els adminstradors."
 
-#~ msgid "Your name"
-#~ msgstr "El teu nom"
-
 #~ msgid "Your surnames"
 #~ msgstr "Els teus cognoms"
-
-#~ msgid "Project title"
-#~ msgstr "Títol del projecte"
-
-#~ msgid "Project status"
-#~ msgstr "Estat del projecte"
 
 #~ msgid "Project image"
 #~ msgstr "Imatge del projecte"
@@ -781,9 +1418,6 @@ msgstr "Estableix"
 
 #~ msgid "Logo of the business"
 #~ msgstr "Logotip de l’empresa"
-
-#~ msgid "Home page"
-#~ msgstr "Pàgina d'inici"
 
 #~ msgid "Go"
 #~ msgstr "Anar"

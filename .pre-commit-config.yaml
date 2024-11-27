@@ -18,9 +18,9 @@ repos:
       - id: check-toml
       - id: check-yaml
 
-      # Protects the main branch from being committed to directly
+      # Protects the partners branch from being committed to directly
       - id: no-commit-to-branch
-        # args: [--branch, main, --branch, staging]
+        # args: [--branch, partners, --branch, staging]
 
        # Verifies that test files are named correctly
       # - id: name-tests-test

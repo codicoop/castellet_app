@@ -1,0 +1,25 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block content %}
+  <main class="mt-12 lg:mt-24">
+    <section class="mx-auto max-w-screen-2xl">
+      <h1 class="hidden font-bold text-5xl text-center mb-6
+        font-title lg:text-6xl lg:mb-24 lg:block">
+        {{ page.title }}
+      </h1>
+    </section>
+    <section class="mx-auto max-w-screen-2xl px-3 pb-16 lg:px-44 lg:pb-28">
+      <div class="flex flex-col gap-4 w-full
+        lg:gap-3">
+        <h2 class="text-3xl font-semibold pb-9 font-title
+          lg:pb-10 lg:text-[41px]">
+          {% translate 'Frequently asked questions' %}
+        </h2>
+        {{ page.questions }}
+      </div>
+    </section>
+
+  </main>
+{% endblock %}
+

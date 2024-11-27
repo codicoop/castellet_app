@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+<div class="w-full max-w-80 h-80 grid grid-rows-2 grid-cols-1
+  rounded-xl shadow-card overflow-clip
+  lg:h-96 md:max-w-none"
+>
+{% image news.header_image width-350 as bg_heading %}
+
+  <a href="{{ news.url }}">
+    <div class="w-full h-full bg-primary-500">
+      {% if news.header_image %}
+        <img src="{{ bg_heading.url }}" alt="{{ news.title }}"
+          class="h-full w-full object-cover"
+        >
+      {% endif %}
+    </div>
+  </a>
+  <div class="flex flex-col p-[22px] lg:p-6">
+    <p class="font-semibold text-base mb-2 leading-5
+      lg:text-lg">
+      {{ news.title }}
+    </p>
+    <a class="block w-fit" href="{{ news.url }}">
+      <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
+        text-xs border border-gray-900 w-fit
+        hover:bg-groc-100 focus:outline-none
+        focus:ring-4 focus:ring-groc-500">
+        <p>{% translate 'Read more' %}</p>
+      </div>
+    </a>
+  </div>
+
+</div>

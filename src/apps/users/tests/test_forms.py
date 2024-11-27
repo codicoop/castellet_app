@@ -15,7 +15,7 @@ class AuthenticationFormTest(TestCase):
             surnames="test_surnames",
             email="test@test.com",
             password="test_password",
-            dni="12345678A"
+            dni="12345678A",
         )
         self.form = AuthenticationForm(
             data={

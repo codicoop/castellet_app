@@ -1,0 +1,13 @@
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
+class AccessPermissionRoleChoices(models.TextChoices):
+    GOB_COUNCIL_DRIVING_GROUP = "GC", _("Governing Council and Driving Group")
+    ALL_USERS = "AU", _("All users")
+
+
+class ProjectStatusChoices(models.TextChoices):
+    STUDY_PHASE = "PS", _("Project in study phase")
+    ACTIVE = "AP", _("Active Project")
+    OTHER = "OP", _("Future projects or other projects")

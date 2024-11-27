@@ -20,3 +20,6 @@ node_modules
 
 # Ignore the sass compiler file
 *.map
+
+# Temporary local folder for managing database dumps
+dumps/

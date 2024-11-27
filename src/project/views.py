@@ -21,7 +21,7 @@ class RootRedirectView(RedirectView):
     anymore.
     """
 
-    url = reverse_lazy("home")
+    url = reverse_lazy("partners:home")
 
     def get_redirect_url(self, *args, **kwargs):
         activate(get_language())
@@ -39,7 +39,7 @@ class StandardSuccess(TemplateView):
     title = _("Registry successfully updated")
     success_title = _("Done!")
     description = _("The registry was updated correctly.")
-    url = reverse_lazy("home")
+    url = reverse_lazy("partners:home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

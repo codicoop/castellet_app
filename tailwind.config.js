@@ -25,6 +25,8 @@ module.exports = {
           "950":"#124019"
         },
         blau: {
+          "100":"#70DEFF",
+          "200":"#0DC9FD",
           "300":"#02AFDE",
           "400":"#029EC9",
           "500":"#028db4", // blau logo
@@ -36,7 +38,7 @@ module.exports = {
           "300": "#FEE271",
           "500": "#fed116", // groc logo
           "700": "#e2bd5a",
-          "900": "#a9882e"
+          "900": "#665200"
         },
         gris: {
           "500": "#929e9e"  // gris logo
@@ -48,8 +50,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      'body': ['Montserrat', 'sans-serif'],
-      'sans': ['Montserrat', 'sans-serif']
+      'title': ['Montserrat', 'sans-serif'],
+      'body': ['Source Sans Pro', 'sans-serif']
     },
   },
 }

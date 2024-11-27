@@ -12,7 +12,7 @@ class UtilsTest(TestCase):
             email="test@test.com",
             password="test_password",
             email_verification_code="1234",
-            dni="12345678A"
+            dni="12345678A",
         )
 
     def test_email_verification_code_regeneration(self):

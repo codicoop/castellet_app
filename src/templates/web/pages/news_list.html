@@ -1,0 +1,93 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block content %}
+
+<main class="mt-16 lg:mt-20">
+  <div class="mx-auto max-w-screen-2xl">
+    <div class="flex flex-col mx-auto px-3 pb-16 max-w-2xl
+      lg:px-20 lg:pb-28 lg:max-w-none">
+      <h1 class="font-semibold text-5xl mb-6 font-title 
+        lg:text-6xl lg:pr-5">
+        {{ page.title }}
+      </h1>
+
+      <section class="mb-9 lg:mb-10">
+      {% if tags %}
+        <div class="flex flex-wrap gap-2">
+          {% for tag, active in tags.items %}
+            <a href="{% pageurl page %}{% querystring tag=tag %}">
+              <div class="rounded-full border border-gray-900 px-4 py-2
+                ext-sm font-body font-semibold
+                hover:bg-groc-700 hover:border-groc-700
+                focus:ring-4 focus:ring-groc-700 focus:outline-none
+                dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800
+                {% if active %}bg-groc-500 border-groc-500{% endif %}"
+              >
+                {{ tag }}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      </section>
+
+      <div class="flex flex-wrap items-center justify-center gap-7 mb-10
+        md:grid md:grid-cols-2 lg:mb-8 lg:grid-cols-3">
+        {% for news in news_list %}
+          {% include "../components/news_summary.html" %}
+        {% endfor %}
+      </div>
+
+      {# {% if news_list.paginator.num_pages > 1 %} #}
+        <div class="w-full flex items-center justify-center">
+          <div class="flex border border-gray-900 rounded-full
+            font-body overflow-hidden">
+
+            {% if news_list.has_previous %}
+            <a href="{% pageurl page %}{% querystring page=news_list.previous_page_number %}">
+            {% endif %}
+              <div class="cursor-pointer py-1 pr-2 pl-5 font-medium border-r
+              border-gray-900 hover:bg-groc-300">
+                <span>{% translate 'Previous' %}</span>
+              </div>
+            {% if news_list.has_previous %}
+            </a>
+            {% endif %}
+
+            <div class="flex divide-x divide-solid divide-gray-900">
+              {% for i in news_list.paginator.page_range %}
+                  {% if news_list.number == i %}
+                    <div class="py-1 px-3 cursor-pointer bg-gray-900 text-white
+                      hover:bg-groc-900">
+                      {{ i }}
+                    </div>
+                  {% else %}
+                    <a href="{% pageurl page %}{% querystring page=i %}">
+                      <div class="py-1 px-3 cursor-pointer hover:bg-groc-300">
+                        {{ i }}
+                      </div>
+                    </a>
+                  {% endif %}
+              {% endfor %}
+            </div>
+
+            {% if news_list.has_next %}
+            <a href="{% pageurl page %}{% querystring page=news_list.next_page_number %}">
+            {% endif %}
+              <div class="cursor-pointer py-1 pl-2 pr-5 font-medium border-l
+                border-gray-900 hover:bg-groc-300">
+                <span>{% translate 'Next' %}</span>
+              </div>
+            {% if news_list.has_next %}
+            </a>
+            {% endif %}
+  
+          </div>
+        </div>
+        {# {% endif %} #}
+    </div>
+  </div>
+</main>
+{% endblock %}
+

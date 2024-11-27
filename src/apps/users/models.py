@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.main.models import Project
+from apps.partners.models import Project
 from project.models import BaseModel
 
 
@@ -144,7 +144,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     def clean(self):
         if self.pk and self.email:
             try:
-                old_email= User.objects.get(pk=self.pk).email
+                old_email = User.objects.get(pk=self.pk).email
                 if old_email != self.email:
                     self.email_verified = False
             except Exception:

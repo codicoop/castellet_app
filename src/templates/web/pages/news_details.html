@@ -1,0 +1,92 @@
+{% extends "web/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags wagtailadmin_tags static i18n %}
+
+{% block extra_headers %}
+<style>
+  .richtext a {
+    color: #31b44a;
+    font-weight:600;
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<main class="mt-16 lg:mt-20">
+  <div class="mx-auto max-w-screen-2xl px-4">
+    <section class="pb-4 lg:px-40">
+      <p class="font-semibold font-body text-base text-groc-700">{% translate 'Article' %}</p>
+      <h1 class="font-semibold text-[26px] font-title
+        lg:text-3xl">
+        {{ page.title }}
+      </h1>
+      <p class="font-body font-normal text-sm text-gris-500">{{ page.date }}</p>
+    </section>
+
+    {% if page.tags.all %}
+    <section class="mb-9 lg:mb-10 lg:px-40">
+      <div class="flex flex-wrap gap-2">
+        {% for tag in page.tags.all %}
+          <a href="{% pageurl page.get_parent %}?tag={{ tag }}">
+            <div class="rounded-full border border-gray-900 px-4 py-2
+              ext-sm font-body font-semibold
+              hover:bg-groc-700 hover:border-groc-700
+              focus:ring-4 focus:ring-groc-700 focus:outline-none
+              dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800
+              {% if active %}bg-groc-500 border-groc-500{% endif %}"
+            >
+              {{ tag }}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.header_image %}
+      {% image self.header_image width-2000 as bg_heading %}
+    <section class="lg:px-40">
+      <img src="{{ bg_heading.url }}" alt="{{ news.title }}"
+        class="w-full rounded-2xl mb-10 shadow-md"
+      >
+    </section>
+    {% endif %}
+
+    <section
+      class="richtext mb-20 text-base font-body [&>p]:mb-4 lg:[&>p]:columns-2
+        [&>img]:rounded-lg lg:[&>img]:rounded-2xl [&>img]:my-12 [&>img]:mx-auto
+        [&>img]:shadow-md [&>img]:w-full
+        [&>img.full-width]:w-3/4 
+        [&>img.left]:w-1/2 [&>img.left]:ml-0 [&>img.right]:w-1/2 [&>img.right]:mr-0
+        [&>ol>li]:list-[decimal-leading-zero] [&>ol>li]:ml-12 [&>ol>li]:pl-1 [&>ol]:mb-4
+        [&>ul>li]:list-disc [&>ul>li]:ml-8 [&>ul>li]:pl-1 [&>ul]:mb-4
+        [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mb-4 lg:[&>h2]:text-3xl
+        [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:mb-4 lg:[&>h3]:text-2xl
+        [&>h4]:text-base [&>h4]:font-bold [&>h4]:mb-3 lg:[&>h4]:text-xl
+        lg:px-40"
+    >
+      {# Explicitly looping blocks to skip the default div that Wagtail includes in each block: https://docs.wagtail.org/en/stable/topics/streamfield.html#template-rendering #}
+      {% for block in page.content %}
+        {% include_block block %}
+      {% endfor %}
+    </section>
+
+    {% if related_news %}
+      <section class="lg:px-16">
+        <h2 class="font-semibold font-title text-[26px] pb-4
+          lg:text-3xl lg:pb-7">
+          {% translate "Related news" %}
+        </h2>
+        <div class="flex flex-wrap items-center justify-center gap-7 mb-10
+          md:grid md:grid-cols-2 lg:mb-8 lg:grid-cols-3">
+          {% for news in related_news %}
+            {% include "../components/news_summary.html" %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}
+

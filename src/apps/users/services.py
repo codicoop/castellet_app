@@ -50,42 +50,44 @@ class ExportUserCsvMixin:
         response["Content-Disposition"] = "attachment; filename=usuaris.csv"
         writer = csv.writer(response)
 
-        writer.writerow([
-            _("name"),
-            _("surnames "),
-            _("email address"),
-            _("Contact telephone"),
-            _("Address"),
-            _("National Identity Document"),
-            _("Bank account"),
-            _("Charge"),
-            _("Is governing council member"),
-            _("Projects"),
-            _("Partner ID"),
-            _("Entry year"),
-            _("Corporate contribution"),
-            _("Voluntary contribution")
-        ])
+        writer.writerow(
+            [
+                _("name"),
+                _("surnames "),
+                _("email address"),
+                _("Contact telephone"),
+                _("Address"),
+                _("National Identity Document"),
+                _("Bank account"),
+                _("Charge"),
+                _("Is governing council member"),
+                _("Projects"),
+                _("Partner ID"),
+                _("Entry year"),
+                _("Corporate contribution"),
+                _("Voluntary contribution"),
+            ]
+        )
 
         for obj in queryset:
             user_projects = obj.projects.all()
-            project_names = ', '.join([project.title for project in user_projects])
-            corporate_contribution = getattr(obj, 'corporate_contribution', '')
-            voluntary_contribution = getattr(obj, 'voluntary_contribution', '')
+            project_names = ", ".join([project.title for project in user_projects])
+            corporate_contribution = getattr(obj, "corporate_contribution", "")
+            voluntary_contribution = getattr(obj, "voluntary_contribution", "")
             writer.writerow(
                 [
-                    getattr(obj, 'name', ''),
-                    getattr(obj, 'surnames', ''),
-                    getattr(obj, 'email', ''),
-                    getattr(obj, 'phone', ''),
-                    getattr(obj, 'address', ''),
-                    getattr(obj, 'dni', ''),
-                    getattr(obj, 'bank_account', ''),
-                    getattr(obj, 'charge', ''),
-                    "Sí" if getattr(obj, 'governing_council_member', '') else "No",
+                    getattr(obj, "name", ""),
+                    getattr(obj, "surnames", ""),
+                    getattr(obj, "email", ""),
+                    getattr(obj, "phone", ""),
+                    getattr(obj, "address", ""),
+                    getattr(obj, "dni", ""),
+                    getattr(obj, "bank_account", ""),
+                    getattr(obj, "charge", ""),
+                    "Sí" if getattr(obj, "governing_council_member", "") else "No",
                     project_names,
-                    getattr(obj, 'partner_id', ''),
-                    getattr(obj, 'entry_year', ''),
+                    getattr(obj, "partner_id", ""),
+                    getattr(obj, "entry_year", ""),
                     corporate_contribution + " €" if corporate_contribution else "",
                     voluntary_contribution + " €" if voluntary_contribution else "",
                 ]

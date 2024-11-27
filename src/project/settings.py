@@ -61,9 +61,10 @@ TIME_ZONE = "Europe/Andorra"
 LANGUAGE_CODE = "ca"
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#languages
-LANGUAGES = [
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ("ca", _("Catalan")),
 ]
+WAGTAIL_I18N_ENABLED = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#use-i18n
 USE_I18N = True
@@ -110,20 +111,36 @@ INSTALLED_APPS = [
     "constance",
     "logentry_admin",
     "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
     "django.forms",
     "flowbite_classes",
     "post_office",
     "django_extensions",
     "phonenumber_field",
     "apps.users",
+    "apps.web",
+    "apps.wagtail_htmx_contact_form",
     "project",
-    "apps.main",
+    "apps.partners",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.contrib.settings",
+    "wagtail.contrib.styleguide",
+    "wagtail",
+    "modelcluster",
     "taggit",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 
@@ -146,6 +163,7 @@ MIDDLEWARE = [
     "maintenance_mode.middleware.MaintenanceModeMiddleware",
     "apps.users.middleware.VerificationRequiredMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 
@@ -164,10 +182,6 @@ STATICFILES_DIRS = [
     str(BASE_DIR / "assets"),
 ]
 
-# https://docs.djangoproject.com/en/4.2/ref/settings/#staticfiles-storage
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
 ################################################################################
 #                             Authentication                                   #
 ################################################################################
@@ -179,7 +193,7 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_URL = reverse_lazy("registration:login")
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGIN_REDIRECT_URL = reverse_lazy("partners:home")
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#logout-redirect-url
 LOGOUT_REDIRECT_URL = "/"
@@ -202,7 +216,6 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
     # Beware that "home" only ignores requests when a language is included in the
     # URL. See LOGIN_REQUIRED_IGNORE_PATHS comments above.
     "home",
-    "registration:signup",
     "registration:privacy_policy",
     "registration:login",
     "registration:password_reset",
@@ -222,6 +235,11 @@ VERIFICATION_REQUIRED_IGNORE_VIEW_NAMES = LOGIN_REQUIRED_IGNORE_VIEW_NAMES + [
     "registration:user_validation",
     "registration:send_verification_code",
     "registration:email_verification_complete",
+]
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "apps.users.authentication_backend.IdNumberBackend",
 ]
 
 ################################################################################
@@ -271,6 +289,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "wagtail.contrib.settings.context_processors.settings",
             ],
             "loaders": develop_loaders if DEBUG else production_loaders,
         },
@@ -311,6 +330,17 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = "static"
 
+STORAGES = {
+    "default": {
+        "BACKEND": "project.storage_backends.PublicMediaStorage",
+    },
+    "wagtail_renditions": {
+        "BACKEND": "project.storage_backends.WagtailRenditionsMediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 ################################################################################
 #                                  Email                                       #
@@ -438,11 +468,29 @@ structlog.configure(
     cache_logger_on_first_use=True,
 )
 
+################################################################################
+#                                  Wagtail                                     #
+################################################################################
+
+# This is the human-readable name of your Wagtail install
+# which welcomes users upon login to the Wagtail admin.
+WAGTAIL_SITE_NAME = env.str(
+    "WAGTAIL_SITE_NAME",
+    default="Comunitat energètica de Sant Vicenç de Castellet",
+)
+WAGTAILADMIN_BASE_URL = env.str("WAGTAILADMIN_BASE_URL", default="")
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = DEFAULT_FROM_EMAIL
+WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+WAGTAILIMAGES_RENDITION_STORAGE = "wagtail_renditions"
+
+################################################################################
+#                        Codi Cooperatiu Internal Tools                        #
+################################################################################
+
 CODI_COOP_ENABLE_MONKEY_PATCH = True
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "apps.users.authentication_backend.IdNumberBackend",
-]
+################################################################################
+#                                  Taggit                                      #
+################################################################################
 
 TAGGIT_CASE_INSENSITIVE = True
