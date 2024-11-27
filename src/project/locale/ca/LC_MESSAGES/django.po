@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-25 15:27+0100\n"
+"POT-Creation-Date: 2024-11-27 10:37+0100\n"
 "PO-Revision-Date: 2024-11-20 15:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -50,11 +50,11 @@ msgid "Phone number for user's comunications"
 msgstr ""
 "Telèfon per tal que els usuaris de l'app es puguin comunicar amb vosaltres"
 
-#: project/test/test_selenium.py:333
+#: project/test/test_selenium.py:332
 msgid "Go back"
 msgstr "Tornar enrere"
 
-#: project/test/test_selenium.py:392
+#: project/test/test_selenium.py:391
 msgid "Enrere"
 msgstr "Enrere"
 
