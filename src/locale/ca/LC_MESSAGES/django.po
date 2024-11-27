@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 10:37+0100\n"
-"PO-Revision-Date: 2024-11-27 10:39+0100\n"
+"POT-Creation-Date: 2024-11-27 13:08+0100\n"
+"PO-Revision-Date: 2024-11-27 13:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -63,7 +63,7 @@ msgstr "Projecte actiu"
 msgid "Future projects or other projects"
 msgstr "Projectes futurs o altres projectes"
 
-#: apps/partners/forms.py:66 apps/partners/models.py:145
+#: apps/partners/forms.py:66 apps/partners/models.py:149
 msgid "Access Permission Role"
 msgstr "Permisos d’accés per rol"
 
@@ -82,30 +82,34 @@ msgid "name"
 msgstr "nom"
 
 #: apps/partners/models.py:31
-msgid "surname"
-msgstr "cognom"
+msgid "surnames"
+msgstr "cognoms"
 
-#: apps/partners/models.py:39
+#: apps/partners/models.py:37
+msgid "created at"
+msgstr "creat el"
+
+#: apps/partners/models.py:43
 msgid "newsletter subscriber"
 msgstr "subcriptor al butlletí"
 
-#: apps/partners/models.py:40
+#: apps/partners/models.py:44
 msgid "newsletter subscribers"
 msgstr "subscriptors al butlletí"
 
-#: apps/partners/models.py:52
+#: apps/partners/models.py:56
 msgid "project type name"
 msgstr "nom del tipus de projecte"
 
-#: apps/partners/models.py:60
+#: apps/partners/models.py:64
 msgid "project type"
 msgstr "tipus de projecte"
 
-#: apps/partners/models.py:61
+#: apps/partners/models.py:65
 msgid "project types"
 msgstr "tipus de projecte"
 
-#: apps/partners/models.py:70 apps/partners/models.py:133
+#: apps/partners/models.py:74 apps/partners/models.py:137
 #: apps/partners/services.py:66 apps/web/models/base.py:157
 #: apps/web/models/home.py:37 apps/web/models/home.py:55
 #: apps/web/models/home.py:74 apps/web/models/home.py:80
@@ -114,18 +118,18 @@ msgstr "tipus de projecte"
 msgid "Title"
 msgstr "Títol"
 
-#: apps/partners/models.py:82 apps/partners/services.py:67
+#: apps/partners/models.py:86 apps/partners/services.py:67
 #: templates/main/project_details.html:55
 #: templates/web/pages/project_details.html:36
 msgid "Project type"
 msgstr "Tipus de projecte"
 
-#: apps/partners/models.py:85 apps/partners/services.py:68
+#: apps/partners/models.py:89 apps/partners/services.py:68
 #: apps/web/models/projects.py:123 templates/main/project_details.html:67
 msgid "Status"
 msgstr "Estat"
 
-#: apps/partners/models.py:92 apps/partners/models.py:139
+#: apps/partners/models.py:96 apps/partners/models.py:143
 #: apps/partners/services.py:69 apps/web/models/home.py:43
 #: apps/web/models/home.py:61 apps/web/models/projects.py:26
 #: apps/web/models/projects.py:38 apps/web/models/projects.py:50
@@ -133,77 +137,77 @@ msgstr "Estat"
 msgid "Description"
 msgstr "Descripció"
 
-#: apps/partners/models.py:97 apps/web/models/base.py:179
+#: apps/partners/models.py:101 apps/web/models/base.py:179
 msgid "Image"
 msgstr "Imatge"
 
-#: apps/partners/models.py:104 apps/partners/services.py:70
+#: apps/partners/models.py:108 apps/partners/services.py:70
 #: templates/main/project_details.html:79
 #: templates/web/pages/project_details.html:48
 msgid "Energy power"
 msgstr "Potència energètica"
 
-#: apps/partners/models.py:107
+#: apps/partners/models.py:111
 msgid "Project energy power (kW)"
 msgstr "Potència energètica del projecte (kW)"
 
-#: apps/partners/models.py:110 apps/partners/services.py:71
+#: apps/partners/models.py:114 apps/partners/services.py:71
 #: templates/main/project_details.html:91
 #: templates/web/pages/project_details.html:54
 msgid "Annual energy"
 msgstr "Energia anual"
 
-#: apps/partners/models.py:113
+#: apps/partners/models.py:117
 msgid "Project annual energy (kWh/year)"
 msgstr "Energia anual del projecte (kWh/any)"
 
-#: apps/partners/models.py:116 apps/partners/services.py:72
+#: apps/partners/models.py:120 apps/partners/services.py:72
 #: templates/main/project_details.html:103
 #: templates/web/pages/project_details.html:60
 msgid "Investment"
 msgstr "Inversió"
 
-#: apps/partners/models.py:119
+#: apps/partners/models.py:123
 msgid "Project investment (€)"
 msgstr "Inversió del projecte (€)"
 
-#: apps/partners/models.py:123
+#: apps/partners/models.py:127
 msgid "project"
 msgstr "projecte"
 
-#: apps/partners/models.py:124
+#: apps/partners/models.py:128
 msgid "projects"
 msgstr "projectes"
 
-#: apps/partners/models.py:152
+#: apps/partners/models.py:156
 msgid "A comma-separated list of tags."
 msgstr "Llistat d'etiquetes separades per una coma."
 
-#: apps/partners/models.py:163
+#: apps/partners/models.py:167
 msgid "Project"
 msgstr "Projecte"
 
-#: apps/partners/models.py:166
+#: apps/partners/models.py:170
 msgid "File"
 msgstr "Fitxer"
 
-#: apps/partners/models.py:177
+#: apps/partners/models.py:181
 msgid "Responsible user"
 msgstr "Usuari responsable"
 
-#: apps/partners/models.py:181
+#: apps/partners/models.py:185
 msgid "Date of Document"
 msgstr "Data del document"
 
-#: apps/partners/models.py:186
+#: apps/partners/models.py:190
 msgid "Upload date"
 msgstr "Data de pujada"
 
-#: apps/partners/models.py:189
+#: apps/partners/models.py:193
 msgid "document"
 msgstr "document"
 
-#: apps/partners/models.py:190
+#: apps/partners/models.py:194
 msgid "documents"
 msgstr "documents"
 
@@ -529,7 +533,7 @@ msgstr "Logotips a peu de pàgina"
 msgid "Date"
 msgstr "Data"
 
-#: apps/web/models/news.py:96 apps/web/models/projects.py:145
+#: apps/web/models/news.py:109 apps/web/models/projects.py:158
 msgid "Paragraphs and pictures"
 msgstr "Paràgrafs i imatges"
 
@@ -557,11 +561,11 @@ msgstr "Projectes en els que estem treballant"
 msgid "Other and future projects"
 msgstr "Projectes futurs i altres"
 
-#: apps/web/models/projects.py:149
+#: apps/web/models/projects.py:162
 msgid "Related project in the Partners app"
 msgstr "Projecte relacionat a l'aplicació interna"
 
-#: apps/web/models/projects.py:153
+#: apps/web/models/projects.py:166
 #, python-brace-format
 msgid ""
 "If set, some project details from the projects section in the partners app "
@@ -572,11 +576,11 @@ msgstr ""
 "interna seran inclosos a la pàgina web. Per crear o editar aquells "
 "projectes, ves al  <a href=\"{link}\">panell d'adminsitració</a>."
 
-#: apps/web/models/projects.py:167
+#: apps/web/models/projects.py:180
 msgid "Show in the home page"
 msgstr "Mostra a la pàgina d'inici"
 
-#: apps/web/models/projects.py:170
+#: apps/web/models/projects.py:183
 msgid ""
 "If selected, this project will appear on the home page in the 'What do we "
 "offer?' block."
@@ -584,7 +588,7 @@ msgstr ""
 "Si es selecciona, aquest projecte apareixerà a la pàgina d'inici al bloc de "
 "projectes."
 
-#: apps/web/models/projects.py:187
+#: apps/web/models/projects.py:200
 msgid "Configuration of projects in the home page"
 msgstr "Configuració dels projectes a la pàgina d'inici"
 
@@ -672,6 +676,20 @@ msgstr "Urls de les xarxes socials"
 #: apps/web/models/snippets.py:24
 msgid "Footer logo without image"
 msgstr "Logo de peu de pàgina sense imatge"
+
+#: apps/web/wagtail_hooks.py:45
+msgid "Newsletter subscribers"
+msgstr "Subscriptors al butlletí"
+
+#: apps/web/wagtail_hooks.py:67 templates/web/cms/confirm_csv_export.html:7
+msgid "Export"
+msgstr "Exportar"
+
+#: apps/web/wagtail_hooks.py:68
+msgid "Export newsletter subscribers to a Mailchimp-compatible CSV."
+msgstr ""
+"Exportar els subscriptors del butlletí a un fitxer CSV compatible amb "
+"MailChimp."
 
 #: templates/404.html:13 templates/500.html:13 templates/503.html:13
 msgid "Go back"
@@ -1177,6 +1195,25 @@ msgstr "Desenvolupat per"
 #: templates/web/base.html:437
 msgid " - Designed by"
 msgstr " - Dissenyat per"
+
+#: templates/web/cms/confirm_csv_export.html:4
+#, python-format
+msgid "Export 1 item"
+msgid_plural "Export %(counter)s items"
+msgstr[0] "Export 1 item"
+msgstr[1] "Exportar %(counter)s elements"
+
+#: templates/web/cms/confirm_csv_export.html:13
+msgid "Are you sure you want to export these items?"
+msgstr "Segur que vols exportar aquests elements?"
+
+#: templates/web/cms/confirm_csv_export.html:29
+msgid "Yes, export"
+msgstr "Sí, exportar"
+
+#: templates/web/cms/confirm_csv_export.html:30
+msgid "No, don't export"
+msgstr "No, no els exportis"
 
 #: templates/web/components/heading.html:51
 msgid "Close overlay"

@@ -65,7 +65,7 @@ register_snippet(NewsletterSubscribersViewSet)
 class ExportNewsletterSubscribersBulkAction(SnippetBulkAction):
     models = [NewsletterSubscriber]
     display_name = _("Export")
-    aria_label = _("Export neslettert subscribers to a Mailchimp-compatible CSV.")
+    aria_label = _("Export newsletter subscribers to a Mailchimp-compatible CSV.")
     action_type = "newsletter-subscribers-export"
     template_name = "web/cms/confirm_csv_export.html"
 
