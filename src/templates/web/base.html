@@ -20,9 +20,12 @@
       src: url('{% static "fonts/SourceSansPro-Regular.ttf" %}') format('woff2');
     }
     .newsletter {
-      .text-red-700 {
+      label.text-red-700 {
         color: white;
       };
+      input.placeholder-red-700 {
+        color: #ce3939;
+      }
       .text-red-600 {
         color: white;
       }
@@ -38,7 +41,7 @@
 </head>
 <body class="relative flex flex-col min-h-[100%]" id="body" data-lang="{{ language_code }}">
   <header>
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <nav class="text-red-700 bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
         <a href="/{{ language_code }}/" class="flex items-center lg:order-1">
           <div class="mr-3">
