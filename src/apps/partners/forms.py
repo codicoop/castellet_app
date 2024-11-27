@@ -15,13 +15,6 @@ class NewsletterSubscriberForm(forms.ModelForm):
             "surnames",
             "email",
         ]
-        widgets = {
-            "name": forms.TextInput(
-                attrs={
-                    "autofocus": True,
-                }
-            ),
-        }
         help_texts = {
             "email": "",
         }
@@ -46,6 +39,14 @@ class NewsletterSubscriberForm(forms.ModelForm):
             template="newsletter",
             context=context,
         )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Focus on form field whenever error occurred
+        error_list = list(self.errors)
+        for item in error_list:
+            self.fields[item].widget.attrs.update({"autofocus": True})
+            break
 
 
 class DocumentAdminForm(forms.ModelForm):
