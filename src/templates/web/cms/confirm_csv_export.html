@@ -1,0 +1,35 @@
+{% extends 'wagtailadmin/bulk_actions/confirmation/base.html' %}
+{% load i18n wagtailadmin_tags %}
+
+{% block titletag %}{% blocktranslate trimmed count counter=items|length %}Export 1 item{% plural %}Export {{ counter }} items{% endblocktranslate %}{% endblock %}
+
+{% block header %}
+    {% translate "Export" as del_str %}
+    {% include "wagtailadmin/shared/header.html" with title=del_str icon="doc-empty-inverse" %}
+{% endblock header %}
+
+{% block items_with_access %}
+        {% if items %}
+        <p>{% translate "Are you sure you want to export these items?" %}</p>
+        <ul>
+            {% for item in items %}
+            <li>
+                <a href="" target="_blank" rel="noreferrer">{{ item.item }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+{% endblock items_with_access %}
+
+{% block items_with_no_access %}
+{% endblock items_with_no_access %}
+
+{% block form_section %}
+{% if items %}
+    {% translate 'Yes, export' as action_button_text %}
+    {% translate "No, don't export" as no_action_button_text %}
+    {% include 'wagtailadmin/bulk_actions/confirmation/form.html' with action_button_class="serious" %}
+{% else %}
+    {% include 'wagtailadmin/bulk_actions/confirmation/go_back.html' %}
+{% endif %}
+{% endblock form_section %}

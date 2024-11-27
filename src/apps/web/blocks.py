@@ -8,8 +8,18 @@ class TitleTextBlock(StructBlock):
     )
     body = RichTextBlock(
         required=True,
-        features=["h2", "h3", "h4", "bold", "italic", "ol", "ul", "hr",
-                  "link", "image", ],
+        features=[
+            "h2",
+            "h3",
+            "h4",
+            "bold",
+            "italic",
+            "ol",
+            "ul",
+            "hr",
+            "link",
+            "image",
+        ],
     )
 
     class Meta:

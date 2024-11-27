@@ -134,10 +134,23 @@ class ProjectDetailPage(BasePage):
     )
     content = StreamField(
         [
-            ("text", RichTextBlock(
-                features=["h2", "h3", "h4", "bold", "italic", "ol", "ul", "hr",
-                          "link", "image",],
-            )),
+            (
+                "text",
+                RichTextBlock(
+                    features=[
+                        "h2",
+                        "h3",
+                        "h4",
+                        "bold",
+                        "italic",
+                        "ol",
+                        "ul",
+                        "hr",
+                        "link",
+                        "image",
+                    ],
+                ),
+            ),
             ("image", ImageChooserBlock()),
         ],
         null=True,

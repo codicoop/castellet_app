@@ -28,12 +28,16 @@ class NewsletterSubscriber(models.Model):
         null=False,
     )
     surnames = models.CharField(
-        _("surname"),
+        _("surnames"),
         max_length=100,
         blank=False,
         null=False,
     )
-    created_at = models.DateTimeField(auto_now_add=True, null=False)
+    created_at = models.DateTimeField(
+        _("created at"),
+        auto_now_add=True,
+        null=False,
+    )
 
     class Meta:
         verbose_name = _("newsletter subscriber")
