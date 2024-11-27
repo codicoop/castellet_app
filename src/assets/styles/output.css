@@ -2868,6 +2868,11 @@ input:checked + .toggle-bg {
   color: rgb(249 128 128 / var(--tw-text-opacity));
 }
 
+.hover\:text-groc-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(254 209 22 / var(--tw-text-opacity));
+}
+
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
