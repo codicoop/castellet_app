@@ -141,42 +141,56 @@
           </li>
           {% endif %}
           {% if request.user.is_authenticated %}
-          <!-- Perfil -->
-          <li>
-            <a href="{% url 'registration:profile_details' %}"
-              class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
-              <svg class="w-8 h-8 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
-              </svg>
-              <span class="ms-3">{% translate "Profile" %}</span>
-            </a>
-          </li>
-          {% if request.user.email_verified or request.user.is_superuser %}
-          <!-- Projects -->
-          <li>
-            <a href="{% url 'partners:projects' %}"
-              id="menu_projects"
-              class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
-              <svg class="w-6 h-6 ml-1 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm4.996 2a1 1 0 0 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 8a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 11a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 14a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z" clip-rule="evenodd"/>
-              </svg>
+            <!-- Perfil -->
+            <li>
+              <a href="{% url 'registration:profile_details' %}"
+                class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
+                <svg class="w-8 h-8 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                </svg>
+                <span class="ms-3">{% translate "Profile" %}</span>
+              </a>
+            </li>
+            {% if request.user.email_verified or request.user.is_superuser %}
+              <!-- Projects -->
+              <li>
+                <a href="{% url 'partners:projects' %}"
+                  id="menu_projects"
+                  class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
+                  <svg class="w-6 h-6 ml-1 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm4.996 2a1 1 0 0 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 8a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 11a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 14a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z" clip-rule="evenodd"/>
+                  </svg>
 
-              <span class="ms-3">{% translate "Projects" %}</span>
-            </a>
-          </li>
-          <!-- Documents -->
-          <li>
-            <a href="{% url 'partners:documents' %}"
-              id="menu_documents"
-              class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
-              <svg class="w-6 h-6 ml-1 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
-                <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
-              </svg>
-              <span class="ms-3">{% translate "Documents" %}</span>
-            </a>
-          </li>
+                  <span class="ms-3">{% translate "Projects" %}</span>
+                </a>
+              </li>
+              <!-- Documents -->
+              <li>
+                <a href="{% url 'partners:documents' %}"
+                  id="menu_documents"
+                  class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
+                  <svg class="w-6 h-6 ml-1 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="ms-3">{% translate "Documents" %}</span>
+                </a>
+              </li>
+            {% endif %}
+
+            {% if request.user.has_admin_role %}
+              <!-- Admin -->
+              <li>
+                <a href="{% url 'admin:index' %}" id="menu_admin"
+                  class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
+                  <svg class="w-7 h-7 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"/>
+                  </svg>
+
+                  <span class="ms-3">{% translate "Administration panel" %}</span>
+                </a>
+              </li>
+            {% endif %}
           {% endif %}
-
           <!-- Web -->
           <li>
             <a href="{{ current_site.root_url }}"
@@ -188,21 +202,6 @@
               <span class="ms-3">{% translate "Web" %}</span>
             </a>
           </li>
-
-            {% if request.user.has_admin_role %}
-            <!-- Admin -->
-            <li>
-              <a href="{% url 'admin:index' %}" id="menu_admin"
-                class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group">
-                <svg class="w-7 h-7 text-primary-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"/>
-                </svg>
-
-                <span class="ms-3">{% translate "Administration panel" %}</span>
-              </a>
-            </li>
-            {% endif %}
-          {% endif %}
         </ul>
       </nav>
     </div>
