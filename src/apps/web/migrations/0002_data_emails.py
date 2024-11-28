@@ -40,19 +40,25 @@ def populate_mail_templates(apps, schema_editor):
     for template in templates:
         obj, created = mail_model.objects.update_or_create(
             name=template.get("id"),
+            language="",
             defaults={
                 "name": template.get("id"),
             },
         )
         for lang, translated_template in template.get("translated_templates").items():
-            obj.translated_templates.create(
-                language=lang,
-                subject=translated_template.get("subject"),
-                html_content=translated_template.get("body"),
-                content=textify(translated_template.get("body")),
+            obj.translated_templates.update_or_create(
                 # name field included due this bug:
                 # https://github.com/ui/django-post_office/issues/214
                 name=template.get("id"),
+                language=lang,
+                defaults={
+                    "subject": translated_template.get("subject"),
+                    "html_content": translated_template.get("body"),
+                    "content": textify(translated_template.get("body")),
+                },
+            )
+            print(
+                f"E-mail template '{template.get('id')}' updated or created."
             )
 
 

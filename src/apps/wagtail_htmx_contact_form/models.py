@@ -20,12 +20,6 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
         help_text=_("Label for the e-mail field."),
         default=_("Your e-mail"),
     )
-    phone_label = models.CharField(
-        _("subject"),
-        max_length=250,
-        help_text=_("Label for the Phone field."),
-        default=_("Phone"),
-    )
     subject_label = models.CharField(
         _("subject"),
         max_length=250,
@@ -83,7 +77,6 @@ class HtmxContactPage(MenuLabelMixin, BasePage):
     field_labels = [
         FieldPanel("name_label", classname="full"),
         FieldPanel("email_label", classname="full"),
-        FieldPanel("phone_label", classname="full"),
         FieldPanel("subject_label", classname="full"),
         FieldPanel("message_label", classname="full"),
         FieldPanel("personal_data_auth_label", classname="full"),
