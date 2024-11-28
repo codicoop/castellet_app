@@ -31,7 +31,7 @@
           src="{% static 'images/leaf.svg' %}" alt="{% translate 'Leaf decoration' %}">
       </div>
       <div class="my-4 lg:order-3 lg:mt-0 lg:mb-8">
-        <a href="0#"
+        <a href="{% pageurl contact_page %}"
           class="items-center mr-2 px-3 py-2 text-gray-800 font-semibold rounded-full
             text-sm bg-groc-500 font-body lg:mr-0
             hover:bg-groc-700 focus:outline-none
@@ -118,7 +118,7 @@
         {% endfor %}
       </div>
       <div class="flex items-center justify-center">
-        <a href="">
+        <a href="{% pageurl page_news %}">
           <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
             text-sm border border-gray-900 w-fit font-body
             hover:bg-groc-100 focus:outline-none
