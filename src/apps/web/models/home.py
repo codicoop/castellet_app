@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, HelpPanel, MultiFieldPanel
@@ -6,7 +7,6 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.fields import RichTextField, StreamField
 
 from apps.web.models.base import BaseHeaderOverlayPage
-from apps.web.models.news import NewsDetailPage
 from apps.web.models.projects import ProjectDetailPage
 
 
@@ -147,7 +147,11 @@ class HomePage(BaseHeaderOverlayPage):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["last_news"] = NewsDetailPage.objects.live().order_by("-date")[:3]
+        context["last_news"] = apps.get_model(
+            "web",
+            "NewsDetailPage"
+        ).objects.live().order_by("-date")[:3]
+        context["news_page"] = apps.get_model("web", "NewsListPage").objects.first()
         context["projects"] = (
             ProjectDetailPage.objects.live()
             .filter(

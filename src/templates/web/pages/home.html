@@ -100,7 +100,7 @@
           lg:mb-12 lg:text-4xl">
           {{ page.news_title }}
         </h2>
-        <a href="">
+        <a href="{% pageurl news_page %}">
           <div class="hidden px-3 py-2 text-gray-900 font-semibold rounded-full
             text-xs border border-gray-900 w-fit font-body
             hover:bg-groc-100 focus:outline-none
@@ -118,7 +118,7 @@
         {% endfor %}
       </div>
       <div class="flex items-center justify-center">
-        <a href="">
+        <a href="{% pageurl news_page %}">
           <div class="px-3 py-2 text-gray-900 font-semibold rounded-full
             text-sm border border-gray-900 w-fit font-body
             hover:bg-groc-100 focus:outline-none
