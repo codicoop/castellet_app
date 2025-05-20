@@ -6,23 +6,56 @@
     <div class="relative flex flex-col justify-between p-4 bg-white rounded-lg border-l-8
       border-primary-600 shadow hover:bg-gray-50
         lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-4">
-      <div class="pb-8 lg:row-span-2">
-        <span class="block mb-1 text-xs font-medium text-gray-500 uppercase">
-          {% for project in document.project.all %}
-            {% if project in projects %}
-              <span class="font-bold text-gray-700 dark:text-white">
-                {{ project.title }} -
-              </span>
-              {% endif %}
-            {% endfor %}
-            {{ document.created_at|date:"d/m/y" }}
-          </span>
-        <span class=" text-base md:text-xl font-semibold text-primary-600">
+      <div class="pb-8 lg:row-start-1 lg:pb-0">
+        <span class=" mb-1 text-lg md:text-2xl font-semibold text-primary-600">
           {{ document.title }}
         </span>
+        <span class="block text-xs font-medium text-gray-500">
+          {{ document.created_at|date:"d/m/y" }}
+        </span>
       </div>
-      <div class="absolute bottom-2 right-2 flex gap-3 items-center">
-        <p class="hidden text-sm font-bold text-primary-600 lg:block">
+      <!-- Si Area = projecte tècnic -->
+      <div class="lg:col-start-1 lg:self-end">
+        <span class="block font-bold text-gray-700 uppercase">
+          {% for project in document.project.all %}
+            {% if project in projects %}
+              <span class="pr-4">
+                {{ project.title }}
+              </span>
+            {% endif %}
+          {% endfor %}
+        </span>
+      </div>
+      <!-- else si Area = Comissió -->
+      <div class="lg:col-start-1 lg:self-end">
+        <span class="block font-bold text-gray-700 uppercase">
+          <!-- {# {% for comission in document.comission.all %} #} -->
+            <!-- {# {% if comission in comissions %} #} -->
+              <span class="pr-4">
+                <!-- {{ comission.title }} -->
+                  Comissió XXX
+              </span>
+            <!-- {# {% endif %} #} -->
+          <!-- {# {% endfor %} #} -->
+        </span>
+      </div>
+      <!-- else si Area = Projecte cooperativa -->
+      <div class="lg:col-start-1 lg:self-end">
+        <span class="block font-bold text-gray-700 uppercase">
+          {% translate 'Cooperative project' %}
+        </span>
+      </div>
+      <!-- else si Area = Consell rector -->
+      <div class="lg:col-start-1 lg:self-end">
+        <span class="block font-bold text-gray-700 uppercase">
+          {% translate 'Governing Council' %}
+        </span>
+      </div>
+      <!-- Endif -->
+      <div class="absolute bottom-2 right-2 flex gap-3 items-center
+        hover:bg-primary-100 py-1 px-2 rounded-md">
+        <p class="hidden text-sm font-bold text-primary-600
+          lg:block">
           {% translate 'See the document' %}
         </p>
         <svg class="w-6 h-6 text-primary-600
@@ -31,7 +64,8 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
         </svg>
       </div>
-      <div class="flex flex-wrap gap-1 mr-8 lg:justify-end">
+      <div class="flex flex-wrap gap-1 mr-8
+        lg:justify-end lg:row-start-1 lg:mr-0">
         {% for tag in document.tags.all %}
         <div class="py-[2px] px-6 h-fit rounded-md bg-primary-600">
           <p class="text-sm text-white">{{ tag|capfirst }}</p>
