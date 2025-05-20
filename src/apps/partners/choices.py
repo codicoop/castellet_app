@@ -11,3 +11,10 @@ class ProjectStatusChoices(models.TextChoices):
     STUDY_PHASE = "PS", _("Project in study phase")
     ACTIVE = "AP", _("Active Project")
     OTHER = "OP", _("Future projects or other projects")
+
+
+class DocumentAreaChoices(models.TextChoices):
+    TECHNICAL_PROJECTS = "TP", _("Technical projects")
+    COOPERATIVE_PROJECT = "CP", _("Cooperative's project")
+    CONSELL_RECTOR = "CR", _("Consell rector")
+    COMISSIONS = "C", _("Comissions")
