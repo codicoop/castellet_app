@@ -7,39 +7,69 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('partners', '0001_initial'),
-        ('taggit', '0006_rename_taggeditem_content_type_object_id_taggit_tagg_content_8fc721_idx'),
+        ("partners", "0001_initial"),
+        (
+            "taggit",
+            "0006_rename_taggeditem_content_type_object_id_taggit_tagg_content_8fc721_idx",
+        ),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='document',
-            name='responsible_user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='documents', to=settings.AUTH_USER_MODEL, verbose_name='Responsible user'),
+            model_name="document",
+            name="responsible_user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="documents",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Responsible user",
+            ),
         ),
         migrations.AddField(
-            model_name='document',
-            name='tags',
-            field=taggit.managers.TaggableManager(help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
+            model_name="document",
+            name="tags",
+            field=taggit.managers.TaggableManager(
+                help_text="A comma-separated list of tags.",
+                through="taggit.TaggedItem",
+                to="taggit.Tag",
+                verbose_name="Tags",
+            ),
         ),
         migrations.AddField(
-            model_name='project',
-            name='created_by',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='%(app_label)s_%(class)s_related', to=settings.AUTH_USER_MODEL, verbose_name='created by'),
+            model_name="project",
+            name="created_by",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="%(app_label)s_%(class)s_related",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="created by",
+            ),
         ),
         migrations.AddField(
-            model_name='document',
-            name='project',
-            field=models.ManyToManyField(blank=True, related_name='documents', to='partners.project', verbose_name='Project'),
+            model_name="document",
+            name="project",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="documents",
+                to="partners.project",
+                verbose_name="Project",
+            ),
         ),
         migrations.AddField(
-            model_name='project',
-            name='project_type',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='project', to='partners.projecttype', verbose_name='Project type'),
+            model_name="project",
+            name="project_type",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="project",
+                to="partners.projecttype",
+                verbose_name="Project type",
+            ),
         ),
     ]

@@ -9,76 +9,219 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Document',
+            name="Document",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='', max_length=50, verbose_name='Title')),
-                ('description', models.CharField(default='', max_length=500, verbose_name='Description')),
-                ('access_permission_role', models.CharField(choices=[('GC', 'Governing Council and Driving Group'), ('AU', 'All users')], default='AU', max_length=2, verbose_name='Access Permission Role')),
-                ('file', models.FileField(storage=project.storage_backends.PrivateMediaStorage(), upload_to='', verbose_name='File')),
-                ('date_document', models.DateField(default=django.utils.timezone.now, verbose_name='Date of Document')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Upload date')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(default="", max_length=50, verbose_name="Title"),
+                ),
+                (
+                    "description",
+                    models.CharField(
+                        default="", max_length=500, verbose_name="Description"
+                    ),
+                ),
+                (
+                    "access_permission_role",
+                    models.CharField(
+                        choices=[
+                            ("GC", "Governing Council and Driving Group"),
+                            ("AU", "All users"),
+                        ],
+                        default="AU",
+                        max_length=2,
+                        verbose_name="Access Permission Role",
+                    ),
+                ),
+                (
+                    "file",
+                    models.FileField(
+                        storage=project.storage_backends.PrivateMediaStorage(),
+                        upload_to="",
+                        verbose_name="File",
+                    ),
+                ),
+                (
+                    "date_document",
+                    models.DateField(
+                        default=django.utils.timezone.now,
+                        verbose_name="Date of Document",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateField(auto_now_add=True, verbose_name="Upload date"),
+                ),
             ],
             options={
-                'verbose_name': 'document',
-                'verbose_name_plural': 'documents',
-                'ordering': ['title'],
+                "verbose_name": "document",
+                "verbose_name_plural": "documents",
+                "ordering": ["title"],
             },
         ),
         migrations.CreateModel(
-            name='NewsletterSubscriber',
+            name="NewsletterSubscriber",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(help_text='Email where you will receive our newsletter', max_length=100, unique=True, verbose_name='email address')),
-                ('name', models.CharField(max_length=50, verbose_name='name')),
-                ('surnames', models.CharField(max_length=100, verbose_name='surname')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        help_text="Email where you will receive our newsletter",
+                        max_length=100,
+                        unique=True,
+                        verbose_name="email address",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="name")),
+                ("surnames", models.CharField(max_length=100, verbose_name="surname")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'newsletter subscriber',
-                'verbose_name_plural': 'newsletter subscribers',
-                'ordering': ['-created_at'],
+                "verbose_name": "newsletter subscriber",
+                "verbose_name_plural": "newsletter subscribers",
+                "ordering": ["-created_at"],
             },
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
-                ('title', models.CharField(default='', max_length=50, unique=True, verbose_name='Title')),
-                ('status', models.CharField(choices=[('PS', 'Project in study phase'), ('AP', 'Active Project'), ('OP', 'Future projects or other projects')], default='', max_length=2, verbose_name='Status')),
-                ('description', models.TextField(default='', verbose_name='Description')),
-                ('image', models.ImageField(blank=True, null=True, storage=project.storage_backends.PrivateMediaStorage(), upload_to='', validators=[django.core.validators.validate_image_file_extension], verbose_name='Image')),
-                ('energy_power', models.CharField(blank=True, default='', help_text='Project energy power (kW)', verbose_name='Energy power')),
-                ('annual_energy', models.CharField(blank=True, default='', help_text='Project annual energy (kWh/year)', verbose_name='Annual energy')),
-                ('investment', models.CharField(blank=True, default='', help_text='Project investment (€)', verbose_name='Investment')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="updated at"),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="", max_length=50, unique=True, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("PS", "Project in study phase"),
+                            ("AP", "Active Project"),
+                            ("OP", "Future projects or other projects"),
+                        ],
+                        default="",
+                        max_length=2,
+                        verbose_name="Status",
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(default="", verbose_name="Description"),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        storage=project.storage_backends.PrivateMediaStorage(),
+                        upload_to="",
+                        validators=[
+                            django.core.validators.validate_image_file_extension
+                        ],
+                        verbose_name="Image",
+                    ),
+                ),
+                (
+                    "energy_power",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        help_text="Project energy power (kW)",
+                        verbose_name="Energy power",
+                    ),
+                ),
+                (
+                    "annual_energy",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        help_text="Project annual energy (kWh/year)",
+                        verbose_name="Annual energy",
+                    ),
+                ),
+                (
+                    "investment",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        help_text="Project investment (€)",
+                        verbose_name="Investment",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'project',
-                'verbose_name_plural': 'projects',
-                'ordering': ['title'],
+                "verbose_name": "project",
+                "verbose_name_plural": "projects",
+                "ordering": ["title"],
             },
             bases=(project.models.SetBooleanDatetimeMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='ProjectType',
+            name="ProjectType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(default='', max_length=50, unique=True, verbose_name='project type name')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        default="",
+                        max_length=50,
+                        unique=True,
+                        verbose_name="project type name",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'project type',
-                'verbose_name_plural': 'project types',
-                'ordering': ['name'],
+                "verbose_name": "project type",
+                "verbose_name_plural": "project types",
+                "ordering": ["name"],
             },
         ),
     ]

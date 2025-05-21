@@ -47,7 +47,6 @@ def remove_superuser(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("users", "0001_initial"),
     ]

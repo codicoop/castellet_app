@@ -6,33 +6,67 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('partners', '0003_alter_newslettersubscriber_created_at_and_more'),
-        ('taggit', '0006_rename_taggeditem_content_type_object_id_taggit_tagg_content_8fc721_idx'),
+        ("partners", "0003_alter_newslettersubscriber_created_at_and_more"),
+        (
+            "taggit",
+            "0006_rename_taggeditem_content_type_object_id_taggit_tagg_content_8fc721_idx",
+        ),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='DocumentComission',
+            name="DocumentComission",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, unique=True, verbose_name='Name')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=200, unique=True, verbose_name="Name"),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='document',
-            name='area',
-            field=models.CharField(blank=True, choices=[('TP', 'Technical projects'), ('CP', "Cooperative's project"), ('CR', 'Consell rector'), ('C', 'Comissions')], null=True, verbose_name='Area'),
+            model_name="document",
+            name="area",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("TP", "Technical projects"),
+                    ("CP", "Cooperative's project"),
+                    ("CR", "Consell rector"),
+                    ("C", "Comissions"),
+                ],
+                null=True,
+                verbose_name="Area",
+            ),
         ),
         migrations.AlterField(
-            model_name='document',
-            name='tags',
-            field=taggit.managers.TaggableManager(help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Document type'),
+            model_name="document",
+            name="tags",
+            field=taggit.managers.TaggableManager(
+                help_text="A comma-separated list of tags.",
+                through="taggit.TaggedItem",
+                to="taggit.Tag",
+                verbose_name="Document type",
+            ),
         ),
         migrations.AddField(
-            model_name='document',
-            name='comission',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='partners.documentcomission', verbose_name='Comission'),
+            model_name="document",
+            name="comission",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="partners.documentcomission",
+                verbose_name="Comission",
+            ),
         ),
     ]

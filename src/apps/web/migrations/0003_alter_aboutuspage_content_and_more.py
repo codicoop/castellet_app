@@ -5,25 +5,108 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0002_data_emails'),
+        ("web", "0002_data_emails"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='aboutuspage',
-            name='content',
-            field=wagtail.fields.StreamField([('title_text', 2), ('horizontal_image', 3)], block_lookup={0: ('wagtail.blocks.CharBlock', (), {'max_length': 80, 'required': True}), 1: ('wagtail.blocks.RichTextBlock', (), {'features': ['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'image'], 'required': True}), 2: ('wagtail.blocks.StructBlock', [[('title', 0), ('body', 1)]], {}), 3: ('wagtail.images.blocks.ImageChooserBlock', (), {})}),
+            model_name="aboutuspage",
+            name="content",
+            field=wagtail.fields.StreamField(
+                [("title_text", 2), ("horizontal_image", 3)],
+                block_lookup={
+                    0: (
+                        "wagtail.blocks.CharBlock",
+                        (),
+                        {"max_length": 80, "required": True},
+                    ),
+                    1: (
+                        "wagtail.blocks.RichTextBlock",
+                        (),
+                        {
+                            "features": [
+                                "h2",
+                                "h3",
+                                "h4",
+                                "bold",
+                                "italic",
+                                "ol",
+                                "ul",
+                                "hr",
+                                "link",
+                                "image",
+                            ],
+                            "required": True,
+                        },
+                    ),
+                    2: (
+                        "wagtail.blocks.StructBlock",
+                        [[("title", 0), ("body", 1)]],
+                        {},
+                    ),
+                    3: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                },
+            ),
         ),
         migrations.AlterField(
-            model_name='newsdetailpage',
-            name='content',
-            field=wagtail.fields.StreamField([('text', 0), ('image', 1)], block_lookup={0: ('wagtail.blocks.RichTextBlock', (), {'features': ['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'image']}), 1: ('wagtail.images.blocks.ImageChooserBlock', (), {})}, verbose_name='Paragraphs and pictures'),
+            model_name="newsdetailpage",
+            name="content",
+            field=wagtail.fields.StreamField(
+                [("text", 0), ("image", 1)],
+                block_lookup={
+                    0: (
+                        "wagtail.blocks.RichTextBlock",
+                        (),
+                        {
+                            "features": [
+                                "h2",
+                                "h3",
+                                "h4",
+                                "bold",
+                                "italic",
+                                "ol",
+                                "ul",
+                                "hr",
+                                "link",
+                                "image",
+                            ]
+                        },
+                    ),
+                    1: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                },
+                verbose_name="Paragraphs and pictures",
+            ),
         ),
         migrations.AlterField(
-            model_name='projectdetailpage',
-            name='content',
-            field=wagtail.fields.StreamField([('text', 0), ('image', 1)], blank=True, block_lookup={0: ('wagtail.blocks.RichTextBlock', (), {'features': ['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'image']}), 1: ('wagtail.images.blocks.ImageChooserBlock', (), {})}, null=True, verbose_name='Paragraphs and pictures'),
+            model_name="projectdetailpage",
+            name="content",
+            field=wagtail.fields.StreamField(
+                [("text", 0), ("image", 1)],
+                blank=True,
+                block_lookup={
+                    0: (
+                        "wagtail.blocks.RichTextBlock",
+                        (),
+                        {
+                            "features": [
+                                "h2",
+                                "h3",
+                                "h4",
+                                "bold",
+                                "italic",
+                                "ol",
+                                "ul",
+                                "hr",
+                                "link",
+                                "image",
+                            ]
+                        },
+                    ),
+                    1: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                },
+                null=True,
+                verbose_name="Paragraphs and pictures",
+            ),
         ),
     ]
