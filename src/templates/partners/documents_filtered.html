@@ -30,12 +30,11 @@
       <div class="lg:col-start-1 lg:self-end">
         <span class="block font-bold text-gray-700 uppercase">
           <!-- {# {% for comission in document.comission.all %} #} -->
-            <!-- {# {% if comission in comissions %} #} -->
+            {% if document.comission %}
               <span class="pr-4">
-                <!-- {{ comission.title }} -->
-                  Comissió XXX
+                  {{ document.comission }}
               </span>
-            <!-- {# {% endif %} #} -->
+            {% endif %}
           <!-- {# {% endfor %} #} -->
         </span>
       </div>
