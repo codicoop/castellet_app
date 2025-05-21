@@ -8,242 +8,1084 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('partners', '0002_initial'),
-        ('wagtailcore', '0094_alter_page_locale'),
-        ('wagtailimages', '0027_image_description'),
+        ("partners", "0002_initial"),
+        ("wagtailcore", "0094_alter_page_locale"),
+        ("wagtailimages", "0027_image_description"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FaqPage',
+            name="FaqPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
-                ('questions', wagtail.fields.StreamField([('question', 2)], block_lookup={0: ('wagtail.blocks.CharBlock', (), {'label': 'Question', 'required': True}), 1: ('wagtail.blocks.RichTextBlock', (), {'features': ['bold', 'italic', 'link'], 'label': 'Answer', 'required': True}), 2: ('wagtail.blocks.StructBlock', [[('question', 0), ('answer', 1)]], {})}, verbose_name='Questions & Answers')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
+                (
+                    "questions",
+                    wagtail.fields.StreamField(
+                        [("question", 2)],
+                        block_lookup={
+                            0: (
+                                "wagtail.blocks.CharBlock",
+                                (),
+                                {"label": "Question", "required": True},
+                            ),
+                            1: (
+                                "wagtail.blocks.RichTextBlock",
+                                (),
+                                {
+                                    "features": ["bold", "italic", "link"],
+                                    "label": "Answer",
+                                    "required": True,
+                                },
+                            ),
+                            2: (
+                                "wagtail.blocks.StructBlock",
+                                [[("question", 0), ("answer", 1)]],
+                                {},
+                            ),
+                        },
+                        verbose_name="Questions & Answers",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='LegalPage',
+            name="LegalPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
-                ('text', wagtail.fields.RichTextField(verbose_name='Text')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
+                ("text", wagtail.fields.RichTextField(verbose_name="Text")),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='NewsListPage',
+            name="NewsListPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='NewsTag',
+            name="NewsTag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='name')),
-                ('slug', models.SlugField(allow_unicode=True, max_length=100, unique=True, verbose_name='slug')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=100, unique=True, verbose_name="name"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        allow_unicode=True,
+                        max_length=100,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'news tag',
-                'verbose_name_plural': 'news tags',
-            },
-        ),
-        migrations.CreateModel(
-            name='AboutUsPage',
-            fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
-                ('header_description', models.CharField(blank=True, default='', max_length=250, verbose_name='Header description')),
-                ('header_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Header button title')),
-                ('overlay_title', models.CharField(blank=True, default='', max_length=80, verbose_name='Title')),
-                ('overlay_body', models.TextField(blank=True, default='', verbose_name='Text')),
-                ('overlay_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Button title')),
-                ('display_header_highlight', models.BooleanField(default=True, help_text='Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.', verbose_name='Display header highlighted overlay')),
-                ('content', wagtail.fields.StreamField([('title_text', 2), ('horizontal_image', 3)], block_lookup={0: ('wagtail.blocks.CharBlock', (), {'max_length': 80, 'required': True}), 1: ('wagtail.blocks.RichTextBlock', (), {'required': True}), 2: ('wagtail.blocks.StructBlock', [[('title', 0), ('body', 1)]], {}), 3: ('wagtail.images.blocks.ImageChooserBlock', (), {})})),
-                ('header_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Header button linked page')),
-                ('header_image', models.ForeignKey(help_text='This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
-                ('overlay_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Linked page')),
-                ('overlay_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Image')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
-        migrations.CreateModel(
-            name='AnalyticsSettings',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('embed', models.TextField(blank=True, default='', verbose_name='Embed code')),
-                ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.site')),
-            ],
-            options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
-            name='CustomizationSettings',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(blank=True, default='', max_length=254, verbose_name='Contact e-mail')),
-                ('address', models.TextField(blank=True, default='', verbose_name='Address')),
-                ('phone', models.CharField(blank=True, default='', max_length=30, verbose_name='Phone')),
-                ('footer_name', models.CharField(blank=True, default='© Nom entitat SCCL, 2024', help_text='Legal name and year', max_length=60, verbose_name='Footer name')),
-                ('title_prefix', models.CharField(default='Castellet Sostenible', help_text="This will be prefixed to every page title. the title is shown in the browser's tab.", max_length=60, verbose_name='Title prefix')),
-                ('authorship', models.CharField(blank=True, default='Desenvolupat per Codi Cooperatiu · Dissenyat per Utopig Studio', max_length=150, verbose_name='Authorship')),
-                ('join_us_title', models.CharField(default='Join Castellet Sostenible', max_length=240, verbose_name='Title')),
-                ('join_us_text', models.CharField(blank=True, default='', max_length=240, verbose_name='Text')),
-                ('logo', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailimages.image', verbose_name='Logo')),
-                ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.site')),
-            ],
-            options={
-                'verbose_name': 'Website customization',
-            },
-        ),
-        migrations.CreateModel(
-            name='FooterLogo',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('logo', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Logo')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='HomePage',
-            fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('header_description', models.CharField(blank=True, default='', max_length=250, verbose_name='Header description')),
-                ('header_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Header button title')),
-                ('overlay_title', models.CharField(blank=True, default='', max_length=80, verbose_name='Title')),
-                ('overlay_body', models.TextField(blank=True, default='', verbose_name='Text')),
-                ('overlay_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Button title')),
-                ('display_header_highlight', models.BooleanField(default=True, help_text='Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.', verbose_name='Display header highlighted overlay')),
-                ('video_title', models.CharField(blank=True, default='', max_length=80, verbose_name='Title')),
-                ('video_description', wagtail.fields.RichTextField(blank=True, default='', verbose_name='Description')),
-                ('video_youtube_url', models.CharField(blank=True, default='', max_length=240, verbose_name='YouTube URL')),
-                ('documents_title', models.CharField(blank=True, default='', max_length=80, verbose_name='Title')),
-                ('documents_description', wagtail.fields.RichTextField(blank=True, default='', verbose_name='Description')),
-                ('documents', wagtail.fields.StreamField([('document', 4)], blank=True, block_lookup={0: ('wagtail.documents.blocks.DocumentChooserBlock', (), {}), 1: ('wagtail.blocks.ChoiceBlock', [], {'choices': [('doc-full-inverse', 'General document'), ('image', 'Image file'), ('desktop', 'Video file'), ('comment', 'Audio file')]}), 2: ('wagtail.blocks.CharBlock', (), {'max_length': 80, 'required': True}), 3: ('wagtail.blocks.CharBlock', (), {'required': False}), 4: ('wagtail.blocks.StructBlock', [[('file', 0), ('icon', 1), ('title', 2), ('description', 3)]], {})}, null=True)),
-                ('projects_title', models.CharField(default='What does Castellet Sostenible offer?', max_length=80, verbose_name='Title')),
-                ('news_title', models.CharField(default='Last news', max_length=80, verbose_name='Title')),
-                ('header_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Header button linked page')),
-                ('header_image', models.ForeignKey(help_text='This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
-                ('overlay_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Linked page')),
-                ('overlay_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Image')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
-        migrations.CreateModel(
-            name='NewsDetailPage',
-            fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('date', models.DateField(verbose_name='Date')),
-                ('content', wagtail.fields.StreamField([('text', 0), ('image', 1)], block_lookup={0: ('wagtail.blocks.RichTextBlock', (), {}), 1: ('wagtail.images.blocks.ImageChooserBlock', (), {})}, verbose_name='Paragraphs and pictures')),
-                ('header_image', models.ForeignKey(help_text='This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.', null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
-        migrations.CreateModel(
-            name='ProjectDetailPage',
-            fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('status', models.CharField(choices=[('PS', 'Project in study phase'), ('AP', 'Active Project'), ('OP', 'Future projects or other projects')], default='', max_length=2, verbose_name='Status')),
-                ('description', wagtail.fields.RichTextField(default='', verbose_name='Description')),
-                ('content', wagtail.fields.StreamField([('text', 0), ('image', 1)], blank=True, block_lookup={0: ('wagtail.blocks.RichTextBlock', (), {}), 1: ('wagtail.images.blocks.ImageChooserBlock', (), {})}, null=True, verbose_name='Paragraphs and pictures')),
-                ('show_in_home', models.BooleanField(default=False, help_text="If selected, this project will appear on the home page in the 'What do we offer?' block.", verbose_name='Show in the home page')),
-                ('header_image', models.ForeignKey(help_text='This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.', null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
-                ('partners_project', models.ForeignKey(blank=True, help_text='If set, some project details from the projects section in the partners app will be included in the website. To create or edit those projects, go to the <a href="/admin/partners/project/">admin panel</a>.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='web_pages', to='partners.project', verbose_name='Related project in the Partners app')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
-        migrations.CreateModel(
-            name='ProjectListPage',
-            fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
-                ('header_description', models.CharField(blank=True, default='', max_length=250, verbose_name='Header description')),
-                ('header_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Header button title')),
-                ('overlay_title', models.CharField(blank=True, default='', max_length=80, verbose_name='Title')),
-                ('overlay_body', models.TextField(blank=True, default='', verbose_name='Text')),
-                ('overlay_button_text', models.CharField(blank=True, default='', max_length=20, verbose_name='Button title')),
-                ('display_header_highlight', models.BooleanField(default=True, help_text='Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.', verbose_name='Display header highlighted overlay')),
-                ('projects_active_title', models.CharField(default='Projects we are currently working on', max_length=200, verbose_name='Title')),
-                ('projects_active_description', wagtail.fields.RichTextField(blank=True, default='', verbose_name='Description')),
-                ('projects_study_phase_title', models.CharField(default='Projects being studied', max_length=200, verbose_name='Title')),
-                ('projects_study_phase_description', wagtail.fields.RichTextField(blank=True, default='', verbose_name='Description')),
-                ('projects_other_title', models.CharField(default='Future and other projects', max_length=200, verbose_name='Title')),
-                ('projects_other_description', wagtail.fields.RichTextField(blank=True, default='', verbose_name='Description')),
-                ('header_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Header button linked page')),
-                ('header_image', models.ForeignKey(help_text='This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
-                ('overlay_button_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page', verbose_name='Linked page')),
-                ('overlay_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Image')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
-        migrations.CreateModel(
-            name='SocialMediaIconsSettings',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('facebook', models.URLField(blank=True, default='', help_text='Facebook URL')),
-                ('youtube', models.URLField(blank=True, default='', help_text='Youtube URL')),
-                ('instagram', models.URLField(blank=True, default='https://www.instagram.com/castelletsostenible/', help_text='Instagram URL')),
-                ('x', models.URLField(blank=True, default='', help_text='X URL')),
-                ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.site')),
-            ],
-            options={
-                'abstract': False,
+                "verbose_name": "news tag",
+                "verbose_name_plural": "news tags",
             },
         ),
         migrations.CreateModel(
-            name='TaggedNews',
+            name="AboutUsPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='tagged_items', to='web.newsdetailpage')),
-                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tagged_news', to='web.newstag')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
+                (
+                    "header_description",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=250,
+                        verbose_name="Header description",
+                    ),
+                ),
+                (
+                    "header_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Header button title",
+                    ),
+                ),
+                (
+                    "overlay_title",
+                    models.CharField(
+                        blank=True, default="", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "overlay_body",
+                    models.TextField(blank=True, default="", verbose_name="Text"),
+                ),
+                (
+                    "overlay_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Button title",
+                    ),
+                ),
+                (
+                    "display_header_highlight",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.",
+                        verbose_name="Display header highlighted overlay",
+                    ),
+                ),
+                (
+                    "content",
+                    wagtail.fields.StreamField(
+                        [("title_text", 2), ("horizontal_image", 3)],
+                        block_lookup={
+                            0: (
+                                "wagtail.blocks.CharBlock",
+                                (),
+                                {"max_length": 80, "required": True},
+                            ),
+                            1: ("wagtail.blocks.RichTextBlock", (), {"required": True}),
+                            2: (
+                                "wagtail.blocks.StructBlock",
+                                [[("title", 0), ("body", 1)]],
+                                {},
+                            ),
+                            3: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                        },
+                    ),
+                ),
+                (
+                    "header_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Header button linked page",
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Header image",
+                    ),
+                ),
+                (
+                    "overlay_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Linked page",
+                    ),
+                ),
+                (
+                    "overlay_image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Image",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
+            },
+            bases=("wagtailcore.page",),
+        ),
+        migrations.CreateModel(
+            name="AnalyticsSettings",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "embed",
+                    models.TextField(blank=True, default="", verbose_name="Embed code"),
+                ),
+                (
+                    "site",
+                    models.OneToOneField(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.site",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+        ),
+        migrations.CreateModel(
+            name="CustomizationSettings",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True,
+                        default="",
+                        max_length=254,
+                        verbose_name="Contact e-mail",
+                    ),
+                ),
+                (
+                    "address",
+                    models.TextField(blank=True, default="", verbose_name="Address"),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True, default="", max_length=30, verbose_name="Phone"
+                    ),
+                ),
+                (
+                    "footer_name",
+                    models.CharField(
+                        blank=True,
+                        default="© Nom entitat SCCL, 2024",
+                        help_text="Legal name and year",
+                        max_length=60,
+                        verbose_name="Footer name",
+                    ),
+                ),
+                (
+                    "title_prefix",
+                    models.CharField(
+                        default="Castellet Sostenible",
+                        help_text="This will be prefixed to every page title. the title is shown in the browser's tab.",
+                        max_length=60,
+                        verbose_name="Title prefix",
+                    ),
+                ),
+                (
+                    "authorship",
+                    models.CharField(
+                        blank=True,
+                        default="Desenvolupat per Codi Cooperatiu · Dissenyat per Utopig Studio",
+                        max_length=150,
+                        verbose_name="Authorship",
+                    ),
+                ),
+                (
+                    "join_us_title",
+                    models.CharField(
+                        default="Join Castellet Sostenible",
+                        max_length=240,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "join_us_text",
+                    models.CharField(
+                        blank=True, default="", max_length=240, verbose_name="Text"
+                    ),
+                ),
+                (
+                    "logo",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Logo",
+                    ),
+                ),
+                (
+                    "site",
+                    models.OneToOneField(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.site",
+                    ),
+                ),
+            ],
+            options={
+                "verbose_name": "Website customization",
+            },
+        ),
+        migrations.CreateModel(
+            name="FooterLogo",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "logo",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Logo",
+                    ),
+                ),
+            ],
+        ),
+        migrations.CreateModel(
+            name="HomePage",
+            fields=[
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "header_description",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=250,
+                        verbose_name="Header description",
+                    ),
+                ),
+                (
+                    "header_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Header button title",
+                    ),
+                ),
+                (
+                    "overlay_title",
+                    models.CharField(
+                        blank=True, default="", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "overlay_body",
+                    models.TextField(blank=True, default="", verbose_name="Text"),
+                ),
+                (
+                    "overlay_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Button title",
+                    ),
+                ),
+                (
+                    "display_header_highlight",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.",
+                        verbose_name="Display header highlighted overlay",
+                    ),
+                ),
+                (
+                    "video_title",
+                    models.CharField(
+                        blank=True, default="", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "video_description",
+                    wagtail.fields.RichTextField(
+                        blank=True, default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "video_youtube_url",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=240,
+                        verbose_name="YouTube URL",
+                    ),
+                ),
+                (
+                    "documents_title",
+                    models.CharField(
+                        blank=True, default="", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "documents_description",
+                    wagtail.fields.RichTextField(
+                        blank=True, default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "documents",
+                    wagtail.fields.StreamField(
+                        [("document", 4)],
+                        blank=True,
+                        block_lookup={
+                            0: (
+                                "wagtail.documents.blocks.DocumentChooserBlock",
+                                (),
+                                {},
+                            ),
+                            1: (
+                                "wagtail.blocks.ChoiceBlock",
+                                [],
+                                {
+                                    "choices": [
+                                        ("doc-full-inverse", "General document"),
+                                        ("image", "Image file"),
+                                        ("desktop", "Video file"),
+                                        ("comment", "Audio file"),
+                                    ]
+                                },
+                            ),
+                            2: (
+                                "wagtail.blocks.CharBlock",
+                                (),
+                                {"max_length": 80, "required": True},
+                            ),
+                            3: ("wagtail.blocks.CharBlock", (), {"required": False}),
+                            4: (
+                                "wagtail.blocks.StructBlock",
+                                [
+                                    [
+                                        ("file", 0),
+                                        ("icon", 1),
+                                        ("title", 2),
+                                        ("description", 3),
+                                    ]
+                                ],
+                                {},
+                            ),
+                        },
+                        null=True,
+                    ),
+                ),
+                (
+                    "projects_title",
+                    models.CharField(
+                        default="What does Castellet Sostenible offer?",
+                        max_length=80,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "news_title",
+                    models.CharField(
+                        default="Last news", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "header_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Header button linked page",
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Header image",
+                    ),
+                ),
+                (
+                    "overlay_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Linked page",
+                    ),
+                ),
+                (
+                    "overlay_image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Image",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+            bases=("wagtailcore.page",),
+        ),
+        migrations.CreateModel(
+            name="NewsDetailPage",
+            fields=[
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                ("date", models.DateField(verbose_name="Date")),
+                (
+                    "content",
+                    wagtail.fields.StreamField(
+                        [("text", 0), ("image", 1)],
+                        block_lookup={
+                            0: ("wagtail.blocks.RichTextBlock", (), {}),
+                            1: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                        },
+                        verbose_name="Paragraphs and pictures",
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.",
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Header image",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+            bases=("wagtailcore.page",),
+        ),
+        migrations.CreateModel(
+            name="ProjectDetailPage",
+            fields=[
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("PS", "Project in study phase"),
+                            ("AP", "Active Project"),
+                            ("OP", "Future projects or other projects"),
+                        ],
+                        default="",
+                        max_length=2,
+                        verbose_name="Status",
+                    ),
+                ),
+                (
+                    "description",
+                    wagtail.fields.RichTextField(
+                        default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "content",
+                    wagtail.fields.StreamField(
+                        [("text", 0), ("image", 1)],
+                        blank=True,
+                        block_lookup={
+                            0: ("wagtail.blocks.RichTextBlock", (), {}),
+                            1: ("wagtail.images.blocks.ImageChooserBlock", (), {}),
+                        },
+                        null=True,
+                        verbose_name="Paragraphs and pictures",
+                    ),
+                ),
+                (
+                    "show_in_home",
+                    models.BooleanField(
+                        default=False,
+                        help_text="If selected, this project will appear on the home page in the 'What do we offer?' block.",
+                        verbose_name="Show in the home page",
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.",
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Header image",
+                    ),
+                ),
+                (
+                    "partners_project",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text='If set, some project details from the projects section in the partners app will be included in the website. To create or edit those projects, go to the <a href="/admin/partners/project/">admin panel</a>.',
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="web_pages",
+                        to="partners.project",
+                        verbose_name="Related project in the Partners app",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+            bases=("wagtailcore.page",),
+        ),
+        migrations.CreateModel(
+            name="ProjectListPage",
+            fields=[
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
+                (
+                    "header_description",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=250,
+                        verbose_name="Header description",
+                    ),
+                ),
+                (
+                    "header_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Header button title",
+                    ),
+                ),
+                (
+                    "overlay_title",
+                    models.CharField(
+                        blank=True, default="", max_length=80, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "overlay_body",
+                    models.TextField(blank=True, default="", verbose_name="Text"),
+                ),
+                (
+                    "overlay_button_text",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Button title",
+                    ),
+                ),
+                (
+                    "display_header_highlight",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Per mostrar el missatge superposat a la capçalera cal marcar aquesta opció i omplir les dades del bloc Missatge sobre la capçalera.",
+                        verbose_name="Display header highlighted overlay",
+                    ),
+                ),
+                (
+                    "projects_active_title",
+                    models.CharField(
+                        default="Projects we are currently working on",
+                        max_length=200,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "projects_active_description",
+                    wagtail.fields.RichTextField(
+                        blank=True, default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "projects_study_phase_title",
+                    models.CharField(
+                        default="Projects being studied",
+                        max_length=200,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "projects_study_phase_description",
+                    wagtail.fields.RichTextField(
+                        blank=True, default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "projects_other_title",
+                    models.CharField(
+                        default="Future and other projects",
+                        max_length=200,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "projects_other_description",
+                    wagtail.fields.RichTextField(
+                        blank=True, default="", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "header_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Header button linked page",
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="This image is intended to be decorative and creative to accompany the content. Depending on the resolution and device of the user, the size and proportion will vary, and therefore parts of the image will be cropped. The recommended proportion is 2x1, with a minimum size of 2,000x1,000px.",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Header image",
+                    ),
+                ),
+                (
+                    "overlay_button_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                        verbose_name="Linked page",
+                    ),
+                ),
+                (
+                    "overlay_image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                        verbose_name="Image",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+            bases=("wagtailcore.page",),
+        ),
+        migrations.CreateModel(
+            name="SocialMediaIconsSettings",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "facebook",
+                    models.URLField(blank=True, default="", help_text="Facebook URL"),
+                ),
+                (
+                    "youtube",
+                    models.URLField(blank=True, default="", help_text="Youtube URL"),
+                ),
+                (
+                    "instagram",
+                    models.URLField(
+                        blank=True,
+                        default="https://www.instagram.com/castelletsostenible/",
+                        help_text="Instagram URL",
+                    ),
+                ),
+                ("x", models.URLField(blank=True, default="", help_text="X URL")),
+                (
+                    "site",
+                    models.OneToOneField(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.site",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+        ),
+        migrations.CreateModel(
+            name="TaggedNews",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "content_object",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tagged_items",
+                        to="web.newsdetailpage",
+                    ),
+                ),
+                (
+                    "tag",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tagged_news",
+                        to="web.newstag",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
             },
         ),
         migrations.AddField(
-            model_name='newsdetailpage',
-            name='tags',
-            field=modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags.', through='web.TaggedNews', to='web.NewsTag', verbose_name='Tags'),
+            model_name="newsdetailpage",
+            name="tags",
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(
+                blank=True,
+                help_text="A comma-separated list of tags.",
+                through="web.TaggedNews",
+                to="web.NewsTag",
+                verbose_name="Tags",
+            ),
         ),
     ]

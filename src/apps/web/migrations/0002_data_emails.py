@@ -57,13 +57,10 @@ def populate_mail_templates(apps, schema_editor):
                     "content": textify(translated_template.get("body")),
                 },
             )
-            print(
-                f"E-mail template '{template.get('id')}' updated or created."
-            )
+            print(f"E-mail template '{template.get('id')}' updated or created.")
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("web", "0001_initial"),
         ("post_office", "__latest__"),

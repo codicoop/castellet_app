@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtail_htmx_contact_form', '0001_initial'),
+        ("wagtail_htmx_contact_form", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='htmxcontactpage',
-            name='phone_label',
+            model_name="htmxcontactpage",
+            name="phone_label",
         ),
     ]

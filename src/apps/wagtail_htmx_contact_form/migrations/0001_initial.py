@@ -5,50 +5,168 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0094_alter_page_locale'),
+        ("wagtailcore", "0094_alter_page_locale"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContactSubmission',
+            name="ContactSubmission",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('name', models.CharField(max_length=120, verbose_name='name')),
-                ('email', models.EmailField(max_length=255, verbose_name='e-mail')),
-                ('subject', models.CharField(max_length=240, verbose_name='subject')),
-                ('message', models.TextField(verbose_name='message')),
-                ('personal_data_auth', models.BooleanField(verbose_name='Treatment of personal data authorization')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("name", models.CharField(max_length=120, verbose_name="name")),
+                ("email", models.EmailField(max_length=255, verbose_name="e-mail")),
+                ("subject", models.CharField(max_length=240, verbose_name="subject")),
+                ("message", models.TextField(verbose_name="message")),
+                (
+                    "personal_data_auth",
+                    models.BooleanField(
+                        verbose_name="Treatment of personal data authorization"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'contact form submission',
-                'verbose_name_plural': 'contact form submissions',
+                "verbose_name": "contact form submission",
+                "verbose_name_plural": "contact form submissions",
             },
         ),
         migrations.CreateModel(
-            name='HtmxContactPage',
+            name="HtmxContactPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('display_join_us_block', models.BooleanField(default=True, help_text='Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.', verbose_name='Display join us block')),
-                ('menu_label', models.CharField(blank=True, help_text='If not set, the menu title will be the page title.', max_length=15, verbose_name='Menu title')),
-                ('name_label', models.CharField(default='Your name', help_text='Label for the Name field.', max_length=250, verbose_name='name')),
-                ('email_label', models.CharField(default='Your e-mail', help_text='Label for the e-mail field.', max_length=250, verbose_name='email')),
-                ('phone_label', models.CharField(default='Phone', help_text='Label for the Phone field.', max_length=250, verbose_name='subject')),
-                ('subject_label', models.CharField(default='Subject', help_text='Label for the Subject field.', max_length=250, verbose_name='subject')),
-                ('message_label', models.CharField(default='Message', help_text='Label for the Message field.', max_length=250, verbose_name='message')),
-                ('personal_data_auth_label', models.CharField(default='I authorize my personal data treatment', help_text='Label for the Personal data authorization field.', max_length=250, verbose_name='personal data authorization')),
-                ('personal_data_auth_text', models.TextField(blank=True, default='', help_text='Legal text displayed alongside the personal data authorization checkbox.', verbose_name='personal data authorization legal text')),
-                ('success_msg', models.CharField(default='Message sent, thanks for contacting us!', max_length=250, verbose_name='success message')),
-                ('to_address', models.EmailField(blank=True, default='', help_text='E-mail to notify when a new submission is received. Leave it empty to disable the notifications.', max_length=254, verbose_name='to address')),
-                ('notification_subject', models.CharField(blank=True, default='', help_text='If empty, you will not get e-mail notifications for new form submissions.', max_length=250, verbose_name='subject')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "display_join_us_block",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Show the join us block at the botton of this page. To modify its content, go to Settings - Website customization.",
+                        verbose_name="Display join us block",
+                    ),
+                ),
+                (
+                    "menu_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="If not set, the menu title will be the page title.",
+                        max_length=15,
+                        verbose_name="Menu title",
+                    ),
+                ),
+                (
+                    "name_label",
+                    models.CharField(
+                        default="Your name",
+                        help_text="Label for the Name field.",
+                        max_length=250,
+                        verbose_name="name",
+                    ),
+                ),
+                (
+                    "email_label",
+                    models.CharField(
+                        default="Your e-mail",
+                        help_text="Label for the e-mail field.",
+                        max_length=250,
+                        verbose_name="email",
+                    ),
+                ),
+                (
+                    "phone_label",
+                    models.CharField(
+                        default="Phone",
+                        help_text="Label for the Phone field.",
+                        max_length=250,
+                        verbose_name="subject",
+                    ),
+                ),
+                (
+                    "subject_label",
+                    models.CharField(
+                        default="Subject",
+                        help_text="Label for the Subject field.",
+                        max_length=250,
+                        verbose_name="subject",
+                    ),
+                ),
+                (
+                    "message_label",
+                    models.CharField(
+                        default="Message",
+                        help_text="Label for the Message field.",
+                        max_length=250,
+                        verbose_name="message",
+                    ),
+                ),
+                (
+                    "personal_data_auth_label",
+                    models.CharField(
+                        default="I authorize my personal data treatment",
+                        help_text="Label for the Personal data authorization field.",
+                        max_length=250,
+                        verbose_name="personal data authorization",
+                    ),
+                ),
+                (
+                    "personal_data_auth_text",
+                    models.TextField(
+                        blank=True,
+                        default="",
+                        help_text="Legal text displayed alongside the personal data authorization checkbox.",
+                        verbose_name="personal data authorization legal text",
+                    ),
+                ),
+                (
+                    "success_msg",
+                    models.CharField(
+                        default="Message sent, thanks for contacting us!",
+                        max_length=250,
+                        verbose_name="success message",
+                    ),
+                ),
+                (
+                    "to_address",
+                    models.EmailField(
+                        blank=True,
+                        default="",
+                        help_text="E-mail to notify when a new submission is received. Leave it empty to disable the notifications.",
+                        max_length=254,
+                        verbose_name="to address",
+                    ),
+                ),
+                (
+                    "notification_subject",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        help_text="If empty, you will not get e-mail notifications for new form submissions.",
+                        max_length=250,
+                        verbose_name="subject",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
     ]

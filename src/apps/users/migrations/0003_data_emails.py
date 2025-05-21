@@ -108,13 +108,10 @@ ben llarga i t'agrairem que ens informis de la situació.
                     "content": textify(translated_template.get("body")),
                 },
             )
-            print(
-                f"E-mail template '{template.get('id')}' updated or created."
-            )
+            print(f"E-mail template '{template.get('id')}' updated or created.")
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("users", "0002_data_superuser"),
         ("post_office", "__latest__"),

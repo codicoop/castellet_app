@@ -14,44 +14,41 @@
           {{ document.created_at|date:"d/m/y" }}
         </span>
       </div>
-      <!-- Si Area = projecte tècnic -->
-      <div class="lg:col-start-1 lg:self-end">
-        <span class="block font-bold text-gray-700 uppercase">
-          {% for project in document.project.all %}
-            {% if project in projects %}
-              <span class="pr-4">
-                {{ project.title }}
-              </span>
-            {% endif %}
-          {% endfor %}
-        </span>
-      </div>
-      <!-- else si Area = Comissió -->
-      <div class="lg:col-start-1 lg:self-end">
-        <span class="block font-bold text-gray-700 uppercase">
-          <!-- {# {% for comission in document.comission.all %} #} -->
-            <!-- {# {% if comission in comissions %} #} -->
-              <span class="pr-4">
-                <!-- {{ comission.title }} -->
-                  Comissió XXX
-              </span>
-            <!-- {# {% endif %} #} -->
-          <!-- {# {% endfor %} #} -->
-        </span>
-      </div>
-      <!-- else si Area = Projecte cooperativa -->
-      <div class="lg:col-start-1 lg:self-end">
-        <span class="block font-bold text-gray-700 uppercase">
-          {% translate 'Cooperative project' %}
-        </span>
-      </div>
-      <!-- else si Area = Consell rector -->
-      <div class="lg:col-start-1 lg:self-end">
-        <span class="block font-bold text-gray-700 uppercase">
-          {% translate 'Governing Council' %}
-        </span>
-      </div>
-      <!-- Endif -->
+      {% if document.area == "TP" %}
+        <div class="lg:col-start-1 lg:self-end">
+          <span class="block font-bold text-gray-700 uppercase">
+            {% for project in document.project.all %}
+              {% if project in projects %}
+                <span class="pr-4">
+                  {{ project.title }}
+                </span>
+              {% endif %}
+            {% endfor %}
+          </span>
+        </div>
+      {% elif document.area == "C" %}
+        <div class="lg:col-start-1 lg:self-end">
+          <span class="block font-bold text-gray-700 uppercase">
+              {% if document.comission %}
+                <span class="pr-4">
+                    {{ document.comission }}
+                </span>
+              {% endif %}
+          </span>
+        </div>
+      {% elif document.area == "CP" %}
+        <div class="lg:col-start-1 lg:self-end">
+          <span class="block font-bold text-gray-700 uppercase">
+            {% translate 'Cooperative project' %}
+          </span>
+        </div>
+      {% elif document.area == "CR" %}
+        <div class="lg:col-start-1 lg:self-end">
+          <span class="block font-bold text-gray-700 uppercase">
+            {% translate 'Governing Council' %}
+          </span>
+        </div>
+      {% endif %}
       <div class="absolute bottom-2 right-2 flex gap-3 items-center
         hover:bg-primary-100 py-1 px-2 rounded-md">
         <p class="hidden text-sm font-bold text-primary-600
