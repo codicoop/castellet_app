@@ -6,8 +6,8 @@ from taggit.managers import TaggableManager
 
 from apps.partners.choices import (
     AccessPermissionRoleChoices,
-    ProjectStatusChoices,
     DocumentAreaChoices,
+    ProjectStatusChoices,
 )
 from project.models import BaseModel
 from project.storage_backends import PrivateMediaStorage
@@ -214,7 +214,6 @@ class Document(models.Model):
         _("Area"),
         choices=DocumentAreaChoices.choices,
         blank=True,
-        null=True,
     )
 
     class Meta:

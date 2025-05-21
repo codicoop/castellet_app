@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from apps.partners.forms import DocumentAdminForm
-from apps.partners.models import Document, Project, ProjectType, DocumentComission
+from apps.partners.models import Document, DocumentComission, Project, ProjectType
 from apps.partners.services import ExportProjectCsvMixin
 from apps.users.models import User
 from project.admin import ModelAdmin
