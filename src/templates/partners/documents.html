@@ -28,7 +28,7 @@
     </h1>
     {% if documents %}
     <div class="py-8 sm:py-12">
-      {% if tags|length > 1 or projects|length > 1%}
+      {% if tags|length > 1 or projects|length > 1 %}
       <div class="sm:ml-8 md:ml-16 lg:ml-52">
         <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
         <form method="post">
@@ -130,6 +130,58 @@
                     then add .bg-blau-500 to #label_{{ project.id }}"
                 />
                 <p class="text-center pointer-events-none">{{ project }}</p>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if years|length > 1 %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Year' %}</p>
+            <div class="grid grid-cols-1 gap-1 mb-4 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <label for="years_all" id="label_years_all"
+                class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
+                  hover:bg-blau-700"
+              >
+                <input
+                  type="radio"
+                  checked="True"
+                  id="years_all"
+                  class="invisible absolute"
+                  name="selected_years"
+                  value="years_all"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-300 from #label_years_all
+                    then add .bg-blau-500 to #label_years_all
+                    then remove .bg-blau-500 from .label-years
+                    then add .bg-blau-300 to .label-years
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for year in years %}
+              <label for="year_{{ year }}" id="label_year_{{ year }}"
+                class="label-years flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
+                  hover:bg-blau-700"
+              >
+                <input
+                  type="radio"
+                  id="year_{{ year }}"
+                  name="selected_years"
+                  class="selected_years invisible absolute"
+                  value="{{ year }}"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-500 from #label_years_all
+                    then add .bg-blau-300 to #label_years_all
+                    then remove .bg-blau-500 from .label-years
+                    then add .bg-blau-300 to .label-years
+                    then remove .bg-blau-300 from #label_year_{{ year }}
+                    then add .bg-blau-500 to #label_year_{{ year }}"
+                />
+                <p class="text-center pointer-events-none">{{ year }}</p>
               </label>
               {% endfor %}
             </div>

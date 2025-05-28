@@ -11,7 +11,7 @@
           {{ document.title }}
         </span>
         <span class="block text-xs font-medium text-gray-500">
-          {{ document.created_at|date:"d/m/y" }}
+          {{ document.date_document|date:"d/m/y" }}
         </span>
       </div>
       {% if document.area == "TP" %}

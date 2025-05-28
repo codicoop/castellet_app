@@ -21,26 +21,35 @@ def document_list_view(request):
 
     if request.method == "GET":
         all_tags = set()
+        all_years = []
         for document in documents:
             all_tags.update((document.tags.all()))
+            all_years.append(document.date_document.year)
         context = {
             "documents": documents,
             "projects": projects_with_documents,
             "tags": sorted(all_tags),
+            # Convert to set to unify values, then to list again, and sort it
+            "years": sorted(list(set(all_years))),
         }
         return render(request, "partners/documents.html", context)
     if request.htmx:
         selected_projects = request.POST.getlist("selected_projects")
         selected_tags = request.POST.getlist("selected_tags")
-        if selected_projects == ["projects_all"]:
-            documents = Document.objects.filter(project__in=user_projects).distinct()
-        if selected_tags == ["tags_all"]:
+        selected_years = request.POST.getlist("selected_years")
+        if (
+            selected_projects == ["projects_all"]
+            or selected_tags == ["tags_all"]
+            or selected_years == ["years_all"]
+        ):
             documents = Document.objects.filter(project__in=user_projects).distinct()
         if selected_projects and selected_projects != ["projects_all"]:
             documents = documents.filter(project__in=selected_projects)
         if selected_tags and selected_tags != ["tags_all"]:
             for tag in selected_tags:
                 documents = documents.filter(tags=tag)
+        if selected_years and selected_years != ["years_all"]:
+            documents = documents.filter(date_document__year__in=selected_years)
         if not request.user.governing_council_member:
             documents = documents.filter(
                 access_permission_role=AccessPermissionRoleChoices.ALL_USERS
