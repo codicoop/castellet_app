@@ -187,6 +187,58 @@
             </div>
           </div>
           {% endif %}
+          {% if comissions|length > 1 %}
+          <div class="flex gap-2">
+            <p class="text-base pr-2">{% translate 'Comission' %}</p>
+            <div class="grid grid-cols-1 gap-1 mb-4 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <label for="comissions_all" id="label_comissions_all"
+                class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
+                  hover:bg-blau-700"
+              >
+                <input
+                  type="radio"
+                  checked="True"
+                  id="comissions_all"
+                  class="invisible absolute"
+                  name="selected_comissions"
+                  value="comissions_all"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-300 from #label_comissions_all
+                    then add .bg-blau-500 to #label_comissions_all
+                    then remove .bg-blau-500 from .label-comissions
+                    then add .bg-blau-300 to .label-comissions
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for comission in comissions %}
+              <label for="comission_{{ comission.id }}" id="label_comission_{{ comission.id }}"
+                class="label-comissions flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
+                  hover:bg-blau-700"
+              >
+                <input
+                  type="radio"
+                  id="comission_{{ comission.id }}"
+                  name="selected_comissions"
+                  class="selected_comissions invisible absolute"
+                  value="{{ comission.id }}"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-blau-500 from #label_comissions_all
+                    then add .bg-blau-300 to #label_comissions_all
+                    then remove .bg-blau-500 from .label-comissions
+                    then add .bg-blau-300 to .label-comissions
+                    then remove .bg-blau-300 from #label_comission_{{ comission.id }}
+                    then add .bg-blau-500 to #label_comission_{{ comission.id }}"
+                />
+                <p class="text-center pointer-events-none">{{ comission }}</p>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </form>
       </div>
       {% endif %}
