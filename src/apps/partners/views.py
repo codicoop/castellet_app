@@ -11,7 +11,10 @@ def document_list_view(request):
     user_projects = request.user.projects.all()
     projects_with_documents = user_projects.filter(documents__isnull=False).distinct()
     documents = Document.objects.filter(project__in=user_projects).distinct()
-    if not request.user.governing_council_member:
+    if (
+        not request.user.governing_council_member
+        and not request.user.driving_group_member
+    ):
         documents = documents.filter(
             access_permission_role=AccessPermissionRoleChoices.ALL_USERS
         )
@@ -59,7 +62,10 @@ def document_list_view(request):
             documents = documents.filter(date_document__year__in=selected_years)
         if selected_comissions and selected_comissions != ["comissions_all"]:
             documents = documents.filter(comission__in=selected_comissions)
-        if not request.user.governing_council_member:
+        if (
+            not request.user.governing_council_member
+            and not request.user.driving_group_member
+        ):
             documents = documents.filter(
                 access_permission_role=AccessPermissionRoleChoices.ALL_USERS
             )
