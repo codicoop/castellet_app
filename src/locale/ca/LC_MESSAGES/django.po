@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-20 15:02+0200\n"
-"PO-Revision-Date: 2025-05-20 15:03+0200\n"
+"POT-Creation-Date: 2025-05-29 16:20+0200\n"
+"PO-Revision-Date: 2025-05-29 16:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,30 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.5\n"
 
-#: apps/partners/admin.py:43 apps/web/models/home.py:101
+#: apps/partners/admin.py:42 apps/web/models/home.py:101
 #: templates/base.html:175 templates/partners/documents.html:5
 #: templates/partners/documents.html:27
 msgid "Documents"
 msgstr "Documents"
 
-#: apps/partners/admin.py:58 apps/partners/services.py:73
+#: apps/partners/admin.py:57 apps/partners/services.py:73
 msgid "Participants"
 msgstr "Participants"
 
-#: apps/partners/admin.py:73 apps/partners/services.py:74
+#: apps/partners/admin.py:72 apps/partners/services.py:74
 msgid "Number of participants"
 msgstr "Nombre de participants"
 
-#: apps/partners/admin.py:124 apps/partners/forms.py:76 templates/base.html:164
+#: apps/partners/admin.py:123 apps/partners/forms.py:77 templates/base.html:164
 #: templates/partners/documents.html:88
 #: templates/partners/project_details.html:27
 #: templates/partners/projects.html:5 templates/partners/projects.html:27
 msgid "Projects"
 msgstr "Projectes"
 
-#: apps/partners/admin.py:132
+#: apps/partners/admin.py:131
 msgid "Tag list"
 msgstr "Llistat d'etiquetes"
 
@@ -64,53 +64,69 @@ msgstr "Projecte actiu"
 msgid "Future projects or other projects"
 msgstr "Projectes futurs o altres projectes"
 
-#: apps/partners/forms.py:68 apps/partners/models.py:162
+#: apps/partners/choices.py:17
+msgid "Technical projects"
+msgstr "Projectes tècnics"
+
+#: apps/partners/choices.py:18
+msgid "Cooperative's project"
+msgstr "Projecte Cooperativa"
+
+#: apps/partners/choices.py:19
+msgid "Consell rector"
+msgstr "Consell Rector"
+
+#: apps/partners/choices.py:20
+msgid "Comissions"
+msgstr "Comissions"
+
+#: apps/partners/forms.py:69 apps/partners/models.py:163
 msgid "Access Permission Role"
 msgstr "Permisos d’accés per rol"
 
-#: apps/partners/models.py:17 apps/partners/services.py:40
+#: apps/partners/models.py:18 apps/partners/services.py:40
 msgid "email address"
 msgstr "correu electrònic"
 
-#: apps/partners/models.py:22
+#: apps/partners/models.py:23
 msgid "Email where you will receive our newsletter"
 msgstr "Correu electrònic on vols rebre el nostre butlletí"
 
-#: apps/partners/models.py:25 apps/partners/services.py:41
+#: apps/partners/models.py:26 apps/partners/services.py:41
 #: apps/wagtail_htmx_contact_form/models.py:12
 #: apps/wagtail_htmx_contact_form/models.py:156
 msgid "name"
 msgstr "nom"
 
-#: apps/partners/models.py:31
+#: apps/partners/models.py:32
 msgid "surnames"
 msgstr "cognoms"
 
-#: apps/partners/models.py:37
+#: apps/partners/models.py:38
 msgid "created at"
 msgstr "creat el"
 
-#: apps/partners/models.py:43
+#: apps/partners/models.py:44
 msgid "newsletter subscriber"
 msgstr "subcriptor al butlletí"
 
-#: apps/partners/models.py:44
+#: apps/partners/models.py:45
 msgid "newsletter subscribers"
 msgstr "subscriptors al butlletí"
 
-#: apps/partners/models.py:56
+#: apps/partners/models.py:57
 msgid "project type name"
 msgstr "nom del tipus de projecte"
 
-#: apps/partners/models.py:64
+#: apps/partners/models.py:65
 msgid "project type"
 msgstr "tipus de projecte"
 
-#: apps/partners/models.py:65
+#: apps/partners/models.py:66
 msgid "project types"
 msgstr "tipus de projecte"
 
-#: apps/partners/models.py:74 apps/partners/models.py:150
+#: apps/partners/models.py:75 apps/partners/models.py:151
 #: apps/partners/services.py:66 apps/web/models/base.py:157
 #: apps/web/models/home.py:37 apps/web/models/home.py:55
 #: apps/web/models/home.py:74 apps/web/models/home.py:80
@@ -119,18 +135,18 @@ msgstr "tipus de projecte"
 msgid "Title"
 msgstr "Títol"
 
-#: apps/partners/models.py:86 apps/partners/services.py:67
+#: apps/partners/models.py:87 apps/partners/services.py:67
 #: templates/partners/project_details.html:55
 #: templates/web/pages/project_details.html:36
 msgid "Project type"
 msgstr "Tipus de projecte"
 
-#: apps/partners/models.py:89 apps/partners/services.py:68
+#: apps/partners/models.py:90 apps/partners/services.py:68
 #: apps/web/models/projects.py:123 templates/partners/project_details.html:67
 msgid "Status"
 msgstr "Estat"
 
-#: apps/partners/models.py:96 apps/partners/models.py:156
+#: apps/partners/models.py:97 apps/partners/models.py:157
 #: apps/partners/services.py:69 apps/web/models/home.py:43
 #: apps/web/models/home.py:61 apps/web/models/projects.py:26
 #: apps/web/models/projects.py:38 apps/web/models/projects.py:50
@@ -138,89 +154,93 @@ msgstr "Estat"
 msgid "Description"
 msgstr "Descripció"
 
-#: apps/partners/models.py:101 apps/web/models/base.py:179
+#: apps/partners/models.py:102 apps/web/models/base.py:179
 msgid "Image"
 msgstr "Imatge"
 
-#: apps/partners/models.py:108 apps/partners/services.py:70
+#: apps/partners/models.py:109 apps/partners/services.py:70
 #: templates/partners/project_details.html:79
 #: templates/web/pages/project_details.html:48
 msgid "Energy power"
 msgstr "Potència energètica"
 
-#: apps/partners/models.py:111
+#: apps/partners/models.py:112
 msgid "Project energy power (kW)"
 msgstr "Potència energètica del projecte (kW)"
 
-#: apps/partners/models.py:114 apps/partners/services.py:71
+#: apps/partners/models.py:115 apps/partners/services.py:71
 #: templates/partners/project_details.html:91
 #: templates/web/pages/project_details.html:54
 msgid "Annual energy"
 msgstr "Energia anual"
 
-#: apps/partners/models.py:117
+#: apps/partners/models.py:118
 msgid "Project annual energy (kWh/year)"
 msgstr "Energia anual del projecte (kWh/any)"
 
-#: apps/partners/models.py:120 apps/partners/services.py:72
+#: apps/partners/models.py:121 apps/partners/services.py:72
 #: templates/partners/project_details.html:103
 #: templates/web/pages/project_details.html:60
 msgid "Investment"
 msgstr "Inversió"
 
-#: apps/partners/models.py:123
+#: apps/partners/models.py:124
 msgid "Project investment (€)"
 msgstr "Inversió del projecte (€)"
 
-#: apps/partners/models.py:127
+#: apps/partners/models.py:128
 msgid "project"
 msgstr "projecte"
 
-#: apps/partners/models.py:128
+#: apps/partners/models.py:129
 msgid "projects"
 msgstr "projectes"
 
-#: apps/partners/models.py:137 templates/profile/details.html:51
+#: apps/partners/models.py:138 templates/profile/details.html:51
 msgid "Name"
 msgstr "Nom"
 
-#: apps/partners/models.py:169
+#: apps/partners/models.py:170
 msgid "A comma-separated list of tags."
 msgstr "Llistat d'etiquetes separades per una coma."
 
-#: apps/partners/models.py:175
+#: apps/partners/models.py:176
 msgid "Document type"
 msgstr "Tipus de document"
 
-#: apps/partners/models.py:181
+#: apps/partners/models.py:182
 msgid "Project"
 msgstr "Projecte"
 
-#: apps/partners/models.py:184
+#: apps/partners/models.py:185
 msgid "File"
 msgstr "Fitxer"
 
-#: apps/partners/models.py:195
+#: apps/partners/models.py:196
 msgid "Responsible user"
 msgstr "Usuari responsable"
 
-#: apps/partners/models.py:199
+#: apps/partners/models.py:200
 msgid "Date of Document"
 msgstr "Data del document"
 
-#: apps/partners/models.py:204
+#: apps/partners/models.py:205
 msgid "Upload date"
 msgstr "Data de pujada"
 
-#: apps/partners/models.py:207
+#: apps/partners/models.py:208 templates/partners/documents.html:140
 msgid "Comission"
 msgstr "Comissió"
 
 #: apps/partners/models.py:214
+msgid "Area"
+msgstr "Àrea"
+
+#: apps/partners/models.py:220
 msgid "document"
 msgstr "document"
 
-#: apps/partners/models.py:215
+#: apps/partners/models.py:221
 msgid "documents"
 msgstr "documents"
 
@@ -839,7 +859,7 @@ msgstr "Mostra la informació"
 
 #: templates/home.html:27
 msgid "Welcome to the Castellet Sostenible's web app."
-msgstr "Què t'ofereix Castellet Sostenible?"
+msgstr "Benvinguts a la página web de Castellet Sostenible"
 
 #: templates/home.html:28
 msgid "Use the main menu to access the different sections of the application."
@@ -867,10 +887,15 @@ msgid "Tags"
 msgstr "Etiquetes"
 
 #: templates/partners/documents.html:58 templates/partners/documents.html:110
+#: templates/partners/documents.html:162 templates/partners/documents.html:214
 msgid "All"
 msgstr "Tot"
 
-#: templates/partners/documents.html:147
+#: templates/partners/documents.html:192
+msgid "Year"
+msgstr "Any"
+
+#: templates/partners/documents.html:251
 msgid ""
 "There is no documents to show. Once the administrators have added some, you "
 "will be able to download them here."
@@ -878,25 +903,23 @@ msgstr ""
 "No hi ha documents per mostrar. Un cop els administradors n’hagin afegit "
 "alguns, els podràs descarregar aquí."
 
-#: templates/partners/documents.html:148
+#: templates/partners/documents.html:252
 msgid "Come back soon to check!"
 msgstr "Torna aviat per comprovar-ho!"
 
-#: templates/partners/documents_filtered.html:45
+#: templates/partners/documents_filtered.html:42
 msgid "Cooperative project"
-msgstr "Projectes actius actualment"
+msgstr "Projecte Cooperativa"
 
-#: templates/partners/documents_filtered.html:51
-#, fuzzy
-#| msgid "Governing Council and Driving Group"
+#: templates/partners/documents_filtered.html:48
 msgid "Governing Council"
-msgstr "Consell rector i grup motor"
+msgstr "Consell rector"
 
-#: templates/partners/documents_filtered.html:59
+#: templates/partners/documents_filtered.html:56
 msgid "See the document"
 msgstr "Veure el document"
 
-#: templates/partners/documents_filtered.html:80
+#: templates/partners/documents_filtered.html:77
 msgid "There is no result for this search. Try another filter combination."
 msgstr ""
 "No hi ha resultats per aquesta cerca. Prova una combinació diferent de "
@@ -920,8 +943,8 @@ msgstr "Dades"
 #: templates/profile/details.html:81 templates/profile/details.html:93
 #: templates/profile/details.html:105 templates/profile/details.html:117
 #: templates/profile/details.html:129 templates/profile/details.html:141
-#: templates/profile/details.html:165 templates/profile/details.html:177
-#: templates/profile/details.html:189 templates/profile/details.html:201
+#: templates/profile/details.html:177 templates/profile/details.html:189
+#: templates/profile/details.html:201 templates/profile/details.html:213
 msgid "Unknown"
 msgstr "Desconegut"
 
@@ -999,63 +1022,67 @@ msgstr "Càrrec"
 msgid "Are you a Governing Council member?"
 msgstr "Ets un membre del Consell Rector?"
 
-#: templates/profile/details.html:151
+#: templates/profile/details.html:151 templates/profile/details.html:163
 msgid "Yes"
 msgstr "Sí"
 
-#: templates/profile/details.html:153
+#: templates/profile/details.html:153 templates/profile/details.html:165
 msgid "No"
 msgstr "No"
 
 #: templates/profile/details.html:159
+msgid "Are you a Driving Group member?"
+msgstr "Ets un membre del Grup Motor?"
+
+#: templates/profile/details.html:171
 msgid "Year of entry to the cooperative"
 msgstr "Any d'entrada a la cooperativa"
 
-#: templates/profile/details.html:171
+#: templates/profile/details.html:183
 msgid "Partner number"
 msgstr "Número de soci"
 
-#: templates/profile/details.html:183
+#: templates/profile/details.html:195
 msgid "Capital corporate contribution"
 msgstr "Aportació societària"
 
-#: templates/profile/details.html:195
+#: templates/profile/details.html:207
 msgid "Capital voluntary contribution"
 msgstr "Aportació voluntària"
 
-#: templates/profile/details.html:207
+#: templates/profile/details.html:219
 msgid "Projects where you participate"
 msgstr "Projectes als que participes"
 
-#: templates/profile/details.html:216
+#: templates/profile/details.html:228
 msgid "None"
 msgstr "Cap"
 
-#: templates/profile/details.html:233
+#: templates/profile/details.html:245
 msgid "Warning!"
 msgstr "Atenció!"
 
-#: templates/profile/details.html:234
+#: templates/profile/details.html:246
 msgid "Your email is not verified. Before anything else, you must verify it."
 msgstr ""
 "El teu correu electrònic no està verificat. Per poder accedir a la resta "
 "d'apartats de l'aplicatiu, cal verificar-lo."
 
-#: templates/profile/details.html:236
+#: templates/profile/details.html:248
 msgid "Verify email here."
 msgstr "Verifica el correu electrònic aquí."
 
-#: templates/profile/details.html:256
+#: templates/profile/details.html:268
 #: templates/registration/password_change_form.html:5
 #: templates/registration/password_change_form.html:42
 msgid "Password change"
 msgstr "Canvi de contrasenya"
 
-#: templates/profile/details.html:258
+#: templates/profile/details.html:270
 msgid "Here you can change your password."
 msgstr "Aquí pots canviar la contrasenya."
 
-#: templates/profile/details.html:265
+#: templates/profile/details.html:277
 msgid "Change password"
 msgstr "Canvia la contrasenya"
 
