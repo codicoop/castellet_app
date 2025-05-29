@@ -25,11 +25,13 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
         "email",
         "charge",
         "governing_council_member",
+        "driving_group_member",
         "is_staff",
     )
     list_filter = (
         "is_staff",
         "governing_council_member",
+        "driving_group_member",
     )
     search_fields = ("email", "name", "surnames", "charge__name", "dni")
     ordering = ("name",)
@@ -57,6 +59,7 @@ class UserAdmin(ModelAdminMixin, BaseUserAdmin, ExportUserCsvMixin):
                     "bank_account",
                     "charge",
                     "governing_council_member",
+                    "driving_group_member",
                     "projects",
                     "partner_id",
                     "entry_year",
