@@ -147,7 +147,19 @@
               {% translate "Are you a Governing Council member?" %}
             </th>
             <td class="px-2 py-2 border-b border-primary-200">
-              {% if governing_council_member %}
+              {% if user.governing_council_member %}
+                {% translate "Yes" %}
+              {% else %}
+                {% translate "No" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="min-w-36 px-2 py-2 font-medium text-gray-900 bg-primary-200">
+              {% translate "Are you a Driving Group member?" %}
+            </th>
+            <td class="px-2 py-2 border-b border-primary-200">
+              {% if user.driving_group_member %}
                 {% translate "Yes" %}
               {% else %}
                 {% translate "No" %}
