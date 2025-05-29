@@ -89,8 +89,10 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     governing_council_member = models.BooleanField(
         _("Is governing council member"),
         default=False,
-        blank=True,
-        null=True,
+    )
+    driving_group_member = models.BooleanField(
+        _("Is driving group member"),
+        default=False,
     )
     projects = models.ManyToManyField(
         Project,

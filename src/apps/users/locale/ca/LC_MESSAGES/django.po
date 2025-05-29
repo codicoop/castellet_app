@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 10:37+0100\n"
-"PO-Revision-Date: 2024-11-20 15:05+0100\n"
+"POT-Creation-Date: 2025-05-29 16:20+0200\n"
+"PO-Revision-Date: 2025-05-29 16:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -47,8 +47,8 @@ msgstr "Contrasenya antiga"
 msgid "Verification code"
 msgstr "Codi de verificació"
 
-#: apps/users/forms.py:140 apps/users/forms.py:153 apps/users/models.py:99
-#: apps/users/services.py:64
+#: apps/users/forms.py:140 apps/users/forms.py:153 apps/users/models.py:101
+#: apps/users/services.py:65
 msgid "Projects"
 msgstr "Projectes"
 
@@ -72,7 +72,7 @@ msgstr "càrrec"
 msgid "charges"
 msgstr "càrrecs"
 
-#: apps/users/models.py:56 apps/users/models.py:125 apps/users/services.py:55
+#: apps/users/models.py:56 apps/users/models.py:127 apps/users/services.py:55
 msgid "name"
 msgstr "nom"
 
@@ -104,35 +104,39 @@ msgstr "Compte bancari"
 msgid "Is governing council member"
 msgstr "És membre del Consell Rector"
 
-#: apps/users/models.py:102 apps/users/services.py:65
+#: apps/users/models.py:94 apps/users/services.py:64
+msgid "Is driving group member"
+msgstr "És membre del Grup Motor"
+
+#: apps/users/models.py:104 apps/users/services.py:66
 msgid "Partner ID"
 msgstr "Número de soci"
 
-#: apps/users/models.py:104 apps/users/services.py:66
+#: apps/users/models.py:106 apps/users/services.py:67
 msgid "Entry year"
 msgstr "Any d’entrada"
 
-#: apps/users/models.py:106 apps/users/services.py:67
+#: apps/users/models.py:108 apps/users/services.py:68
 msgid "Corporate contribution"
 msgstr "Aportació societària"
 
-#: apps/users/models.py:109 apps/users/services.py:68
+#: apps/users/models.py:111 apps/users/services.py:69
 msgid "Voluntary contribution"
 msgstr "Aportació voluntària"
 
-#: apps/users/models.py:111
+#: apps/users/models.py:113
 msgid "Is active"
 msgstr "Està actiu"
 
-#: apps/users/models.py:112
+#: apps/users/models.py:114
 msgid "Is staff"
 msgstr "És treballador"
 
-#: apps/users/models.py:134
+#: apps/users/models.py:136
 msgid "user"
 msgstr "usuari"
 
-#: apps/users/models.py:135
+#: apps/users/models.py:137
 msgid "users"
 msgstr "usuaris"
 
@@ -144,7 +148,7 @@ msgstr "cognoms "
 msgid "Charge"
 msgstr "Càrrec"
 
-#: apps/users/services.py:97
+#: apps/users/services.py:99
 msgid "Export selected to CSV file"
 msgstr "Exporta la selección a un arxiu CSV"
 
