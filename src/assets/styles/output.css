@@ -2063,6 +2063,11 @@ input:checked + .toggle-bg {
   background-color: rgb(13 201 253 / var(--tw-bg-opacity));
 }
 
+.bg-blau-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(103 202 229 / var(--tw-bg-opacity));
+}
+
 .bg-blau-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(214 245 255 / var(--tw-bg-opacity));
@@ -2178,16 +2183,6 @@ input:checked + .toggle-bg {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
-}
-
-.bg-groc-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 113 / var(--tw-bg-opacity));
-}
-
-.bg-blau-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(103 202 229 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -2741,9 +2736,9 @@ input:checked + .toggle-bg {
   background-color: rgb(103 202 229 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blau-700:hover {
+.hover\:bg-blau-600:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(22 64 102 / var(--tw-bg-opacity));
+  background-color: rgb(12 103 141 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-blue-800:hover {
@@ -2814,11 +2809,6 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blau-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(12 103 141 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-600:hover {

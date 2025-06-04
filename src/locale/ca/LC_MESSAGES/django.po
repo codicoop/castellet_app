@@ -961,10 +961,10 @@ msgstr "Veure'n més"
 #: templates/partners/projects.html:79
 msgid ""
 "You don't have any project assinged at the moment. If you want to be "
-"assigned to some project get in contact with the administrators."
+"assigned to some project get in contact with the administrators"
 msgstr ""
 "No tens cap projecte assignat de moment. Si vols que se te'n assigni un, "
-"posa't en contacte amb els administradors."
+"posa't en contacte amb els administradors"
 
 #: templates/partners/projects.html:80
 msgid "by email"
