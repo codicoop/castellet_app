@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-29 16:20+0200\n"
-"PO-Revision-Date: 2025-05-29 16:24+0200\n"
+"POT-Creation-Date: 2025-06-04 17:51+0200\n"
+"PO-Revision-Date: 2025-06-04 18:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: apps/partners/admin.py:42 apps/web/models/home.py:101
 #: templates/base.html:175 templates/partners/documents.html:5
@@ -80,7 +80,7 @@ msgstr "Consell Rector"
 msgid "Comissions"
 msgstr "Comissions"
 
-#: apps/partners/forms.py:69 apps/partners/models.py:163
+#: apps/partners/forms.py:69 apps/partners/models.py:168
 msgid "Access Permission Role"
 msgstr "Permisos d’accés per rol"
 
@@ -126,7 +126,7 @@ msgstr "tipus de projecte"
 msgid "project types"
 msgstr "tipus de projecte"
 
-#: apps/partners/models.py:75 apps/partners/models.py:151
+#: apps/partners/models.py:75 apps/partners/models.py:156
 #: apps/partners/services.py:66 apps/web/models/base.py:157
 #: apps/web/models/home.py:37 apps/web/models/home.py:55
 #: apps/web/models/home.py:74 apps/web/models/home.py:80
@@ -146,7 +146,7 @@ msgstr "Tipus de projecte"
 msgid "Status"
 msgstr "Estat"
 
-#: apps/partners/models.py:97 apps/partners/models.py:157
+#: apps/partners/models.py:97 apps/partners/models.py:162
 #: apps/partners/services.py:69 apps/web/models/home.py:43
 #: apps/web/models/home.py:61 apps/web/models/projects.py:26
 #: apps/web/models/projects.py:38 apps/web/models/projects.py:50
@@ -200,47 +200,55 @@ msgstr "projectes"
 msgid "Name"
 msgstr "Nom"
 
-#: apps/partners/models.py:170
+#: apps/partners/models.py:146
+msgid "Document comission"
+msgstr "Comissió"
+
+#: apps/partners/models.py:147
+msgid "Document comissions"
+msgstr "Comissions"
+
+#: apps/partners/models.py:175
 msgid "A comma-separated list of tags."
 msgstr "Llistat d'etiquetes separades per una coma."
 
-#: apps/partners/models.py:176
+#: apps/partners/models.py:181
 msgid "Document type"
 msgstr "Tipus de document"
 
-#: apps/partners/models.py:182
+#: apps/partners/models.py:187
 msgid "Project"
 msgstr "Projecte"
 
-#: apps/partners/models.py:185
+#: apps/partners/models.py:190
 msgid "File"
 msgstr "Fitxer"
 
-#: apps/partners/models.py:196
+#: apps/partners/models.py:201
 msgid "Responsible user"
 msgstr "Usuari responsable"
 
-#: apps/partners/models.py:200
+#: apps/partners/models.py:205
 msgid "Date of Document"
 msgstr "Data del document"
 
-#: apps/partners/models.py:205
+#: apps/partners/models.py:210
 msgid "Upload date"
 msgstr "Data de pujada"
 
-#: apps/partners/models.py:208 templates/partners/documents.html:140
+#: apps/partners/models.py:213 templates/partners/documents.html:140
 msgid "Comission"
 msgstr "Comissió"
 
-#: apps/partners/models.py:214
+#: apps/partners/models.py:219
 msgid "Area"
 msgstr "Àrea"
 
-#: apps/partners/models.py:220
+#: apps/partners/models.py:225
 msgid "document"
 msgstr "document"
 
-#: apps/partners/models.py:221
+#: apps/partners/models.py:226
 msgid "documents"
 msgstr "documents"
 
@@ -859,7 +867,7 @@ msgstr "Mostra la informació"
 
 #: templates/home.html:27
 msgid "Welcome to the Castellet Sostenible's web app."
-msgstr "Benvinguts a la página web de Castellet Sostenible"
+msgstr "Benvinguts a la pàgina web de Castellet Sostenible"
 
 #: templates/home.html:28
 msgid "Use the main menu to access the different sections of the application."
@@ -961,10 +969,10 @@ msgstr "Veure'n més"
 #: templates/partners/projects.html:79
 msgid ""
 "You don't have any project assinged at the moment. If you want to be "
-"assigned to some project get in contact with the administrators"
+"assigned to some project get in contact with the administrators."
 msgstr ""
 "No tens cap projecte assignat de moment. Si vols que se te'n assigni un, "
-"posa't en contacte amb els administradors"
+"posa't en contacte amb els administradors."
 
 #: templates/partners/projects.html:80
 msgid "by email"
@@ -1453,9 +1461,6 @@ msgstr "Participa!"
 
 #~ msgid "Corporate"
 #~ msgstr "Societari"
-
-#~ msgid "Document description"
-#~ msgstr "Descripció del document"
 
 #~ msgid "Access permission role"
 #~ msgstr "Permisos d’accés per rol"

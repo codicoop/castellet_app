@@ -142,6 +142,11 @@ class DocumentComission(models.Model):
         unique=True,
     )
 
+    class Meta:
+        verbose_name = _("Document comission")
+        verbose_name_plural = _("Document comissions")
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
