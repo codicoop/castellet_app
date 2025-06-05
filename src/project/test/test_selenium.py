@@ -1,7 +1,6 @@
 import logging
 import os
 import tempfile
-import time
 from dataclasses import dataclass
 from enum import Enum
 
@@ -445,7 +444,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         d2 = Document.objects.create(
             title="Mock document 2",
             file=self.create_file("Mock_file_2.pdf", "Test file content"),
-            responsible_user = self.user,
+            responsible_user=self.user,
         )
         d2.project.add(project_2)
         d2.save()
