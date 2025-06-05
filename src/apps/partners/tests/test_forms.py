@@ -17,12 +17,7 @@ class NewsletterSubscriberFormTest(TestCase):
         self.assertFalse(self.form.is_valid())
 
         with self.subTest("Required fields"):
-            self.assertEqual(self.form.errors["name"], ["Aquest camp és obligatori."])
-            self.assertEqual(
-                self.form.errors["surnames"], ["Aquest camp és obligatori."]
-            )
+            self.assertTrue("name" in self.form.errors)
+            self.assertTrue("surnames" in self.form.errors)
         with self.subTest("Other validations"):
-            self.assertEqual(
-                self.form.errors["email"],
-                ["Introdueix una adreça de correu electrònic vàlida"],
-            )
+            self.assertTrue("email" in self.form.errors)

@@ -139,3 +139,8 @@ executar:
 
     python manage.py test
 
+**Nota:** Hi ha un test que dona aquest error:
+
+    RuntimeError: Model class srv.apps.web.models.about_us.AboutUsPage doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS
+
+Sospitem que pot tenir a veure amb els tests que incorpori Wagtail, però no ho hem pogut investigar.
