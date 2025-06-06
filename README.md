@@ -57,7 +57,7 @@ Els serveis que necessitaràs son:
 Les dependències de back-end es gestionen amb Poetry.
 Les podeu consultar al `pyproject.toml`.
 
-La llibreria codi-cooperatiu-internal-tools ja no tindrà manteniment. Recomanem
+**La llibreria codi-cooperatiu-internal-tools ja no tindrà manteniment**. Recomanem
 que per poder fer canvis al projecte en un futur, en copieu el codi font cap al
 projecte (és a dir, a la carpeta apps/ com a mòdul de Django), i l'elimineu com
 a dependència (és a dir, amb `poetry remove codi-cooperatiu-internal-tools`).
@@ -65,7 +65,12 @@ a dependència (és a dir, amb `poetry remove codi-cooperatiu-internal-tools`).
 
 També la teniu [a PyPi](https://pypi.org/project/codi-cooperatiu-internal-tools/).
 
-El projecte s'ha creat a partir d'aquest boilerplate:
+**Hi ha una incompatibilitat amb Django 5.2 (a 6 de juny de 2025) i la llibreria
+Django Constance:
+https://github.com/jazzband/django-constance/issues/619
+Per això s'ha mantingut a la última versió de Django 5.1.
+
+**El projecte s'ha creat a partir d'aquest boilerplate:**
 https://github.com/codicoop/boilerplate_django
 
 Mirant-ne el codi i la documentació tindreu informació sobre l'estructura.
