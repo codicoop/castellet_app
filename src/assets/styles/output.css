@@ -1499,10 +1499,6 @@ input:checked + .toggle-bg {
   height: 100vh;
 }
 
-.max-h-32 {
-  max-height: 8rem;
-}
-
 .min-h-96 {
   min-height: 24rem;
 }
@@ -1566,10 +1562,6 @@ input:checked + .toggle-bg {
 
 .w-full {
   width: 100%;
-}
-
-.min-w-14 {
-  min-width: 3.5rem;
 }
 
 .min-w-36 {
@@ -1696,10 +1688,6 @@ input:checked + .toggle-bg {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-3 {
@@ -1991,9 +1979,9 @@ input:checked + .toggle-bg {
   border-color: rgb(35 128 52 / var(--tw-border-opacity)) !important;
 }
 
-.border-blau-600 {
+.border-blau-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(12 103 141 / var(--tw-border-opacity));
+  border-color: rgb(2 158 201 / var(--tw-border-opacity));
 }
 
 .border-blue-600 {
@@ -2060,11 +2048,6 @@ input:checked + .toggle-bg {
   border-color: transparent;
 }
 
-.border-blau-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(2 158 201 / var(--tw-border-opacity));
-}
-
 .\!bg-primary-600 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(44 160 65 / var(--tw-bg-opacity)) !important;
@@ -2075,11 +2058,6 @@ input:checked + .toggle-bg {
   background-color: rgb(35 128 52 / var(--tw-bg-opacity)) !important;
 }
 
-.bg-blau-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(112 222 255 / var(--tw-bg-opacity));
-}
-
 .bg-blau-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(13 201 253 / var(--tw-bg-opacity));
@@ -2087,7 +2065,7 @@ input:checked + .toggle-bg {
 
 .bg-blau-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 175 222 / var(--tw-bg-opacity));
+  background-color: rgb(103 202 229 / var(--tw-bg-opacity));
 }
 
 .bg-blau-50 {
@@ -2159,9 +2137,9 @@ input:checked + .toggle-bg {
   background-color: rgb(167 232 155 / var(--tw-bg-opacity));
 }
 
-.bg-primary-400 {
+.bg-primary-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(79 207 102 / var(--tw-bg-opacity));
+  background-color: rgb(111 217 114 / var(--tw-bg-opacity));
 }
 
 .bg-primary-50 {
@@ -2534,6 +2512,11 @@ input:checked + .toggle-bg {
   color: rgb(2 141 180 / var(--tw-text-opacity));
 }
 
+.text-blau-600 {
+  --tw-text-opacity: 1;
+  color: rgb(12 103 141 / var(--tw-text-opacity));
+}
+
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
@@ -2617,11 +2600,6 @@ input:checked + .toggle-bg {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-blau-600 {
-  --tw-text-opacity: 1;
-  color: rgb(12 103 141 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2748,14 +2726,19 @@ input:checked + .toggle-bg {
   background-color: rgb(26 96 39 / var(--tw-bg-opacity)) !important;
 }
 
-.hover\:bg-blau-300:hover {
+.hover\:bg-blau-100:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 175 222 / var(--tw-bg-opacity));
+  background-color: rgb(112 222 255 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blau-700:hover {
+.hover\:bg-blau-300:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(22 64 102 / var(--tw-bg-opacity));
+  background-color: rgb(103 202 229 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blau-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 103 141 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-blue-800:hover {
@@ -2828,11 +2811,6 @@ input:checked + .toggle-bg {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blau-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(112 222 255 / var(--tw-bg-opacity));
-}
-
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
@@ -2866,11 +2844,6 @@ input:checked + .toggle-bg {
 .hover\:text-red-400:hover {
   --tw-text-opacity: 1;
   color: rgb(249 128 128 / var(--tw-text-opacity));
-}
-
-.hover\:text-groc-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(254 209 22 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -3221,10 +3194,6 @@ input:checked + .toggle-bg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .sm\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .sm\:justify-center {
     justify-content: center;
   }
@@ -3259,6 +3228,10 @@ input:checked + .toggle-bg {
 
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .md\:col-span-5 {
+    grid-column: span 5 / span 5;
   }
 
   .md\:col-start-1 {
@@ -3331,11 +3304,6 @@ input:checked + .toggle-bg {
     max-width: 640px;
   }
 
-  .md\:columns-2 {
-    -moz-columns: 2;
-         columns: 2;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3344,8 +3312,8 @@ input:checked + .toggle-bg {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .md\:flex-row {
@@ -3487,10 +3455,6 @@ input:checked + .toggle-bg {
 
   .lg\:row-span-1 {
     grid-row: span 1 / span 1;
-  }
-
-  .lg\:row-span-2 {
-    grid-row: span 2 / span 2;
   }
 
   .lg\:row-start-1 {
@@ -3668,6 +3632,10 @@ input:checked + .toggle-bg {
     width: 8rem;
   }
 
+  .lg\:w-72 {
+    width: 18rem;
+  }
+
   .lg\:w-8 {
     width: 2rem;
   }
@@ -3711,11 +3679,6 @@ input:checked + .toggle-bg {
   .lg\:translate-x-0 {
     --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .lg\:columns-3 {
-    -moz-columns: 3;
-         columns: 3;
   }
 
   .lg\:grid-cols-12 {
@@ -3774,6 +3737,10 @@ input:checked + .toggle-bg {
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:self-end {
+    align-self: flex-end;
   }
 
   .lg\:rounded-3xl {
@@ -3853,6 +3820,10 @@ input:checked + .toggle-bg {
   .lg\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .lg\:pb-0 {
+    padding-bottom: 0px;
   }
 
   .lg\:pb-10 {
@@ -4229,13 +4200,6 @@ input:checked + .toggle-bg {
 
 .\[\&\>p\]\:mb-4>p {
   margin-bottom: 1rem;
-}
-
-@media (min-width: 1024px) {
-  .lg\:\[\&\>p\]\:columns-2>p {
-    -moz-columns: 2;
-         columns: 2;
-  }
 }
 
 .\[\&\>textarea\]\:w-full>textarea {

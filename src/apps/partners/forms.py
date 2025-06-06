@@ -59,6 +59,8 @@ class DocumentAdminForm(forms.ModelForm):
             "tags",
             "project",
             "file",
+            "comission",
+            "area",
             "responsible_user",
             "date_document",
         ]

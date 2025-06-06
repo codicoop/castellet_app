@@ -6,6 +6,7 @@ from taggit.managers import TaggableManager
 
 from apps.partners.choices import (
     AccessPermissionRoleChoices,
+    DocumentAreaChoices,
     ProjectStatusChoices,
 )
 from project.models import BaseModel
@@ -132,6 +133,24 @@ class Project(BaseModel):
         return f"{self.title}"
 
 
+class DocumentComission(models.Model):
+    name = models.CharField(
+        _("Name"),
+        max_length=200,
+        blank=False,
+        null=False,
+        unique=True,
+    )
+
+    class Meta:
+        verbose_name = _("Document comission")
+        verbose_name_plural = _("Document comissions")
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
 class Document(models.Model):
     title = models.CharField(
         _("Title"),
@@ -159,6 +178,7 @@ class Document(models.Model):
         # Django tries to create 2 reverse accessors with the same name
         # (Tag.document_set) and raises an error.
         related_name="partners_documents",
+        verbose_name=_("Document type"),
     )
     project = models.ManyToManyField(
         Project,
@@ -188,6 +208,18 @@ class Document(models.Model):
         default=timezone.now,
     )
     created_at = models.DateField(_("Upload date"), auto_now_add=True, null=False)
+    comission = models.ForeignKey(
+        DocumentComission,
+        verbose_name=_("Comission"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    area = models.CharField(
+        _("Area"),
+        choices=DocumentAreaChoices.choices,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _("document")

@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from apps.partners.forms import DocumentAdminForm
-from apps.partners.models import Document, Project, ProjectType
+from apps.partners.models import Document, DocumentComission, Project, ProjectType
 from apps.partners.services import ExportProjectCsvMixin
 from apps.users.models import User
 from project.admin import ModelAdmin
@@ -92,6 +92,7 @@ class DocumentAdmin(admin.ModelAdmin):
         "access_permission_role",
         "responsible_user",
         "tags",
+        "comission",
     ]
     search_fields = [
         "project__title",
@@ -128,3 +129,8 @@ class DocumentAdmin(admin.ModelAdmin):
         return ", ".join(o.name for o in obj.tags.all())
 
     get_tags.short_description = _("Tag list")
+
+
+@admin.register(DocumentComission)
+class DocumentComissionAdmin(admin.ModelAdmin):
+    fields = ("name",)

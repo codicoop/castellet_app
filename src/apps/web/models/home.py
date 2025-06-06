@@ -147,10 +147,9 @@ class HomePage(BaseHeaderOverlayPage):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["last_news"] = apps.get_model(
-            "web",
-            "NewsDetailPage"
-        ).objects.live().order_by("-date")[:3]
+        context["last_news"] = (
+            apps.get_model("web", "NewsDetailPage").objects.live().order_by("-date")[:3]
+        )
         context["news_page"] = apps.get_model("web", "NewsListPage").objects.first()
         context["projects"] = (
             ProjectDetailPage.objects.live()

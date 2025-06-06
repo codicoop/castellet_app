@@ -28,19 +28,19 @@
     </h1>
     {% if documents %}
     <div class="py-8 sm:py-12">
-      {% if tags|length > 1 or projects|length > 1%}
+      {% if tags|length > 1 or projects|length > 1 %}
       <div class="sm:ml-8 md:ml-16 lg:ml-52">
         <h3 class="text-base pb-8">{% translate 'Filter by:' %}</h3>
         <form method="post">
           {% csrf_token %}
           {% if tags|length > 1 %}
-          <div class="flex gap-2">
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
             <p class="text-base pr-2">{% translate 'Tags' %}</p>
-            <div class="grid grid-cols-2 gap-1 mb-4 w-full
-              sm:grid-cols-3 md:grid-cols-4">
+            <div class="col-span-2 md:col-span-5 grid grid-cols-1 gap-1 w-full
+              md:grid-cols-2 lg:grid-cols-3">
               <label for="tags_all" id="label_tags_all"
-                class="p-1 rounded-md bg-primary-600 text-white
-                hover:bg-primary-700">
+                class="p-1 rounded-md bg-blau-500 text-white
+                hover:bg-blau-600">
                 <input type="checkbox" class="invisible absolute"
                   id="tags_all"
                   checked="True"
@@ -49,18 +49,18 @@
                   hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click set .selected_tags.checked to false
-                    then remove .bg-primary-400 from label_tags_all
-                    then add .bg-primary-600 to label_tags_all
-                    then remove .bg-primary-600 from .label-tags
-                    then add .bg-primary-400 to .label-tags
+                    then remove .bg-blau-300 from label_tags_all
+                    then add .bg-blau-500 to label_tags_all
+                    then remove .bg-blau-500 from .label-tags
+                    then add .bg-blau-300 to .label-tags
                   "
                 />
                 <p class="text-center pointer-events-none">{% translate 'All' %}</p>
               </label>
               {% for tag in tags %}
               <label for="{{ tag.id }}" id="label_{{ tag.id }}"
-                class="label-tags p-1 rounded-md bg-primary-400 text-white
-              hover:bg-primary-700"
+                class="label-tags p-1 rounded-md bg-blau-300 text-white
+              hover:bg-blau-600"
               >
                 <input
                   type="checkbox"
@@ -71,10 +71,10 @@
                   hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
                   _="on click set #tags_all.checked to false
-                    then remove .bg-primary-600 from label_tags_all
-                    then add .bg-primary-400 to label_tags_all
-                    then toggle .bg-primary-400 on label_{{ tag.id }}
-                    then toggle .bg-primary-600 on label_{{ tag.id }}
+                    then remove .bg-blau-500 from label_tags_all
+                    then add .bg-blau-300 to label_tags_all
+                    then toggle .bg-blau-300 on label_{{ tag.id }}
+                    then toggle .bg-blau-500 on label_{{ tag.id }}
                   "
                 />
                 <p class="text-center pointer-events-none">{{ tag|capfirst }}</p>
@@ -84,13 +84,13 @@
           </div>
           {% endif %}
           {% if projects|length > 1 %}
-          <div class="flex gap-2">
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
             <p class="text-base pr-2">{% translate 'Projects' %}</p>
-            <div class="grid grid-cols-1 gap-1 mb-4 w-full
+            <div class="col-span-2 md:col-span-5 grid grid-cols-1 gap-1 w-full
               md:grid-cols-2 lg:grid-cols-3">
               <label for="projects_all" id="label_projects_all"
-                class="flex items-center justify-center p-1 rounded-md bg-blau-500 text-white
-                  hover:bg-blau-700"
+                class="flex items-center justify-center p-1 rounded-md bg-primary-600 text-white
+                  hover:bg-primary-700"
               >
                 <input
                   type="radio"
@@ -101,18 +101,18 @@
                   value="projects_all"
                   hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click remove .bg-blau-300 from #label_projects_all
-                    then add .bg-blau-500 to #label_projects_all
-                    then remove .bg-blau-500 from .label-projects
-                    then add .bg-blau-300 to .label-projects
+                  _="on click remove .bg-primary-300 from #label_projects_all
+                    then add .bg-primary-600 to #label_projects_all
+                    then remove .bg-primary-600 from .label-projects
+                    then add .bg-primary-300 to .label-projects
                   "
                 />
                 <p class="text-center pointer-events-none">{% translate 'All' %}</p>
               </label>
               {% for project in projects %}
               <label for="{{ project.id }}" id="label_{{ project.id }}"
-                class="label-projects flex items-center justify-center p-1 rounded-md bg-blau-300 text-white
-                  hover:bg-blau-700"
+                class="label-projects flex items-center justify-center p-1 rounded-md bg-primary-300 text-white
+                  hover:bg-primary-700"
               >
                 <input
                   type="radio"
@@ -122,14 +122,118 @@
                   value="{{ project.id }}"
                   hx-post="{% url 'partners:documents' %}"
                   hx-target="#htmx-content"
-                  _="on click remove .bg-blau-500 from #label_projects_all
-                    then add .bg-blau-300 to #label_projects_all
-                    then remove .bg-blau-500 from .label-projects
-                    then add .bg-blau-300 to .label-projects
-                    then remove .bg-blau-300 from #label_{{ project.id }}
-                    then add .bg-blau-500 to #label_{{ project.id }}"
+                  _="on click remove .bg-primary-600 from #label_projects_all
+                    then add .bg-primary-300 to #label_projects_all
+                    then remove .bg-primary-600 from .label-projects
+                    then add .bg-primary-300 to .label-projects
+                    then remove .bg-primary-300 from #label_{{ project.id }}
+                    then add .bg-primary-600 to #label_{{ project.id }}"
                 />
                 <p class="text-center pointer-events-none">{{ project }}</p>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if comissions|length > 1 %}
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
+            <p class="text-base pr-2">{% translate 'Comission' %}</p>
+            <div class="col-span-2 md:col-span-5 grid grid-cols-1 gap-1 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <label for="comissions_all" id="label_comissions_all"
+                class="flex items-center justify-center p-1 rounded-md bg-primary-600 text-white
+                  hover:bg-primary-700"
+              >
+                <input
+                  type="radio"
+                  checked="True"
+                  id="comissions_all"
+                  class="invisible absolute"
+                  name="selected_comissions"
+                  value="comissions_all"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-primary-300 from #label_comissions_all
+                    then add .bg-primary-600 to #label_comissions_all
+                    then remove .bg-primary-600 from .label-comissions
+                    then add .bg-primary-300 to .label-comissions
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for comission in comissions %}
+              <label for="comission_{{ comission.id }}" id="label_comission_{{ comission.id }}"
+                class="label-comissions flex items-center justify-center p-1 rounded-md bg-primary-300 text-white
+                  hover:bg-primary-700"
+              >
+                <input
+                  type="radio"
+                  id="comission_{{ comission.id }}"
+                  name="selected_comissions"
+                  class="selected_comissions invisible absolute"
+                  value="{{ comission.id }}"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-primary-600 from #label_comissions_all
+                    then add .bg-primary-300 to #label_comissions_all
+                    then remove .bg-primary-600 from .label-comissions
+                    then add .bg-primary-300 to .label-comissions
+                    then remove .bg-primary-300 from #label_comission_{{ comission.id }}
+                    then add .bg-primary-600 to #label_comission_{{ comission.id }}"
+                />
+                <p class="text-center pointer-events-none">{{ comission }}</p>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if years|length > 1 %}
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
+            <p class="text-base pr-2">{% translate 'Year' %}</p>
+            <div class="col-span-2 md:col-span-5 grid grid-cols-1 gap-1 w-full
+              md:grid-cols-2 lg:grid-cols-3">
+              <label for="years_all" id="label_years_all"
+                class="flex items-center justify-center p-1 rounded-md bg-primary-600 text-white
+                  hover:bg-primary-700"
+              >
+                <input
+                  type="radio"
+                  checked="True"
+                  id="years_all"
+                  class="invisible absolute"
+                  name="selected_years"
+                  value="years_all"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-primary-300 from #label_years_all
+                    then add .bg-primary-600 to #label_years_all
+                    then remove .bg-primary-600 from .label-years
+                    then add .bg-primary-300 to .label-years
+                  "
+                />
+                <p class="text-center pointer-events-none">{% translate 'All' %}</p>
+              </label>
+              {% for year in years %}
+              <label for="year_{{ year }}" id="label_year_{{ year }}"
+                class="label-years flex items-center justify-center p-1 rounded-md bg-primary-300 text-white
+                  hover:bg-primary-700"
+              >
+                <input
+                  type="radio"
+                  id="year_{{ year }}"
+                  name="selected_years"
+                  class="selected_years invisible absolute"
+                  value="{{ year }}"
+                  hx-post="{% url 'partners:documents' %}"
+                  hx-target="#htmx-content"
+                  _="on click remove .bg-primary-600 from #label_years_all
+                    then add .bg-primary-300 to #label_years_all
+                    then remove .bg-primary-600 from .label-years
+                    then add .bg-primary-300 to .label-years
+                    then remove .bg-primary-300 from #label_year_{{ year }}
+                    then add .bg-primary-600 to #label_year_{{ year }}"
+                />
+                <p class="text-center pointer-events-none">{{ year }}</p>
               </label>
               {% endfor %}
             </div>
@@ -139,7 +243,7 @@
       </div>
       {% endif %}
       <div class="grid gap-6 pt-8 lg:pt-16" id="htmx-content">
-        {% include 'main/documents_filtered.html' %}
+        {% include 'partners/documents_filtered.html' %}
       </div>
     </div>
   {% else %}

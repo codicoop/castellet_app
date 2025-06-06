@@ -8,69 +8,247 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
-        ('partners', '0001_initial'),
+        ("auth", "0012_alter_user_first_name_max_length"),
+        ("partners", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('password', models.CharField(max_length=128, verbose_name='password')),
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
-                ('name', models.CharField(default='', max_length=50, verbose_name='name')),
-                ('surnames', models.CharField(default='', max_length=50, verbose_name='surname')),
-                ('email', models.EmailField(blank=True, max_length=255, null=True, unique=True, verbose_name='email address')),
-                ('email_verification_code', models.CharField(default='0000')),
-                ('email_verified', models.BooleanField(default=False)),
-                ('phone', models.CharField(blank=True, default='', max_length=20, verbose_name='Contact telephone')),
-                ('address', models.CharField(blank=True, default='', max_length=255, verbose_name='Address')),
-                ('dni', models.CharField(default='', max_length=10, unique=True, verbose_name='National Identity Document')),
-                ('bank_account', models.CharField(blank=True, default='', max_length=24, verbose_name='Bank account')),
-                ('governing_council_member', models.BooleanField(blank=True, default=False, null=True, verbose_name='Is governing council member')),
-                ('partner_id', models.CharField(blank=True, default='', max_length=50, verbose_name='Partner ID')),
-                ('entry_year', models.CharField(blank=True, default='', max_length=4, verbose_name='Entry year')),
-                ('corporate_contribution', models.CharField(blank=True, default='', max_length=10, verbose_name='Corporate contribution')),
-                ('voluntary_contribution', models.CharField(blank=True, default='', max_length=10, verbose_name='Voluntary contribution')),
-                ('is_active', models.BooleanField(default=True, verbose_name='Is active')),
-                ('is_staff', models.BooleanField(default=False, verbose_name='Is staff')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='%(app_label)s_%(class)s_related', to=settings.AUTH_USER_MODEL, verbose_name='created by')),
-                ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
-                ('projects', models.ManyToManyField(blank=True, related_name='user_projects', to='partners.project', verbose_name='Projects')),
-                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
+                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "last_login",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="last login"
+                    ),
+                ),
+                (
+                    "is_superuser",
+                    models.BooleanField(
+                        default=False,
+                        help_text="Designates that this user has all permissions without explicitly assigning them.",
+                        verbose_name="superuser status",
+                    ),
+                ),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="updated at"),
+                ),
+                (
+                    "name",
+                    models.CharField(default="", max_length=50, verbose_name="name"),
+                ),
+                (
+                    "surnames",
+                    models.CharField(default="", max_length=50, verbose_name="surname"),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="email address",
+                    ),
+                ),
+                ("email_verification_code", models.CharField(default="0000")),
+                ("email_verified", models.BooleanField(default=False)),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=20,
+                        verbose_name="Contact telephone",
+                    ),
+                ),
+                (
+                    "address",
+                    models.CharField(
+                        blank=True, default="", max_length=255, verbose_name="Address"
+                    ),
+                ),
+                (
+                    "dni",
+                    models.CharField(
+                        default="",
+                        max_length=10,
+                        unique=True,
+                        verbose_name="National Identity Document",
+                    ),
+                ),
+                (
+                    "bank_account",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=24,
+                        verbose_name="Bank account",
+                    ),
+                ),
+                (
+                    "governing_council_member",
+                    models.BooleanField(
+                        blank=True,
+                        default=False,
+                        null=True,
+                        verbose_name="Is governing council member",
+                    ),
+                ),
+                (
+                    "partner_id",
+                    models.CharField(
+                        blank=True, default="", max_length=50, verbose_name="Partner ID"
+                    ),
+                ),
+                (
+                    "entry_year",
+                    models.CharField(
+                        blank=True, default="", max_length=4, verbose_name="Entry year"
+                    ),
+                ),
+                (
+                    "corporate_contribution",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=10,
+                        verbose_name="Corporate contribution",
+                    ),
+                ),
+                (
+                    "voluntary_contribution",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        max_length=10,
+                        verbose_name="Voluntary contribution",
+                    ),
+                ),
+                (
+                    "is_active",
+                    models.BooleanField(default=True, verbose_name="Is active"),
+                ),
+                (
+                    "is_staff",
+                    models.BooleanField(default=False, verbose_name="Is staff"),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="%(app_label)s_%(class)s_related",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="created by",
+                    ),
+                ),
+                (
+                    "groups",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="The groups this user belongs to. A user will get all permissions granted to each of their groups.",
+                        related_name="user_set",
+                        related_query_name="user",
+                        to="auth.group",
+                        verbose_name="groups",
+                    ),
+                ),
+                (
+                    "projects",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="user_projects",
+                        to="partners.project",
+                        verbose_name="Projects",
+                    ),
+                ),
+                (
+                    "user_permissions",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Specific permissions for this user.",
+                        related_name="user_set",
+                        related_query_name="user",
+                        to="auth.permission",
+                        verbose_name="user permissions",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'user',
-                'verbose_name_plural': 'users',
+                "verbose_name": "user",
+                "verbose_name_plural": "users",
             },
             bases=(project.models.SetBooleanDatetimeMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='UserCharge',
+            name="UserCharge",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
-                ('name', models.CharField(max_length=50, verbose_name='Charge name')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='%(app_label)s_%(class)s_related', to=settings.AUTH_USER_MODEL, verbose_name='created by')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="updated at"),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="Charge name")),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="%(app_label)s_%(class)s_related",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="created by",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'charge',
-                'verbose_name_plural': 'charges',
+                "verbose_name": "charge",
+                "verbose_name_plural": "charges",
             },
             bases=(project.models.SetBooleanDatetimeMixin, models.Model),
         ),
         migrations.AddField(
-            model_name='user',
-            name='charge',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='user_charge', to='users.usercharge', verbose_name='charge'),
+            model_name="user",
+            name="charge",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="user_charge",
+                to="users.usercharge",
+                verbose_name="charge",
+            ),
         ),
     ]
